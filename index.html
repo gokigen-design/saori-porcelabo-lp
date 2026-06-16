@@ -383,64 +383,79 @@
     }
 
     /* 4ヶ月カリキュラム（左に写真・右に本文で統一） */
-    .curriculum-list { max-width: 1000px; margin: 0 auto; }
-    .curri-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 36px;
-      margin-bottom: 44px;
+    /* カリキュラム — 月の丸を縦線でつなぐタイムライン */
+    .curriculum-list { max-width: 900px; margin: 0 auto; }
+    .curri-item {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      column-gap: 24px;
     }
-    .curri-row:last-child { margin-bottom: 0; }
-    .curri-photo { flex: 0 0 42%; }
-    .curri-photo img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      border-radius: 0;
-      box-shadow: 0 10px 30px rgba(58,66,104,0.14);
-      display: block;
-    }
-    .curri-text { flex: 1; }
-    /* 丸囲みステップ ─ 伸びる線 ─ 1行見出し */
-    .curri-head-row { display: flex; align-items: center; margin-bottom: 14px; }
-    .curri-step {
-      flex: none;
-      width: 76px; height: 76px;
+    .curri-tl { position: relative; }
+    .curri-circle {
+      width: 70px; height: 70px;
       border-radius: 50%;
       background: var(--accent);
       color: #fff;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      line-height: 1.25;
-      text-align: center;
+      line-height: 1.2; text-align: center;
+      position: relative; z-index: 1;
     }
-    .curri-step small { font-size: 0.6rem; letter-spacing: 0.06em; opacity: 0.9; }
-    .curri-step b { font-size: 1.02rem; }
-    .curri-connector { flex: none; width: 22px; height: 2px; background: var(--gold); }
+    .curri-circle small { font-size: 0.56rem; letter-spacing: 0.06em; opacity: 0.9; }
+    .curri-circle b { font-size: 0.95rem; }
+    /* 丸どうしをつなぐ縦線 */
+    .curri-tl::after {
+      content: "";
+      position: absolute;
+      left: 35px; top: 70px; bottom: -48px;
+      transform: translateX(-50%);
+      border-left: 2px dashed rgba(136,144,204,0.5);
+    }
+    .curri-item:last-child .curri-tl::after { display: none; }
+
+    .curri-content { padding-bottom: 48px; }
+    .curri-item:last-child .curri-content { padding-bottom: 0; }
+    /* 丸から伸びる大見出し */
     .curri-head {
-      font-size: 1.1rem;
+      display: flex; align-items: center; gap: 12px;
+      font-size: 1.18rem;
       color: var(--brown);
       font-weight: bold;
-      line-height: 1.45;
-      padding-left: 14px;
+      line-height: 1.4;
+      margin: 18px 0 18px;
     }
-    .curri-body { font-size: 0.95rem; color: var(--text-mid); line-height: 1.9; }
-    .curri-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-    .curri-tags span {
-      background: var(--white);
-      border: 1px solid var(--accent);
-      color: var(--accent-dark);
-      font-size: 0.8rem;
-      padding: 6px 16px;
-      border-radius: 30px;
+    .curri-head::before { content: ""; flex: none; width: 22px; height: 2px; background: var(--gold); }
+    /* 左写真・右本文の2カラム */
+    .curri-2col { display: flex; gap: 24px; align-items: flex-start; }
+    .curri-2col .c-photo { flex: 0 0 42%; }
+    .curri-2col .c-photo img {
+      width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+      border-radius: 0; display: block;
+      box-shadow: 0 10px 30px rgba(58,66,104,0.14);
     }
+    .curri-2col .c-text { flex: 1; }
+    .curri-2col .c-text p { font-size: 0.93rem; color: var(--text-mid); line-height: 1.9; }
+    /* 数字の丸が並ぶ支援要素 */
+    .curri-supports { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 20px; }
+    .curri-support { display: flex; align-items: center; gap: 9px; }
+    .curri-support .num {
+      flex: none; width: 28px; height: 28px; border-radius: 50%;
+      background: #fff; border: 1.5px solid var(--accent); color: var(--accent-dark);
+      font-family: Georgia, serif; font-weight: bold; font-size: 0.82rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .curri-support span.label { font-size: 0.86rem; color: var(--brown); font-weight: 500; }
     .format-box.after-curri { margin-top: 0; margin-bottom: 0; }
 
     @media (max-width: 720px) {
-      .curri-row { flex-direction: column; gap: 16px; margin-bottom: 36px; }
-      .curri-photo { flex: none; width: 100%; }
-      .curri-step { width: 66px; height: 66px; }
-      .curri-head { font-size: 1rem; }
+      .curri-item { grid-template-columns: 52px 1fr; column-gap: 14px; }
+      .curri-circle { width: 52px; height: 52px; }
+      .curri-circle small { font-size: 0.5rem; }
+      .curri-circle b { font-size: 0.76rem; }
+      .curri-tl::after { left: 26px; top: 52px; bottom: -42px; }
+      .curri-head { font-size: 1.04rem; margin: 8px 0 14px; }
+      .curri-2col { flex-direction: column; gap: 14px; }
+      .curri-2col .c-photo { flex: none; width: 100%; }
     }
 
     /* 受講の流れ（縦タイムライン） */
@@ -490,15 +505,25 @@
     ============================================= */
     #why { background: var(--bg-alt); }
 
-    /* なぜこの講座なのか（ダイヤ番号＋左写真・右文章／角丸なし） */
-    .why-box { max-width: 900px; margin: 0 auto 56px; }
+    /* なぜこの講座なのか（背景色の上に白いボックス／角丸なし） */
+    .why-box {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto 44px;
+      background: #fff;
+      padding: 50px 32px 34px;
+      box-shadow: 0 16px 40px rgba(58,66,104,0.10);
+    }
     .why-box:last-child { margin-bottom: 0; }
+    /* ダイヤ番号（ボックス上辺に重ねる） */
     .why-diamond {
+      position: absolute;
+      top: -28px; left: 50%;
       width: 56px; height: 56px;
-      margin: 0 auto;
+      margin: 0;
       background: #F3EAD6;
       border: 1px solid #E2CFA6;
-      transform: rotate(45deg);
+      transform: translateX(-50%) rotate(45deg);
       display: flex; align-items: center; justify-content: center;
     }
     .why-diamond span {
@@ -514,26 +539,26 @@
       font-size: 1.22rem;
       color: var(--brown);
       line-height: 1.55;
-      margin: 22px 0 28px;
+      margin: 0 0 24px;
       font-weight: bold;
     }
-    .why-row { display: flex; gap: 32px; align-items: center; }
-    .why-photo { flex: 0 0 46%; }
-    .why-photo img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
+    /* 画像2枚を横並び（同じ高さ） */
+    .why-imgs { display: flex; gap: 14px; margin-bottom: 22px; height: 220px; }
+    .why-imgs img {
+      height: 100%;
       object-fit: cover;
       border-radius: 0;
       display: block;
-      box-shadow: 0 12px 30px rgba(58,66,104,0.13);
+      box-shadow: 0 8px 22px rgba(58,66,104,0.12);
     }
-    .why-text { flex: 1; }
+    .why-imgs .img-main { flex: 1.6; min-width: 0; }
+    .why-imgs .img-sub { flex: 1; min-width: 0; }
     .why-text p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.95; }
 
     @media (max-width: 720px) {
-      .why-row { flex-direction: column; gap: 18px; }
-      .why-photo { flex: none; width: 100%; }
-      .why-head { font-size: 1.08rem; margin: 18px 0 20px; }
+      .why-box { padding: 44px 20px 28px; }
+      .why-head { font-size: 1.08rem; }
+      .why-imgs { gap: 10px; height: 150px; }
     }
 
     /* =============================================
@@ -769,26 +794,35 @@
       background: linear-gradient(160deg, #F0F4FC 0%, #E0EAF8 100%);
       text-align: center;
     }
-    .closing-photo {
-      width: 68%;
-      max-width: 240px;
-      border-radius: 50%;
-      aspect-ratio: 1;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      margin: 0 auto 24px;
-      border: 5px solid var(--gold);
-      box-shadow: 0 6px 28px rgba(140,160,210,0.28);
+    /* クロージング — 本人写真＋右モヤ＋文字重ね */
+    .closing-hero {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto 32px;
+      overflow: hidden;
+    }
+    .closing-hero-img { width: 100%; display: block; object-fit: cover; }
+    .closing-hero-overlay {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: flex-end;
+      background: linear-gradient(90deg, rgba(250,248,243,0) 26%, rgba(250,248,243,0.86) 54%, rgba(250,248,243,0.97) 100%);
+      padding: 24px 26px;
     }
     #closing h2 { font-size: 1.3rem; color: var(--brown); margin-bottom: 18px; }
-    #closing .closing-text {
-      font-size: 0.93rem;
+    .closing-hero-overlay .closing-text {
+      width: 52%;
+      font-size: 0.9rem;
       color: var(--text-mid);
-      max-width: 400px;
-      margin: 0 auto 32px;
       text-align: left;
-      line-height: 2;
+      line-height: 1.95;
+    }
+    @media (max-width: 720px) {
+      .closing-hero-overlay {
+        background: linear-gradient(180deg, rgba(250,248,243,0) 16%, rgba(250,248,243,0.8) 50%, rgba(250,248,243,0.97) 100%);
+        align-items: flex-end; justify-content: center;
+        padding: 22px 18px 20px;
+      }
+      .closing-hero-overlay .closing-text { width: 100%; font-size: 0.86rem; }
     }
 
     /* =============================================
@@ -1016,67 +1050,63 @@
   <div class="curriculum-list">
 
     <!-- 1ヶ月目 -->
-    <div class="curri-row">
-      <div class="curri-photo">
-        <img src="img/curriculum-1.png" alt="（仮）1ヶ月目の作品イメージ ※差し替え予定">
+    <div class="curri-item">
+      <div class="curri-tl">
+        <div class="curri-circle"><small>STEP</small><b>1ヶ月目</b></div>
       </div>
-      <div class="curri-text">
-        <div class="curri-head-row">
-          <div class="curri-step"><small>STEP</small><b>1ヶ月目</b></div>
-          <div class="curri-connector"></div>
-          <h3 class="curri-head">絵の具の基礎から本質的理解</h3>
+      <div class="curri-content">
+        <h3 class="curri-head">絵の具の基礎から本質的理解</h3>
+        <div class="curri-2col">
+          <div class="c-photo"><img src="img/curriculum-1.png" alt="（仮）1ヶ月目の作品イメージ ※差し替え予定"></div>
+          <div class="c-text"><p>「なんとなく」から卒業。絵の具の性質・使い方・調整まで、「なぜこれが必要か」を理解することで、自分が意図したように扱えるようになる。</p></div>
         </div>
-        <p class="curri-body">「なんとなく」から卒業。絵の具の性質・使い方・調整まで、「なぜこれが必要か」を理解することで、自分が意図したように扱えるようになる。</p>
-        <div class="curri-tags">
-          <span>オンラインコンテンツ</span>
-          <span>課題添削</span>
-          <span>チャットサポート</span>
+        <div class="curri-supports">
+          <div class="curri-support"><span class="num">1</span><span class="label">オンラインコンテンツ</span></div>
+          <div class="curri-support"><span class="num">2</span><span class="label">課題添削</span></div>
+          <div class="curri-support"><span class="num">3</span><span class="label">チャットサポート</span></div>
         </div>
       </div>
     </div>
 
     <!-- 2ヶ月目 -->
-    <div class="curri-row">
-      <div class="curri-photo">
-        <img src="img/curriculum-2.png" alt="（仮）2ヶ月目の作品イメージ ※差し替え予定">
+    <div class="curri-item">
+      <div class="curri-tl">
+        <div class="curri-circle"><small>STEP</small><b>2ヶ月目</b></div>
       </div>
-      <div class="curri-text">
-        <div class="curri-head-row">
-          <div class="curri-step"><small>STEP</small><b>2ヶ月目</b></div>
-          <div class="curri-connector"></div>
-          <h3 class="curri-head">ポーセラーツの技術の融合と応用</h3>
+      <div class="curri-content">
+        <h3 class="curri-head">ポーセラーツの技術の融合と応用</h3>
+        <div class="curri-2col">
+          <div class="c-photo"><img src="img/curriculum-2.png" alt="（仮）2ヶ月目の作品イメージ ※差し替え予定"></div>
+          <div class="c-text"><p>基礎を土台に、表現の幅を広げる技術を習得。転写紙を分解・構成する楽しさと絵の具を組み合わせることで、これまでにない作品が生まれる。絵を描いたことがない人でも描けるようになる。</p></div>
         </div>
-        <p class="curri-body">基礎を土台に、表現の幅を広げる技術を習得。転写紙を分解・構成する楽しさと絵の具を組み合わせることで、これまでにない作品が生まれる。絵を描いたことがない人でも描けるようになる。</p>
       </div>
     </div>
 
     <!-- 3ヶ月目 -->
-    <div class="curri-row">
-      <div class="curri-photo">
-        <img src="img/curriculum-3.png" alt="（仮）3ヶ月目の作品イメージ ※差し替え予定">
+    <div class="curri-item">
+      <div class="curri-tl">
+        <div class="curri-circle"><small>STEP</small><b>3ヶ月目</b></div>
       </div>
-      <div class="curri-text">
-        <div class="curri-head-row">
-          <div class="curri-step"><small>STEP</small><b>3ヶ月目</b></div>
-          <div class="curri-connector"></div>
-          <h3 class="curri-head">ポーセラーツのためのデザイン理論</h3>
+      <div class="curri-content">
+        <h3 class="curri-head">ポーセラーツのためのデザイン理論</h3>
+        <div class="curri-2col">
+          <div class="c-photo"><img src="img/curriculum-3.png" alt="（仮）3ヶ月目の作品イメージ ※差し替え予定"></div>
+          <div class="c-text"><p>デザインとは、おしゃれな見た目にすることではありません。20年のデザイナー実績から構築した独自のデザイン理論で、見ている人の心に届く作品を体系的に学びます。</p></div>
         </div>
-        <p class="curri-body">デザインとは、おしゃれな見た目にすることではありません。20年のデザイナー実績から構築した独自のデザイン理論で、見ている人の心に届く作品を体系的に学びます。</p>
       </div>
     </div>
 
     <!-- 4ヶ月目 -->
-    <div class="curri-row">
-      <div class="curri-photo">
-        <img src="img/real-1.png" alt="（仮）4ヶ月目の作品イメージ ※差し替え予定">
+    <div class="curri-item">
+      <div class="curri-tl">
+        <div class="curri-circle"><small>STEP</small><b>4ヶ月目</b></div>
       </div>
-      <div class="curri-text">
-        <div class="curri-head-row">
-          <div class="curri-step"><small>STEP</small><b>4ヶ月目</b></div>
-          <div class="curri-connector"></div>
-          <h3 class="curri-head">ポーセラーツのためのデザイン理論（続編）</h3>
+      <div class="curri-content">
+        <h3 class="curri-head">ポーセラーツのためのデザイン理論（続編）</h3>
+        <div class="curri-2col">
+          <div class="c-photo"><img src="img/real-1.png" alt="（仮）4ヶ月目の作品イメージ ※差し替え予定"></div>
+          <div class="c-text"><p>「センスがないのではなく、ただ知らなかっただけ」と気づける内容。学んだデザイン理論を、あなた自身の作品づくりに落とし込んでいきます。</p></div>
         </div>
-        <p class="curri-body">「センスがないのではなく、ただ知らなかっただけ」と気づける内容。学んだデザイン理論を、あなた自身の作品づくりに落とし込んでいきます。</p>
       </div>
     </div>
 
@@ -1211,39 +1241,36 @@
   <div class="why-box">
     <div class="why-diamond"><span>01</span></div>
     <h3 class="why-head">技術とデザイン、両方を教えられる唯一の講座</h3>
-    <div class="why-row">
-      <div class="why-photo">
-        <img src="img/saori-2.jpg" alt="（仮）講師 尾野さおりと作品 ※差し替え予定">
-      </div>
-      <div class="why-text">
-        <p>ポーセラーツ講師歴13年・1万人以上を指導してきた実績に加え、美大卒・デザイナー歴20年。絵の具の技術からデザイン理論まで体系的に教えられるのは、ここだけです。</p>
-      </div>
+    <div class="why-imgs">
+      <img class="img-main" src="img/saori-2.jpg" alt="（仮）講師 尾野さおり ※差し替え予定">
+      <img class="img-sub" src="img/curriculum-3.png" alt="（仮）作品イメージ ※差し替え予定">
+    </div>
+    <div class="why-text">
+      <p>ポーセラーツ講師歴13年・1万人以上を指導してきた実績に加え、美大卒・デザイナー歴20年。絵の具の技術からデザイン理論まで、両方を体系的に教えられるのはさおりだけ。だから「作品の上達」と「指導する力」を、同時に手に入れられます。</p>
     </div>
   </div>
 
   <div class="why-box">
     <div class="why-diamond"><span>02</span></div>
     <h3 class="why-head">「センスがない」ではなく「知らなかっただけ」</h3>
-    <div class="why-row">
-      <div class="why-photo">
-        <img src="img/curriculum-1.png" alt="（仮）作品イメージ ※差し替え予定">
-      </div>
-      <div class="why-text">
-        <p>才能や感覚に頼らず、理論で再現できるメソッド。「センスがないのではなく、ただ知らなかっただけ」と気づけるから、誰でも上達できます。</p>
-      </div>
+    <div class="why-imgs">
+      <img class="img-main" src="img/curriculum-1.png" alt="（仮）作品イメージ ※差し替え予定">
+      <img class="img-sub" src="img/curriculum-2.png" alt="（仮）作品イメージ ※差し替え予定">
+    </div>
+    <div class="why-text">
+      <p>才能や感覚に頼らず、理論で再現できるメソッドだから、誰でも上達できます。「センスがないのではなく、ただ知らなかっただけ」と気づけたとき、作品づくりが驚くほど楽しくなる。今までの「できない」が「できた」に変わっていきます。</p>
     </div>
   </div>
 
   <div class="why-box">
     <div class="why-diamond"><span>03</span></div>
     <h3 class="why-head">苦手から始めた講師だから、寄り添える</h3>
-    <div class="why-row">
-      <div class="why-photo">
-        <img src="img/real-1.png" alt="（仮）勉強会の様子 ※差し替え予定">
-      </div>
-      <div class="why-text">
-        <p>さおり自身も「絵の具が思い通りにならない」「指導する自信がない」という経験をしてきました。だからこそ、同じ悩みを持つあなたの気持ちがわかります。</p>
-      </div>
+    <div class="why-imgs">
+      <img class="img-main" src="img/real-1.png" alt="（仮）勉強会の様子 ※差し替え予定">
+      <img class="img-sub" src="img/saori-3.jpg" alt="（仮）講師 尾野さおり ※差し替え予定">
+    </div>
+    <div class="why-text">
+      <p>さおり自身も「絵の具が思い通りにならない」「指導する自信がない」という経験をしてきました。だからこそ、同じ悩みを持つあなたの気持ちが痛いほどわかります。つまずくポイントを先回りして、最後まで丁寧に伴走します。</p>
     </div>
   </div>
 </section>
@@ -1588,12 +1615,12 @@
     <div class="gold-line"></div>
   </div>
 
-  <img src="img/saori-3.jpg" alt="尾野さおりより" class="closing-photo">
-
-  <p class="closing-text">
-    「できない」や「ひらめかない」は、技術不足、知識やセンス、才能が理由ではありません。ただ、学ぶ機会がなかっただけです。<br><br>
-    技術に自信を持ち、アイデアを広げる方法を一緒に学びましょう。この先、自分も生徒さんも笑顔があふれる教室が叶うヒントが、きっとここにあります。
-  </p>
+  <div class="closing-hero">
+    <img class="closing-hero-img" src="img/saori-2.jpg" alt="（仮）尾野さおり ※差し替え予定">
+    <div class="closing-hero-overlay">
+      <p class="closing-text">「できない」や「ひらめかない」は、才能やセンスのせいではありません。ただ、学ぶ機会がなかっただけ。<br><br>技術に自信を持ち、アイデアを広げる方法を、一緒に学びましょう。自分も生徒さんも笑顔があふれる教室が叶うヒントが、きっとここにあります。</p>
+    </div>
+  </div>
 
   <div class="cta-wrap">
     <a href="ここに申込先URLを入力" class="cta-btn">
