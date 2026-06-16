@@ -614,56 +614,63 @@
     .price-text { font-size: 0.92rem; color: var(--text-mid); line-height: 1.9; }
     .price-note { font-size: 0.8rem; color: var(--text-light); margin-top: 8px; }
 
-    /* 特典合計バリュー表示 */
+    /* 特典 — 明るい上品版（角丸なし） */
     .tokuten-total {
-      background: var(--brown);
-      color: var(--white);
-      border-radius: 12px;
-      padding: 16px 20px;
+      max-width: 540px;
+      margin: 0 auto 40px;
+      background: #fff;
+      border: 1px solid var(--gold);
+      padding: 32px 24px;
       text-align: center;
-      margin-bottom: 16px;
     }
-    .tokuten-total .total-label { font-size: 0.78rem; opacity: 0.8; margin-bottom: 4px; }
+    .tokuten-total .gift-mark { width: 40px; height: 40px; color: var(--gold); margin: 0 auto 14px; display: block; }
+    .tokuten-total .total-label {
+      font-size: 0.9rem; color: var(--text-mid);
+      letter-spacing: 0.12em; margin-bottom: 10px;
+    }
     .tokuten-total .total-value {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #f5d08a;
-      letter-spacing: 0.03em;
+      font-family: Georgia, serif;
+      font-size: 2.7rem; font-weight: bold;
+      color: var(--gold); line-height: 1.05; letter-spacing: 0.01em;
     }
-    .tokuten-total .total-sub { font-size: 0.75rem; opacity: 0.75; margin-top: 4px; }
+    .tokuten-total .total-value .unit { font-size: 1.5rem; }
+    .tokuten-total .total-value .plus { font-size: 1.1rem; color: var(--accent-dark); margin-left: 2px; }
+    .tokuten-total .total-sub {
+      font-size: 1.05rem; color: var(--brown); font-weight: bold; margin-top: 12px;
+    }
+    .tokuten-total .total-sub b { color: var(--gold); }
 
     .tokuten-title {
-      font-size: 1rem;
-      color: var(--brown);
-      text-align: center;
-      margin-bottom: 14px;
-      font-weight: bold;
+      font-size: 1.02rem; color: var(--brown);
+      text-align: center; margin-bottom: 20px; font-weight: bold;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
     }
-    .tokuten-list { list-style: none; }
+    .tokuten-title svg { width: 22px; height: 22px; color: var(--gold); }
+    .tokuten-list { list-style: none; max-width: 640px; margin: 0 auto; }
     .tokuten-list li {
-      background: var(--pink-light);
-      border-radius: 12px;
-      padding: 14px 16px;
-      margin-bottom: 10px;
-      font-size: 0.88rem;
+      display: flex; gap: 16px; align-items: flex-start;
+      background: #fff;
+      border: 1px solid #EDE7DC;
+      border-left: 3px solid var(--gold);
+      padding: 18px 20px;
+      margin-bottom: 12px;
     }
+    .tok-num {
+      flex: none; width: 38px; height: 38px;
+      background: var(--accent); color: #fff;
+      font-family: Georgia, serif; font-weight: bold; font-size: 1.02rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tok-body { flex: 1; }
     .tok-head {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 4px;
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 5px;
     }
-    .tok-head strong { color: var(--brown); font-size: 0.9rem; }
+    .tok-head strong { color: var(--brown); font-size: 0.96rem; }
     .tok-value {
-      font-size: 0.72rem;
-      color: var(--accent);
-      border: 1px solid var(--accent);
-      padding: 1px 8px;
-      border-radius: 20px;
-      white-space: nowrap;
+      font-size: 0.72rem; color: #fff; background: var(--gold);
+      padding: 3px 10px; font-weight: bold; white-space: nowrap;
     }
-    .tokuten-list li p { color: var(--text-mid); }
+    .tokuten-list li p { color: var(--text-mid); font-size: 0.88rem; line-height: 1.8; }
 
     .urgency-box {
       background: var(--brown);
@@ -1325,7 +1332,7 @@
   </div>
 
   <div class="price-box">
-    <h3>💰 受講料について</h3>
+    <h3>受講料について</h3>
     <p class="price-text">
       ご受講料は個別相談会にてご案内しています。あなたの現状やお悩みをお聞きした上で、複数のプランの中からご提案します。<br><br>
       まずはお気軽に相談会にご参加ください。<strong>相談会への参加は完全無料</strong>です。
@@ -1334,38 +1341,44 @@
 
   <!-- 特典合計額 -->
   <div class="tokuten-total">
-    <p class="total-label">お申し込み特典の合計額</p>
-    <p class="total-value">7万円相当以上</p>
-    <p class="total-sub">が無料でついてきます</p>
+    <svg class="gift-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13"/><path d="M3 12h18M12 8v13M12 8C12 5 10 3 8 3a2 2 0 0 0 0 4M12 8c0-3 2-5 4-5a2 2 0 0 1 0 4"/></svg>
+    <p class="total-label">お申し込み特典 総額</p>
+    <p class="total-value">7<span class="unit">万円</span>相当<span class="plus">以上</span></p>
+    <p class="total-sub">が、<b>無料</b>でついてきます</p>
   </div>
 
-  <p class="tokuten-title">🎁 お申し込み特典</p>
+  <p class="tokuten-title">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13"/><path d="M3 12h18M12 8v13M12 8C12 5 10 3 8 3a2 2 0 0 0 0 4M12 8c0-3 2-5 4-5a2 2 0 0 1 0 4"/></svg>
+    お申し込み特典の内容
+  </p>
   <ul class="tokuten-list">
     <li>
-      <div class="tok-head">
-        <strong>特典① 無料個別相談会への参加券</strong>
+      <div class="tok-num">01</div>
+      <div class="tok-body">
+        <div class="tok-head"><strong>無料個別相談会への参加券</strong></div>
+        <p>あなたの現状とお悩みに合わせて、さおりが直接お答えします。</p>
       </div>
-      <p>あなたの現状とお悩みに合わせて、さおりが直接お答えします</p>
     </li>
     <li>
-      <div class="tok-head">
-        <strong>特典② 指導ポイント勉強会動画</strong>
-        <span class="tok-value">3万円相当</span>
+      <div class="tok-num">02</div>
+      <div class="tok-body">
+        <div class="tok-head"><strong>指導ポイント勉強会動画</strong><span class="tok-value">3万円相当</span></div>
+        <p>ポーセラーツインストラクターコース復習＋指導ポイント勉強会動画。資格を取ったけど自信が持てない方に、すぐ使える指導のコツをお届け。</p>
       </div>
-      <p>ポーセラーツインストラクターコース復習＋指導ポイント勉強会動画。資格を取ったけど自信が持てない方に、すぐ使える指導のコツをお届け</p>
     </li>
     <li>
-      <div class="tok-head">
-        <strong>特典③ サラハスタイルオリジナル動画レッスン（5本）</strong>
-        <span class="tok-value">4万円相当</span>
+      <div class="tok-num">03</div>
+      <div class="tok-body">
+        <div class="tok-head"><strong>サラハスタイル オリジナル動画レッスン（5本）</strong><span class="tok-value">4万円相当</span></div>
+        <p>お申し込み後すぐに視聴スタートできます。</p>
       </div>
-      <p>お申し込み後すぐに視聴スタートできます</p>
     </li>
     <li>
-      <div class="tok-head">
-        <strong>特典④ コンテンツ・学習サイト即日開放</strong>
+      <div class="tok-num">04</div>
+      <div class="tok-body">
+        <div class="tok-head"><strong>コンテンツ・学習サイト即日開放</strong></div>
+        <p>お申し込み後すぐに閲覧可能。開講を待たずに、今日から学びをはじめられます。</p>
       </div>
-      <p>お申し込み後すぐに閲覧可能。開講を待たずに、今日から学びをはじめられます</p>
     </li>
   </ul>
 
