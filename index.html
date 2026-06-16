@@ -490,29 +490,51 @@
     ============================================= */
     #why { background: var(--bg-alt); }
 
-    .why-instructor-img {
-      width: 100%;
-      border-radius: 14px;
-      margin-bottom: 24px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    /* なぜこの講座なのか（ダイヤ番号＋左写真・右文章／角丸なし） */
+    .why-box { max-width: 900px; margin: 0 auto 56px; }
+    .why-box:last-child { margin-bottom: 0; }
+    .why-diamond {
+      width: 56px; height: 56px;
+      margin: 0 auto;
+      background: #F3EAD6;
+      border: 1px solid #E2CFA6;
+      transform: rotate(45deg);
+      display: flex; align-items: center; justify-content: center;
     }
-    .why-card {
-      background: var(--white);
-      border-radius: 14px;
-      padding: 20px;
-      margin-bottom: 12px;
-      box-shadow: 0 2px 14px rgba(90,62,54,0.07);
-    }
-    .why-num {
-      font-size: 2rem;
-      color: var(--gold);
-      font-weight: bold;
-      line-height: 1;
-      margin-bottom: 8px;
+    .why-diamond span {
+      transform: rotate(-45deg);
       font-family: Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: bold;
+      color: var(--gold);
+      line-height: 1;
     }
-    .why-card h3 { font-size: 0.97rem; color: var(--brown); margin-bottom: 6px; }
-    .why-card p { font-size: 0.88rem; color: var(--text-mid); }
+    .why-head {
+      text-align: center;
+      font-size: 1.22rem;
+      color: var(--brown);
+      line-height: 1.55;
+      margin: 22px 0 28px;
+      font-weight: bold;
+    }
+    .why-row { display: flex; gap: 32px; align-items: center; }
+    .why-photo { flex: 0 0 46%; }
+    .why-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 0;
+      display: block;
+      box-shadow: 0 12px 30px rgba(58,66,104,0.13);
+    }
+    .why-text { flex: 1; }
+    .why-text p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.95; }
+
+    @media (max-width: 720px) {
+      .why-row { flex-direction: column; gap: 18px; }
+      .why-photo { flex: none; width: 100%; }
+      .why-head { font-size: 1.08rem; margin: 18px 0 20px; }
+    }
 
     /* =============================================
        6. 実績・お客様の声
@@ -1173,24 +1195,43 @@
     <div class="gold-line"></div>
   </div>
 
-  <img src="img/saori-2.jpg" alt="講師 尾野さおりと作品" class="why-instructor-img">
-
-  <div class="why-card">
-    <div class="why-num">01</div>
-    <h3>技術とデザインを両方教えられる、唯一の講座</h3>
-    <p>ポーセラーツ講師歴13年・1万人以上を指導してきた実績に加え、美大卒・デザイナー歴20年。絵の具の技術からデザイン理論まで体系的に教えられるのは、ここだけ</p>
+  <div class="why-box">
+    <div class="why-diamond"><span>01</span></div>
+    <h3 class="why-head">技術とデザイン、両方を教えられる唯一の講座</h3>
+    <div class="why-row">
+      <div class="why-photo">
+        <img src="img/saori-2.jpg" alt="（仮）講師 尾野さおりと作品 ※差し替え予定">
+      </div>
+      <div class="why-text">
+        <p>ポーセラーツ講師歴13年・1万人以上を指導してきた実績に加え、美大卒・デザイナー歴20年。絵の具の技術からデザイン理論まで体系的に教えられるのは、ここだけです。</p>
+      </div>
+    </div>
   </div>
 
-  <div class="why-card">
-    <div class="why-num">02</div>
-    <h3>「センスがない」ではなく「知らなかっただけ」という考え方</h3>
-    <p>才能や感覚に頼らず、理論で再現できるメソッドを持っているから、誰でも上達できる</p>
+  <div class="why-box">
+    <div class="why-diamond"><span>02</span></div>
+    <h3 class="why-head">「センスがない」ではなく「知らなかっただけ」</h3>
+    <div class="why-row">
+      <div class="why-photo">
+        <img src="img/curriculum-1.png" alt="（仮）作品イメージ ※差し替え予定">
+      </div>
+      <div class="why-text">
+        <p>才能や感覚に頼らず、理論で再現できるメソッド。「センスがないのではなく、ただ知らなかっただけ」と気づけるから、誰でも上達できます。</p>
+      </div>
+    </div>
   </div>
 
-  <div class="why-card">
-    <div class="why-num">03</div>
-    <h3>苦手からスタートした講師だからこそ、寄り添える</h3>
-    <p>さおり自身も「絵の具が思い通りにならない」「指導する自信がない」という経験をしている。だからこそ、同じ悩みを持つ受講生の気持ちがわかる</p>
+  <div class="why-box">
+    <div class="why-diamond"><span>03</span></div>
+    <h3 class="why-head">苦手から始めた講師だから、寄り添える</h3>
+    <div class="why-row">
+      <div class="why-photo">
+        <img src="img/real-1.png" alt="（仮）勉強会の様子 ※差し替え予定">
+      </div>
+      <div class="why-text">
+        <p>さおり自身も「絵の具が思い通りにならない」「指導する自信がない」という経験をしてきました。だからこそ、同じ悩みを持つあなたの気持ちがわかります。</p>
+      </div>
+    </div>
   </div>
 </section>
 
