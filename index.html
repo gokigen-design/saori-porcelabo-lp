@@ -382,6 +382,67 @@
       box-shadow: 0 3px 14px rgba(0,0,0,0.08);
     }
 
+    /* 4ヶ月カリキュラム（左に写真・右に本文で統一） */
+    .curriculum-list { max-width: 1000px; margin: 0 auto; }
+    .curri-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 36px;
+      margin-bottom: 44px;
+    }
+    .curri-row:last-child { margin-bottom: 0; }
+    .curri-photo { flex: 0 0 42%; }
+    .curri-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(58,66,104,0.14);
+      display: block;
+    }
+    .curri-text { flex: 1; }
+    /* 丸囲みステップ ─ 伸びる線 ─ 1行見出し */
+    .curri-head-row { display: flex; align-items: center; margin-bottom: 14px; }
+    .curri-step {
+      flex: none;
+      width: 76px; height: 76px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      line-height: 1.25;
+      text-align: center;
+    }
+    .curri-step small { font-size: 0.6rem; letter-spacing: 0.06em; opacity: 0.9; }
+    .curri-step b { font-size: 1.02rem; }
+    .curri-connector { flex: none; width: 22px; height: 2px; background: var(--gold); }
+    .curri-head {
+      font-size: 1.1rem;
+      color: var(--brown);
+      font-weight: bold;
+      line-height: 1.45;
+      padding-left: 14px;
+    }
+    .curri-body { font-size: 0.95rem; color: var(--text-mid); line-height: 1.9; }
+    .curri-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .curri-tags span {
+      background: var(--white);
+      border: 1px solid var(--accent);
+      color: var(--accent-dark);
+      font-size: 0.8rem;
+      padding: 6px 16px;
+      border-radius: 30px;
+    }
+    .format-box.after-curri { margin-top: 0; margin-bottom: 0; }
+
+    @media (max-width: 720px) {
+      .curri-row { flex-direction: column; gap: 16px; margin-bottom: 36px; }
+      .curri-photo { flex: none; width: 100%; }
+      .curri-step { width: 66px; height: 66px; }
+      .curri-head { font-size: 1rem; }
+    }
+
     .flow-box {
       background: linear-gradient(135deg, #EAF2F8, #F4F8FC);
       border-radius: 14px;
@@ -891,7 +952,79 @@
     <div class="gold-line"></div>
   </div>
 
-  <div class="format-box">
+  <p style="font-size:1.05rem;color:var(--brown);font-weight:bold;margin-bottom:24px;text-align:center;">カリキュラム（4ヶ月）</p>
+
+  <div class="curriculum-list">
+
+    <!-- 1ヶ月目 -->
+    <div class="curri-row">
+      <div class="curri-photo">
+        <img src="img/curriculum-1.png" alt="（仮）1ヶ月目の作品イメージ ※差し替え予定">
+      </div>
+      <div class="curri-text">
+        <div class="curri-head-row">
+          <div class="curri-step"><small>STEP</small><b>1ヶ月目</b></div>
+          <div class="curri-connector"></div>
+          <h3 class="curri-head">絵の具の基礎から本質的理解</h3>
+        </div>
+        <p class="curri-body">「なんとなく」から卒業。絵の具の性質・使い方・調整まで、「なぜこれが必要か」を理解することで、自分が意図したように扱えるようになる。</p>
+        <div class="curri-tags">
+          <span>オンラインコンテンツ</span>
+          <span>課題添削</span>
+          <span>チャットサポート</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2ヶ月目 -->
+    <div class="curri-row">
+      <div class="curri-photo">
+        <img src="img/curriculum-2.png" alt="（仮）2ヶ月目の作品イメージ ※差し替え予定">
+      </div>
+      <div class="curri-text">
+        <div class="curri-head-row">
+          <div class="curri-step"><small>STEP</small><b>2ヶ月目</b></div>
+          <div class="curri-connector"></div>
+          <h3 class="curri-head">ポーセラーツの技術の融合と応用</h3>
+        </div>
+        <p class="curri-body">基礎を土台に、表現の幅を広げる技術を習得。転写紙を分解・構成する楽しさと絵の具を組み合わせることで、これまでにない作品が生まれる。絵を描いたことがない人でも描けるようになる。</p>
+      </div>
+    </div>
+
+    <!-- 3ヶ月目 -->
+    <div class="curri-row">
+      <div class="curri-photo">
+        <img src="img/curriculum-3.png" alt="（仮）3ヶ月目の作品イメージ ※差し替え予定">
+      </div>
+      <div class="curri-text">
+        <div class="curri-head-row">
+          <div class="curri-step"><small>STEP</small><b>3ヶ月目</b></div>
+          <div class="curri-connector"></div>
+          <h3 class="curri-head">ポーセラーツのためのデザイン理論</h3>
+        </div>
+        <p class="curri-body">デザインとは、おしゃれな見た目にすることではありません。20年のデザイナー実績から構築した独自のデザイン理論で、見ている人の心に届く作品を体系的に学びます。</p>
+      </div>
+    </div>
+
+    <!-- 4ヶ月目 -->
+    <div class="curri-row">
+      <div class="curri-photo">
+        <img src="img/real-1.png" alt="（仮）4ヶ月目の作品イメージ ※差し替え予定">
+      </div>
+      <div class="curri-text">
+        <div class="curri-head-row">
+          <div class="curri-step"><small>STEP</small><b>4ヶ月目</b></div>
+          <div class="curri-connector"></div>
+          <h3 class="curri-head">ポーセラーツのためのデザイン理論（続編）</h3>
+        </div>
+        <p class="curri-body">「センスがないのではなく、ただ知らなかっただけ」と気づける内容。学んだデザイン理論を、あなた自身の作品づくりに落とし込んでいきます。</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 受講形式（カリキュラムの後ろに移動） -->
+  <div class="format-box after-curri">
     <h3>受講形式</h3>
     <div class="format-tags">
       <span>💻 オンライン勉強会</span>
@@ -900,29 +1033,6 @@
       <span>💬 チャットサポート</span>
       <span>🏫 リアル勉強会 2回</span>
     </div>
-  </div>
-
-  <p style="font-size:0.97rem;color:var(--brown);font-weight:bold;margin-bottom:14px;text-align:center;">カリキュラム（4ヶ月）</p>
-
-  <div class="step-card">
-    <span class="step-badge">STEP 1｜1ヶ月目</span>
-    <h3>絵の具の基礎から本質的理解</h3>
-    <p>「なんとなく」から卒業。絵の具の性質・使い方・調整まで、「なぜこれが必要か」を理解することで、自分が意図したように扱えるようになる</p>
-    <img src="img/curriculum-1.png" alt="STEP1 作品イメージ" class="step-img">
-  </div>
-
-  <div class="step-card">
-    <span class="step-badge">STEP 2｜2ヶ月目</span>
-    <h3>ポーセラーツの技術との融合と応用</h3>
-    <p>基礎を土台に、表現の幅を広げる技術を習得。転写紙を分解・構成する楽しさと絵の具を組み合わせることで、これまでにない作品が生まれる。絵を描いたことがない人でも描けるようになる</p>
-    <img src="img/curriculum-2.png" alt="STEP2 作品イメージ" class="step-img">
-  </div>
-
-  <div class="step-card">
-    <span class="step-badge">STEP 3｜3〜4ヶ月目</span>
-    <h3>ポーセラーツのためのデザイン理論</h3>
-    <p>デザインとは、おしゃれな見た目にすることではない。20年のデザイナー実績から構築した独自のデザイン理論で、見ている人の心に届く作品を体系的に学ぶ。「センスがないのではなく、ただ知らなかっただけ」と気づける内容</p>
-    <img src="img/curriculum-3.png" alt="STEP3 作品イメージ" class="step-img">
   </div>
 
   <div class="flow-box">
