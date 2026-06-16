@@ -443,23 +443,47 @@
       .curri-head { font-size: 1rem; }
     }
 
-    .flow-box {
-      background: linear-gradient(135deg, #EAF2F8, #F4F8FC);
-      border-radius: 14px;
-      padding: 20px;
-      margin-top: 24px;
-      border: 1px solid #C4D8EC;
+    /* 受講の流れ（縦タイムライン） */
+    .flow-timeline { max-width: 720px; margin: 0 auto; }
+    .flow-item { display: grid; grid-template-columns: 92px 1fr; column-gap: 24px; }
+    .flow-left { position: relative; text-align: center; }
+    /* アイコン下から伸びる点線 */
+    .flow-left::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 98px;
+      bottom: -4px;
+      transform: translateX(-50%);
+      border-left: 2px dashed rgba(136,144,204,0.5);
     }
-    .flow-box h3 { font-size: 0.95rem; color: var(--brown); margin-bottom: 12px; }
-    .flow-steps { display: flex; flex-direction: column; gap: 4px; font-size: 0.88rem; }
-    .flow-step { display: flex; align-items: center; gap: 8px; }
-    .flow-dot {
-      width: 10px; height: 10px;
-      background: var(--accent);
+    .flow-item:last-child .flow-left::after { display: none; }
+    .flow-step {
+      font-size: 0.95rem; font-weight: bold;
+      color: var(--accent); letter-spacing: 0.04em; margin-bottom: 10px;
+    }
+    .flow-icon {
+      width: 64px; height: 64px;
+      margin: 0 auto;
       border-radius: 50%;
-      flex-shrink: 0;
+      background: var(--pink-light);
+      color: var(--accent-dark);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
     }
-    .flow-arrow { margin-left: 18px; color: var(--gold); }
+    .flow-icon svg { width: 32px; height: 32px; }
+    .flow-content { padding-bottom: 44px; }
+    .flow-item:last-child .flow-content { padding-bottom: 0; }
+    .flow-content h4 { font-size: 1.08rem; color: var(--accent-dark); margin-bottom: 8px; line-height: 1.4; }
+    .flow-content p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.85; }
+    @media (max-width: 720px) {
+      .flow-item { grid-template-columns: 60px 1fr; column-gap: 16px; }
+      .flow-left::after { top: 84px; }
+      .flow-icon { width: 52px; height: 52px; }
+      .flow-icon svg { width: 26px; height: 26px; }
+      .flow-step { font-size: 0.8rem; letter-spacing: 0; }
+      .flow-content { padding-bottom: 36px; }
+    }
 
     /* =============================================
        5. 選ばれる理由
@@ -1035,20 +1059,93 @@
     </div>
   </div>
 
-  <div class="flow-box">
-    <h3>🗓 受講の流れ</h3>
-    <div class="flow-steps">
-      <div class="flow-step"><div class="flow-dot"></div><span>無料相談会に参加</span></div>
-      <div class="flow-arrow">↓</div>
-      <div class="flow-step"><div class="flow-dot"></div><span>お申し込み</span></div>
-      <div class="flow-arrow">↓</div>
-      <div class="flow-step"><div class="flow-dot"></div><span>特典動画・学習サイト視聴スタート（即日）</span></div>
-      <div class="flow-arrow">↓</div>
-      <div class="flow-step"><div class="flow-dot"></div><span>1ヶ月目：STEP1（絵の具の基礎）</span></div>
-      <div class="flow-arrow">↓</div>
-      <div class="flow-step"><div class="flow-dot"></div><span>2ヶ月目：STEP2（融合と応用）</span></div>
-      <div class="flow-arrow">↓</div>
-      <div class="flow-step"><div class="flow-dot"></div><span>3〜4ヶ月目：STEP3＋修了</span></div>
+  <div class="flow-wrap" style="margin-top:56px;">
+    <div class="title-block">
+      <span class="deco-word">Flow</span>
+      <h2 class="sec-title">受講の流れ</h2>
+      <div class="gold-line"></div>
+    </div>
+
+    <div class="flow-timeline">
+
+      <div class="flow-item">
+        <div class="flow-left">
+          <div class="flow-step">Step 1</div>
+          <div class="flow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="16" rx="2"/><rect x="9" y="3" width="6" height="3" rx="1"/><path d="M8.5 13l2.2 2.2 4-4.4"/></svg>
+          </div>
+        </div>
+        <div class="flow-content">
+          <h4>お申し込み</h4>
+          <p>無料相談会に参加し、納得できたらお申し込み。お手続き後、進め方をご案内します。</p>
+        </div>
+      </div>
+
+      <div class="flow-item">
+        <div class="flow-left">
+          <div class="flow-step">Step 2</div>
+          <div class="flow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M10.5 8.5l4 2.5-4 2.5z"/></svg>
+          </div>
+        </div>
+        <div class="flow-content">
+          <h4>学習スタート（即日）</h4>
+          <p>特典動画と学習サイトは、お申し込み後すぐに視聴可能。開講を待たずに今日から始められます。</p>
+        </div>
+      </div>
+
+      <div class="flow-item">
+        <div class="flow-left">
+          <div class="flow-step">Step 3</div>
+          <div class="flow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.7-1 1.3-2-.4-1 .2-2 1.2-2H17a4 4 0 0 0 4-4c0-4.5-4-8-9-8z"/><circle cx="7.5" cy="11.5" r="1"/><circle cx="10" cy="7.8" r="1"/><circle cx="14.5" cy="7.8" r="1"/></svg>
+          </div>
+        </div>
+        <div class="flow-content">
+          <h4>1ヶ月目：絵の具の基礎</h4>
+          <p>絵の具の性質・使い方・調整を本質から理解。「なんとなく」から卒業します。</p>
+        </div>
+      </div>
+
+      <div class="flow-item">
+        <div class="flow-left">
+          <div class="flow-step">Step 4</div>
+          <div class="flow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg>
+          </div>
+        </div>
+        <div class="flow-content">
+          <h4>2ヶ月目：技術の融合と応用</h4>
+          <p>転写紙と絵の具を組み合わせ、これまでにない作品づくりへ。表現の幅が広がります。</p>
+        </div>
+      </div>
+
+      <div class="flow-item">
+        <div class="flow-left">
+          <div class="flow-step">Step 5</div>
+          <div class="flow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.3 1 2.5h6c0-1.2.3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg>
+          </div>
+        </div>
+        <div class="flow-content">
+          <h4>3〜4ヶ月目：デザイン理論</h4>
+          <p>独自のデザイン理論で、見ている人の心に届く作品を体系的に学びます。</p>
+        </div>
+      </div>
+
+      <div class="flow-item">
+        <div class="flow-left">
+          <div class="flow-step">Step 6</div>
+          <div class="flow-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-4 9 4-9 4-9-4z"/><path d="M7 11v4c0 1.1 2.2 2 5 2s5-.9 5-2v-4"/><path d="M21 9v5"/></svg>
+          </div>
+        </div>
+        <div class="flow-content">
+          <h4>修了・指導スタート</h4>
+          <p>学びを自分のレッスンに落とし込み、指導をスタート。絵の具があなたの強みになります。</p>
+        </div>
+      </div>
+
     </div>
   </div>
 
