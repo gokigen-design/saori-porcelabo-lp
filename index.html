@@ -274,38 +274,60 @@
       color: var(--accent);
       margin-bottom: 24px;
     }
-    .future-photo {
-      width: 100%;
-      border-radius: 14px;
-      margin-bottom: 24px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    }
-    .future-item {
+    /* 左右交互（ジグザグ）レイアウト */
+    .future-zigzag { max-width: 1000px; margin: 8px auto 0; }
+    .fz-row {
       display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 16px 0;
-      border-bottom: 1px solid #e2d8d0;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 48px;
     }
-    .future-item:last-child { border-bottom: none; }
-    .f-num {
-      width: 30px; height: 30px;
-      background: var(--accent);
-      color: #fff;
-      border-radius: 50%;
-      font-size: 0.85rem;
-      font-weight: bold;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .f-body strong {
+    .fz-row:last-child { margin-bottom: 0; }
+    .fz-row.reverse { flex-direction: row-reverse; }
+    .fz-photo { flex: 0 0 45%; position: relative; }
+    .fz-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(58,66,104,0.14);
       display: block;
-      font-size: 0.95rem;
-      color: var(--brown);
-      margin-bottom: 4px;
     }
-    .f-body span { font-size: 0.84rem; color: var(--text-light); line-height: 1.7; }
+    /* 写真の上の筆記体ラベル「Future 1」 */
+    .fz-label {
+      position: absolute;
+      top: -24px;
+      left: 16px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.7rem;
+      line-height: 1;
+      color: var(--accent);
+      text-shadow: 0 2px 10px rgba(255,255,255,0.95), 0 0 2px rgba(255,255,255,0.95);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .fz-row.reverse .fz-label { left: auto; right: 16px; }
+    .fz-text { flex: 1; }
+    .fz-text h3 {
+      font-size: 1.18rem;
+      color: var(--brown);
+      line-height: 1.55;
+      margin-bottom: 12px;
+      font-weight: bold;
+    }
+    .fz-text p {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.9;
+    }
+    @media (max-width: 720px) {
+      .fz-row, .fz-row.reverse { flex-direction: column; gap: 16px; margin-bottom: 40px; }
+      .fz-photo { flex: none; width: 100%; }
+      .fz-label { font-size: 2.2rem; top: -17px; left: 12px; }
+      .fz-row.reverse .fz-label { right: auto; left: 12px; }
+      .fz-text { text-align: center; }
+      .fz-text h3 { font-size: 1.08rem; }
+    }
 
     /* =============================================
        4. サービス内容
@@ -775,52 +797,80 @@
 
   <p class="future-main">絵の具が、あなたの強みになる。</p>
 
-  <img src="img/real-1.png" alt="受講生との勉強会の様子" class="future-photo">
+  <div class="future-zigzag">
 
-  <div class="f-num" style="display:none"></div><!-- dummy for lint -->
-  <div>
-    <div class="future-item">
-      <div class="f-num">1</div>
-      <div class="f-body">
-        <strong>絵の具に自信が持て、指導できるようになる</strong>
-        <span>生徒さんのリピート率が上がり、絵の具が自分の強みに変わる</span>
+    <!-- Future 1：写真=左 / テキスト=右 -->
+    <div class="fz-row">
+      <div class="fz-photo">
+        <span class="fz-label">Future 1</span>
+        <img src="img/real-1.png" alt="（仮）受講後のイメージ写真1 ※差し替え予定">
+      </div>
+      <div class="fz-text">
+        <h3>絵の具に自信が持て、指導できるようになる</h3>
+        <p>生徒さんのリピート率が上がり、絵の具が自分の強みに変わる。</p>
       </div>
     </div>
-    <div class="future-item">
-      <div class="f-num">2</div>
-      <div class="f-body">
-        <strong>「そんな食器見たことない！」と言われる作品が生まれる</strong>
-        <span>デザイン理論を身につけたとき、他にはない洗練された作品が作れるようになる</span>
+
+    <!-- Future 2：写真=右 / テキスト=左 -->
+    <div class="fz-row reverse">
+      <div class="fz-photo">
+        <span class="fz-label">Future 2</span>
+        <img src="img/curriculum-1.png" alt="（仮）受講後のイメージ写真2 ※差し替え予定">
+      </div>
+      <div class="fz-text">
+        <h3>「そんな食器見たことない！」と言われる作品が生まれる</h3>
+        <p>デザイン理論を身につけたとき、他にはない洗練された作品が作れるようになる。</p>
       </div>
     </div>
-    <div class="future-item">
-      <div class="f-num">3</div>
-      <div class="f-body">
-        <strong>「この先生からしか習えない」と選ばれる存在になれる</strong>
-        <span>オリジナルの講座を自ら作り上げ、指名される先生になれる</span>
+
+    <!-- Future 3：写真=左 / テキスト=右 -->
+    <div class="fz-row">
+      <div class="fz-photo">
+        <span class="fz-label">Future 3</span>
+        <img src="img/curriculum-2.png" alt="（仮）受講後のイメージ写真3 ※差し替え予定">
+      </div>
+      <div class="fz-text">
+        <h3>「この先生からしか習えない」と選ばれる存在になれる</h3>
+        <p>オリジナルの講座を自ら作り上げ、指名される先生になれる。</p>
       </div>
     </div>
-    <div class="future-item">
-      <div class="f-num">4</div>
-      <div class="f-body">
-        <strong>作れる作品の幅が何倍も広がる</strong>
-        <span>転写紙に絵の具をプラスして、表現の可能性が一気に広がる</span>
+
+    <!-- Future 4：写真=右 / テキスト=左 -->
+    <div class="fz-row reverse">
+      <div class="fz-photo">
+        <span class="fz-label">Future 4</span>
+        <img src="img/curriculum-3.png" alt="（仮）受講後のイメージ写真4 ※差し替え予定">
+      </div>
+      <div class="fz-text">
+        <h3>作れる作品の幅が何倍も広がる</h3>
+        <p>転写紙に絵の具をプラスして、表現の可能性が一気に広がる。</p>
       </div>
     </div>
-    <div class="future-item">
-      <div class="f-num">5</div>
-      <div class="f-body">
-        <strong>苦手だった絵の具で、絵が描けるようになる</strong>
-        <span>「私にもできた」という体験が、先生としての自信に変わる</span>
+
+    <!-- Future 5：写真=左 / テキスト=右 -->
+    <div class="fz-row">
+      <div class="fz-photo">
+        <span class="fz-label">Future 5</span>
+        <img src="img/saori-2.jpg" alt="（仮）受講後のイメージ写真5 ※差し替え予定">
+      </div>
+      <div class="fz-text">
+        <h3>苦手だった絵の具で、絵が描けるようになる</h3>
+        <p>「私にもできた」という体験が、先生としての自信に変わる。</p>
       </div>
     </div>
-    <div class="future-item">
-      <div class="f-num">6</div>
-      <div class="f-body">
-        <strong>目を輝かせながら生徒さんに提案できる先生になれる</strong>
-        <span>あなたのワクワクが教室全体に広がっていく</span>
+
+    <!-- Future 6：写真=右 / テキスト=左 -->
+    <div class="fz-row reverse">
+      <div class="fz-photo">
+        <span class="fz-label">Future 6</span>
+        <img src="img/saori-3.jpg" alt="（仮）受講後のイメージ写真6 ※差し替え予定">
+      </div>
+      <div class="fz-text">
+        <h3>目を輝かせながら生徒さんに提案できる先生になれる</h3>
+        <p>あなたのワクワクが教室全体に広がっていく。</p>
       </div>
     </div>
+
   </div>
 </section>
 
