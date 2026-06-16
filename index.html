@@ -816,8 +816,9 @@
     }
     @media (min-width: 820px) {
       section { max-width: 760px; margin: 0 auto; padding: 80px 0; }
-      #fv, footer { max-width: none; }
-      #fv { padding: 48px 0 0; }
+      footer { max-width: none; }
+      /* FVも下のセクションと同じ細長い列に揃える（中央配置） */
+      #fv { max-width: 760px; margin: 0 auto; padding: 48px 0 0; }
       .fv-inner-wrap { max-width: 760px; margin: 0 auto; padding: 0 40px; }
     }
   </style>
