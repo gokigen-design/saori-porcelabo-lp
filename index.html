@@ -275,58 +275,74 @@
       margin-bottom: 24px;
     }
     /* 左右交互（ジグザグ）レイアウト */
-    .future-zigzag { max-width: 1000px; margin: 8px auto 0; }
+    .future-zigzag { max-width: 720px; margin: 18px auto 0; }
     .fz-row {
       display: flex;
       align-items: center;
-      gap: 40px;
-      margin-bottom: 48px;
+      position: relative;
+      margin-bottom: 60px;
     }
     .fz-row:last-child { margin-bottom: 0; }
     .fz-row.reverse { flex-direction: row-reverse; }
-    .fz-photo { flex: 0 0 45%; position: relative; }
+    .fz-photo { flex: 0 0 62%; position: relative; z-index: 1; }
     .fz-photo img {
       width: 100%;
       aspect-ratio: 4 / 3;
       object-fit: cover;
       border-radius: 0;
-      box-shadow: 0 10px 30px rgba(58,66,104,0.14);
+      box-shadow: 0 12px 30px rgba(58,66,104,0.16);
       display: block;
     }
     /* 写真の上の筆記体ラベル「Future 1」 */
     .fz-label {
       position: absolute;
-      top: -24px;
-      left: 16px;
+      top: -22px;
+      left: 12px;
       font-family: 'Great Vibes', cursive;
-      font-size: 2.7rem;
+      font-size: 2.5rem;
       line-height: 1;
       color: var(--accent);
       text-shadow: 0 2px 10px rgba(255,255,255,0.95), 0 0 2px rgba(255,255,255,0.95);
-      z-index: 2;
+      z-index: 3;
       pointer-events: none;
     }
-    .fz-row.reverse .fz-label { left: auto; right: 16px; }
-    .fz-text { flex: 1; }
+    .fz-row.reverse .fz-label { left: auto; right: 12px; }
+    /* テキストカード：写真に少し重なり、上にずれる（左右非対称な動き） */
+    .fz-text {
+      flex: 0 0 46%;
+      margin-left: -8%;
+      margin-top: -34px;
+      background: #fff;
+      padding: 22px;
+      box-shadow: 0 14px 34px rgba(58,66,104,0.14);
+      position: relative;
+      z-index: 2;
+    }
+    .fz-row.reverse .fz-text { margin-left: 0; margin-right: -8%; }
     .fz-text h3 {
-      font-size: 1.18rem;
+      font-size: 1.12rem;
       color: var(--brown);
-      line-height: 1.55;
-      margin-bottom: 12px;
+      line-height: 1.5;
+      margin-bottom: 10px;
       font-weight: bold;
     }
     .fz-text p {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--text-mid);
       line-height: 1.9;
     }
-    @media (max-width: 720px) {
-      .fz-row, .fz-row.reverse { flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    @media (max-width: 600px) {
+      .fz-row, .fz-row.reverse { flex-direction: column; align-items: stretch; margin-bottom: 48px; }
       .fz-photo { flex: none; width: 100%; }
-      .fz-label { font-size: 2.2rem; top: -17px; left: 12px; }
-      .fz-row.reverse .fz-label { right: auto; left: 12px; }
-      .fz-text { text-align: center; }
-      .fz-text h3 { font-size: 1.08rem; }
+      .fz-text {
+        flex: none; width: 86%;
+        margin: -30px 0 0 0;
+        align-self: flex-start;
+      }
+      .fz-row.reverse .fz-text { align-self: flex-end; }
+      .fz-label { font-size: 2.1rem; top: -16px; left: 10px; }
+      .fz-row.reverse .fz-label { right: auto; left: 10px; }
+      .fz-text h3 { font-size: 1.06rem; }
     }
 
     /* =============================================
@@ -848,12 +864,12 @@
       .cta-btn { font-size: 1.1rem; }
       #sticky-bar a { font-size: 1rem; padding: 14px 32px; }
     }
-    @media (min-width: 820px) {
-      section { max-width: 760px; margin: 0 auto; padding: 80px 0; }
+    @media (min-width: 760px) {
+      section { max-width: 720px; margin: 0 auto; padding: 80px 0; }
       footer { max-width: none; }
       /* FVも下のセクションと同じ細長い列に揃える（中央配置） */
-      #fv { max-width: 760px; margin: 0 auto; padding: 48px 0 0; }
-      .fv-inner-wrap { max-width: 760px; margin: 0 auto; padding: 0 40px; }
+      #fv { max-width: 720px; margin: 0 auto; padding: 48px 0 0; }
+      .fv-inner-wrap { max-width: 720px; margin: 0 auto; padding: 0 40px; }
     }
   </style>
 </head>
