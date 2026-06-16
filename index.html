@@ -1,834 +1,1290 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ポーセラボ絵の具コース｜絵の具 × デザイン理論で叶える上級ポーセリンアート</title>
-<meta name="description" content="転写紙メインで物足りなさを感じはじめたポーセラーツ先生へ。絵の具とデザイン理論を体系的に学び、他にはない上級作品と指導力が手に入る4ヶ月コース。">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --accent:#bd8a76;
-    --accent-dark:#a06f5b;
-    --accent-tint:#f1e7e1;
-    --accent-tint2:#f6efe9;
-    --text:#1e1e1e;
-    --sub:#6a6a6a;
-    --bg:#faf8f5;
-    --card:#ffffff;
-    --line:#ece4dc;
-    --radius:8px;
-    --shadow:0 8px 30px rgba(0,0,0,0.05);
-    --sec:80px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:"Noto Sans JP",sans-serif;
-    color:var(--text);
-    background:var(--bg);
-    line-height:1.8;
-    font-size:16px;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  img{display:block;width:100%;max-width:100%;height:auto;}
-  a{color:inherit;text-decoration:none;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ポーセラボ絵の具コース｜絵の具×デザイン理論で叶える上級ポーセリンアート</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    /* =============================================
+       CSS変数 — ここを変えるだけで色が全体に反映
+    ============================================= */
+    :root {
+      --cream:       #FAF8F3;    /* Ivory */
+      --pink-light:  #EAF2F8;    /* Mist Blue */
+      --accent:      #8890CC;    /* Periwinkle lavender */
+      --accent-dark: #6870B0;    /* Deeper periwinkle */
+      --brown:       #3A4268;    /* Deep navy */
+      --gold:        #C9A870;    /* Champagne Gold */
+      --text:        #2C3550;    /* Dark navy */
+      --text-mid:    #5A6080;
+      --text-light:  #8A90B0;
+      --bg-alt:      #E8EEF8;    /* Mist Blue sections */
+      --white:       #ffffff;
+    }
 
-  .wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 20px;}
-  .narrow{max-width:760px;margin-left:auto;margin-right:auto;}
+    /* =============================================
+       Reset & Base
+    ============================================= */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-  section{padding:var(--sec) 0;}
+    body {
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Hiragino Serif', Georgia, serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 16px;
+      /* スティッキーバー分の余白 */
+      padding-bottom: 72px;
+    }
 
-  /* ---- 見出し ---- */
-  .eyebrow{
-    font-family:"Zen Maru Gothic",sans-serif;
-    font-weight:700;
-    font-size:13px;
-    letter-spacing:.18em;
-    color:var(--accent-dark);
-    display:inline-block;
-    margin-bottom:14px;
-  }
-  h2.sec-title{
-    font-family:"Shippori Mincho",serif;
-    font-weight:700;
-    font-size:clamp(22px,5vw,32px);
-    line-height:1.35;
-    margin-bottom:16px;
-    letter-spacing:.02em;
-  }
-  .sec-head{text-align:center;margin-bottom:48px;}
-  .sec-head p.lead{color:var(--sub);font-size:15px;}
-  .accent{color:var(--accent-dark);}
+    img { max-width: 100%; height: auto; display: block; }
 
-  /* 区切り装飾 */
-  .deco-line{
-    width:48px;height:2px;background:var(--accent);
-    margin:0 auto 22px;border-radius:2px;
-  }
-  .sec-head.left{text-align:left;}
-  .sec-head.left .deco-line{margin-left:0;}
+    /* =============================================
+       スティッキーCTAバー（画面下部に常時表示）
+    ============================================= */
+    #sticky-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #3A4268;
+      padding: 10px 16px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.18);
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    #sticky-bar.visible { transform: translateY(0); }
+    #sticky-bar a {
+      display: block;
+      background: linear-gradient(160deg, #1A2A6C 0%, #2E4DAE 60%, #3A6DD8 100%);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 12px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      width: 100%;
+      max-width: 360px;
+    }
+    #sticky-bar .sticky-sub {
+      font-size: 0.68rem;
+      opacity: 0.7;
+      display: block;
+      margin-top: 3px;
+    }
 
-  /* ---- ボタン ---- */
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:10px;
-    background:var(--accent);
-    color:#fff;
-    font-family:"Zen Maru Gothic",sans-serif;
-    font-weight:700;
-    font-size:17px;
-    line-height:1.4;
-    padding:18px 40px;
-    min-height:44px;
-    border-radius:8px;
-    box-shadow:0 8px 24px rgba(189,138,118,0.32);
-    transition:background .2s ease, transform .2s ease;
-    text-align:center;
-  }
-  .btn:hover{background:var(--accent-dark);transform:translateY(-2px);}
-  .btn .arrow{font-size:14px;}
-  .btn-note{
-    display:block;font-size:13px;color:var(--sub);margin-top:12px;
-  }
+    /* =============================================
+       CTAボタン（各セクション内）
+    ============================================= */
+    .cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(160deg, #1A2A6C 0%, #2E4DAE 60%, #3A6DD8 100%);
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 18px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      box-shadow: 0 4px 18px rgba(26, 42, 108, 0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+      max-width: 360px;
+      margin: 0 auto;
+      min-height: 58px;
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .cta-btn:hover, .cta-btn:active {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(26, 42, 108, 0.55);
+    }
+    .cta-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-top: 12px;
+    }
+    .cta-wrap {
+      max-width: 360px;
+      margin: 0 auto;
+    }
 
-  /* ===== FV ===== */
-  .fv{
-    background:linear-gradient(180deg,#f6efe9 0%, #faf8f5 100%);
-    padding-top:64px;padding-bottom:72px;
-  }
-  .fv-grid{
-    display:grid;grid-template-columns:1.4fr 1fr;
-    gap:48px;align-items:center;
-  }
-  .fv-eyebrow{
-    font-family:"Zen Maru Gothic",sans-serif;
-    font-weight:700;font-size:14px;letter-spacing:.16em;
-    color:var(--accent-dark);
-    display:inline-block;
-    padding:6px 16px;
-    background:#fff;
-    border-radius:40px;
-    box-shadow:var(--shadow);
-    margin-bottom:24px;
-  }
-  .fv h1{
-    font-family:"Shippori Mincho",serif;
-    font-weight:700;
-    font-size:clamp(28px,7vw,48px);
-    line-height:1.4;
-    letter-spacing:.01em;
-    margin-bottom:20px;
-  }
-  .fv h1 .em{
-    color:var(--accent-dark);
-    position:relative;
-  }
-  .fv .subcopy{
-    font-family:"Zen Maru Gothic",sans-serif;
-    font-weight:700;
-    font-size:clamp(18px,4vw,22px);
-    color:var(--text);
-    margin-bottom:28px;
-  }
-  .fv .target{
-    font-size:15px;color:var(--sub);line-height:1.8;
-    margin-bottom:32px;max-width:560px;
-  }
-  .fv-img{
-    border-radius:8px;overflow:hidden;box-shadow:var(--shadow);
-    aspect-ratio:4/5;
-  }
-  .fv-img img{height:100%;object-fit:cover;}
+    /* =============================================
+       セクション共通
+    ============================================= */
+    section { padding: 48px 20px; }
 
-  /* ===== お悩み ===== */
-  .worry{background:#fff;}
-  .worry-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);
-    gap:20px;
-  }
-  .worry-card{
-    background:var(--bg);
-    border:1px solid var(--line);
-    border-radius:8px;
-    padding:28px 24px;
-    position:relative;
-  }
-  .worry-num{
-    width:34px;height:34px;border-radius:50%;
-    background:var(--accent);color:#fff;
-    font-family:"Zen Maru Gothic",sans-serif;font-weight:700;
-    font-size:16px;
-    display:flex;align-items:center;justify-content:center;
-    margin-bottom:14px;
-  }
-  .worry-card p{font-size:15px;line-height:1.8;}
-  .worry-img{
-    margin-top:48px;border-radius:8px;overflow:hidden;
-    box-shadow:var(--shadow);max-height:340px;
-  }
-  .worry-img img{height:340px;object-fit:cover;}
+    /* --- セクションタイトルブロック --- */
+    .title-block {
+      text-align: center;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;   /* はみ出た筆記体を隠す */
+    }
 
-  /* ===== 受講後のあなた ===== */
-  .future{background:linear-gradient(180deg,#f6efe9 0%, #faf8f5 100%);}
-  .future-list{display:grid;gap:16px;}
-  .future-item{
-    background:#fff;border-radius:8px;
-    box-shadow:var(--shadow);
-    padding:26px 28px;
-    display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;
-  }
-  .future-check{
-    width:30px;height:30px;border-radius:50%;
-    background:var(--accent-tint);
-    position:relative;flex:none;margin-top:2px;
-  }
-  .future-check::after{
-    content:"";position:absolute;
-    left:10px;top:6px;width:7px;height:13px;
-    border-right:2.5px solid var(--accent-dark);
-    border-bottom:2.5px solid var(--accent-dark);
-    transform:rotate(45deg);
-  }
-  .future-item .lead{
-    font-family:"Zen Maru Gothic",sans-serif;font-weight:700;
-    font-size:clamp(17px,4vw,19px);line-height:1.5;
-    margin-bottom:8px;color:var(--text);
-  }
-  .future-item .sup{font-size:15px;color:var(--sub);line-height:1.8;}
+    /* 大きな筆記体の飾り英語 */
+    .deco-word {
+      display: block;
+      font-family: 'Great Vibes', cursive;
+      font-size: 4.2rem;
+      line-height: 1.15;
+      color: rgba(58, 66, 104, 0.08);  /* ← 薄さはここで調整（0.05〜0.14） */
+      user-select: none;
+      pointer-events: none;
+      margin-bottom: -8px;  /* 日本語タイトルに少し重ねる */
+      letter-spacing: 0.01em;
+    }
 
-  /* ===== サービス内容 ===== */
-  .service{background:#fff;}
-  .format-box{
-    background:var(--accent-tint2);
-    border-radius:8px;
-    padding:32px;
-    margin-bottom:56px;
-  }
-  .format-box h3{
-    font-family:"Shippori Mincho",serif;font-weight:700;
-    font-size:clamp(17px,4vw,22px);margin-bottom:18px;
-  }
-  .format-tags{display:flex;flex-wrap:wrap;gap:12px;}
-  .format-tags li{
-    list-style:none;
-    background:#fff;border:1px solid var(--line);
-    border-radius:40px;
-    padding:10px 22px;
-    font-family:"Zen Maru Gothic",sans-serif;font-weight:500;
-    font-size:15px;
-    min-height:44px;display:flex;align-items:center;
-  }
-  .curriculum-label{
-    text-align:center;
-    font-family:"Zen Maru Gothic",sans-serif;font-weight:700;
-    color:var(--accent-dark);font-size:14px;letter-spacing:.1em;
-    margin-bottom:8px;
-  }
-  .curriculum-title{
-    text-align:center;
-    font-family:"Shippori Mincho",serif;font-weight:700;
-    font-size:clamp(20px,5vw,28px);margin-bottom:40px;
-  }
-  .steps{display:grid;gap:24px;}
-  .step{
-    display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start;
-    background:var(--bg);border:1px solid var(--line);
-    border-radius:8px;padding:32px;
-  }
-  .step-no{
-    font-family:"Shippori Mincho",serif;font-weight:700;
-    color:var(--accent);font-size:clamp(34px,8vw,52px);line-height:1;
-    min-width:90px;
-  }
-  .step-no small{display:block;font-size:13px;letter-spacing:.1em;color:var(--accent-dark);font-family:"Zen Maru Gothic",sans-serif;margin-bottom:6px;}
-  .step h3{
-    font-family:"Zen Maru Gothic",sans-serif;font-weight:700;
-    font-size:clamp(17px,4vw,22px);margin-bottom:12px;line-height:1.4;
-  }
-  .step p{font-size:15px;color:var(--sub);line-height:1.85;}
+    h2.sec-title {
+      font-size: 1.45rem;
+      line-height: 1.55;
+      text-align: center;
+      color: var(--brown);
+      margin-bottom: 10px;
+      position: relative;  /* deco-wordより前面に */
+    }
+    .gold-line {
+      width: 36px; height: 2px;
+      background: var(--gold);
+      margin: 0 auto 32px;
+    }
 
-  /* ===== あなたを選ぶ理由 ===== */
-  .reason{
-    background:linear-gradient(135deg,#bd8a76 0%, #a06f5b 100%);
-    color:#fff;text-align:center;
-  }
-  .reason h2{
-    font-family:"Shippori Mincho",serif;font-weight:700;
-    font-size:clamp(22px,5vw,32px);line-height:1.4;margin-bottom:24px;
-  }
-  .reason p{
-    font-size:clamp(16px,4vw,18px);line-height:1.95;
-    max-width:720px;margin:0 auto;
-    color:rgba(255,255,255,0.95);
-  }
-  .reason .em{
-    font-family:"Zen Maru Gothic",sans-serif;font-weight:700;
-    border-bottom:2px solid rgba(255,255,255,0.55);
-    padding-bottom:1px;
-  }
+    @media (min-width: 600px) {
+      .deco-word { font-size: 5.5rem; }
+    }
 
-  /* ===== お客様の声 ===== */
-  .voice{background:#fff;}
-  .voice-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
-  }
-  .voice-card{
-    background:var(--bg);border:1px solid var(--line);
-    border-radius:8px;overflow:hidden;display:flex;flex-direction:column;
-  }
-  .voice-card .v-img{aspect-ratio:3/2;}
-  .voice-card .v-img img{height:100%;object-fit:cover;}
-  .voice-card .v-body{padding:24px 24px 28px;display:flex;flex-direction:column;flex:1;}
-  .voice-card .v-name{
-    font-family:"Zen Maru Gothic",sans-serif;font-weight:700;
-    font-size:15px;margin-bottom:14px;line-height:1.5;
-  }
-  .voice-card .v-name span{display:block;color:var(--sub);font-size:13px;font-weight:500;}
-  .voice-card .v-text{font-size:14.5px;line-height:1.85;color:var(--text);flex:1;}
-  .voice-result{
-    margin-top:18px;
-    background:var(--accent-tint);
-    border-radius:6px;
-    padding:14px 16px;
-    font-family:"Zen Maru Gothic",sans-serif;font-weight:700;
-    font-size:14px;color:var(--accent-dark);line-height:1.6;
-  }
-  .voice-result small{display:block;font-size:11px;letter-spacing:.1em;margin-bottom:4px;font-weight:700;}
-  .voice-disclaimer{text-align:center;font-size:12px;color:var(--sub);margin-top:28px;}
+    /* =============================================
+       ボタニカル花パーツ（各セクションに散りばめ）
+    ============================================= */
+    section { position: relative; }  /* 絶対配置の基準 */
 
-  /* ===== プロフィール ===== */
-  .profile{background:var(--accent-tint2);}
-  .profile-grid{
-    display:grid;grid-template-columns:0.8fr 1.2fr;gap:48px;align-items:start;
-  }
-  .profile-img{border-radius:8px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5;}
-  .profile-img img{height:100%;object-fit:cover;}
-  .profile-role{
-    font-family:"Zen Maru Gothic",sans-serif;font-weight:700;
-    color:var(--accent-dark);font-size:14px;margin-bottom:6px;
-  }
-  .profile h2{
-    font-family:"Shippori Mincho",serif;font-weight:700;
-    font-size:clamp(24px,5vw,32px);margin-bottom:24px;
-  }
-  .profile p{font-size:15px;line-height:1.95;margin-bottom:16px;color:var(--text);}
-  .profile p:last-child{margin-bottom:0;}
-  .profile .strong{font-family:"Zen Maru Gothic",sans-serif;font-weight:700;}
+    .bot {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      opacity: 0.18;   /* ← 濃さ調整（0.12〜0.25） */
+    }
+    /* コンテンツはボタニカルの上に */
+    section > *:not(.bot) { position: relative; z-index: 1; }
 
-  /* ===== オファー ===== */
-  .offer{background:#fff;}
-  .price-box{
-    max-width:480px;margin:0 auto 56px;
-    background:var(--bg);border:1px solid var(--line);
-    border-radius:8px;padding:36px 32px;text-align:center;
-  }
-  .price-box h3{
-    font-family:"Shippori Mincho",serif;font-weight:700;
-    font-size:clamp(18px,4vw,22px);margin-bottom:16px;
-  }
-  .price-box p{font-size:15px;color:var(--sub);line-height:1.85;}
+    /* =============================================
+       1. ファーストビュー（スマホ版リニューアル）
+    ============================================= */
+    #fv {
+      padding: 0;
+      background: #1A2A6C;
+      overflow: hidden;
+      position: relative;
+    }
 
-  .bonus-title,.urgency-title{
-    text-align:center;
-    font-family:"Shippori Mincho",serif;font-weight:700;
-    font-size:clamp(20px,5vw,26px);margin-bottom:32px;
-  }
-  .bonus-list{display:grid;gap:16px;max-width:760px;margin:0 auto 64px;}
-  .bonus-item{
-    background:var(--bg);border:1px solid var(--line);border-radius:8px;
-    padding:24px 26px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start;
-  }
-  .bonus-badge{
-    width:44px;height:44px;border-radius:8px;
-    background:var(--accent);color:#fff;
-    display:flex;align-items:center;justify-content:center;
-    flex:none;
-  }
-  .bonus-badge svg{width:24px;height:24px;}
-  .bonus-item .b-head{
-    font-family:"Zen Maru Gothic",sans-serif;font-weight:700;
-    font-size:16px;line-height:1.5;margin-bottom:6px;
-    display:flex;flex-wrap:wrap;gap:10px;align-items:center;
-  }
-  .bonus-item .b-tag{
-    font-size:12px;background:var(--accent-tint);color:var(--accent-dark);
-    border-radius:4px;padding:3px 10px;font-weight:700;
-  }
-  .bonus-item .b-desc{font-size:14px;color:var(--sub);line-height:1.8;}
+    /* FV画像ラッパー */
+    .fv-img-wrap {
+      position: relative;
+      width: 100%;
+    }
+    .fv-img-wrap img.fv-main-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    /* 画像の上にタイトルオーバーレイ */
+    .fv-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,18,60,0.45) 0%, rgba(10,18,60,0.15) 60%, rgba(10,18,60,0.55) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .fv-title-sub {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+    .fv-title-main {
+      font-size: 1.7rem;
+      font-weight: bold;
+      color: #fff;
+      line-height: 1.45;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.4);
+      letter-spacing: 0.05em;
+    }
+    .fv-title-catch {
+      font-size: 0.92rem;
+      color: #C9D8FF;
+      font-weight: bold;
+      margin-top: 10px;
+    }
 
-  .urgency{
-    max-width:760px;margin:0 auto;
-    background:var(--accent-tint2);border-radius:8px;padding:36px 32px;
-  }
-  .urgency-list{display:grid;gap:18px;}
-  .urgency-item{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;}
-  .urgency-no{
-    width:30px;height:30px;border-radius:50%;
-    background:var(--accent);color:#fff;
-    font-family:"Zen Maru Gothic",sans-serif;font-weight:700;font-size:15px;
-    display:flex;align-items:center;justify-content:center;flex:none;
-  }
-  .urgency-item p{font-size:15px;line-height:1.8;}
-  .urgency-item p b{font-family:"Zen Maru Gothic",sans-serif;}
+    /* CTA（画像の下・中央） */
+    .fv-cta-area {
+      background: #1A2A6C;
+      padding: 24px 20px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-  /* ===== FAQ ===== */
-  .faq{background:var(--bg);}
-  .faq-list{max-width:760px;margin:0 auto;display:grid;gap:12px;}
-  details.faq-item{
-    background:#fff;border:1px solid var(--line);border-radius:8px;
-    overflow:hidden;
-  }
-  details.faq-item summary{
-    list-style:none;cursor:pointer;
-    padding:22px 56px 22px 24px;
-    position:relative;
-    font-family:"Zen Maru Gothic",sans-serif;font-weight:700;
-    font-size:15.5px;line-height:1.6;
-    min-height:44px;display:flex;align-items:center;gap:14px;
-  }
-  details.faq-item summary::-webkit-details-marker{display:none;}
-  details.faq-item summary .q{
-    color:var(--accent-dark);font-family:"Shippori Mincho",serif;
-    font-size:20px;font-weight:700;flex:none;
-  }
-  details.faq-item summary::after{
-    content:"";position:absolute;right:24px;top:50%;
-    width:11px;height:11px;
-    border-right:2px solid var(--accent);
-    border-bottom:2px solid var(--accent);
-    transform:translateY(-70%) rotate(45deg);
-    transition:transform .25s ease;
-  }
-  details.faq-item[open] summary::after{transform:translateY(-30%) rotate(-135deg);}
-  details.faq-item .a{
-    padding:0 24px 24px 24px;
-    font-size:15px;color:var(--sub);line-height:1.9;
-  }
-  details.faq-item .a::before{
-    content:"A.";color:var(--accent-dark);font-weight:700;margin-right:8px;
-    font-family:"Shippori Mincho",serif;
-  }
+    /* =============================================
+       2. 悩み・共感
+    ============================================= */
+    #pain {
+      background: var(--white);
+      padding: 0;
+    }
+    .pain-img {
+      width: 100%;
+      display: block;
+    }
 
-  /* ===== クロージング ===== */
-  .closing{
-    background:linear-gradient(180deg,#f6efe9 0%, #faf8f5 100%);
-    text-align:center;
-  }
-  .closing-img{
-    max-width:560px;margin:0 auto 40px;
-    border-radius:8px;overflow:hidden;box-shadow:var(--shadow);
-  }
-  .closing h2{
-    font-family:"Shippori Mincho",serif;font-weight:700;
-    font-size:clamp(22px,5vw,30px);line-height:1.5;margin-bottom:24px;
-  }
-  .closing p{
-    font-size:16px;line-height:1.95;color:var(--text);
-    max-width:680px;margin:0 auto 18px;
-  }
-  .closing p:last-of-type{margin-bottom:40px;}
+    /* ふんわりフェードイン */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-  /* ===== 最終CTA ===== */
-  .cta-final{
-    background:linear-gradient(135deg,#bd8a76 0%, #a06f5b 100%);
-    text-align:center;color:#fff;
-  }
-  .cta-final h2{
-    font-family:"Shippori Mincho",serif;font-weight:700;
-    font-size:clamp(22px,5vw,30px);line-height:1.5;margin-bottom:16px;
-  }
-  .cta-final p{font-size:15px;color:rgba(255,255,255,0.9);margin-bottom:32px;}
-  .cta-final .btn{
-    background:#fff;color:var(--accent-dark);
-    box-shadow:0 10px 30px rgba(0,0,0,0.18);
-    font-size:18px;padding:20px 48px;
-  }
-  .cta-final .btn:hover{background:#fff8f4;}
-  .cta-final .btn-note{color:rgba(255,255,255,0.85);}
+    /* =============================================
+       3. 理想の未来
+    ============================================= */
+    #future { background: var(--bg-alt); }
 
-  footer{
-    background:#2a211d;color:rgba(255,255,255,0.7);
-    text-align:center;padding:32px 20px;font-size:13px;
-  }
-  footer .f-name{font-family:"Shippori Mincho",serif;color:#fff;font-size:15px;margin-bottom:8px;}
+    .future-main {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .future-photo {
+      width: 100%;
+      border-radius: 14px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .future-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 0;
+      border-bottom: 1px solid #e2d8d0;
+    }
+    .future-item:last-child { border-bottom: none; }
+    .f-num {
+      width: 30px; height: 30px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.85rem;
+      font-weight: bold;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .f-body strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--brown);
+      margin-bottom: 4px;
+    }
+    .f-body span { font-size: 0.84rem; color: var(--text-light); line-height: 1.7; }
 
-  /* ===== レスポンシブ ===== */
-  @media (max-width:768px){
-    :root{--sec:48px;}
-    .fv{padding-top:40px;padding-bottom:48px;}
-    .fv-grid{grid-template-columns:1fr;gap:32px;}
-    .fv-img{aspect-ratio:16/11;order:-1;}
-    .worry-grid{grid-template-columns:1fr;}
-    .worry-img img{height:240px;}
-    .future-item{grid-template-columns:1fr;gap:12px;}
-    .future-check{margin-bottom:0;}
-    .step{grid-template-columns:1fr;gap:12px;padding:26px 22px;}
-    .step-no{font-size:40px;display:flex;align-items:baseline;gap:12px;}
-    .step-no small{margin-bottom:0;}
-    .voice-grid{grid-template-columns:1fr;}
-    .profile-grid{grid-template-columns:1fr;gap:28px;}
-    .profile-img{aspect-ratio:4/3;max-width:340px;}
-    .format-box{padding:24px;}
-    .urgency,.price-box,.bonus-item{padding-left:22px;padding-right:22px;}
-    .bonus-item{grid-template-columns:auto 1fr;}
-    .btn{width:100%;}
-  }
-</style>
+    /* =============================================
+       4. サービス内容
+    ============================================= */
+    #service { background: var(--white); }
+
+    .format-box {
+      background: var(--pink-light);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 28px;
+    }
+    .format-box h3 {
+      font-size: 0.95rem;
+      color: var(--brown);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .format-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .format-tags span {
+      background: var(--white);
+      border: 1px solid var(--accent);
+      color: var(--accent-dark);
+      font-size: 0.82rem;
+      padding: 6px 14px;
+      border-radius: 30px;
+    }
+
+    .step-card {
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 14px;
+      background: var(--bg-alt);
+    }
+    .step-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.68rem;
+      padding: 4px 14px;
+      border-radius: 30px;
+      margin-bottom: 10px;
+      letter-spacing: 0.08em;
+    }
+    .step-card h3 { font-size: 1rem; color: var(--brown); margin-bottom: 8px; }
+    .step-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.8; }
+    .step-img {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 12px;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+    }
+
+    .flow-box {
+      background: linear-gradient(135deg, #EAF2F8, #F4F8FC);
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 24px;
+      border: 1px solid #C4D8EC;
+    }
+    .flow-box h3 { font-size: 0.95rem; color: var(--brown); margin-bottom: 12px; }
+    .flow-steps { display: flex; flex-direction: column; gap: 4px; font-size: 0.88rem; }
+    .flow-step { display: flex; align-items: center; gap: 8px; }
+    .flow-dot {
+      width: 10px; height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .flow-arrow { margin-left: 18px; color: var(--gold); }
+
+    /* =============================================
+       5. 選ばれる理由
+    ============================================= */
+    #why { background: var(--bg-alt); }
+
+    .why-instructor-img {
+      width: 100%;
+      border-radius: 14px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .why-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 14px rgba(90,62,54,0.07);
+    }
+    .why-num {
+      font-size: 2rem;
+      color: var(--gold);
+      font-weight: bold;
+      line-height: 1;
+      margin-bottom: 8px;
+      font-family: Georgia, serif;
+    }
+    .why-card h3 { font-size: 0.97rem; color: var(--brown); margin-bottom: 6px; }
+    .why-card p { font-size: 0.88rem; color: var(--text-mid); }
+
+    /* =============================================
+       6. 実績・お客様の声
+    ============================================= */
+    #voices { background: var(--white); }
+
+    .voice-card {
+      background: var(--bg-alt);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .voice-result-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.72rem;
+      padding: 4px 14px;
+      border-radius: 30px;
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+    }
+    .voice-img { width: 100%; border-radius: 10px; margin-bottom: 12px; }
+    .voice-text { font-size: 0.9rem; color: var(--text-mid); line-height: 1.8; }
+    .voice-name { font-size: 0.82rem; color: var(--text-light); margin-top: 10px; text-align: right; }
+
+    .instructor-profile {
+      background: linear-gradient(135deg, #F0F4FC, #E4EEF8);
+      border-radius: 16px;
+      padding: 28px 20px;
+      margin-top: 32px;
+    }
+    .instructor-profile h3 {
+      font-size: 1.1rem;
+      color: var(--brown);
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .saori-circle {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      margin: 0 auto 16px;
+      border: 4px solid var(--gold);
+      box-shadow: 0 4px 16px rgba(140,160,210,0.28);
+    }
+    .saori-title {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    .instructor-profile p { font-size: 0.9rem; color: var(--text-mid); line-height: 2; }
+
+    /* =============================================
+       7. 料金・申込条件
+    ============================================= */
+    #price { background: var(--bg-alt); }
+
+    .price-box {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 24px 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 22px rgba(90,62,54,0.08);
+    }
+    .price-box h3 {
+      font-size: 1rem;
+      color: var(--brown);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .price-text { font-size: 0.92rem; color: var(--text-mid); line-height: 1.9; }
+    .price-note { font-size: 0.8rem; color: var(--text-light); margin-top: 8px; }
+
+    /* 特典合計バリュー表示 */
+    .tokuten-total {
+      background: var(--brown);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 16px 20px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .tokuten-total .total-label { font-size: 0.78rem; opacity: 0.8; margin-bottom: 4px; }
+    .tokuten-total .total-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #f5d08a;
+      letter-spacing: 0.03em;
+    }
+    .tokuten-total .total-sub { font-size: 0.75rem; opacity: 0.75; margin-top: 4px; }
+
+    .tokuten-title {
+      font-size: 1rem;
+      color: var(--brown);
+      text-align: center;
+      margin-bottom: 14px;
+      font-weight: bold;
+    }
+    .tokuten-list { list-style: none; }
+    .tokuten-list li {
+      background: var(--pink-light);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      font-size: 0.88rem;
+    }
+    .tok-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+    .tok-head strong { color: var(--brown); font-size: 0.9rem; }
+    .tok-value {
+      font-size: 0.72rem;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 1px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .tokuten-list li p { color: var(--text-mid); }
+
+    .urgency-box {
+      background: var(--brown);
+      color: var(--white);
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 24px;
+    }
+    .urgency-box h3 { font-size: 0.95rem; color: var(--gold); margin-bottom: 10px; }
+    .urgency-box ul { list-style: none; }
+    .urgency-box ul li {
+      font-size: 0.88rem;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.88);
+    }
+    .urgency-box ul li:last-child { border-bottom: none; }
+    .urgency-box ul li::before { content: "▶ "; color: var(--gold); }
+
+    /* =============================================
+       8. FAQ（アコーディオン）
+       ── <details>/<summary> で JS不要
+    ============================================= */
+    #faq { background: var(--white); }
+
+    details {
+      border-bottom: 1px solid #e8ddd4;
+    }
+    details:last-of-type { border-bottom: none; }
+
+    summary {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 20px 0;
+      cursor: pointer;
+      list-style: none;
+      font-weight: bold;
+      color: var(--brown);
+      font-size: 0.95rem;
+    }
+    summary::-webkit-details-marker { display: none; }
+
+    .faq-q-badge {
+      width: 26px; height: 26px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.82rem;
+      font-weight: bold;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .faq-q-text { flex: 1; line-height: 1.6; }
+
+    .faq-toggle {
+      font-size: 1.2rem;
+      color: var(--gold);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+      margin-top: 1px;
+      font-style: normal;
+    }
+    details[open] .faq-toggle { transform: rotate(45deg); }
+
+    .faq-answer {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 0 0 20px;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+    .faq-a-badge {
+      width: 26px; height: 26px;
+      background: var(--gold);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.82rem;
+      font-weight: bold;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* =============================================
+       9. クロージング
+    ============================================= */
+    #closing {
+      background: linear-gradient(160deg, #F0F4FC 0%, #E0EAF8 100%);
+      text-align: center;
+    }
+    .closing-photo {
+      width: 68%;
+      max-width: 240px;
+      border-radius: 50%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      margin: 0 auto 24px;
+      border: 5px solid var(--gold);
+      box-shadow: 0 6px 28px rgba(140,160,210,0.28);
+    }
+    #closing h2 { font-size: 1.3rem; color: var(--brown); margin-bottom: 18px; }
+    #closing .closing-text {
+      font-size: 0.93rem;
+      color: var(--text-mid);
+      max-width: 400px;
+      margin: 0 auto 32px;
+      text-align: left;
+      line-height: 2;
+    }
+
+    /* =============================================
+       フッター
+    ============================================= */
+    footer {
+      background: var(--brown);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 0.78rem;
+      line-height: 1.8;
+    }
+
+    /* =============================================
+       PC対応（最小限）
+    ============================================= */
+    @media (min-width: 600px) {
+      body { font-size: 17px; padding-bottom: 80px; }
+      section { padding: 64px 40px; }
+      .fv-h1 { font-size: 2rem; }
+      h2.sec-title { font-size: 1.65rem; }
+      .cta-btn { font-size: 1.1rem; }
+      #sticky-bar a { font-size: 1rem; padding: 14px 32px; }
+    }
+    @media (min-width: 820px) {
+      section { max-width: 760px; margin: 0 auto; padding: 80px 0; }
+      #fv, footer { max-width: none; }
+      #fv { padding: 48px 0 0; }
+      .fv-inner-wrap { max-width: 760px; margin: 0 auto; padding: 0 40px; }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ===== ファーストビュー ===== -->
-<header class="fv">
-  <div class="wrap fv-grid">
-    <div class="fv-text">
-      <span class="fv-eyebrow">ポーセラボ絵の具コース</span>
-      <h1>絵の具 × デザイン理論で叶える<br><span class="em">上級ポーセリンアート</span></h1>
-      <p class="subcopy">楽しいが止まらない！</p>
-      <p class="target">転写紙メインで、いつも似た仕上がりに物足りなさを感じはじめた30〜40代のポーセラーツ先生へ。「絵の具は難しそう」で止まっていた一歩を、ここから踏み出す。</p>
-      <a href="#cta" class="btn">無料相談会に参加<span class="arrow">▶</span></a>
-      <span class="btn-note">所要時間の目安は60分／オンライン開催</span>
-    </div>
-    <div class="fv-img">
-      <img src="https://picsum.photos/seed/porcelabo-fv/800/1000" alt="絵の具で繊細に彩られたポーセラーツの白磁の器">
-    </div>
-  </div>
-</header>
+<!-- ============================================
+     スティッキーCTAバー（画面下部に固定）
+============================================ -->
+<div id="sticky-bar">
+  <a href="ここに申込先URLを入力">
+    無料相談会に参加する
+  </a>
+</div>
 
-<!-- ===== お悩み ===== -->
-<section class="worry">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="deco-line"></div>
-      <span class="eyebrow">CHECK</span>
-      <h2 class="sec-title">こんなお悩みありませんか？</h2>
-    </div>
-    <div class="worry-grid">
-      <div class="worry-card"><div class="worry-num">1</div><p>転写紙メインで作品を作ってきたけど、いつも似たような仕上がりにだんだんと物足りなさを感じてきた</p></div>
-      <div class="worry-card"><div class="worry-num">2</div><p>インストラクターコースで絵の具を学んだはずなのに、指導する自信は持てていない</p></div>
-      <div class="worry-card"><div class="worry-num">3</div><p>絵の具を使ってみたいが、どう使えばいいのかわからず、道具を揃えたものの使っていない</p></div>
-      <div class="worry-card"><div class="worry-num">4</div><p>絵の具って難しそう。失敗するんじゃないかと思うとなかなか進まない</p></div>
-      <div class="worry-card"><div class="worry-num">5</div><p>絵の具はやってみたけど思い通りにできない、きれいな仕上がりにならない</p></div>
-      <div class="worry-card"><div class="worry-num">6</div><p>インスタで素敵だなと思った作品は手描きで、「私には無理かな」と思いスクロールしてしまった</p></div>
-      <div class="worry-card"><div class="worry-num">7</div><p>生徒さんが「次は何を作ろうか」と少し迷い出しているのが伝わってきている</p></div>
-    </div>
-    <div class="worry-img">
-      <img src="https://picsum.photos/seed/porcelabo-worry/1200/600" alt="筆と絵の具が並ぶポーセラーツのアトリエの作業机">
-    </div>
-  </div>
-</section>
+<script>
+  /* ふんわりフェードイン */
+  (function () {
+    var els = document.querySelectorAll('.fade-in');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    els.forEach(function(el) { observer.observe(el); });
+  })();
 
-<!-- ===== 受講後のあなた ===== -->
-<section class="future">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="deco-line"></div>
-      <span class="eyebrow">AFTER</span>
-      <h2 class="sec-title">受講後のあなた</h2>
-    </div>
-    <div class="future-list narrow">
-      <div class="future-item">
-        <div class="future-check"></div>
-        <div>
-          <p class="lead">「これ作ったの？」と目を輝かせて聞かれる作品が生まれる</p>
-          <p class="sup">絵の具を本質から学び、デザイン理論を身につけたとき、他にはない上級な作品が作れるようになる。</p>
-        </div>
-      </div>
-      <div class="future-item">
-        <div class="future-check"></div>
-        <div>
-          <p class="lead">出番のなかった絵の具が、嘘みたいに楽しくて仕方なくなる</p>
-          <p class="sup">自信を持って指導できるようになり、生徒さんのリピート率が上がり、絵の具が自分の強みに変わる。</p>
-        </div>
-      </div>
-      <div class="future-item">
-        <div class="future-check"></div>
-        <div>
-          <p class="lead">「なんとなく作る」から「意図してデザインする」先生になれる</p>
-          <p class="sup">オリジナルのレッスン・講座を自ら作り、「この先生からしか習えない」と選ばれる存在になる。</p>
-        </div>
-      </div>
-      <div class="future-item">
-        <div class="future-check"></div>
-        <div>
-          <p class="lead">アイデアが止まらなくなり、自分も生徒さんも笑顔があふれる教室になる</p>
-          <p class="sup">「もっと作りたい！」の声が増え、「先生に習えることが自慢」と言ってもらえるように。</p>
-        </div>
-      </div>
-      <div class="future-item">
-        <div class="future-check"></div>
-        <div>
-          <p class="lead">転写紙の作品に絵の具をプラスして、作れる幅が何倍も広がる</p>
-          <p class="sup">「絵の具って思っていたよりハードルが低くて楽しい！」と生徒さんにも自信を持っておすすめできるようになる。</p>
-        </div>
-      </div>
-      <div class="future-item">
-        <div class="future-check"></div>
-        <div>
-          <p class="lead">苦手で避けていた絵の具で、筆を持って絵が描けるようになる</p>
-          <p class="sup">「私にもできた」という体験が、先生としての自信に変わる。</p>
-        </div>
-      </div>
-    </div>
+  /* FVを過ぎたらスティッキーバーを表示 */
+  (function () {
+    var bar = document.getElementById('sticky-bar');
+    var fv  = document.getElementById('fv');
+    function onScroll() {
+      if (fv.getBoundingClientRect().bottom < 0) {
+        bar.classList.add('visible');
+      } else {
+        bar.classList.remove('visible');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
+</script>
+
+
+<!-- ============================================
+     1. ファーストビュー（スマホ版）
+============================================ -->
+<section id="fv">
+  <!-- FV画像 -->
+  <div class="fv-img-wrap">
+    <img src="img/image-b.png" alt="ポーセラボ 絵の具コース" class="fv-main-img">
+  </div>
+
+  <!-- CTAボタン（画像の下・中央） -->
+  <div class="fv-cta-area">
+    <a href="ここに申込先URLを入力" class="cta-btn">無料相談会に参加する</a>
   </div>
 </section>
 
-<!-- ===== サービス内容 ===== -->
-<section class="service">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="deco-line"></div>
-      <span class="eyebrow">SERVICE</span>
-      <h2 class="sec-title">サービス内容</h2>
-    </div>
 
-    <div class="format-box narrow">
-      <h3>形式</h3>
-      <ul class="format-tags">
-        <li>オンラインでの勉強会</li>
-        <li>コンテンツサイト</li>
-        <li>課題添削</li>
-        <li>サポート</li>
-        <li>リアル勉強会</li>
-      </ul>
-    </div>
+<!-- ============================================
+     2. 悩み・共感
+============================================ -->
+<section id="pain">
+  <img src="img/nayami1.png" alt="こんなお悩みありませんか？" class="pain-img fade-in">
+</section>
 
-    <p class="curriculum-label">CURRICULUM</p>
-    <p class="curriculum-title">カリキュラム（4ヶ月）</p>
 
-    <div class="steps narrow">
-      <div class="step">
-        <div class="step-no"><small>STEP 1</small>01</div>
-        <div>
-          <h3>絵の具の基礎から本質的理解</h3>
-          <p>「なんとなく」から卒業。絵の具の性質や使い方・注意点・調整まで、「なぜこれが必要か」を理解することで、自分が意図したように絵の具を扱えるようになる。</p>
-        </div>
+<!-- ============================================
+     3. 理想の未来
+============================================ -->
+<section id="future">
+  <div class="bot" style="top:-10px;left:-16px;transform:rotate(-15deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" width="68" height="68"><g transform="translate(27,27)" fill="none" stroke="#A8A8D8" stroke-width="0.9"><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(0)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(72)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(144)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(216)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(288)"/><circle r="4" fill="#EEEAF8"/></g></svg>
+  </div>
+  <div class="bot" style="bottom:20px;right:-10px;transform:rotate(12deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 55" width="45" height="55"><g fill="none" stroke="#8890CC" stroke-width="0.8"><line x1="22" y1="52" x2="22" y2="28"/><line x1="22" y1="38" x2="10" y2="24"/><line x1="22" y1="33" x2="34" y2="20"/><line x1="10" y1="24" x2="5" y2="12"/><line x1="10" y1="24" x2="16" y2="12"/><line x1="34" y1="20" x2="28" y2="8"/><line x1="34" y1="20" x2="40" y2="8"/><circle cx="5" cy="9" r="3.5" fill="#D8D4F0"/><circle cx="16" cy="9" r="3.5" fill="#D8D4F0"/><circle cx="28" cy="5" r="3.5" fill="#D8D4F0"/><circle cx="40" cy="5" r="3.5" fill="#D8D4F0"/></g></svg>
+  </div>
+  <div class="title-block">
+    <span class="deco-word">Future</span>
+    <h2 class="sec-title">受講後のあなたへ</h2>
+    <div class="gold-line"></div>
+  </div>
+
+  <p class="future-main">絵の具が、あなたの強みになる。</p>
+
+  <img src="img/real-1.png" alt="受講生との勉強会の様子" class="future-photo">
+
+  <div class="f-num" style="display:none"></div><!-- dummy for lint -->
+  <div>
+    <div class="future-item">
+      <div class="f-num">1</div>
+      <div class="f-body">
+        <strong>絵の具に自信が持て、指導できるようになる</strong>
+        <span>生徒さんのリピート率が上がり、絵の具が自分の強みに変わる</span>
       </div>
-      <div class="step">
-        <div class="step-no"><small>STEP 2</small>02</div>
-        <div>
-          <h3>ポーセラーツの技術との融合と応用</h3>
-          <p>基礎を土台に、表現の幅を広げる技術を習得。転写紙を分解・構成する楽しさと絵の具を組み合わせることで、これまでにない作品が生まれる。絵の描き方もわかりやすく学ぶので、初心者や絵を描いたことがない人でも描けるようになる。</p>
-        </div>
+    </div>
+    <div class="future-item">
+      <div class="f-num">2</div>
+      <div class="f-body">
+        <strong>「そんな食器見たことない！」と言われる作品が生まれる</strong>
+        <span>デザイン理論を身につけたとき、他にはない洗練された作品が作れるようになる</span>
       </div>
-      <div class="step">
-        <div class="step-no"><small>STEP 3</small>03</div>
-        <div>
-          <h3>ポーセラーツのためのデザイン理論</h3>
-          <p>デザインとは、おしゃれな見た目にすることではありません。20年のデザイナー実績から構築した独自のデザイン理論で、見ている人の心に届く作品を体系的に学ぶ。「センスがないのではなく、ただ知らなかっただけ」と気づける内容。</p>
-        </div>
+    </div>
+    <div class="future-item">
+      <div class="f-num">3</div>
+      <div class="f-body">
+        <strong>「この先生からしか習えない」と選ばれる存在になれる</strong>
+        <span>オリジナルの講座を自ら作り上げ、指名される先生になれる</span>
+      </div>
+    </div>
+    <div class="future-item">
+      <div class="f-num">4</div>
+      <div class="f-body">
+        <strong>作れる作品の幅が何倍も広がる</strong>
+        <span>転写紙に絵の具をプラスして、表現の可能性が一気に広がる</span>
+      </div>
+    </div>
+    <div class="future-item">
+      <div class="f-num">5</div>
+      <div class="f-body">
+        <strong>苦手だった絵の具で、絵が描けるようになる</strong>
+        <span>「私にもできた」という体験が、先生としての自信に変わる</span>
+      </div>
+    </div>
+    <div class="future-item">
+      <div class="f-num">6</div>
+      <div class="f-body">
+        <strong>目を輝かせながら生徒さんに提案できる先生になれる</strong>
+        <span>あなたのワクワクが教室全体に広がっていく</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== あなたを選ぶ理由 ===== -->
-<section class="reason">
-  <div class="wrap">
-    <span class="eyebrow" style="color:rgba(255,255,255,0.85);">REASON</span>
-    <h2>あなたがこの講座を選ぶ理由</h2>
-    <p>ポーセラーツ講師歴<span class="em">13年</span>、<span class="em">1万人以上</span>を指導してきた実績。さらに美大卒・デザイナー経験を持つさおりだからこそ、絵の具の技術からデザイン理論まで体系的に教えられる、ここにしかない講座です。</p>
+
+<!-- ============================================
+     4. サービス内容
+============================================ -->
+<section id="service">
+  <div class="bot" style="top:-12px;right:-16px;transform:rotate(10deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 90" width="48" height="86"><g fill="none" stroke="#8890CC" stroke-width="0.85"><line x1="25" y1="88" x2="25" y2="8"/><ellipse cx="14" cy="70" rx="10" ry="7" transform="rotate(-40 14 70)"/><ellipse cx="36" cy="55" rx="10" ry="7" transform="rotate(40 36 55)"/><ellipse cx="14" cy="40" rx="9" ry="6" transform="rotate(-40 14 40)"/><ellipse cx="36" cy="28" rx="9" ry="6" transform="rotate(40 36 28)"/><ellipse cx="25" cy="14" rx="5" ry="8"/></g></svg>
+  </div>
+  <div class="bot" style="bottom:16px;left:-12px;transform:rotate(-8deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" width="60" height="60"><g transform="translate(27,27)" fill="none" stroke="#A8A8D8" stroke-width="0.9"><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(0)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(72)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(144)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(216)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(288)"/><circle r="4" fill="#EEEAF8"/></g></svg>
+  </div>
+  <div class="title-block">
+    <span class="deco-word">Contents</span>
+    <h2 class="sec-title">ポーセラボ絵の具コースで<br>できること</h2>
+    <div class="gold-line"></div>
+  </div>
+
+  <div class="format-box">
+    <h3>受講形式</h3>
+    <div class="format-tags">
+      <span>💻 オンライン勉強会</span>
+      <span>🎥 動画コンテンツ</span>
+      <span>✏️ 課題添削</span>
+      <span>💬 チャットサポート</span>
+      <span>🏫 リアル勉強会 2回</span>
+    </div>
+  </div>
+
+  <p style="font-size:0.97rem;color:var(--brown);font-weight:bold;margin-bottom:14px;text-align:center;">カリキュラム（4ヶ月）</p>
+
+  <div class="step-card">
+    <span class="step-badge">STEP 1｜1ヶ月目</span>
+    <h3>絵の具の基礎から本質的理解</h3>
+    <p>「なんとなく」から卒業。絵の具の性質・使い方・調整まで、「なぜこれが必要か」を理解することで、自分が意図したように扱えるようになる</p>
+    <img src="img/curriculum-1.png" alt="STEP1 作品イメージ" class="step-img">
+  </div>
+
+  <div class="step-card">
+    <span class="step-badge">STEP 2｜2ヶ月目</span>
+    <h3>ポーセラーツの技術との融合と応用</h3>
+    <p>基礎を土台に、表現の幅を広げる技術を習得。転写紙を分解・構成する楽しさと絵の具を組み合わせることで、これまでにない作品が生まれる。絵を描いたことがない人でも描けるようになる</p>
+    <img src="img/curriculum-2.png" alt="STEP2 作品イメージ" class="step-img">
+  </div>
+
+  <div class="step-card">
+    <span class="step-badge">STEP 3｜3〜4ヶ月目</span>
+    <h3>ポーセラーツのためのデザイン理論</h3>
+    <p>デザインとは、おしゃれな見た目にすることではない。20年のデザイナー実績から構築した独自のデザイン理論で、見ている人の心に届く作品を体系的に学ぶ。「センスがないのではなく、ただ知らなかっただけ」と気づける内容</p>
+    <img src="img/curriculum-3.png" alt="STEP3 作品イメージ" class="step-img">
+  </div>
+
+  <div class="flow-box">
+    <h3>🗓 受講の流れ</h3>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="flow-dot"></div><span>無料相談会に参加</span></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="flow-dot"></div><span>お申し込み</span></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="flow-dot"></div><span>特典動画・学習サイト視聴スタート（即日）</span></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="flow-dot"></div><span>1ヶ月目：STEP1（絵の具の基礎）</span></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="flow-dot"></div><span>2ヶ月目：STEP2（融合と応用）</span></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step"><div class="flow-dot"></div><span>3〜4ヶ月目：STEP3＋修了</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px;" class="cta-wrap">
+    <a href="ここに申込先URLを入力" class="cta-btn">
+      無料相談会に参加する
+    </a>
   </div>
 </section>
 
-<!-- ===== お客様の声 ===== -->
-<section class="voice">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="deco-line"></div>
-      <span class="eyebrow">VOICE</span>
-      <h2 class="sec-title">お客様の声</h2>
-    </div>
-    <div class="voice-grid">
-      <div class="voice-card">
-        <div class="v-img"><img src="https://picsum.photos/seed/voice1/600/400" alt="夏見妙美さんが手がけたポーセラーツ作品"></div>
-        <div class="v-body">
-          <p class="v-name">夏見妙美さん<span>ポーセラーツ教室 マルケサス 主宰</span></p>
-          <p class="v-text">卒業後すぐに3名のお申し込みが入り、満席に！絵の具の技術が上がっただけでなく、唯一無二のデザインが作れるようになり、指導にも自信を持って伝えられるようになりました。</p>
-          <div class="voice-result"><small>RESULT</small>卒業後すぐに3名のお申し込みで満席達成</div>
-        </div>
-      </div>
-      <div class="voice-card">
-        <div class="v-img"><img src="https://picsum.photos/seed/voice2/600/400" alt="西村美智子さんが手がけたポーセラーツ作品"></div>
-        <div class="v-body">
-          <p class="v-name">西村美智子さん<span>ポーセラーツ教室 lachic 主宰</span></p>
-          <p class="v-text">集客の悩みと絵の具の指導への自信のなさがずっとありました。でもここで強みを見つけ、他の教室にはない独自の講座を構築。インスタ垢BANというまさかの事態も乗り越えて、今では全国からお問い合わせが止まらない状態に。</p>
-          <div class="voice-result"><small>RESULT</small>オリジナル講座構築で月商150万円達成</div>
-        </div>
-      </div>
-      <div class="voice-card">
-        <div class="v-img"><img src="https://picsum.photos/seed/voice3/600/400" alt="貝原三穂さんが手がけたポーセラーツ作品"></div>
-        <div class="v-body">
-          <p class="v-name">貝原三穂さん<span>ポーセラーツ教室 troisepi 主宰</span></p>
-          <p class="v-text">コンクール受賞歴があり、教室運営も10年以上。でも資格コースの生徒さまはゼロでした。受講後は卒業してすぐに3名のコース予約が入り、オリジナルレッスンを構築して37名以上が受講。月商は6倍になりました。</p>
-          <div class="voice-result"><small>RESULT</small>オリジナルレッスン構築で受講生37名以上・月商6倍の30万円達成</div>
-        </div>
-      </div>
-    </div>
-    <p class="voice-disclaimer">※ 成果には個人差があります。写真はイメージです。</p>
+
+<!-- ============================================
+     5. 選ばれる理由
+============================================ -->
+<section id="why">
+  <div class="bot" style="top:-18px;left:-20px;transform:rotate(-12deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" width="86" height="86"><g transform="translate(45,45)" fill="none" stroke="#8890CC" stroke-width="1"><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(0)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(60)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(120)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(180)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(240)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(300)"/><circle r="6" fill="#E8E3F3"/></g></svg>
+  </div>
+  <div class="bot" style="bottom:10px;right:-14px;transform:rotate(15deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 55" width="42" height="52"><g fill="none" stroke="#8890CC" stroke-width="0.8"><line x1="22" y1="52" x2="22" y2="28"/><line x1="22" y1="38" x2="10" y2="24"/><line x1="22" y1="33" x2="34" y2="20"/><line x1="10" y1="24" x2="5" y2="12"/><line x1="10" y1="24" x2="16" y2="12"/><line x1="34" y1="20" x2="28" y2="8"/><line x1="34" y1="20" x2="40" y2="8"/><circle cx="5" cy="9" r="3.5" fill="#D8D4F0"/><circle cx="16" cy="9" r="3.5" fill="#D8D4F0"/><circle cx="28" cy="5" r="3.5" fill="#D8D4F0"/><circle cx="40" cy="5" r="3.5" fill="#D8D4F0"/></g></svg>
+  </div>
+  <div class="title-block">
+    <span class="deco-word">Reason</span>
+    <h2 class="sec-title">なぜ、ポーセラボ<br>絵の具コースなのか</h2>
+    <div class="gold-line"></div>
+  </div>
+
+  <img src="img/saori-2.jpg" alt="講師 尾野さおりと作品" class="why-instructor-img">
+
+  <div class="why-card">
+    <div class="why-num">01</div>
+    <h3>技術とデザインを両方教えられる、唯一の講座</h3>
+    <p>ポーセラーツ講師歴13年・1万人以上を指導してきた実績に加え、美大卒・デザイナー歴20年。絵の具の技術からデザイン理論まで体系的に教えられるのは、ここだけ</p>
+  </div>
+
+  <div class="why-card">
+    <div class="why-num">02</div>
+    <h3>「センスがない」ではなく「知らなかっただけ」という考え方</h3>
+    <p>才能や感覚に頼らず、理論で再現できるメソッドを持っているから、誰でも上達できる</p>
+  </div>
+
+  <div class="why-card">
+    <div class="why-num">03</div>
+    <h3>苦手からスタートした講師だからこそ、寄り添える</h3>
+    <p>さおり自身も「絵の具が思い通りにならない」「指導する自信がない」という経験をしている。だからこそ、同じ悩みを持つ受講生の気持ちがわかる</p>
   </div>
 </section>
 
-<!-- ===== 講師自己紹介 ===== -->
-<section class="profile">
-  <div class="wrap profile-grid">
-    <div class="profile-img">
-      <img src="https://picsum.photos/seed/saori-profile/700/900" alt="ポーセラボ代表 尾野さおりのポートレート">
-    </div>
-    <div>
-      <p class="profile-role">ポーセラボ代表 / ポーセラーツ講師歴13年</p>
-      <h2>講師自己紹介｜尾野さおり</h2>
-      <p>美大でデザインを学び、メーカーでデザイナーとして働いていた私が、家族の都合で退職を余儀なくされたのは20代のことでした。キャリアも、夢も、やりがいも見えなくなっていたあの頃。心が完全に折れていました。</p>
-      <p>そんなときに出会ったのが、ポーセラーツでした。雑誌で見かけた一枚の作品に雷に打たれたような衝撃を受け、気づけばのめり込んでいました。これに人生をかけようと、思い切って会社を辞め、講師の道へ。</p>
-      <p>でも、資格を取っても絵の具は思い通りにならない。指導する自信もまるでありませんでした。だから一から学び直し、デザイナーとしての経験をポーセラーツで活かせるよう理論化することで、ようやく自分の作品と指導に自信が持てるようになりました。</p>
-      <p>今では1万人以上を指導し、75名以上のインストラクターを輩出。メディアにも取り上げていただけるようになりました。</p>
-      <p class="strong">技術もセンスも、「ないんじゃない」。ただ知らなかっただけ。あなたにも必ずできる瞬間が、きます。</p>
-    </div>
+
+<!-- ============================================
+     6. 実績・お客様の声
+============================================ -->
+<section id="voices">
+  <div class="bot" style="top:-14px;right:-16px;transform:rotate(8deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 90" width="46" height="82"><g fill="none" stroke="#8890CC" stroke-width="0.85"><line x1="25" y1="88" x2="25" y2="8"/><ellipse cx="14" cy="70" rx="10" ry="7" transform="rotate(-40 14 70)"/><ellipse cx="36" cy="55" rx="10" ry="7" transform="rotate(40 36 55)"/><ellipse cx="14" cy="40" rx="9" ry="6" transform="rotate(-40 14 40)"/><ellipse cx="36" cy="28" rx="9" ry="6" transform="rotate(40 36 28)"/><ellipse cx="25" cy="14" rx="5" ry="8"/></g></svg>
+  </div>
+  <div class="bot" style="bottom:14px;left:-18px;transform:rotate(-22deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" width="80" height="80"><g transform="translate(45,45)" fill="none" stroke="#8890CC" stroke-width="1"><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(0)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(60)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(120)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(180)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(240)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(300)"/><circle r="6" fill="#E8E3F3"/></g></svg>
+  </div>
+  <div class="title-block">
+    <span class="deco-word">Voices</span>
+    <h2 class="sec-title">受講生の声</h2>
+    <div class="gold-line"></div>
+  </div>
+
+  <div class="voice-card">
+    <span class="voice-result-badge">成果：卒業後すぐに満席達成</span>
+    <img src="img/seika-taemi.png" alt="夏見妙美さんの実績" class="voice-img">
+    <p class="voice-text">
+      オリジナルレッスンを生徒さまのお悩みからつくり、ストーリーズだけで入りました。
+      卒業後すぐに資格コースのお申し込みも3名入り、満席に。絵の具の技術が上がっただけでなく、唯一無二のデザインが作れるようになり、指導にも自信を持って伝えられるようになりました。
+    </p>
+    <p class="voice-name">夏見 妙美さん（神奈川県在住）</p>
+  </div>
+
+  <div class="voice-card">
+    <span class="voice-result-badge">成果：オリジナル講座構築で月商150万円達成</span>
+    <img src="img/seika-michiko.png" alt="西村美智子さんの実績" class="voice-img">
+    <p class="voice-text">
+      集客の悩みと絵の具の指導への自信のなさがずっとありました。強みを見つけ、他の教室にはない独自の講座を構築。全国からお問い合わせが止まらない状態になりました。
+    </p>
+    <p class="voice-name">西村 美智子さん（ポーセラーツ教室 Iachic 主宰）</p>
+  </div>
+
+  <div class="voice-card">
+    <span class="voice-result-badge">成果：月商6倍の30万円達成・37名以上が受講</span>
+    <img src="img/seika-miho.png" alt="貝原三穂さんの実績" class="voice-img">
+    <p class="voice-text">
+      コンクール受賞歴があり、教室運営も10年以上。でも資格コースの生徒さまはゼロでした。
+      受講後は卒業してすぐに3名のコース予約が入り、オリジナルレッスンを構築して37名以上が受講。月商6倍を達成しました。
+    </p>
+    <p class="voice-name">貝原 三穂さん（広島県在住）</p>
+  </div>
+
+  <!-- 講師プロフィール -->
+  <div class="instructor-profile">
+    <h3>講師紹介｜尾野さおり</h3>
+    <img src="img/saori-3.jpg" alt="尾野さおり" class="saori-circle">
+    <p class="saori-title">ポーセラーツ講師歴13年 / 美大卒 / デザイナー歴20年<br>1万人以上指導 / 75名以上のインストラクターを輩出</p>
+    <p>
+      美大でデザインを学び、メーカーでデザイナーとして働いていた私が、家族の都合で退職を余儀なくされたのは20代のことでした。キャリアも、夢も、やりがいも見えなくなっていたあの頃。心が完全に折れていました。<br><br>
+      そんなときに出会ったのが、ポーセラーツでした。雑誌で見かけた一枚の作品に雷に打たれたような衝撃を受け、気づけばのめり込んでいました。これに人生をかけようと、思い切って会社を辞め、講師の道へ。<br><br>
+      でも、資格を取っても絵の具は思い通りにならない。指導する自信もまるでありませんでした。だから一から学び直し、デザイナーとしての経験をポーセラーツで活かせるよう理論化することで、ようやく自分の作品と指導に自信が持てるようになりました。<br><br>
+      今では1万人以上を指導し、75名以上のインストラクターを輩出。メディアにも取り上げていただけるようになりました。<br><br>
+      <strong>技術もセンスも、「ないんじゃない」。ただ知らなかっただけ。あなたにも必ずできる瞬間が、きます。</strong>
+    </p>
+  </div>
+
+  <div style="margin-top:32px;" class="cta-wrap">
+    <a href="ここに申込先URLを入力" class="cta-btn">
+      無料相談会に参加する
+    </a>
   </div>
 </section>
 
-<!-- ===== オファー ===== -->
-<section class="offer">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="deco-line"></div>
-      <span class="eyebrow">OFFER</span>
-      <h2 class="sec-title">価格</h2>
-    </div>
-    <div class="price-box">
-      <h3>ご受講料は個別相談会にてご案内</h3>
-      <p>あなたの現状やお悩みをお聞きした上で、いくつかのプランの中からご提案しますので、まずはお気軽にご参加ください。</p>
-    </div>
 
-    <p class="bonus-title">ご参加特典</p>
-    <div class="bonus-list">
-      <div class="bonus-item">
-        <div class="bonus-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18M12 8v13M12 8C12 5 10 3 8 3a2 2 0 0 0 0 4M12 8c0-3 2-5 4-5a2 2 0 0 1 0 4"/></svg>
-        </div>
-        <div>
-          <p class="b-head">特典① 無料個別相談会への参加券</p>
-          <p class="b-desc">あなたの現状とお悩みに合わせて、さおりが直接お答えします。</p>
-        </div>
-      </div>
-      <div class="bonus-item">
-        <div class="bonus-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18M12 8v13M12 8C12 5 10 3 8 3a2 2 0 0 0 0 4M12 8c0-3 2-5 4-5a2 2 0 0 1 0 4"/></svg>
-        </div>
-        <div>
-          <p class="b-head">特典② インストラクターコース復習＋指導ポイント勉強会動画 <span class="b-tag">3万円相当</span></p>
-          <p class="b-desc">資格を取ったけど自信が持てない方に、すぐ使える指導のコツをお届け。</p>
-        </div>
-      </div>
-      <div class="bonus-item">
-        <div class="bonus-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18M12 8v13M12 8C12 5 10 3 8 3a2 2 0 0 0 0 4M12 8c0-3 2-5 4-5a2 2 0 0 1 0 4"/></svg>
-        </div>
-        <div>
-          <p class="b-head">特典③ サラハスタイル オリジナル動画レッスン（5本）プレゼント <span class="b-tag">4万円相当</span></p>
-          <p class="b-desc">お申し込み後すぐに視聴スタートできます。</p>
-        </div>
-      </div>
-      <div class="bonus-item">
-        <div class="bonus-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M3 12h18M12 8v13M12 8C12 5 10 3 8 3a2 2 0 0 0 0 4M12 8c0-3 2-5 4-5a2 2 0 0 1 0 4"/></svg>
-        </div>
-        <div>
-          <p class="b-head">特典④ お申し込み後すぐにコンテンツ・学習サイトが閲覧可能</p>
-          <p class="b-desc">開講を待たずに、今日から学びをはじめられます。</p>
-        </div>
-      </div>
-    </div>
+<!-- ============================================
+     7. 料金・申込条件
+============================================ -->
+<section id="price">
+  <div class="bot" style="top:-16px;right:-18px;transform:rotate(25deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" width="88" height="88"><g transform="translate(45,45)" fill="none" stroke="#8890CC" stroke-width="1"><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(0)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(60)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(120)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(180)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(240)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(300)"/><circle r="6" fill="#E8E3F3"/></g></svg>
+  </div>
+  <div class="bot" style="bottom:20px;left:-14px;transform:rotate(-10deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" width="62" height="62"><g transform="translate(27,27)" fill="none" stroke="#A8A8D8" stroke-width="0.9"><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(0)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(72)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(144)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(216)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(288)"/><circle r="4" fill="#EEEAF8"/></g></svg>
+  </div>
+  <div class="title-block">
+    <span class="deco-word">Pricing</span>
+    <h2 class="sec-title">受講料・<br>お申し込みについて</h2>
+    <div class="gold-line"></div>
+  </div>
 
-    <p class="urgency-title">今申し込むべき理由</p>
-    <div class="urgency">
-      <div class="urgency-list">
-        <div class="urgency-item"><div class="urgency-no">1</div><p><b>募集人数に限りがあります。</b>定員に達し次第、募集を締め切ります。</p></div>
-        <div class="urgency-item"><div class="urgency-no">2</div><p><b>募集期間が限定されています。</b>次回の募集時期は未定です。</p></div>
-        <div class="urgency-item"><div class="urgency-no">3</div><p><b>期間限定割引価格でのご案内です。</b>期間終了後は通常価格に戻ります。</p></div>
+  <div class="price-box">
+    <h3>💰 受講料について</h3>
+    <p class="price-text">
+      ご受講料は個別相談会にてご案内しています。あなたの現状やお悩みをお聞きした上で、複数のプランの中からご提案します。<br><br>
+      まずはお気軽に相談会にご参加ください。<strong>相談会への参加は完全無料</strong>です。
+    </p>
+  </div>
+
+  <!-- 特典合計額 -->
+  <div class="tokuten-total">
+    <p class="total-label">お申し込み特典の合計額</p>
+    <p class="total-value">7万円相当以上</p>
+    <p class="total-sub">が無料でついてきます</p>
+  </div>
+
+  <p class="tokuten-title">🎁 お申し込み特典</p>
+  <ul class="tokuten-list">
+    <li>
+      <div class="tok-head">
+        <strong>特典① 無料個別相談会への参加券</strong>
       </div>
-    </div>
+      <p>あなたの現状とお悩みに合わせて、さおりが直接お答えします</p>
+    </li>
+    <li>
+      <div class="tok-head">
+        <strong>特典② 指導ポイント勉強会動画</strong>
+        <span class="tok-value">3万円相当</span>
+      </div>
+      <p>ポーセラーツインストラクターコース復習＋指導ポイント勉強会動画。資格を取ったけど自信が持てない方に、すぐ使える指導のコツをお届け</p>
+    </li>
+    <li>
+      <div class="tok-head">
+        <strong>特典③ サラハスタイルオリジナル動画レッスン（5本）</strong>
+        <span class="tok-value">4万円相当</span>
+      </div>
+      <p>お申し込み後すぐに視聴スタートできます</p>
+    </li>
+    <li>
+      <div class="tok-head">
+        <strong>特典④ コンテンツ・学習サイト即日開放</strong>
+      </div>
+      <p>お申し込み後すぐに閲覧可能。開講を待たずに、今日から学びをはじめられます</p>
+    </li>
+  </ul>
+
+  <div class="urgency-box">
+    <h3>今申し込む理由</h3>
+    <ul>
+      <li>募集人数に限りがあります。定員に達し次第、締め切ります</li>
+      <li>次回の募集時期は未定です</li>
+      <li>期間限定割引価格でのご案内です。期間終了後は通常価格に戻ります</li>
+    </ul>
+  </div>
+
+  <div style="margin-top:32px;" class="cta-wrap">
+    <a href="ここに申込先URLを入力" class="cta-btn">
+      無料相談会に参加する
+    </a>
   </div>
 </section>
 
-<!-- ===== FAQ ===== -->
-<section class="faq">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="deco-line"></div>
-      <span class="eyebrow">FAQ</span>
-      <h2 class="sec-title">よくある質問</h2>
+
+<!-- ============================================
+     8. FAQ（アコーディオン）
+     ── <details>/<summary>でJSなしで開閉
+============================================ -->
+<section id="faq">
+  <div class="bot" style="top:-12px;left:-16px;transform:rotate(-18deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 55" width="44" height="54"><g fill="none" stroke="#8890CC" stroke-width="0.8"><line x1="22" y1="52" x2="22" y2="28"/><line x1="22" y1="38" x2="10" y2="24"/><line x1="22" y1="33" x2="34" y2="20"/><line x1="10" y1="24" x2="5" y2="12"/><line x1="10" y1="24" x2="16" y2="12"/><line x1="34" y1="20" x2="28" y2="8"/><line x1="34" y1="20" x2="40" y2="8"/><circle cx="5" cy="9" r="3.5" fill="#D8D4F0"/><circle cx="16" cy="9" r="3.5" fill="#D8D4F0"/><circle cx="28" cy="5" r="3.5" fill="#D8D4F0"/><circle cx="40" cy="5" r="3.5" fill="#D8D4F0"/></g></svg>
+  </div>
+  <div class="bot" style="bottom:16px;right:-14px;transform:rotate(20deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 90" width="44" height="78"><g fill="none" stroke="#8890CC" stroke-width="0.85"><line x1="25" y1="88" x2="25" y2="8"/><ellipse cx="14" cy="70" rx="10" ry="7" transform="rotate(-40 14 70)"/><ellipse cx="36" cy="55" rx="10" ry="7" transform="rotate(40 36 55)"/><ellipse cx="14" cy="40" rx="9" ry="6" transform="rotate(-40 14 40)"/><ellipse cx="36" cy="28" rx="9" ry="6" transform="rotate(40 36 28)"/><ellipse cx="25" cy="14" rx="5" ry="8"/></g></svg>
+  </div>
+  <div class="title-block">
+    <span class="deco-word">FAQ</span>
+    <h2 class="sec-title">よくあるご質問</h2>
+    <div class="gold-line"></div>
+  </div>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">本当に絵が苦手ですが、描けるようになりますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>大丈夫です。受講生の多くが「絵は苦手」というスタートでした。基礎からわかりやすくお伝えしますので、苦手な方こそ大きな変化を実感していただけます。</span>
     </div>
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary><span class="q">Q</span>本当に絵が苦手ですが、描けるようになりますか？</summary>
-        <div class="a">大丈夫です。受講生の多くが「絵は苦手」というスタートでした。基礎からわかりやすくお伝えしますので、苦手な方こそ大きな変化を実感していただけます。</div>
-      </details>
-      <details class="faq-item">
-        <summary><span class="q">Q</span>初心者でもついていけますか？</summary>
-        <div class="a">はい。絵の具の基礎から丁寧にお伝えしますので、はじめての方でも安心してついていただける内容です。</div>
-      </details>
-      <details class="faq-item">
-        <summary><span class="q">Q</span>仕事や育児で忙しくても続けられますか？</summary>
-        <div class="a">参加できない日は勉強会のアーカイブ動画でいつでも受講できます。わからないことはいつでもサポートしますので、忙しい方でも無理なく続けていただけます。</div>
-      </details>
-      <details class="faq-item">
-        <summary><span class="q">Q</span>対面レッスンは可能ですか？</summary>
-        <div class="a">オンラインでも成果が出る環境を整えています。2回のリアル勉強会がありますので、難しいところはリアルで学んでいただけます。大人数が苦手、やっぱり対面がいいという方は神戸に教室がありますので、相談会にてご相談ください。</div>
-      </details>
-      <details class="faq-item">
-        <summary><span class="q">Q</span>受講後に本当に指導できるようになりますか？</summary>
-        <div class="a">はい。技術だけでなくすぐに指導までできるカリキュラムになっています。修了後すぐに指導をスタートされた卒業生も多くいらっしゃいます。</div>
-      </details>
-      <details class="faq-item">
-        <summary><span class="q">Q</span>今は忙しくて…次回の募集はありますか？</summary>
-        <div class="a">次回は未定で、定員にも限りがあります。「どうすればやれるか」を一緒に考えてみましょう！まずは無料相談会にお話し聞かせてください。</div>
-      </details>
-      <details class="faq-item">
-        <summary><span class="q">Q</span>ポーセラーツの資格がなくても参加できますか？</summary>
-        <div class="a">はい、資格は不問です。「お皿作りが好き」「学びたい」という気持ちがあれば、どなたでも歓迎しています。</div>
-      </details>
-      <details class="faq-item">
-        <summary><span class="q">Q</span>焼成窯がなくても参加できますか？</summary>
-        <div class="a">参加できます。焼成代行を無料で行っていますので、窯をお持ちでない方もご安心ください。※送料は別途必要です。</div>
-      </details>
-      <details class="faq-item">
-        <summary><span class="q">Q</span>パソコンが苦手でも大丈夫ですか？</summary>
-        <div class="a">大丈夫です。操作方法はわかりやすくご案内しますので、パソコン音痴の方でも問題なくご受講いただけます。</div>
-      </details>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">初心者でもついていけますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>はい。絵の具の基礎から丁寧にお伝えしますので、はじめての方でも安心してついていただける内容です。</span>
     </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">仕事や育児で忙しくても続けられますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>参加できない日は勉強会のアーカイブ動画でいつでも受講できます。わからないことはいつでもサポートしますので、忙しい方でも無理なく続けていただけます。</span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">対面レッスンは可能ですか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>オンラインでも成果が出る環境を整えています。2回のリアル勉強会がありますので、難しいところはリアルで学んでいただけます。神戸に教室がありますので、対面をご希望の方は相談会にてご相談ください。</span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">受講後に本当に指導できるようになりますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>はい。技術だけでなくすぐに指導までできるカリキュラムになっています。修了後すぐに指導をスタートされた卒業生も多くいらっしゃいます。</span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">受講料はどのくらいですか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>受講料は個別相談会にてご案内しています。複数のプランをご用意していますので、あなたの状況に合わせてご提案します。まずはお気軽にご参加ください。</span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">キャンセルや返金はできますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>キャンセル・返金については相談会にてご説明します。ご不安な点はお気軽にお聞きください。<br><!-- ここにキャンセルポリシーが決まり次第記入 --></span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">受講に必要な機器・ツールはありますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>スマートフォンがあれば受講できます。パソコンがある方はより快適にご参加いただけます。詳細は相談会にてご確認ください。<br><!-- 確認後に正確な要件を記入 --></span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">今は忙しくて…次回の募集はありますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>次回は未定で、定員にも限りがあります。「どうすればやれるか」を一緒に考えてみましょう！まずは無料相談会にお話し聞かせてください。</span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">ポーセラーツの資格がなくても参加できますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>はい、資格は不問です。「お皿作りが好き」「学びたい」という気持ちがあれば、どなたでも歓迎しています。</span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">焼成窯がなくても参加できますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>参加できます。焼成代行を無料で行っていますので、窯をお持ちでない方もご安心ください。（送料は別途必要です）</span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">パソコンが苦手でも大丈夫ですか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>大丈夫です。操作方法はわかりやすくご案内しますので、パソコン音痴の方でも問題なくご受講いただけます。</span>
+    </div>
+  </details>
+
+  <div style="margin-top:36px;" class="cta-wrap">
+    <a href="ここに申込先URLを入力" class="cta-btn">
+      無料相談会に参加する
+    </a>
   </div>
 </section>
 
-<!-- ===== クロージング ===== -->
-<section class="closing">
-  <div class="wrap">
-    <div class="closing-img">
-      <img src="https://picsum.photos/seed/closing/900/600" alt="完成したポーセラーツ作品が並ぶ明るいテーブル">
-    </div>
-    <h2>「できない」は、才能のせいじゃない。</h2>
-    <p>ここまで読んでくださったあなたは、きっとポーセラーツをもっと楽しみたいと思っている方だと思います。「できない」や「ひらめかない」は、技術不足、知識やセンス、才能が理由ではありません。ただ、学ぶ機会がなかっただけです。</p>
-    <p>技術に自信を持ち、アイデアを広げる方法を一緒に学びましょう。この先、自分も生徒さんも笑顔があふれる教室が叶うヒントが、きっとここにあります。</p>
-    <a href="#cta" class="btn">相談会に参加する<span class="arrow">▶</span></a>
+
+<!-- ============================================
+     9. クロージング＋最終CTA
+============================================ -->
+<section id="closing">
+  <div class="bot" style="top:-14px;left:-18px;transform:rotate(-15deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" width="65" height="65"><g transform="translate(27,27)" fill="none" stroke="#A8A8D8" stroke-width="0.9"><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(0)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(72)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(144)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(216)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(288)"/><circle r="4" fill="#EEEAF8"/></g></svg>
+  </div>
+  <div class="bot" style="top:-14px;right:-18px;transform:rotate(15deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" width="65" height="65"><g transform="translate(27,27)" fill="none" stroke="#A8A8D8" stroke-width="0.9"><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(0)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(72)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(144)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(216)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(288)"/><circle r="4" fill="#EEEAF8"/></g></svg>
+  </div>
+  <div class="bot" style="bottom:60px;left:-14px;transform:rotate(-25deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 55" width="40" height="50"><g fill="none" stroke="#8890CC" stroke-width="0.8"><line x1="22" y1="52" x2="22" y2="28"/><line x1="22" y1="38" x2="10" y2="24"/><line x1="22" y1="33" x2="34" y2="20"/><line x1="10" y1="24" x2="5" y2="12"/><line x1="10" y1="24" x2="16" y2="12"/><line x1="34" y1="20" x2="28" y2="8"/><line x1="34" y1="20" x2="40" y2="8"/><circle cx="5" cy="9" r="3.5" fill="#D8D4F0"/><circle cx="16" cy="9" r="3.5" fill="#D8D4F0"/><circle cx="28" cy="5" r="3.5" fill="#D8D4F0"/><circle cx="40" cy="5" r="3.5" fill="#D8D4F0"/></g></svg>
+  </div>
+  <div class="title-block">
+    <span class="deco-word">Message</span>
+    <h2 class="sec-title">ここまで読んでくださった<br>あなたへ</h2>
+    <div class="gold-line"></div>
+  </div>
+
+  <img src="img/saori-3.jpg" alt="尾野さおりより" class="closing-photo">
+
+  <p class="closing-text">
+    「できない」や「ひらめかない」は、技術不足、知識やセンス、才能が理由ではありません。ただ、学ぶ機会がなかっただけです。<br><br>
+    技術に自信を持ち、アイデアを広げる方法を一緒に学びましょう。この先、自分も生徒さんも笑顔があふれる教室が叶うヒントが、きっとここにあります。
+  </p>
+
+  <div class="cta-wrap">
+    <a href="ここに申込先URLを入力" class="cta-btn">
+      無料相談会に参加する
+    </a>
   </div>
 </section>
 
-<!-- ===== 最終CTA ===== -->
-<section class="cta-final" id="cta">
-  <div class="wrap">
-    <span class="eyebrow" style="color:rgba(255,255,255,0.85);">FREE COUNSELING</span>
-    <h2>まずは無料相談会で、<br>あなたの現状を聞かせてください</h2>
-    <p>所要時間の目安は60分／オンライン開催／個別対応</p>
-    <a href="#" class="btn">相談会に参加する<span class="arrow">▶</span></a>
-    <span class="btn-note">定員に達し次第、募集を締め切ります。</span>
-  </div>
-</section>
 
+<!-- ============================================
+     フッター
+============================================ -->
 <footer>
-  <p class="f-name">ポーセラボ絵の具コース</p>
-  <p>ポーセラボ / 尾野さおり</p>
+  <p>ポーセラボ 絵の具コース</p>
+  <p style="margin-top:6px;">主宰：尾野さおり｜神戸</p>
+  <p style="margin-top:12px;">© 2024 Porcelab. All rights reserved.</p>
 </footer>
 
 </body>
