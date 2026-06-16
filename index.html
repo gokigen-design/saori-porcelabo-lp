@@ -82,13 +82,14 @@
     #sticky-bar.visible { transform: translateY(0); }
     #sticky-bar a {
       display: block;
-      background: #BE9A4C;
+      background: linear-gradient(135deg, #E6C871 0%, #C9A24E 45%, #DcB85f 100%);
       color: #fff;
+      text-shadow: 0 1px 2px rgba(120, 90, 20, 0.35);
       font-size: 0.95rem;
       font-weight: bold;
       text-align: center;
       padding: 12px 24px;
-      border-radius: 0;
+      border-radius: 50px;
       text-decoration: none;
       letter-spacing: 0.06em;
       width: 100%;
@@ -105,32 +106,49 @@
        CTAボタン（各セクション内）
     ============================================= */
     .cta-btn {
+      position: relative;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #BE9A4C;
+      background: linear-gradient(135deg, #E6C871 0%, #C9A24E 45%, #DcB85f 100%);
       color: #fff;
+      text-shadow: 0 1px 2px rgba(120, 90, 20, 0.35);
       font-size: 1.05rem;
       font-weight: bold;
       text-align: center;
       padding: 18px 32px;
-      border-radius: 0;
+      border-radius: 50px;
       text-decoration: none;
       letter-spacing: 0.08em;
-      box-shadow: 0 10px 24px rgba(150, 120, 55, 0.30);
-      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 10px 26px rgba(185, 150, 70, 0.42);
+      transition: box-shadow 0.2s, filter 0.2s;
       max-width: 360px;
       margin: 0 auto;
       min-height: 58px;
       animation: ctaFloat 2.8s ease-in-out infinite;
+    }
+    /* キラッと光るシャイン */
+    .cta-btn::before {
+      content: "";
+      position: absolute;
+      top: 0; left: -70%;
+      width: 45%; height: 100%;
+      background: linear-gradient(100deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%);
+      transform: skewX(-20deg);
+      animation: ctaShine 3.6s ease-in-out infinite;
+    }
+    @keyframes ctaShine {
+      0% { left: -70%; }
+      35%, 100% { left: 130%; }
     }
     @keyframes ctaFloat {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-7px); }
     }
     .cta-btn:hover, .cta-btn:active {
-      background: #B08D3F;
-      box-shadow: 0 14px 30px rgba(150, 120, 55, 0.42);
+      box-shadow: 0 16px 34px rgba(185, 150, 70, 0.52);
+      filter: brightness(1.05);
     }
     .cta-note {
       text-align: center;
@@ -436,8 +454,7 @@
       line-height: 1.2; text-align: center;
       position: relative; z-index: 1;
     }
-    .curri-circle small { font-size: 0.56rem; letter-spacing: 0.06em; opacity: 0.9; }
-    .curri-circle b { font-size: 0.95rem; }
+    .curri-circle b { font-size: 0.92rem; }
     /* 丸どうしをつなぐ縦線 */
     .curri-tl::after {
       content: "";
@@ -450,16 +467,16 @@
 
     .curri-content { padding-bottom: 48px; }
     .curri-item:last-child .curri-content { padding-bottom: 0; }
-    /* 丸から伸びる大見出し */
+    /* 見出し（色付きバー・大きめ） */
     .curri-head {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 1.18rem;
-      color: var(--brown);
+      background: linear-gradient(135deg, #8890CC 0%, #A6ACE0 100%);
+      color: #fff;
+      font-size: 1.35rem;
       font-weight: bold;
-      line-height: 1.4;
-      margin: 18px 0 18px;
+      line-height: 1.45;
+      padding: 12px 18px;
+      margin: 14px 0 20px;
     }
-    .curri-head::before { content: ""; flex: none; width: 22px; height: 2px; background: var(--gold); }
     /* 左写真・右本文の2カラム */
     .curri-2col { display: flex; gap: 24px; align-items: flex-start; }
     .curri-2col .c-photo { flex: 0 0 42%; }
@@ -470,27 +487,34 @@
     }
     .curri-2col .c-text { flex: 1; }
     .curri-2col .c-text p { font-size: 0.93rem; color: var(--text-mid); line-height: 1.9; }
-    /* 数字の丸が並ぶ支援要素 */
-    .curri-supports { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 20px; }
-    .curri-support { display: flex; align-items: center; gap: 9px; }
+    /* 支援要素：丸で囲んだピル型 */
+    .curri-supports { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+    .curri-support {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1.5px solid #B7BDE4;
+      border-radius: 40px;
+      padding: 7px 16px 7px 7px;
+      background: #fff;
+    }
     .curri-support .num {
-      flex: none; width: 28px; height: 28px; border-radius: 50%;
-      background: #fff; border: 1.5px solid var(--accent); color: var(--accent-dark);
-      font-family: Georgia, serif; font-weight: bold; font-size: 0.82rem;
+      flex: none; width: 26px; height: 26px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      font-family: Georgia, serif; font-weight: bold; font-size: 0.78rem;
       display: flex; align-items: center; justify-content: center;
     }
     .curri-support span.label { font-size: 0.86rem; color: var(--brown); font-weight: 500; }
     .format-box.after-curri { margin-top: 0; margin-bottom: 0; }
 
     @media (max-width: 720px) {
-      .curri-item { grid-template-columns: 52px 1fr; column-gap: 14px; }
-      .curri-circle { width: 52px; height: 52px; }
-      .curri-circle small { font-size: 0.5rem; }
-      .curri-circle b { font-size: 0.76rem; }
-      .curri-tl::after { left: 26px; top: 52px; bottom: -42px; }
-      .curri-head { font-size: 1.04rem; margin: 8px 0 14px; }
+      .curri-item { grid-template-columns: 54px 1fr; column-gap: 14px; }
+      .curri-circle { width: 54px; height: 54px; }
+      .curri-circle b { font-size: 0.74rem; }
+      .curri-tl::after { left: 27px; top: 54px; bottom: -42px; }
+      .curri-head { font-size: 1.12rem; padding: 10px 14px; margin: 8px 0 16px; }
       .curri-2col { flex-direction: column; gap: 14px; }
       .curri-2col .c-photo { flex: none; width: 100%; }
+      .curri-supports { gap: 10px; }
+      .curri-support { padding: 6px 13px 6px 6px; }
     }
 
     /* 受講の流れ（縦タイムライン） */
@@ -1126,7 +1150,7 @@
     <!-- 1ヶ月目 -->
     <div class="curri-item">
       <div class="curri-tl">
-        <div class="curri-circle"><small>STEP</small><b>1ヶ月目</b></div>
+        <div class="curri-circle"><b>1ヶ月目</b></div>
       </div>
       <div class="curri-content">
         <h3 class="curri-head">絵の具の基礎から本質的理解</h3>
@@ -1145,7 +1169,7 @@
     <!-- 2ヶ月目 -->
     <div class="curri-item">
       <div class="curri-tl">
-        <div class="curri-circle"><small>STEP</small><b>2ヶ月目</b></div>
+        <div class="curri-circle"><b>2ヶ月目</b></div>
       </div>
       <div class="curri-content">
         <h3 class="curri-head">ポーセラーツの技術の融合と応用</h3>
@@ -1159,7 +1183,7 @@
     <!-- 3ヶ月目 -->
     <div class="curri-item">
       <div class="curri-tl">
-        <div class="curri-circle"><small>STEP</small><b>3ヶ月目</b></div>
+        <div class="curri-circle"><b>3ヶ月目</b></div>
       </div>
       <div class="curri-content">
         <h3 class="curri-head">ポーセラーツのためのデザイン理論</h3>
@@ -1173,7 +1197,7 @@
     <!-- 4ヶ月目 -->
     <div class="curri-item">
       <div class="curri-tl">
-        <div class="curri-circle"><small>STEP</small><b>4ヶ月目</b></div>
+        <div class="curri-circle"><b>4ヶ月目</b></div>
       </div>
       <div class="curri-content">
         <h3 class="curri-head">ポーセラーツのためのデザイン理論（続編）</h3>
