@@ -469,8 +469,15 @@
     }
 
     /* 受講の流れ（縦タイムライン） */
-    .flow-timeline { max-width: 720px; margin: 0 auto; }
-    .flow-item { display: grid; grid-template-columns: 92px 1fr; column-gap: 24px; }
+    /* 受講の流れを白いボックスで囲む */
+    .flow-timeline {
+      max-width: 600px; margin: 0 auto;
+      background: #fff;
+      border: 1px solid #E9E6F3;
+      box-shadow: 0 16px 40px rgba(58,66,104,0.09);
+      padding: 38px 30px;
+    }
+    .flow-item { display: grid; grid-template-columns: 84px 1fr; column-gap: 22px; }
     .flow-left { position: relative; text-align: center; }
     /* アイコン下から伸びる点線 */
     .flow-left::after {
@@ -501,13 +508,31 @@
     .flow-item:last-child .flow-content { padding-bottom: 0; }
     .flow-content h4 { font-size: 1.08rem; color: var(--accent-dark); margin-bottom: 8px; line-height: 1.4; }
     .flow-content p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.85; }
+    /* Step1（導入）は少し大きく＋説明ボックス */
+    .flow-item.flow-lead .flow-content h4 { font-size: 1.26rem; color: var(--brown); margin-bottom: 10px; }
+    .flow-item.flow-lead .flow-content > p { font-size: 0.96rem; }
+    .flow-item.flow-lead .flow-icon { width: 72px; height: 72px; }
+    .flow-item.flow-lead .flow-icon svg { width: 36px; height: 36px; }
+    .flow-item.flow-lead .flow-left::after { top: 106px; }
+    .flow-intro {
+      margin-top: 14px;
+      background: var(--pink-light);
+      border-left: 3px solid var(--accent);
+      padding: 14px 16px;
+      font-size: 0.86rem; color: var(--brown); line-height: 1.85;
+    }
     @media (max-width: 720px) {
-      .flow-item { grid-template-columns: 60px 1fr; column-gap: 16px; }
+      .flow-timeline { padding: 26px 18px; }
+      .flow-item { grid-template-columns: 56px 1fr; column-gap: 14px; }
       .flow-left::after { top: 84px; }
       .flow-icon { width: 52px; height: 52px; }
       .flow-icon svg { width: 26px; height: 26px; }
       .flow-step { font-size: 0.8rem; letter-spacing: 0; }
       .flow-content { padding-bottom: 36px; }
+      .flow-item.flow-lead .flow-icon { width: 58px; height: 58px; }
+      .flow-item.flow-lead .flow-icon svg { width: 28px; height: 28px; }
+      .flow-item.flow-lead .flow-left::after { top: 92px; }
+      .flow-item.flow-lead .flow-content h4 { font-size: 1.12rem; }
     }
 
     /* =============================================
@@ -1143,7 +1168,7 @@
 
     <div class="flow-timeline">
 
-      <div class="flow-item">
+      <div class="flow-item flow-lead">
         <div class="flow-left">
           <div class="flow-step">Step 1</div>
           <div class="flow-icon">
@@ -1151,8 +1176,9 @@
           </div>
         </div>
         <div class="flow-content">
-          <h4>お申し込み</h4>
+          <h4>まずは無料相談会・お申し込み</h4>
           <p>無料相談会に参加し、納得できたらお申し込み。お手続き後、進め方をご案内します。</p>
+          <p class="flow-intro">相談会では、4ヶ月の流れ・進め方・料金プランまで、あなたの状況に合わせて丁寧にご説明します。「自分にできるかな」という不安も、ここで解消できます。</p>
         </div>
       </div>
 
