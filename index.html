@@ -364,8 +364,9 @@
       counter-increment: fznum;
       content: "0" counter(fznum);
       display: block;
-      font-family: Georgia, serif; font-weight: bold;
-      font-size: 3rem; color: var(--accent); line-height: 1;
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Hiragino Serif', Georgia, serif; font-weight: bold;
+      font-size: 3.6rem; color: var(--accent); line-height: 1;
+      letter-spacing: 0.02em;
       margin-bottom: 8px;
     }
     .fz-text h3 {
@@ -378,7 +379,7 @@
       .fz-photo { width: 92%; }
       .fz-photo::before { top: -16px; left: -18px; }
       .fz-row.reverse .fz-photo::before { right: -18px; }
-      .fz-text::before { font-size: 2.6rem; }
+      .fz-text::before { font-size: 3rem; }
       .fz-text h3 { font-size: 1.1rem; }
     }
 
@@ -950,6 +951,19 @@
       /* FVも下のセクションと同じ細長い列に揃える（中央配置） */
       #fv { max-width: 720px; margin: 0 auto; padding: 48px 0 0; }
       .fv-inner-wrap { max-width: 720px; margin: 0 auto; padding: 0 40px; }
+    }
+    /* ===== 本文サイズを全セクション統一（1rem＝スマホ16px / PC17px）＋少し大きく ===== */
+    .fz-text p, .curri-2col .c-text p, .flow-content p,
+    .flow-item.flow-lead .flow-content > p, .flow-intro,
+    .why-text p, .voice-text, .profile-card > p, .price-text,
+    .tokuten-list li p, .faq-answer, .closing-hero-overlay .closing-text {
+      font-size: 1rem;
+    }
+    /* ===== 見出しの字間を少しゆったりに（詰まり防止）===== */
+    h2.sec-title, .why-head, .curri-head, .fz-text h3,
+    .flow-content h4, .future-main, .profile-meta h3,
+    .tokuten-title, .urgency-box h3, .price-box h3, #closing h2 {
+      letter-spacing: 0.06em;
     }
   </style>
 </head>
