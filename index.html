@@ -30,14 +30,17 @@
     ============================================= */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+    /* 最下部のオーバースクロール時に紺色が見えるように（フッターと同色） */
+    html { background: var(--brown); overflow-x: hidden; }
     body {
       font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Hiragino Serif', Georgia, serif;
       background: var(--cream);
       color: var(--text);
       line-height: 1.9;
       font-size: 16px;
-      /* スティッキーバー分の余白はフッター側で確保 */
       padding-bottom: 0;
+      overflow-x: hidden;     /* 左右の揺れ（横スクロール）を防ぐ */
+      max-width: 100%;
     }
 
     /* ===== 全体背景（PC：中央コラムの背面に表示）=====
@@ -48,7 +51,7 @@
       position: fixed;
       inset: 0;
       z-index: -1;
-      background: url('img/bag.png') center center / cover no-repeat;
+      background: linear-gradient(rgba(255,255,255,0.66), rgba(255,255,255,0.66)), url('img/bag.png') center center / cover no-repeat;
       animation: bgBlink 5s ease-in-out infinite;
       pointer-events: none;
     }
@@ -225,7 +228,7 @@
     ============================================= */
     #fv {
       padding: 0;
-      background: #1A2A6C;
+      background: linear-gradient(135deg, #E6C871 0%, #C9A24E 45%, #DcB85f 100%);
       overflow: hidden;
       position: relative;
     }
@@ -275,7 +278,7 @@
 
     /* CTA（画像の下・中央） */
     .fv-cta-area {
-      background: #1A2A6C;
+      background: linear-gradient(135deg, #E6C871 0%, #C9A24E 45%, #DcB85f 100%);
       padding: 24px 20px 32px;
       display: flex;
       flex-direction: column;
@@ -923,7 +926,7 @@
       background: var(--brown);
       color: rgba(255,255,255,0.6);
       text-align: center;
-      padding: 28px 20px 100px;
+      padding: 32px 20px 36px;
       font-size: 0.78rem;
       line-height: 1.8;
     }
@@ -1006,18 +1009,21 @@
     }, 3000);
   });
 
-  /* FVを過ぎたらスティッキーバーを表示 */
+  /* FVを過ぎたらスティッキーバー表示・最下部（フッター手前）では隠す */
   (function () {
     var bar = document.getElementById('sticky-bar');
     var fv  = document.getElementById('fv');
     function onScroll() {
-      if (fv.getBoundingClientRect().bottom < 0) {
+      var pastFv = fv.getBoundingClientRect().bottom < 0;
+      var nearBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 140);
+      if (pastFv && !nearBottom) {
         bar.classList.add('visible');
       } else {
         bar.classList.remove('visible');
       }
     }
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
   })();
 
 </script>
