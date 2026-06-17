@@ -31,7 +31,7 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     /* 最下部のオーバースクロール時に紺色が見えるように（フッターと同色） */
-    html { background: var(--brown); scroll-behavior: smooth; }
+    html { background: var(--brown); scroll-behavior: smooth; overflow-x: hidden; }
     body {
       font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Hiragino Serif', Georgia, serif;
       background: var(--cream);
@@ -1019,6 +1019,64 @@
     @media (max-width: 760px) {
       #bg-layer { display: none; }
       .cta-btn { animation: none; }
+      /* 装飾の葉が画面外にはみ出して横揺れ（ゆらゆら）の原因になるためスマホでは非表示 */
+      .bot { display: none; }
+    }
+    /* ハンバーガーは廃止（スマホは不要・PCはガターのサイドナビに置き換え） */
+    #menu-btn, #menu-nav { display: none; }
+
+    /* =============================================
+       PC左右ガターのサイドナビ（広い画面のみ表示／スマホ・タブレットは非表示）
+    ============================================= */
+    #side-nav, #side-progress { display: none; }
+    @media (min-width: 1140px) {
+      #side-nav {
+        position: fixed; top: 0; left: 0; height: 100vh;
+        width: calc((100vw - 720px) / 2);
+        box-sizing: border-box;
+        padding: 48px 28px 48px 48px;
+        display: flex; flex-direction: column; justify-content: center;
+        align-items: flex-start;
+        z-index: 1080;
+      }
+      .side-brand {
+        font-size: 1.12rem; font-weight: bold; color: var(--brown);
+        line-height: 1.4; margin-bottom: 34px; letter-spacing: 0.05em;
+      }
+      .side-brand span {
+        display: block; font-size: 0.74rem; color: var(--accent-dark);
+        font-weight: normal; letter-spacing: 0.14em; margin-top: 5px;
+      }
+      .side-list { list-style: none; }
+      .side-list a {
+        display: flex; align-items: baseline; gap: 12px;
+        padding: 8px 0; text-decoration: none;
+        color: var(--text-light); transition: color 0.25s;
+      }
+      .side-list a i {
+        font-style: normal; font-family: Georgia, serif;
+        font-size: 0.7rem; color: var(--text-light); width: 18px; transition: color 0.25s;
+      }
+      .side-list a span { font-size: 0.95rem; letter-spacing: 0.04em; position: relative; }
+      .side-list a:hover { color: var(--accent-dark); }
+      .side-list a.active { color: var(--brown); }
+      .side-list a.active i { color: var(--gold); }
+      .side-list a.active span::after {
+        content: ""; position: absolute; left: 0; right: -8px; bottom: -3px;
+        height: 1.5px; background: var(--gold);
+      }
+      #side-progress {
+        position: fixed; top: 50%; right: 0; transform: translateY(-50%);
+        width: calc((100vw - 720px) / 2);
+        display: flex; flex-direction: column; align-items: center; gap: 20px;
+        z-index: 1080; pointer-events: none;
+      }
+      .sp-label {
+        writing-mode: vertical-rl; letter-spacing: 0.3em;
+        font-size: 0.72rem; color: var(--text-light); font-family: Georgia, serif;
+      }
+      .sp-count { font-family: Georgia, serif; font-size: 0.82rem; color: var(--text-light); }
+      .sp-count b { color: var(--brown); font-size: 1.1rem; }
     }
     /* ===== 見出しの字間を少しゆったりに（詰まり防止）===== */
     h2.sec-title, .why-head, .curri-head, .fz-text h3,
@@ -1109,6 +1167,29 @@
   <a href="#closing" class="menu-cta">無料相談会に参加する</a>
 </nav>
 
+<!-- PC左ガターのサイドナビ（PC幅のみ表示・スマホ/タブレットは非表示） -->
+<nav id="side-nav" aria-label="セクションナビ">
+  <div class="side-brand">ポーセラボ<span>絵の具コース</span></div>
+  <ul class="side-list">
+    <li><a href="#fv" data-sec="fv"><i>01</i><span>序章</span></a></li>
+    <li><a href="#pain" data-sec="pain"><i>02</i><span>お悩み</span></a></li>
+    <li><a href="#future" data-sec="future"><i>03</i><span>受講後の未来</span></a></li>
+    <li><a href="#service" data-sec="service"><i>04</i><span>できること</span></a></li>
+    <li><a href="#learn" data-sec="learn"><i>05</i><span>学べる内容</span></a></li>
+    <li><a href="#why" data-sec="why"><i>06</i><span>選ばれる理由</span></a></li>
+    <li><a href="#voices" data-sec="voices"><i>07</i><span>お客様の声</span></a></li>
+    <li><a href="#price" data-sec="price"><i>08</i><span>料金・特典</span></a></li>
+    <li><a href="#faq" data-sec="faq"><i>09</i><span>よくある質問</span></a></li>
+    <li><a href="#gallery" data-sec="gallery"><i>10</i><span>作品ギャラリー</span></a></li>
+    <li><a href="#closing" data-sec="closing"><i>11</i><span>無料相談</span></a></li>
+  </ul>
+</nav>
+<!-- PC右ガターのスクロール表示（現在地カウンター） -->
+<div id="side-progress" aria-hidden="true">
+  <span class="sp-label">SCROLL</span>
+  <span class="sp-count"><b>01</b> / 11</span>
+</div>
+
 <!-- 全体背景レイヤー（PCで中央コラムの背面に表示・5秒ごとにフェード）
      将来この中に <video autoplay muted loop playsinline> を入れて動画背景に差し替え -->
 <div id="bg-layer"></div>
@@ -1165,18 +1246,28 @@
     onScroll();
   });
 
-  /* ハンバーガーメニューの開閉 */
-  (function () {
-    var btn = document.getElementById('menu-btn');
-    var nav = document.getElementById('menu-nav');
-    if (!btn || !nav) return;
-    btn.addEventListener('click', function () {
-      document.body.classList.toggle('menu-open');
-    });
-    nav.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') document.body.classList.remove('menu-open');
-    });
-  })();
+  /* PCサイドナビ：スクロールに合わせて現在のセクションをハイライト＋カウンター更新 */
+  document.addEventListener('DOMContentLoaded', function () {
+    var links = document.querySelectorAll('#side-nav .side-list a');
+    if (!links.length) return;
+    var counter = document.querySelector('#side-progress .sp-count b');
+    var items = Array.from(links).map(function (a, i) {
+      return { a: a, n: i + 1, sec: document.getElementById(a.getAttribute('data-sec')) };
+    }).filter(function (it) { return it.sec; });
+    function onSpy() {
+      var line = window.innerHeight * 0.4;   /* 画面の上から40%の位置を基準線に */
+      var cur = items[0];
+      for (var i = 0; i < items.length; i++) {
+        if (items[i].sec.getBoundingClientRect().top - line <= 0) cur = items[i]; else break;
+      }
+      links.forEach(function (a) { a.classList.remove('active'); });
+      cur.a.classList.add('active');
+      if (counter) counter.textContent = ('0' + cur.n).slice(-2);
+    }
+    window.addEventListener('scroll', onSpy, { passive: true });
+    window.addEventListener('resize', onSpy, { passive: true });
+    onSpy();
+  });
 
 </script>
 
