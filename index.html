@@ -615,7 +615,7 @@
     }
     .why-head {
       text-align: center;
-      font-size: 1.22rem;
+      font-size: 1.38rem;
       color: var(--brown);
       line-height: 1.55;
       margin: 0 0 24px;
@@ -636,7 +636,7 @@
 
     @media (max-width: 720px) {
       .why-box { padding: 44px 20px 28px; }
-      .why-head { font-size: 1.08rem; }
+      .why-head { font-size: 1.2rem; }
     }
 
     /* =============================================
@@ -952,6 +952,12 @@
     .why-text p, .voice-text, .profile-card > p, .price-text,
     .tokuten-list li p, .faq-answer, .closing-hero-overlay .closing-text {
       font-size: 1rem;
+    }
+    /* ===== スマホ：背景固定画像を非表示＋ボタンの浮遊を停止 =====
+       （iOSで固定背景が揺れる/最下部で動く・ボタンのゆらゆらを防ぐ） */
+    @media (max-width: 760px) {
+      #bg-layer { display: none; }
+      .cta-btn { animation: none; }
     }
     /* ===== 見出しの字間を少しゆったりに（詰まり防止）===== */
     h2.sec-title, .why-head, .curri-head, .fz-text h3,
@@ -1369,7 +1375,7 @@
 
   <div class="why-box">
     <div class="why-diamond"><span>02</span></div>
-    <h3 class="why-head">「センスがない」ではなく「知らなかっただけ」</h3>
+    <h3 class="why-head">「センスがない」ではなく<br>「知らなかっただけ」</h3>
     <div class="why-imgs">
       <img class="img-main" src="img/curriculum-1.png" alt="（仮）作品イメージ ※差し替え予定">
     </div>
@@ -1380,7 +1386,7 @@
 
   <div class="why-box">
     <div class="why-diamond"><span>03</span></div>
-    <h3 class="why-head">「苦手」から始めたからこそ、寄り添える</h3>
+    <h3 class="why-head">「苦手」から始めたからこそ、<br>寄り添える</h3>
     <div class="why-imgs">
       <img class="img-main" src="img/real-1.png" alt="（仮）勉強会の様子 ※差し替え予定">
     </div>
