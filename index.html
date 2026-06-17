@@ -464,15 +464,8 @@
       position: relative; z-index: 1;
     }
     .curri-circle b { font-size: 0.92rem; }
-    /* 丸どうしをつなぐ縦線 */
-    .curri-tl::after {
-      content: "";
-      position: absolute;
-      left: 35px; top: 70px; bottom: -48px;
-      transform: translateX(-50%);
-      border-left: 2px dashed rgba(136,144,204,0.5);
-    }
-    .curri-item:last-child .curri-tl::after { display: none; }
+    /* 丸どうしをつなぐ縦線（点線は不要 → 非表示） */
+    .curri-tl::after { display: none; }
 
     .curri-content { padding-bottom: 48px; }
     .curri-item:last-child .curri-content { padding-bottom: 0; }
@@ -486,13 +479,13 @@
       padding: 12px 18px;
       margin: 14px 0 20px;
     }
-    /* 左写真・右本文の2カラム */
-    .curri-2col { display: flex; gap: 24px; align-items: flex-start; }
-    .curri-2col .c-photo { flex: 0 0 42%; }
+    /* 作品をしっかり見せる：画像を上に大きく、文章は下に（縦並び） */
+    .curri-2col { display: flex; flex-direction: column; gap: 20px; }
+    .curri-2col .c-photo { width: 100%; }
     .curri-2col .c-photo img {
       width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
       border-radius: 0; display: block;
-      box-shadow: 0 10px 30px rgba(58,66,104,0.14);
+      box-shadow: 0 12px 32px rgba(58,66,104,0.16);
     }
     .curri-2col .c-text { flex: 1; }
     .curri-2col .c-text p { font-size: 0.93rem; color: var(--text-mid); line-height: 1.9; }
@@ -1038,6 +1031,16 @@
        作品ギャラリー（左から流れてくる）
     ============================================= */
     #gallery { background: var(--cream); overflow: hidden; }
+    /* FV直下の作品ギャラリー（ワクワク感を伝える） */
+    .fv-gallery { background: var(--white); overflow: hidden; padding: 4px 0 44px; }
+    .fv-gallery-cap {
+      text-align: center;
+      font-size: 1.08rem;
+      color: var(--accent-dark);
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      margin-bottom: 22px;
+    }
     .gallery-lead {
       text-align: center;
       font-size: 1.12rem;
@@ -1191,6 +1194,21 @@
   <div class="fv-cta-area">
     <a href="ここに申込先URLを入力" class="cta-btn">無料相談会に参加する</a>
   </div>
+
+  <!-- FV直下の作品ギャラリー（「こんな作品が作れる！」のワクワク感）※画像は仮 -->
+  <div class="fv-gallery">
+    <p class="fv-gallery-cap">こんな作品が、あなたの手から。</p>
+    <div class="marquee">
+      <div class="marquee-track">
+        <div class="marquee-item"><img src="img/curriculum-2.png" alt="（仮）作品例 ※差し替え予定"></div>
+        <div class="marquee-item"><img src="img/curriculum-3.png" alt="（仮）作品例 ※差し替え予定"></div>
+        <div class="marquee-item"><img src="img/curriculum-1.png" alt="（仮）作品例 ※差し替え予定"></div>
+        <div class="marquee-item"><img src="img/curriculum-2.png" alt="" aria-hidden="true"></div>
+        <div class="marquee-item"><img src="img/curriculum-3.png" alt="" aria-hidden="true"></div>
+        <div class="marquee-item"><img src="img/curriculum-1.png" alt="" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
 </section>
 
 
@@ -1329,11 +1347,6 @@
           <div class="c-photo"><img src="img/curriculum-1.png" alt="（仮）1ヶ月目の作品イメージ ※差し替え予定"></div>
           <div class="c-text"><p>「なんとなく」から卒業。絵の具の性質・使い方・調整まで、「なぜこれが必要か」を理解することで、自分が意図したように扱えるようになる。</p></div>
         </div>
-        <div class="curri-supports">
-          <div class="curri-support"><span class="label">オンラインコンテンツ</span></div>
-          <div class="curri-support"><span class="label">課題添削</span></div>
-          <div class="curri-support"><span class="label">チャットサポート</span></div>
-        </div>
       </div>
     </div>
 
@@ -1347,11 +1360,6 @@
         <div class="curri-2col">
           <div class="c-photo"><img src="img/curriculum-2.png" alt="（仮）2ヶ月目の作品イメージ ※差し替え予定"></div>
           <div class="c-text"><p>基礎を土台に、表現の幅を広げる技術を習得。転写紙を分解・構成する楽しさと絵の具を組み合わせることで、これまでにない作品が生まれる。絵を描いたことがない人でも描けるようになる。</p></div>
-        </div>
-        <div class="curri-supports">
-          <div class="curri-support"><span class="label">オンラインコンテンツ</span></div>
-          <div class="curri-support"><span class="label">課題添削</span></div>
-          <div class="curri-support"><span class="label">チャットサポート</span></div>
         </div>
       </div>
     </div>
@@ -1367,11 +1375,6 @@
           <div class="c-photo"><img src="img/curriculum-3.png" alt="（仮）3ヶ月目の作品イメージ ※差し替え予定"></div>
           <div class="c-text"><p>デザインとは、おしゃれな見た目にすることではありません。20年のデザイナー実績から構築した独自のデザイン理論で、見ている人の心に届く作品を体系的に学びます。</p></div>
         </div>
-        <div class="curri-supports">
-          <div class="curri-support"><span class="label">オンラインコンテンツ</span></div>
-          <div class="curri-support"><span class="label">課題添削</span></div>
-          <div class="curri-support"><span class="label">チャットサポート</span></div>
-        </div>
       </div>
     </div>
 
@@ -1385,11 +1388,6 @@
         <div class="curri-2col">
           <div class="c-photo"><img src="img/real-1.png" alt="（仮）4ヶ月目の作品イメージ ※差し替え予定"></div>
           <div class="c-text"><p>「センスがないのではなく、ただ知らなかっただけ」と気づける内容。学んだデザイン理論を、あなた自身の作品づくりに落とし込んでいきます。</p></div>
-        </div>
-        <div class="curri-supports">
-          <div class="curri-support"><span class="label">オンラインコンテンツ</span></div>
-          <div class="curri-support"><span class="label">課題添削</span></div>
-          <div class="curri-support"><span class="label">チャットサポート</span></div>
         </div>
       </div>
     </div>
