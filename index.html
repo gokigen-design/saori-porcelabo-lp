@@ -121,7 +121,7 @@
       border-radius: 50px;
       text-decoration: none;
       letter-spacing: 0.08em;
-      box-shadow: 0 10px 26px rgba(185, 150, 70, 0.42);
+      box-shadow: 0 4px 8px rgba(120, 95, 35, 0.28);
       transition: box-shadow 0.2s, filter 0.2s;
       max-width: 360px;
       margin: 0 auto;
@@ -147,7 +147,7 @@
       50% { transform: translateY(-7px); }
     }
     .cta-btn:hover, .cta-btn:active {
-      box-shadow: 0 16px 34px rgba(185, 150, 70, 0.52);
+      box-shadow: 0 6px 12px rgba(120, 95, 35, 0.34);
       filter: brightness(1.05);
     }
     .cta-note {
@@ -491,20 +491,14 @@
     /* 支援要素：丸で囲んだピル型 */
     .curri-supports { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
     .curri-support {
-      display: inline-flex; align-items: center; gap: 8px;
+      display: inline-flex; align-items: center;
       border: 1.5px solid #B7BDE4;
       border-radius: 40px;
-      padding: 7px 16px 7px 7px;
+      padding: 8px 18px;
       background: #fff;
     }
-    .curri-support .num {
-      flex: none; width: 26px; height: 26px; border-radius: 50%;
-      background: var(--accent); color: #fff;
-      font-family: Georgia, serif; font-weight: bold; font-size: 0.78rem;
-      display: flex; align-items: center; justify-content: center;
-    }
     .curri-support span.label { font-size: 0.86rem; color: var(--brown); font-weight: 500; }
-    .format-box.after-curri { margin-top: 0; margin-bottom: 0; }
+    .format-box.after-curri { margin-top: 48px; margin-bottom: 0; }
 
     @media (max-width: 720px) {
       .curri-item { grid-template-columns: 54px 1fr; column-gap: 14px; }
@@ -515,7 +509,7 @@
       .curri-2col { flex-direction: column; gap: 14px; }
       .curri-2col .c-photo { flex: none; width: 100%; }
       .curri-supports { gap: 10px; }
-      .curri-support { padding: 6px 13px 6px 6px; }
+      .curri-support { padding: 7px 15px; }
     }
 
     /* 受講の流れ（縦タイムライン） */
@@ -1175,9 +1169,9 @@
           <div class="c-text"><p>「なんとなく」から卒業。絵の具の性質・使い方・調整まで、「なぜこれが必要か」を理解することで、自分が意図したように扱えるようになる。</p></div>
         </div>
         <div class="curri-supports">
-          <div class="curri-support"><span class="num">1</span><span class="label">オンラインコンテンツ</span></div>
-          <div class="curri-support"><span class="num">2</span><span class="label">課題添削</span></div>
-          <div class="curri-support"><span class="num">3</span><span class="label">チャットサポート</span></div>
+          <div class="curri-support"><span class="label">オンラインコンテンツ</span></div>
+          <div class="curri-support"><span class="label">課題添削</span></div>
+          <div class="curri-support"><span class="label">チャットサポート</span></div>
         </div>
       </div>
     </div>
@@ -1193,6 +1187,11 @@
           <div class="c-photo"><img src="img/curriculum-2.png" alt="（仮）2ヶ月目の作品イメージ ※差し替え予定"></div>
           <div class="c-text"><p>基礎を土台に、表現の幅を広げる技術を習得。転写紙を分解・構成する楽しさと絵の具を組み合わせることで、これまでにない作品が生まれる。絵を描いたことがない人でも描けるようになる。</p></div>
         </div>
+        <div class="curri-supports">
+          <div class="curri-support"><span class="label">オンラインコンテンツ</span></div>
+          <div class="curri-support"><span class="label">課題添削</span></div>
+          <div class="curri-support"><span class="label">チャットサポート</span></div>
+        </div>
       </div>
     </div>
 
@@ -1207,6 +1206,11 @@
           <div class="c-photo"><img src="img/curriculum-3.png" alt="（仮）3ヶ月目の作品イメージ ※差し替え予定"></div>
           <div class="c-text"><p>デザインとは、おしゃれな見た目にすることではありません。20年のデザイナー実績から構築した独自のデザイン理論で、見ている人の心に届く作品を体系的に学びます。</p></div>
         </div>
+        <div class="curri-supports">
+          <div class="curri-support"><span class="label">オンラインコンテンツ</span></div>
+          <div class="curri-support"><span class="label">課題添削</span></div>
+          <div class="curri-support"><span class="label">チャットサポート</span></div>
+        </div>
       </div>
     </div>
 
@@ -1220,6 +1224,11 @@
         <div class="curri-2col">
           <div class="c-photo"><img src="img/real-1.png" alt="（仮）4ヶ月目の作品イメージ ※差し替え予定"></div>
           <div class="c-text"><p>「センスがないのではなく、ただ知らなかっただけ」と気づける内容。学んだデザイン理論を、あなた自身の作品づくりに落とし込んでいきます。</p></div>
+        </div>
+        <div class="curri-supports">
+          <div class="curri-support"><span class="label">オンラインコンテンツ</span></div>
+          <div class="curri-support"><span class="label">課題添削</span></div>
+          <div class="curri-support"><span class="label">チャットサポート</span></div>
         </div>
       </div>
     </div>
