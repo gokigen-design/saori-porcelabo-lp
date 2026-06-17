@@ -36,8 +36,8 @@
       color: var(--text);
       line-height: 1.9;
       font-size: 16px;
-      /* スティッキーバー分の余白 */
-      padding-bottom: 72px;
+      /* スティッキーバー分の余白はフッター側で確保 */
+      padding-bottom: 0;
     }
 
     /* ===== 全体背景（PC：中央コラムの背面に表示）=====
@@ -819,7 +819,7 @@
 
     #faq .title-block { margin-bottom: 40px; }
     details {
-      max-width: 760px;
+      max-width: 540px;
       margin: 0 auto;
       border-bottom: 1px solid #DCD7E6;
     }
@@ -897,16 +897,16 @@
       margin: 0 auto 32px;
       overflow: hidden;
     }
-    .closing-hero-img { width: 100%; display: block; object-fit: cover; }
+    .closing-hero-img { width: 100%; display: block; object-fit: cover; object-position: left center; }
     .closing-hero-overlay {
       position: absolute; inset: 0;
       display: flex; align-items: center; justify-content: flex-end;
-      background: linear-gradient(90deg, rgba(250,248,243,0) 26%, rgba(250,248,243,0.86) 54%, rgba(250,248,243,0.97) 100%);
+      background: linear-gradient(90deg, rgba(250,248,243,0) 48%, rgba(250,248,243,0.85) 68%, rgba(250,248,243,0.98) 100%);
       padding: 24px 26px;
     }
     #closing h2 { font-size: 1.3rem; color: var(--brown); margin-bottom: 18px; }
     .closing-hero-overlay .closing-text {
-      width: 52%;
+      width: 42%;
       font-size: 0.9rem;
       color: var(--text-mid);
       text-align: left;
@@ -928,7 +928,7 @@
       background: var(--brown);
       color: rgba(255,255,255,0.6);
       text-align: center;
-      padding: 28px 20px;
+      padding: 28px 20px 100px;
       font-size: 0.78rem;
       line-height: 1.8;
     }
