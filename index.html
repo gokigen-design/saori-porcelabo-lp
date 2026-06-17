@@ -51,7 +51,7 @@
       position: fixed;
       inset: 0;
       z-index: -1;
-      background: linear-gradient(rgba(255,255,255,0.66), rgba(255,255,255,0.66)), url('img/bag.png') center center / cover no-repeat;
+      background: linear-gradient(rgba(255,255,255,0.45), rgba(255,255,255,0.45)), url('img/bag.png') center center / cover no-repeat;
       animation: bgBlink 5s ease-in-out infinite;
       pointer-events: none;
     }
@@ -168,12 +168,12 @@
     /* =============================================
        セクション共通
     ============================================= */
-    section { padding: 48px 20px; }
+    section { padding: 68px 22px; }
 
     /* --- セクションタイトルブロック --- */
     .title-block {
       text-align: center;
-      margin-bottom: 32px;
+      margin-bottom: 46px;
       position: relative;
       overflow: hidden;   /* はみ出た筆記体を隠す */
     }
@@ -192,7 +192,7 @@
     }
 
     h2.sec-title {
-      font-size: 1.45rem;
+      font-size: 1.6rem;
       line-height: 1.55;
       text-align: center;
       color: var(--brown);
@@ -229,7 +229,7 @@
     ============================================= */
     #fv {
       padding: 0;
-      background: linear-gradient(135deg, #E6C871 0%, #C9A24E 45%, #DcB85f 100%);
+      background: var(--white);
       overflow: hidden;
       position: relative;
     }
@@ -279,8 +279,8 @@
 
     /* CTA（画像の下・中央） */
     .fv-cta-area {
-      background: linear-gradient(135deg, #E6C871 0%, #C9A24E 45%, #DcB85f 100%);
-      padding: 24px 20px 32px;
+      background: var(--white);
+      padding: 40px 20px 48px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -322,8 +322,8 @@
       margin-bottom: 24px;
     }
     /* 左右交互（ジグザグ）レイアウト */
-    .future-zigzag { max-width: 560px; margin: 26px auto 0; counter-reset: fznum; }
-    .fz-row { position: relative; margin-bottom: 64px; }
+    .future-zigzag { max-width: 560px; margin: 40px auto 0; counter-reset: fznum; }
+    .fz-row { position: relative; margin-bottom: 100px; }
     .fz-row:last-child { margin-bottom: 0; }
     /* 写真ラッパー：青いグラデ背景ボックスを後ろにずらして配置 */
     .fz-photo {
@@ -941,29 +941,40 @@
     ============================================= */
     @media (min-width: 600px) {
       body { font-size: 17px; padding-bottom: 80px; }
-      section { padding: 64px 40px; }
+      section { padding: 92px 40px; }
       .fv-h1 { font-size: 2rem; }
-      h2.sec-title { font-size: 1.65rem; }
+      h2.sec-title { font-size: 1.8rem; }
       .cta-btn { font-size: 1.1rem; }
       #sticky-bar a { font-size: 1rem; padding: 14px 32px; }
     }
     @media (min-width: 760px) {
-      section { max-width: 720px; margin: 0 auto; padding: 80px 44px; }
+      section { max-width: 720px; margin: 0 auto; padding: 108px 44px; }
       footer { max-width: none; }
       /* FVも下のセクションと同じ細長い列に揃える（中央配置） */
       #fv { max-width: 720px; margin: 0 auto; padding: 48px 0 0; }
       .fv-inner-wrap { max-width: 720px; margin: 0 auto; padding: 0 40px; }
+      /* 縦長FV画像はPCで大きくなりすぎないよう中央に収める */
+      .fv-img-wrap img.fv-main-img { max-width: 480px; margin: 0 auto; }
     }
-    /* ===== 本文サイズを全セクション統一（1rem＝スマホ16px / PC17px）＋少し大きく ===== */
+    /* ===== 本文サイズを全セクション統一＋少し大きく（約18px・上品で読みやすく）===== */
     .fz-text p, .curri-2col .c-text p, .flow-content p,
     .flow-item.flow-lead .flow-content > p, .flow-intro,
     .why-text p, .voice-text, .profile-card > p, .price-text,
-    .tokuten-list li p, .faq-answer, .closing-hero-overlay .closing-text {
-      font-size: 1rem;
+    .tokuten-list li p, .faq-answer, .closing-hero-overlay .closing-text,
+    .step-card p, .learn-block li {
+      font-size: 1.12rem;
+    }
+    /* ===== 見出しサイズの統一＋少し大きく（上品にまとめる）===== */
+    .fz-text h3, .step-card h3, .flow-content h4, .learn-block h3 {
+      font-size: 1.3rem; line-height: 1.55;
+    }
+    .why-head, .profile-meta h3, .curri-head, #closing h2,
+    .flow-item.flow-lead .flow-content h4 {
+      font-size: 1.5rem; line-height: 1.5;
     }
     /* ===== 学べること（詳細）===== */
     #learn { background: var(--white); }
-    .learn-list { max-width: 640px; margin: 0 auto; display: grid; gap: 18px; }
+    .learn-list { max-width: 640px; margin: 0 auto; display: grid; gap: 28px; }
     .learn-block { background: var(--bg-alt); padding: 24px 24px; }
     .learn-block h3 {
       font-size: 1.16rem; color: var(--brown); font-weight: bold;
@@ -1119,7 +1130,7 @@
 <section id="fv">
   <!-- FV画像 -->
   <div class="fv-img-wrap">
-    <img src="img/image-b.png" alt="ポーセラボ 絵の具コース" class="fv-main-img">
+    <img src="img/sp_fv.png" alt="絵の具×デザイン理論で叶える上級ポーセリンアート｜ポーセラボ 絵の具コース" class="fv-main-img">
   </div>
 
   <!-- CTAボタン（画像の下・中央） -->
