@@ -1033,6 +1033,59 @@
     .tokuten-title, .urgency-box h3, .price-box h3, #closing h2 {
       letter-spacing: 0.06em;
     }
+
+    /* =============================================
+       作品ギャラリー（左から流れてくる）
+    ============================================= */
+    #gallery { background: var(--cream); overflow: hidden; }
+    .gallery-lead {
+      text-align: center;
+      font-size: 1.12rem;
+      color: var(--text-mid);
+      line-height: 1.95;
+      margin-bottom: 40px;
+    }
+    /* 横スクロールの窓（両端をふんわりフェード） */
+    .marquee {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+              mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      /* 左から流れてくる（右方向へゆっくり移動）。上品にスロー */
+      animation: marqueeRight 44s linear infinite;
+    }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-item {
+      flex: 0 0 auto;
+      width: 240px;
+      height: 240px;
+      margin-right: 22px;          /* gapではなくmargin：継ぎ目をピッタリ合わせる */
+      background: var(--white);
+      box-shadow: 0 14px 32px rgba(58,66,104,0.16);
+      overflow: hidden;
+    }
+    .marquee-item img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    /* 2セット並べているので半分(-50%)動かすと途切れず無限ループ */
+    @keyframes marqueeRight {
+      from { transform: translateX(-50%); }
+      to   { transform: translateX(0); }
+    }
+    @media (min-width: 760px) {
+      .marquee-item { width: 300px; height: 300px; margin-right: 28px; }
+    }
+    /* 動きを抑える設定の人には静止＋手動スクロール */
+    @media (prefers-reduced-motion: reduce) {
+      .marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+      .marquee-track { animation: none; }
+    }
   </style>
 </head>
 
@@ -1049,6 +1102,7 @@
   <a href="#voices">受講生の声・講師紹介</a>
   <a href="#price">料金・特典</a>
   <a href="#faq">よくあるご質問</a>
+  <a href="#gallery">作品ギャラリー</a>
   <a href="#closing" class="menu-cta">無料相談会に参加する</a>
 </nav>
 
@@ -1898,6 +1952,33 @@
     <a href="ここに申込先URLを入力" class="cta-btn">
       無料相談会に参加する
     </a>
+  </div>
+</section>
+
+
+<!-- ============================================
+     作品ギャラリー（左から流れてくる）
+     ※画像は仮。さおりさんの作品写真に差し替え予定
+============================================ -->
+<section id="gallery">
+  <div class="title-block">
+    <span class="deco-word">Gallery</span>
+    <h2 class="sec-title">作品ギャラリー</h2>
+    <div class="gold-line"></div>
+  </div>
+  <p class="gallery-lead">絵の具で広がる、ひとつひとつの世界。<br>こんな作品が、あなたの手から生まれます。</p>
+
+  <div class="marquee">
+    <div class="marquee-track">
+      <!-- 1セット目（表示・読み上げ対象） -->
+      <div class="marquee-item"><img src="img/curriculum-2.png" alt="（仮）作品例 ※差し替え予定"></div>
+      <div class="marquee-item"><img src="img/curriculum-3.png" alt="（仮）作品例 ※差し替え予定"></div>
+      <div class="marquee-item"><img src="img/curriculum-1.png" alt="（仮）作品例 ※差し替え予定"></div>
+      <!-- 2セット目（途切れなく流すための複製・読み上げ対象外） -->
+      <div class="marquee-item"><img src="img/curriculum-2.png" alt="" aria-hidden="true"></div>
+      <div class="marquee-item"><img src="img/curriculum-3.png" alt="" aria-hidden="true"></div>
+      <div class="marquee-item"><img src="img/curriculum-1.png" alt="" aria-hidden="true"></div>
+    </div>
   </div>
 </section>
 
