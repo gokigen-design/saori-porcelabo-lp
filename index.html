@@ -1086,6 +1086,41 @@
     }
 
     /* =============================================
+       受講形式：あなたの活動を加速させる充実したカリキュラム
+    ============================================= */
+    .accel-wrap { margin-top: 8px; }
+    .accel-title { text-align:center; font-size:1.32rem; color:var(--brown); font-weight:bold; line-height:1.5; margin-bottom:28px; letter-spacing:0.05em; }
+    .accel-list { max-width:620px; margin:0 auto; display:grid; gap:18px; }
+    .accel-item { display:flex; gap:16px; background:var(--bg-alt); padding:22px; align-items:flex-start; }
+    .accel-num { font-family:Georgia,serif; font-size:1.7rem; font-weight:bold; color:var(--accent); line-height:1; flex:none; }
+    .accel-body h4 { font-size:1.14rem; color:var(--brown); font-weight:bold; margin-bottom:8px; line-height:1.55; }
+    .accel-body p { font-size:1.02rem; color:var(--text-mid); line-height:1.85; }
+
+    /* =============================================
+       安心感（あなたでも、できる）
+    ============================================= */
+    #assurance { background: var(--white); }
+    .assurance-lead { text-align:center; font-size:1.12rem; line-height:2; color:var(--text-mid); margin-bottom:36px; }
+    .assurance-lead b { color:var(--accent-dark); }
+    .relief-list { max-width:620px; margin:0 auto; display:grid; gap:18px; }
+    .relief-item { background:var(--bg-alt); padding:24px 22px; }
+    .relief-item h4 { font-size:1.16rem; color:var(--brown); font-weight:bold; margin-bottom:10px; line-height:1.55; border-left:4px solid var(--accent); padding-left:12px; }
+    .relief-item p { font-size:1.02rem; color:var(--text-mid); line-height:1.9; }
+
+    /* =============================================
+       私も同じように悩んでいました（ストーリー）
+    ============================================= */
+    #story { background: var(--bg-alt); }
+    .story-body { max-width:620px; margin:0 auto; }
+    .story-body p { font-size:1.05rem; color:var(--text-mid); line-height:2; margin-bottom:18px; }
+    .story-points { max-width:620px; margin:36px auto 0; background:var(--white); padding:30px 24px; }
+    .story-points-lead { text-align:center; font-size:1.12rem; color:var(--brown); font-weight:bold; line-height:1.7; margin-bottom:20px; }
+    .story-points ol { list-style:none; counter-reset:sp; max-width:480px; margin:0 auto 18px; }
+    .story-points li { counter-increment:sp; position:relative; padding-left:46px; margin-bottom:15px; font-size:1.05rem; color:var(--brown); line-height:1.7; font-weight:bold; }
+    .story-points li::before { content:counter(sp); position:absolute; left:0; top:-2px; width:31px; height:31px; background:var(--accent); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:Georgia,serif; font-size:0.95rem; }
+    .story-points-foot { font-size:1.02rem; color:var(--text-mid); line-height:1.9; text-align:center; }
+
+    /* =============================================
        作品ギャラリー（左から流れてくる）
     ============================================= */
     #gallery { background: var(--cream); overflow: hidden; }
@@ -1157,8 +1192,7 @@
 <nav id="menu-nav">
   <a href="#pain">こんなお悩み</a>
   <a href="#future">受講後の未来</a>
-  <a href="#service">講座でできること</a>
-  <a href="#learn">学べる内容</a>
+  <a href="#service">講座で学ぶこと</a>
   <a href="#why">選ばれる理由</a>
   <a href="#voices">受講生の声・講師紹介</a>
   <a href="#price">料金・特典</a>
@@ -1174,20 +1208,19 @@
     <li><a href="#fv" data-sec="fv"><i>01</i><span>序章</span></a></li>
     <li><a href="#pain" data-sec="pain"><i>02</i><span>お悩み</span></a></li>
     <li><a href="#future" data-sec="future"><i>03</i><span>受講後の未来</span></a></li>
-    <li><a href="#service" data-sec="service"><i>04</i><span>できること</span></a></li>
-    <li><a href="#learn" data-sec="learn"><i>05</i><span>学べる内容</span></a></li>
-    <li><a href="#why" data-sec="why"><i>06</i><span>選ばれる理由</span></a></li>
-    <li><a href="#voices" data-sec="voices"><i>07</i><span>お客様の声</span></a></li>
-    <li><a href="#price" data-sec="price"><i>08</i><span>料金・特典</span></a></li>
-    <li><a href="#faq" data-sec="faq"><i>09</i><span>よくある質問</span></a></li>
+    <li><a href="#service" data-sec="service"><i>04</i><span>学ぶこと</span></a></li>
+    <li><a href="#why" data-sec="why"><i>05</i><span>選ばれる理由</span></a></li>
+    <li><a href="#voices" data-sec="voices"><i>06</i><span>お客様の声</span></a></li>
+    <li><a href="#price" data-sec="price"><i>07</i><span>料金・特典</span></a></li>
+    <li><a href="#faq" data-sec="faq"><i>08</i><span>よくある質問</span></a></li>
+    <li><a href="#closing" data-sec="closing"><i>09</i><span>無料相談</span></a></li>
     <li><a href="#gallery" data-sec="gallery"><i>10</i><span>作品ギャラリー</span></a></li>
-    <li><a href="#closing" data-sec="closing"><i>11</i><span>無料相談</span></a></li>
   </ul>
 </nav>
 <!-- PC右ガターのスクロール表示（現在地カウンター） -->
 <div id="side-progress" aria-hidden="true">
   <span class="sp-label">SCROLL</span>
-  <span class="sp-count"><b>01</b> / 11</span>
+  <span class="sp-count"><b>01</b> / 10</span>
 </div>
 
 <!-- 全体背景レイヤー（PCで中央コラムの背面に表示・5秒ごとにフェード）
@@ -1288,7 +1321,7 @@
 
   <!-- FV直下の作品ギャラリー（「こんな作品が作れる！」のワクワク感）※画像は仮 -->
   <div class="fv-gallery">
-    <p class="fv-gallery-cap">こんな作品が、あなたの手から。</p>
+    <p class="fv-gallery-cap">こんな作品が、あなたも描けるようになります</p>
     <div class="marquee">
       <div class="marquee-track">
         <div class="marquee-item"><img src="img/curriculum-2.png" alt="（仮）作品例 ※差し替え予定"></div>
@@ -1323,7 +1356,7 @@
   </div>
   <div class="title-block">
     <span class="deco-word">Future</span>
-    <h2 class="sec-title">受講後のあなたへ</h2>
+    <h2 class="sec-title">受講後のあなたは、</h2>
     <div class="gold-line"></div>
   </div>
 
@@ -1331,47 +1364,11 @@
 
   <div class="future-zigzag">
 
-    <!-- Future 1：写真=左 / テキスト=右 -->
+    <!-- 01：写真=左 / テキスト=右 -->
     <div class="fz-row">
       <div class="fz-photo">
         <span class="fz-label">Future 1</span>
-        <img src="img/real-1.png" alt="（仮）受講後のイメージ写真1 ※差し替え予定">
-      </div>
-      <div class="fz-text">
-        <h3>絵の具に自信が持て、指導できるようになる</h3>
-        <p>生徒さんのリピート率が上がり、絵の具が自分の強みに変わる。</p>
-      </div>
-    </div>
-
-    <!-- Future 2：写真=右 / テキスト=左 -->
-    <div class="fz-row reverse">
-      <div class="fz-photo">
-        <span class="fz-label">Future 2</span>
-        <img src="img/curriculum-1.png" alt="（仮）受講後のイメージ写真2 ※差し替え予定">
-      </div>
-      <div class="fz-text">
-        <h3>「そんな食器見たことない！」と言われる作品が生まれる</h3>
-        <p>デザイン理論を身につけたとき、他にはない洗練された作品が作れるようになる。</p>
-      </div>
-    </div>
-
-    <!-- Future 3：写真=左 / テキスト=右 -->
-    <div class="fz-row">
-      <div class="fz-photo">
-        <span class="fz-label">Future 3</span>
-        <img src="img/curriculum-2.png" alt="（仮）受講後のイメージ写真3 ※差し替え予定">
-      </div>
-      <div class="fz-text">
-        <h3>「この先生からしか習えない」と選ばれる存在になれる</h3>
-        <p>オリジナルの講座を自ら作り上げ、指名される先生になれる。</p>
-      </div>
-    </div>
-
-    <!-- Future 4：写真=右 / テキスト=左 -->
-    <div class="fz-row reverse">
-      <div class="fz-photo">
-        <span class="fz-label">Future 4</span>
-        <img src="img/curriculum-3.png" alt="（仮）受講後のイメージ写真4 ※差し替え予定">
+        <img src="img/curriculum-3.png" alt="（仮）受講後のイメージ写真 ※差し替え予定">
       </div>
       <div class="fz-text">
         <h3>作れる作品の幅が何倍も広がる</h3>
@@ -1379,11 +1376,11 @@
       </div>
     </div>
 
-    <!-- Future 5：写真=左 / テキスト=右 -->
-    <div class="fz-row">
+    <!-- 02：写真=右 / テキスト=左 -->
+    <div class="fz-row reverse">
       <div class="fz-photo">
-        <span class="fz-label">Future 5</span>
-        <img src="img/saori-2.jpg" alt="（仮）受講後のイメージ写真5 ※差し替え予定">
+        <span class="fz-label">Future 2</span>
+        <img src="img/saori-2.jpg" alt="（仮）受講後のイメージ写真 ※差し替え予定">
       </div>
       <div class="fz-text">
         <h3>苦手だった絵の具で、絵が描けるようになる</h3>
@@ -1391,15 +1388,39 @@
       </div>
     </div>
 
-    <!-- Future 6：写真=右 / テキスト=左 -->
-    <div class="fz-row reverse">
+    <!-- 03：写真=左 / テキスト=右 -->
+    <div class="fz-row">
       <div class="fz-photo">
-        <span class="fz-label">Future 6</span>
-        <img src="img/saori-3.jpg" alt="（仮）受講後のイメージ写真6 ※差し替え予定">
+        <span class="fz-label">Future 3</span>
+        <img src="img/real-1.png" alt="（仮）受講後のイメージ写真 ※差し替え予定">
       </div>
       <div class="fz-text">
-        <h3>目を輝かせながら生徒さんに提案できる先生になれる</h3>
-        <p>あなたのワクワクが教室全体に広がっていく。</p>
+        <h3>絵の具に自信が持て、指導できるようになる</h3>
+        <p>生徒さんのリピート率が上がり、絵の具が自分の強みに変わる。</p>
+      </div>
+    </div>
+
+    <!-- 04：写真=右 / テキスト=左 -->
+    <div class="fz-row reverse">
+      <div class="fz-photo">
+        <span class="fz-label">Future 4</span>
+        <img src="img/curriculum-1.png" alt="（仮）受講後のイメージ写真 ※差し替え予定">
+      </div>
+      <div class="fz-text">
+        <h3>「そんな食器見たことない！」と言われる作品が生まれる</h3>
+        <p>デザイン理論を身につけたとき、他にはない洗練された作品が作れるようになる。</p>
+      </div>
+    </div>
+
+    <!-- 05：写真=左 / テキスト=右 -->
+    <div class="fz-row">
+      <div class="fz-photo">
+        <span class="fz-label">Future 5</span>
+        <img src="img/curriculum-2.png" alt="（仮）受講後のイメージ写真 ※差し替え予定">
+      </div>
+      <div class="fz-text">
+        <h3>「この先生からしか習えない」と選ばれる存在になれる</h3>
+        <p>オリジナルの講座を自ら作り上げ、指名される先生になれる。</p>
       </div>
     </div>
 
@@ -1419,7 +1440,7 @@
   </div>
   <div class="title-block">
     <span class="deco-word">Contents</span>
-    <h2 class="sec-title">ポーセラボ絵の具コースで<br>できること</h2>
+    <h2 class="sec-title">ポーセラボ絵の具コースで<br>学ぶこと</h2>
     <div class="gold-line"></div>
   </div>
 
@@ -1447,7 +1468,7 @@
         <div class="curri-circle"><b>2ヶ月目</b></div>
       </div>
       <div class="curri-content">
-        <h3 class="curri-head">ポーセラーツの技術の融合と応用</h3>
+        <h3 class="curri-head">ポーセラーツの技術との融合と応用</h3>
         <div class="curri-2col">
           <div class="c-photo"><img src="img/curriculum-2.png" alt="（仮）2ヶ月目の作品イメージ ※差し替え予定"></div>
           <div class="c-text"><p>基礎を土台に、表現の幅を広げる技術を習得。転写紙を分解・構成する楽しさと絵の具を組み合わせることで、これまでにない作品が生まれる。絵を描いたことがない人でも描けるようになる。</p></div>
@@ -1478,164 +1499,107 @@
         <h3 class="curri-head">ポーセラーツのためのデザイン理論（続編）</h3>
         <div class="curri-2col">
           <div class="c-photo"><img src="img/real-1.png" alt="（仮）4ヶ月目の作品イメージ ※差し替え予定"></div>
-          <div class="c-text"><p>「センスがないのではなく、ただ知らなかっただけ」と気づける内容。学んだデザイン理論を、あなた自身の作品づくりに落とし込んでいきます。</p></div>
+          <div class="c-text"><p>技術を学ぶだけでは、誰かに届く作品は作れません。尾野さおりの17年のデザイナー経験から導いた「ポーセラーツのためのデザイン理論」を用いて、届く作品づくりと、お教室業に必要なマーケティング＆集客メソッドを学びます。売り込まずに生徒さまが集まる仕組みと方法をお伝えします。</p></div>
         </div>
       </div>
     </div>
 
   </div>
 
-  <!-- 受講形式（カリキュラムの後ろに移動） -->
-  <div class="format-box after-curri">
-    <h3>受講形式</h3>
-    <div class="format-tags">
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/></svg>オンライン勉強会</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="1"/><path d="M16 10l5-3v10l-5-3z"/></svg>動画コンテンツ</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>課題添削</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.9-.9L3 21l1.9-4.1A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg>チャットサポート</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-4 7 4v13"/><path d="M9 21v-5h6v5"/></svg>リアル勉強会 2回</span>
+  <!-- 受講形式 → あなたの活動を加速させる充実したカリキュラム -->
+  <div class="accel-wrap">
+    <h3 class="accel-title">あなたの活動を加速させる<br>充実したカリキュラム</h3>
+    <div class="accel-list">
+      <div class="accel-item">
+        <span class="accel-num">01</span>
+        <div class="accel-body">
+          <h4>オリジナル動画コンテンツ</h4>
+          <p>通勤や家事をしながら聞いたり、空き時間に学びを進めることができます。</p>
+        </div>
+      </div>
+      <div class="accel-item">
+        <span class="accel-num">02</span>
+        <div class="accel-body">
+          <h4>講座は全て動画・アーカイブあり</h4>
+          <p>何度でも見返せるので、わからない部分や復習したいところを安心して学べます。</p>
+        </div>
+      </div>
+      <div class="accel-item">
+        <span class="accel-num">03</span>
+        <div class="accel-body">
+          <h4>お教室業に必要なマーケティング＆集客勉強会</h4>
+          <p>スキルを磨いても生徒さまは来ません。売り込まずに生徒さまが集まる仕組みと方法をお伝えします。</p>
+        </div>
+      </div>
+      <div class="accel-item">
+        <span class="accel-num">04</span>
+        <div class="accel-body">
+          <h4>2回のリアル勉強会</h4>
+          <p>講座中、2回のリアル勉強会があります。実際に手元を見て丁寧に指導させていただきます。</p>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <div class="flow-wrap" style="margin-top:56px;">
-    <div class="title-block">
-      <span class="deco-word">Flow</span>
-      <h2 class="sec-title">受講の流れ</h2>
-      <div class="gold-line"></div>
-    </div>
 
-    <div class="flow-timeline">
 
-      <div class="flow-item flow-lead">
-        <div class="flow-left">
-          <div class="flow-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="16" rx="2"/><rect x="9" y="3" width="6" height="3" rx="1"/><path d="M8.5 13l2.2 2.2 4-4.4"/></svg>
-          </div>
-        </div>
-        <div class="flow-content">
-          <h4>まずは無料相談会・お申し込み</h4>
-          <p>無料相談会に参加し、納得できたらお申し込み。お手続き後、進め方をご案内します。</p>
-          <p class="flow-intro">相談会では、4ヶ月の流れ・進め方・料金プランまで、あなたの状況に合わせて丁寧にご説明します。「自分にできるかな」という不安も、ここで解消できます。</p>
-        </div>
-      </div>
 
-      <div class="flow-item">
-        <div class="flow-left">
-          <div class="flow-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M10.5 8.5l4 2.5-4 2.5z"/></svg>
-          </div>
-        </div>
-        <div class="flow-content">
-          <h4>学習スタート（即日）</h4>
-          <p>特典動画と学習サイトは、お申し込み後すぐに視聴可能。開講を待たずに今日から始められます。</p>
-        </div>
-      </div>
 
-      <div class="flow-item">
-        <div class="flow-left">
-          <div class="flow-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.7-1 1.3-2-.4-1 .2-2 1.2-2H17a4 4 0 0 0 4-4c0-4.5-4-8-9-8z"/><circle cx="7.5" cy="11.5" r="1"/><circle cx="10" cy="7.8" r="1"/><circle cx="14.5" cy="7.8" r="1"/></svg>
-          </div>
-        </div>
-        <div class="flow-content">
-          <h4>1ヶ月目：絵の具の基礎</h4>
-          <p>絵の具の性質・使い方・調整を本質から理解。「なんとなく」から卒業します。</p>
-        </div>
-      </div>
-
-      <div class="flow-item">
-        <div class="flow-left">
-          <div class="flow-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg>
-          </div>
-        </div>
-        <div class="flow-content">
-          <h4>2ヶ月目：技術の融合と応用</h4>
-          <p>転写紙と絵の具を組み合わせ、これまでにない作品づくりへ。表現の幅が広がります。</p>
-        </div>
-      </div>
-
-      <div class="flow-item">
-        <div class="flow-left">
-          <div class="flow-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.3 1 2.5h6c0-1.2.3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg>
-          </div>
-        </div>
-        <div class="flow-content">
-          <h4>3〜4ヶ月目：デザイン理論</h4>
-          <p>独自のデザイン理論で、見ている人の心に届く作品を体系的に学びます。</p>
-        </div>
-      </div>
-
-      <div class="flow-item">
-        <div class="flow-left">
-          <div class="flow-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-4 9 4-9 4-9-4z"/><path d="M7 11v4c0 1.1 2.2 2 5 2s5-.9 5-2v-4"/><path d="M21 9v5"/></svg>
-          </div>
-        </div>
-        <div class="flow-content">
-          <h4>修了・指導スタート</h4>
-          <p>学びを自分のレッスンに落とし込み、指導をスタート。絵の具があなたの強みになります。</p>
-        </div>
-      </div>
-
-    </div>
+<!-- ============================================
+     安心感（あなたでも、できる）
+============================================ -->
+<section id="assurance">
+  <div class="title-block">
+    <span class="deco-word">Relief</span>
+    <h2 class="sec-title">あなたでも、できる。</h2>
+    <div class="gold-line"></div>
   </div>
-
-  <div style="margin-top:32px;" class="cta-wrap">
-    <a href="ここに申込先URLを入力" class="cta-btn">
-      無料相談会に参加する
-    </a>
+  <p class="assurance-lead">ポーセラボは、<br>技術力UP×デザイン理論を身につけて<br><b>「自信を持って」「好きを仕事に」</b>する<br>4ヶ月のプログラムです。<br><br>もう「自信がない」と悩まなくてもいい、安心の場。<br>そんな環境をご用意しています。</p>
+  <div class="relief-list">
+    <div class="relief-item">
+      <h4>わからないを解決！安心して質問できる環境</h4>
+      <p>わからないは、恥ずかしいことではありません。わからないは、成長のはじまり。どんなことでも質問OKな環境で、わからないを解決してくださいね。</p>
+    </div>
+    <div class="relief-item">
+      <h4>オンライン受講</h4>
+      <p>オンライン受講で自宅から学べます。当日参加できなくても動画を見て学べますので、ご自身のペースで参加ください。フルタイムのお仕事をされている方も、忙しい子育てママも、ご家族の介護を任されている方も、好きに没頭できる時間を大切にしてくださいね。</p>
+    </div>
+    <div class="relief-item">
+      <h4>リアル勉強会</h4>
+      <p>やっぱりリアルは最高！同じ趣味を持った仲間と出会える機会は、人生においてとても貴重です。講座中に2回、リアルで学べる機会があります。</p>
+    </div>
   </div>
 </section>
 
 
 <!-- ============================================
-     4.5 学べること（詳細）※内容は仮・要差し替え
+     私も同じように悩んでいました（ストーリー）
 ============================================ -->
-<section id="learn">
+<section id="story">
   <div class="title-block">
-    <span class="deco-word">Learn</span>
-    <h2 class="sec-title">この講座で学べること</h2>
+    <span class="deco-word">Story</span>
+    <h2 class="sec-title">私も同じように<br>悩んでいました</h2>
     <div class="gold-line"></div>
   </div>
-  <div class="learn-list">
-    <div class="learn-block">
-      <h3>1. 絵の具の基礎技術</h3>
-      <ul>
-        <li>絵の具の性質・種類の理解</li>
-        <li>水・オイルの調整と濃度のコントロール</li>
-        <li>筆の選び方・使い方</li>
-        <li>ムラなく美しく塗るコツ</li>
-        <li>焼成の温度・注意点</li>
-      </ul>
-    </div>
-    <div class="learn-block">
-      <h3>2. 表現の幅を広げる応用</h3>
-      <ul>
-        <li>転写紙の分解・再構成のテクニック</li>
-        <li>転写紙と絵の具の組み合わせ方</li>
-        <li>初心者でも描けるモチーフの描き方</li>
-        <li>立体感・グラデーションの表現</li>
-      </ul>
-    </div>
-    <div class="learn-block">
-      <h3>3. ポーセラーツのためのデザイン理論</h3>
-      <ul>
-        <li>配色の基本と組み立て方</li>
-        <li>構図・余白の取り方</li>
-        <li>作品に「ストーリー」を持たせる考え方</li>
-        <li>見ている人の心に届く作品設計</li>
-      </ul>
-    </div>
-    <div class="learn-block">
-      <h3>4. 講師として伝える力</h3>
-      <ul>
-        <li>オリジナルレッスンの作り方</li>
-        <li>生徒さんへの伝え方・指導のコツ</li>
-        <li>「選ばれる教室」になる作品の見せ方</li>
-      </ul>
-    </div>
+  <div class="story-body">
+    <p>ポーセラーツに魅了され、当時OLだった私は、資格を取得して会社を辞め、ポーセラーツの教室を始めました。</p>
+    <p>ワクワクした気持ちで始めたはずの教室。でも、現実はそう甘くはありませんでした。</p>
+    <p>「資格があれば教えられる」と思っていたのに、実際は転写紙を貼る技術以上のことが自分にはできない。資格はあるのに自信がない。教える自信もないという状態だったのです。</p>
+    <p>必死に手探りで続けていましたが、ある程度作品を作られた生徒様は、次々と教室を離れていってしまいました。</p>
+    <p>大好きなポーセラーツを仕事にしたのに、「このままでは続けていけないかもしれない」。</p>
+    <p>そう気づいたとき、やみくもにスキルアップレッスンを受けたり、資格を増やすことをやめました。</p>
+    <p>私に本当に必要だったのは、絵の具や特殊技法を本質から理解し、実践に活かせる力。そして、自信を持って生徒様に届ける力でした。</p>
+    <p>そこに時間と自己投資を注いだ結果、今では「また来たい」と言っていただける教室になりました。笑顔があふれる場所を、やっとつくれるようになったのです。</p>
+  </div>
+  <div class="story-points">
+    <p class="story-points-lead">13年教室づくりをしてきて気付いた、<br>大切なことが3つあります。</p>
+    <ol>
+      <li>本質から学んだ技術を磨くこと</li>
+      <li>ちゃんと生徒様に届くデザインを作ること</li>
+      <li>売り込まずに、自然と生徒様が集まる仕組みを作ること</li>
+    </ol>
+    <p class="story-points-foot">これが、今より作品づくりを楽しみながら、周りの人に笑顔を届けられる先生になるための法則です。</p>
   </div>
 </section>
 
@@ -1658,12 +1622,12 @@
 
   <div class="why-box">
     <div class="why-diamond"><span>01</span></div>
-    <h3 class="why-head">技術とデザイン、両方が学べる講座</h3>
+    <h3 class="why-head">技術とデザイン、教室運営が<br>学べる唯一の講座</h3>
     <div class="why-imgs">
       <img class="img-main" src="img/saori-2.jpg" alt="（仮）講師 尾野さおり ※差し替え予定">
     </div>
     <div class="why-text">
-      <p>ポーセラーツ講師歴13年・1万人以上を指導してきた実績に加え、美大卒・デザイナー歴20年。絵の具の技術からデザイン理論まで、両方を体系的に教えられるのはさおりだけ。だから「作品の上達」と「指導する力」を、同時に手に入れられます。</p>
+      <p>ポーセラーツ講師歴13年・累計1万人以上を指導してきた実績に加え、美大卒・デザイナー歴20年。絵の具の技術からデザイン理論、そしてポーセラーツ教室に必要な運営ノウハウまで、これらを一貫して伝えられる講座は、他にありません。だからこそ、ポーセラーツ講師として必要なスキルを、たった4ヶ月でぎゅっと濃縮して学ぶことができる、唯一無二の講座になっています。</p>
     </div>
   </div>
 
@@ -1674,7 +1638,7 @@
       <img class="img-main" src="img/curriculum-1.png" alt="（仮）作品イメージ ※差し替え予定">
     </div>
     <div class="why-text">
-      <p>才能や感覚に頼らず、理論で再現できるメソッドだから、誰でも上達できます。「センスがないのではなく、ただ知らなかっただけ」と気づけたとき、作品づくりが驚くほど楽しくなる。今までの「できない」が「できた」に変わっていきます。</p>
+      <p>才能や感覚に頼らず、理論で再現できるメソッドだから、誰でも上達できます。センスは、知識で磨けるもの。学べば必ず身につきます。今まで「できない」と思っていたことが、「できた」に変わっていく。作品づくりが、驚くほど楽しくなっていきます！</p>
     </div>
   </div>
 
@@ -1748,6 +1712,7 @@
             <li>ポーセラーツ講師歴13年</li>
             <li>美大卒・デザイナー歴20年</li>
             <li>1万人以上を指導・75名以上のインストラクターを輩出</li>
+            <li>リピート率9割以上の満席教室</li>
             <li>メディア掲載多数</li>
           </ul>
         </div>
@@ -1757,9 +1722,13 @@
       そんなときに出会ったのが、ポーセラーツでした。雑誌で見かけた一枚の作品に雷に打たれたような衝撃を受け、気づけばのめり込んでいました。これに人生をかけようと、思い切って会社を辞め、講師の道へ。<br><br>
       でも、資格を取っても絵の具は思い通りにならない。指導する自信もまるでありませんでした。だから一から学び直し、デザイナーとしての経験をポーセラーツで活かせるよう理論化することで、ようやく自分の作品と指導に自信が持てるようになりました。<br><br>
       今では1万人以上を指導し、75名以上のインストラクターを輩出。メディアにも取り上げていただけるようになりました。<br><br>
-      <strong>技術もセンスも、「ないんじゃない」。ただ知らなかっただけ。あなたにも必ずできる瞬間が、きます。</strong>
+      <strong>技術もセンスも、「ないんじゃない」。ただ知らなかっただけ。<br>あなたにも必ずできる瞬間が、きます。</strong>
     </p>
     </div>
+  </div>
+
+  <div class="cta-wrap" style="margin-top:40px;">
+    <a href="ここに申込先URLを入力" class="cta-btn">無料相談会に参加する</a>
   </div>
 </section>
 
@@ -1791,8 +1760,8 @@
   <!-- 特典合計額 -->
   <div class="tokuten-total">
     <svg class="gift-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13"/><path d="M3 12h18M12 8v13M12 8C12 5 10 3 8 3a2 2 0 0 0 0 4M12 8c0-3 2-5 4-5a2 2 0 0 1 0 4"/></svg>
-    <p class="total-label">お申し込み特典 総額</p>
-    <p class="total-value">7<span class="unit">万円</span>相当<span class="plus">以上</span></p>
+    <p class="total-label">早期お申込み特典 総額</p>
+    <p class="total-value">8<span class="unit">万円</span>相当</p>
     <p class="total-sub">が、<b>無料</b>でついてきます</p>
   </div>
 
@@ -1818,7 +1787,7 @@
     <li>
       <div class="tok-num">03</div>
       <div class="tok-body">
-        <div class="tok-head"><strong>サラハスタイル オリジナル動画レッスン（5本）</strong><span class="tok-value">4万円相当</span></div>
+        <div class="tok-head"><strong>絵の具コース動画レッスン3本プレゼント</strong><span class="tok-value">5万円相当</span></div>
         <p>お申し込み後すぐに視聴スタートできます。</p>
       </div>
     </li>
@@ -1827,6 +1796,13 @@
       <div class="tok-body">
         <div class="tok-head"><strong>コンテンツ・学習サイト即日開放</strong></div>
         <p>お申し込み後すぐに閲覧可能。開講を待たずに、今日から学びをはじめられます。</p>
+      </div>
+    </li>
+    <li>
+      <div class="tok-num">05</div>
+      <div class="tok-body">
+        <div class="tok-head"><strong>卒業後も安心サポート</strong></div>
+        <p>講座後も、学びを続けられる環境へのチケットをプレゼント。</p>
       </div>
     </li>
   </ul>
@@ -2033,7 +2009,7 @@
   <div class="closing-hero">
     <img class="closing-hero-img" src="img/saori-2.jpg" alt="（仮）尾野さおり ※差し替え予定">
     <div class="closing-hero-overlay">
-      <p class="closing-text">「できない」や「ひらめかない」は、才能やセンスのせいではありません。ただ、学ぶ機会がなかっただけ。<br><br>技術に自信を持ち、アイデアを広げる方法を、一緒に学びましょう。自分も生徒さんも笑顔があふれる教室が叶うヒントが、きっとここにあります。</p>
+      <p class="closing-text">「できない」「ひらめかない」は、才能やセンスのせいではありません。ただ、これまで学ぶ機会がなかっただけです。<br><br>技術に自信を持ち、アイデアを広げる方法を一緒に学んでいきましょう。<br><br>「いつかやろう」「〇〇が落ち着いたら」と、あなたが動き出すのに完璧なタイミングなんてきません。自分のやりたいことを後回しにできるほど、人生は長くありません。<br><br>ならば時間を効率よく使い、確かな成果を出す。あなたに寄り添いながら、ポーセラーツが生きがいになるよう心を込めてサポートさせていただきます。<br><br>あなたも生徒様も、笑顔があふれる教室が叶うヒントが、きっとここにあります。</p>
     </div>
   </div>
 
@@ -2055,7 +2031,7 @@
     <h2 class="sec-title">作品ギャラリー</h2>
     <div class="gold-line"></div>
   </div>
-  <p class="gallery-lead">絵の具で広がる、ひとつひとつの世界。<br>こんな作品が、あなたの手から生まれます。</p>
+  <p class="gallery-lead">絵の具で広がる、無限のポーセリンアートの世界。<br>あなたも、こんな作品が作れるようになります。</p>
 
   <div class="marquee">
     <div class="marquee-track">
