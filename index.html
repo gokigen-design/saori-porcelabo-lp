@@ -1122,10 +1122,14 @@
     #assurance { background: var(--white); }
     .assurance-lead { text-align:center; font-size:1.12rem; line-height:2; color:var(--text-mid); margin-bottom:36px; }
     .assurance-lead b { color:var(--accent-dark); }
-    .relief-list { max-width:620px; margin:0 auto; display:grid; gap:18px; }
-    .relief-item { background:var(--bg-alt); padding:24px 22px; }
-    .relief-item h4 { font-size:1.16rem; color:var(--brown); font-weight:bold; margin-bottom:10px; line-height:1.55; border-left:4px solid var(--accent); padding-left:12px; }
-    .relief-item p { font-size:1.02rem; color:var(--text-mid); line-height:1.9; }
+    /* ポーセラボでできること：写真付きカード */
+    .env-list { max-width:600px; margin:0 auto; display:grid; gap:26px; }
+    .env-item { background:var(--bg-alt); border-radius:2px; overflow:hidden; box-shadow:0 10px 28px rgba(58,66,104,.10); }
+    .env-photo { width:100%; aspect-ratio:3/2; object-fit:cover; object-position:center top; display:block; }
+    .env-photo.mid { object-position:center 58%; }
+    .env-body { padding:20px 22px 24px; }
+    .env-body h4 { font-size:1.16rem; color:var(--brown); font-weight:bold; line-height:1.55; margin-bottom:10px; border-left:4px solid var(--accent); padding-left:12px; }
+    .env-body p { font-size:1.02rem; color:var(--text-mid); line-height:1.9; }
 
     /* =============================================
        私も同じように悩んでいました（ストーリー）
@@ -1593,40 +1597,6 @@
 
   </div>
 
-  <!-- 受講形式 → あなたの活動を加速させる充実したカリキュラム -->
-  <div class="accel-wrap">
-    <h3 class="accel-title">あなたの活動を加速させる<br>充実したカリキュラム</h3>
-    <div class="accel-list">
-      <div class="accel-item">
-        <span class="accel-num">01</span>
-        <div class="accel-body">
-          <h4>オリジナル動画コンテンツ</h4>
-          <p>通勤や家事をしながら聞いたり、空き時間に学びを進めることができます。</p>
-        </div>
-      </div>
-      <div class="accel-item">
-        <span class="accel-num">02</span>
-        <div class="accel-body">
-          <h4>講座は全て動画・アーカイブあり</h4>
-          <p>何度でも見返せるので、わからない部分や復習したいところを安心して学べます。</p>
-        </div>
-      </div>
-      <div class="accel-item">
-        <span class="accel-num">03</span>
-        <div class="accel-body">
-          <h4>お教室業に必要なマーケティング＆集客勉強会</h4>
-          <p>スキルを磨いても生徒さまは来ません。売り込まずに生徒さまが集まる仕組みと方法をお伝えします。</p>
-        </div>
-      </div>
-      <div class="accel-item">
-        <span class="accel-num">04</span>
-        <div class="accel-body">
-          <h4>2回のリアル勉強会</h4>
-          <p>講座中、2回のリアル勉強会があります。実際に手元を見て丁寧に指導させていただきます。</p>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
 
@@ -1638,23 +1608,39 @@
 ============================================ -->
 <section id="assurance">
   <div class="title-block">
-    <span class="deco-word">Relief</span>
-    <h2 class="sec-title">あなたでも、できる。</h2>
+    <span class="deco-word">Lesson</span>
+    <h2 class="sec-title">ポーセラボで、<br>できること</h2>
     <div class="gold-line"></div>
   </div>
-  <p class="assurance-lead">ポーセラボは、<br>技術力UP×デザイン理論を身につけて<br><b>「自信を持って」「好きを仕事に」</b>する<br>4ヶ月のプログラムです。<br><br>もう「自信がない」と悩まなくてもいい、安心の場。<br>そんな環境をご用意しています。</p>
-  <div class="relief-list">
-    <div class="relief-item">
-      <h4>わからないを解決！安心して質問できる環境</h4>
-      <p>わからないは、恥ずかしいことではありません。わからないは、成長のはじまり。どんなことでも質問OKな環境で、わからないを解決してくださいね。</p>
+  <p class="assurance-lead">ポーセラボは、技術力UP×デザイン理論を身につけて<br><b>「自信を持って」「好きを仕事に」</b>する4ヶ月のプログラム。<br><br>もう「自信がない」と悩まなくてもいい、安心の場。<br>こんな環境で、あなたのペースで学べます。</p>
+  <div class="env-list">
+    <div class="env-item">
+      <img class="env-photo" loading="lazy" src="img/env-online.jpg" alt="オンラインで学ぶ尾野さおり">
+      <div class="env-body">
+        <h4>オンライン受講｜自分のペースで</h4>
+        <p>通勤や家事をしながら、自宅でご自身のペースで。当日参加できなくても、講座はすべて動画・アーカイブで何度でも見返せるので安心です。フルタイムのお仕事の方も、子育て中の方も、ご家族の介護をされている方も、好きに没頭できる時間を大切に。</p>
+      </div>
     </div>
-    <div class="relief-item">
-      <h4>オンライン受講</h4>
-      <p>オンライン受講で自宅から学べます。当日参加できなくても動画を見て学べますので、ご自身のペースで参加ください。フルタイムのお仕事をされている方も、忙しい子育てママも、ご家族の介護を任されている方も、好きに没頭できる時間を大切にしてくださいね。</p>
+    <div class="env-item">
+      <img class="env-photo" loading="lazy" src="img/env-support.jpg" alt="手元を見ながら丁寧に指導する様子">
+      <div class="env-body">
+        <h4>わからないを解決｜質問できる環境</h4>
+        <p>わからないは、恥ずかしいことではなく、成長のはじまり。どんなことでも質問OKな環境です。実際に手元を見ながら、最後まで丁寧に伴走します。</p>
+      </div>
     </div>
-    <div class="relief-item">
-      <h4>リアル勉強会</h4>
-      <p>やっぱりリアルは最高！同じ趣味を持った仲間と出会える機会は、人生においてとても貴重です。講座中に2回、リアルで学べる機会があります。</p>
+    <div class="env-item">
+      <img class="env-photo mid" loading="lazy" src="img/env-marketing.jpg" alt="マーケティング・集客勉強会の様子">
+      <div class="env-body">
+        <h4>マーケティング＆集客勉強会</h4>
+        <p>スキルを磨いても、生徒さまは自然には来ません。売り込まずに生徒さまが集まる仕組みと方法まで、お教室業に必要なノウハウをお伝えします。</p>
+      </div>
+    </div>
+    <div class="env-item">
+      <img class="env-photo" loading="lazy" src="img/env-real.jpg" alt="リアル勉強会で仲間と学ぶ様子">
+      <div class="env-body">
+        <h4>2回のリアル勉強会</h4>
+        <p>やっぱりリアルは最高。同じ趣味を持った仲間と出会える、人生でとても貴重な機会です。講座中に2回、実際に会って学べる場をご用意しています。</p>
+      </div>
     </div>
   </div>
 </section>
