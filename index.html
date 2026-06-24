@@ -316,8 +316,7 @@
     .pain-solve b { color: var(--gold); font-size: 1.74rem; }
     /* セクションをつなぐブリッジ（引用風＋▼） */
     .bridge { max-width:560px; margin:0 auto; }
-    .bridge-quote { position:relative; background:var(--white); border:1px solid rgba(136,144,204,.25); border-radius:4px; padding:26px 22px 22px; box-shadow:0 8px 22px rgba(58,66,104,.08); }
-    .bridge-quote::before { content:"\201C"; position:absolute; top:2px; left:14px; font-family:Georgia,serif; font-size:3rem; color:rgba(136,144,204,.3); line-height:1; }
+    .bridge-quote { position:relative; background:var(--white); border:1px solid rgba(136,144,204,.25); border-radius:4px; padding:24px 22px 22px; box-shadow:0 8px 22px rgba(58,66,104,.08); }
     .bridge-q1 { text-align:center; font-size:1.1rem; font-weight:bold; color:var(--brown); line-height:1.7; }
     .bridge-q2 { text-align:center; font-size:.98rem; color:var(--text-mid); line-height:1.85; margin-top:8px; }
     .bridge-arrow { display:flex; justify-content:center; margin:14px 0 0; }
@@ -1178,6 +1177,9 @@
        作品ギャラリー（左から流れてくる）
     ============================================= */
     #gallery { background: var(--cream); overflow: hidden; }
+    /* 作品タイル敷き詰め（3列） */
+    .gallery-grid { max-width:600px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+    .gallery-grid img { width:100%; aspect-ratio:1; object-fit:cover; display:block; border-radius:2px; box-shadow:0 4px 12px rgba(58,66,104,.12); }
     /* FV直下の作品ギャラリー（ワクワク感を伝える） */
     .fv-gallery { background: var(--white); overflow: hidden; padding: 4px 0 44px; }
     .fv-gallery-cap {
@@ -1196,25 +1198,28 @@
       margin-bottom: 40px;
     }
     /* 横スクロールの窓（両端をふんわりフェード） */
+    /* 通常は自動スクロール（JS）、指で触れると手動スクロールできる横スクロール領域 */
     .marquee {
       position: relative;
       width: 100%;
-      overflow: hidden;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch;
       -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
               mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
     }
+    .marquee::-webkit-scrollbar { display: none; }
     .marquee-track {
       display: flex;
       width: max-content;
-      /* 左から流れてくる（右方向へゆっくり移動）。上品にスロー */
-      animation: marqueeRight 44s linear infinite;
     }
-    .marquee:hover .marquee-track { animation-play-state: paused; }
     .marquee-item {
       flex: 0 0 auto;
       width: 240px;
       height: 240px;
-      margin-right: 22px;          /* gapではなくmargin：継ぎ目をピッタリ合わせる */
+      margin-right: 11px;          /* 隙間を半分に（22→11） */
       background: var(--white);
       box-shadow: 0 14px 32px rgba(58,66,104,0.16);
       overflow: hidden;
@@ -1223,18 +1228,8 @@
       width: 100%; height: 100%;
       object-fit: cover; display: block;
     }
-    /* 2セット並べているので半分(-50%)動かすと途切れず無限ループ */
-    @keyframes marqueeRight {
-      from { transform: translateX(-50%); }
-      to   { transform: translateX(0); }
-    }
     @media (min-width: 760px) {
-      .marquee-item { width: 300px; height: 300px; margin-right: 28px; }
-    }
-    /* 動きを抑える設定の人には静止＋手動スクロール */
-    @media (prefers-reduced-motion: reduce) {
-      .marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
-      .marquee-track { animation: none; }
+      .marquee-item { width: 300px; height: 300px; margin-right: 14px; }
     }
   </style>
 </head>
@@ -1368,6 +1363,28 @@
     });
   });
 
+  /* 作品ギャラリー：通常は自動スクロール、指で触れたら手動スクロール（離すと自動に戻る） */
+  document.addEventListener('DOMContentLoaded', function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('.marquee').forEach(function (m) {
+      if (!m.querySelector('.marquee-track')) return;
+      var paused = !!reduce, timer = null;
+      function step() {
+        if (!paused) {
+          m.scrollLeft += 0.5;
+          var half = m.scrollWidth / 2;
+          if (half > 0 && m.scrollLeft >= half) m.scrollLeft -= half;
+        }
+        requestAnimationFrame(step);
+      }
+      function pause() { paused = true; if (timer) { clearTimeout(timer); timer = null; } }
+      function resume() { if (reduce) return; if (timer) clearTimeout(timer); timer = setTimeout(function () { paused = false; }, 1500); }
+      ['pointerdown', 'touchstart', 'mousedown', 'wheel'].forEach(function (ev) { m.addEventListener(ev, pause, { passive: true }); });
+      ['pointerup', 'pointercancel', 'touchend', 'touchcancel', 'mouseleave'].forEach(function (ev) { m.addEventListener(ev, resume, { passive: true }); });
+      requestAnimationFrame(step);
+    });
+  });
+
 </script>
 
 
@@ -1410,7 +1427,7 @@
   <div class="bridge" style="padding:8px 20px 48px;">
     <div class="bridge-quote">
       <p class="bridge-q1">「私にも、こんな作品が作れたら…」</p>
-      <p class="bridge-q2">そう憧れる一方で、<br>こんな迷いはありませんか？</p>
+      <p class="bridge-q2">そう憧れる一方で、<br>こんなお悩み、ありませんか？</p>
     </div>
     <div class="bridge-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A870" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M5 13l7 7 7-7"/></svg></div>
   </div>
@@ -1421,7 +1438,6 @@
      2. 悩み・共感
 ============================================ -->
 <section id="pain">
-  <h2 class="pain-heading">こんなお悩み、<br>ありませんか？</h2>
   <div class="pain-list">
     <div class="pain-item">
       <span class="pain-num">01</span>
@@ -1865,6 +1881,59 @@
 
 
 <!-- ============================================
+     受講の流れ（スリム版・申込→学習スタート→修了）
+============================================ -->
+<section id="flow">
+  <div class="title-block">
+    <span class="deco-word">Flow</span>
+    <h2 class="sec-title">受講の流れ</h2>
+    <div class="gold-line"></div>
+  </div>
+
+  <div class="flow-timeline">
+
+    <div class="flow-item flow-lead">
+      <div class="flow-left">
+        <div class="flow-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="16" rx="2"/><rect x="9" y="3" width="6" height="3" rx="1"/><path d="M8.5 13l2.2 2.2 4-4.4"/></svg>
+        </div>
+      </div>
+      <div class="flow-content">
+        <h4>まずは無料相談会・お申し込み</h4>
+        <p>無料相談会に参加し、納得できたらお申し込み。お手続き後、進め方をご案内します。</p>
+        <p class="flow-intro">相談会では、4ヶ月の流れ・進め方・料金プランまで、あなたの状況に合わせて丁寧にご説明します。「自分にできるかな」という不安も、ここで解消できます。</p>
+      </div>
+    </div>
+
+    <div class="flow-item">
+      <div class="flow-left">
+        <div class="flow-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M10.5 8.5l4 2.5-4 2.5z"/></svg>
+        </div>
+      </div>
+      <div class="flow-content">
+        <h4>学習スタート（即日）</h4>
+        <p>特典動画と学習サイトは、お申し込み後すぐに視聴可能。開講を待たずに今日から始められます。そこから4ヶ月のカリキュラムを進めていきます。</p>
+      </div>
+    </div>
+
+    <div class="flow-item">
+      <div class="flow-left">
+        <div class="flow-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-4 9 4-9 4-9-4z"/><path d="M7 11v4c0 1.1 2.2 2 5 2s5-.9 5-2v-4"/><path d="M21 9v5"/></svg>
+        </div>
+      </div>
+      <div class="flow-content">
+        <h4>修了・指導スタート</h4>
+        <p>学びを自分のレッスンに落とし込み、指導をスタート。絵の具があなたの強みになります。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================
      7. 料金・申込条件
 ============================================ -->
 <section id="price">
@@ -2164,23 +2233,20 @@
   </div>
   <p class="gallery-lead">絵の具で広がる、無限のポーセリンアートの世界。<br>あなたも、こんな作品が作れるようになります。</p>
 
-  <div class="marquee">
-    <div class="marquee-track">
-      <!-- 1セット目（表示・読み上げ対象） -->
-      <div class="marquee-item"><img src="img/gallery1.jpg" alt="絵の具で描いたブルーラスターのカップ＆ソーサー"></div>
-      <div class="marquee-item"><img src="img/gallery2.jpg" alt="モネの睡蓮を描いた淡い色合いのプレート"></div>
-      <div class="marquee-item"><img src="img/gallery3.jpg" alt="ミモザのドレスを描いた額装作品"></div>
-      <div class="marquee-item"><img src="img/gallery4.jpg" alt="桜を描いたオーナメントボックス"></div>
-      <div class="marquee-item"><img src="img/gallery5.jpg" alt="マリン柄のカップ＆ソーサー"></div>
-      <div class="marquee-item"><img src="img/gallery6.jpg" alt="水彩のような風合いのマグカップ"></div>
-      <!-- 2セット目（途切れなく流すための複製・読み上げ対象外） -->
-      <div class="marquee-item"><img src="img/gallery1.jpg" alt="" aria-hidden="true"></div>
-      <div class="marquee-item"><img src="img/gallery2.jpg" alt="" aria-hidden="true"></div>
-      <div class="marquee-item"><img src="img/gallery3.jpg" alt="" aria-hidden="true"></div>
-      <div class="marquee-item"><img src="img/gallery4.jpg" alt="" aria-hidden="true"></div>
-      <div class="marquee-item"><img src="img/gallery5.jpg" alt="" aria-hidden="true"></div>
-      <div class="marquee-item"><img src="img/gallery6.jpg" alt="" aria-hidden="true"></div>
-    </div>
+  <!-- タイル状に敷き詰め（3列×4段） -->
+  <div class="gallery-grid">
+    <img loading="lazy" src="img/gallery1.jpg" alt="絵の具で描いたブルーラスターのカップ＆ソーサー">
+    <img loading="lazy" src="img/gallery2.jpg" alt="モネの睡蓮を描いた淡い色合いのプレート">
+    <img loading="lazy" src="img/gallery3.jpg" alt="ミモザのドレスを描いた額装作品">
+    <img loading="lazy" src="img/gallery4.jpg" alt="桜を描いたオーナメントボックス">
+    <img loading="lazy" src="img/gallery5.jpg" alt="マリン柄のカップ＆ソーサー">
+    <img loading="lazy" src="img/gallery6.jpg" alt="水彩のような風合いのマグカップ">
+    <img loading="lazy" src="img/gallery9.jpg" alt="メリーゴーランドを描いた作品">
+    <img loading="lazy" src="img/gallery10.jpg" alt="チューリップを描いた小皿">
+    <img loading="lazy" src="img/gallery11.jpg" alt="オリエンタルフラワーのプレート">
+    <img loading="lazy" src="img/gallery12.jpg" alt="レモンとリボンを描いたプレート">
+    <img loading="lazy" src="img/gallery7.jpg" alt="北欧風のグレーの小皿">
+    <img loading="lazy" src="img/gallery8.jpg" alt="水彩のプレート">
   </div>
 </section>
 
