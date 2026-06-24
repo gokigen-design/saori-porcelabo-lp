@@ -1141,6 +1141,28 @@
     .story-points-foot { font-size:1.02rem; color:var(--text-mid); line-height:1.9; text-align:center; }
 
     /* =============================================
+       受講生の声：スクショの壁（静止・もっと見る）
+    ============================================= */
+    .ss-wall { max-width: 600px; margin: 12px auto 0; }
+    .ss-wall-lead { text-align:center; font-size:1.2rem; color:var(--brown); font-weight:bold; line-height:1.55; letter-spacing:.04em; margin-bottom:6px; }
+    .ss-wall-sub { text-align:center; font-size:.82rem; color:var(--text-light); margin-bottom:22px; }
+    .ss-clip { position:relative; max-height:560px; overflow:hidden; transition:max-height .45s ease; }
+    .ss-clip.open { max-height:14000px; }
+    .ss-cols { column-count:2; column-gap:10px; }
+    .ss-shot { width:100%; display:block; margin:0 0 10px; border-radius:4px; box-shadow:0 4px 14px rgba(58,66,104,.10); break-inside:avoid; }
+    .ss-fade { position:absolute; left:0; right:0; bottom:0; height:130px; background:linear-gradient(rgba(255,255,255,0), var(--white)); pointer-events:none; transition:opacity .3s; }
+    .ss-clip.open .ss-fade { opacity:0; }
+    .ss-more {
+      display:flex; align-items:center; justify-content:center; gap:7px;
+      width:max-content; margin:20px auto 0; cursor:pointer;
+      background:#fff; border:1.5px solid var(--accent); color:var(--accent-dark);
+      font-family:inherit; font-size:.95rem; font-weight:bold; letter-spacing:.04em;
+      padding:11px 30px; border-radius:30px;
+    }
+    .ss-more .ss-ico { transition:transform .3s; font-size:.7rem; }
+    .ss-more.open .ss-ico { transform:rotate(180deg); }
+
+    /* =============================================
        作品ギャラリー（左から流れてくる）
     ============================================= */
     #gallery { background: var(--cream); overflow: hidden; }
@@ -1320,6 +1342,18 @@
     window.addEventListener('scroll', onSpy, { passive: true });
     window.addEventListener('resize', onSpy, { passive: true });
     onSpy();
+  });
+
+  /* スクショの壁：もっと見る／閉じる */
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('ssMore');
+    var clip = document.getElementById('ssClip');
+    if (!btn || !clip) return;
+    btn.addEventListener('click', function () {
+      var open = clip.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.firstChild.nodeValue = open ? '閉じる ' : 'もっと見る ';
+    });
   });
 
 </script>
@@ -1728,6 +1762,55 @@
   <div class="voice-images">
     <img src="img/voice-kaihara.png" alt="受講生の声：貝原三穂さん（広島県在住）。卒業後すぐに3名コース予約、オリジナルレッスン構築で37名以上が受講、月商6倍の30万円を達成。">
     <img src="img/voice-okamoto.png" alt="受講生の声：岡本直子さん（大阪府在住）。強みを活かしてオリジナル講座をスタートさせ30名以上が受講、月商10倍に。">
+  </div>
+
+  <!-- スクショの壁：たくさんの生の声（静止・もっと見る） -->
+  <div class="ss-wall">
+    <p class="ss-wall-lead">ほかにも、こんなに<br>たくさんの声が届いています</p>
+    <p class="ss-wall-sub">※ご本人の掲載許可をいただいています</p>
+    <div class="ss-clip" id="ssClip">
+      <div class="ss-cols">
+        <img class="ss-shot" loading="lazy" src="img/ss01.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss02.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss03.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss04.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss05.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss06.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss07.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss08.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss09.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss10.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss11.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss12.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss13.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss14.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss15.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss16.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss17.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss18.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss19.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss20.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss21.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss22.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss23.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss24.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss25.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss26.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss27.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss28.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss29.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss30.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss31.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss32.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss33.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss34.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss35.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss36.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss37.jpg" alt="受講生さまからの喜びの声">
+      </div>
+      <div class="ss-fade"></div>
+    </div>
+    <button class="ss-more" id="ssMore" type="button">もっと見る <span class="ss-ico">▼</span></button>
   </div>
 
   <!-- 講師プロフィール -->
