@@ -290,13 +290,33 @@
        2. 悩み・共感
     ============================================= */
     #pain {
-      background: var(--white);
-      padding: 0;
+      background: linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.5)), url('img/nayami-bg.png') center / cover no-repeat;
+      padding: 56px 20px 64px;
     }
-    .pain-img {
-      width: 100%;
-      display: block;
+    .pain-heading {
+      text-align: center; font-size: 1.6rem; color: var(--brown);
+      font-weight: bold; line-height: 1.55; letter-spacing: 0.05em;
+      margin-bottom: 34px; text-shadow: 0 2px 10px rgba(255,255,255,0.9);
     }
+    .pain-list { max-width: 600px; margin: 0 auto; }
+    /* 角ばった四角（AI感を抑える）＝border-radius小さめ */
+    .pain-item {
+      display: flex; gap: 14px; align-items: flex-start;
+      background: rgba(255,255,255,0.93); border-radius: 2px;
+      padding: 16px 18px; margin-bottom: 14px;
+      box-shadow: 0 8px 22px rgba(58,66,104,0.10);
+    }
+    .pain-num { font-family: Georgia, serif; font-size: 1.45rem; font-weight: bold; color: var(--accent); line-height: 1.2; flex: none; }
+    .pain-text { font-size: 1.02rem; color: var(--text); line-height: 1.7; }
+    .pain-text .em { color: #c4707f; font-weight: bold; }
+    .pain-solve {
+      text-align: center; font-size: 1.5rem; color: var(--brown); font-weight: bold;
+      margin-top: 32px; letter-spacing: 0.04em; text-shadow: 0 2px 10px rgba(255,255,255,0.9);
+    }
+    .pain-solve b { color: var(--gold); font-size: 1.74rem; }
+    /* 受講生の声：完成版の縦長画像 */
+    .voice-images { max-width: 560px; margin: 0 auto; }
+    .voice-images img { width: 100%; display: block; margin-bottom: 22px; box-shadow: 0 12px 30px rgba(58,66,104,0.14); }
 
     /* ふんわりフェードイン */
     .fade-in {
@@ -1340,7 +1360,34 @@
      2. 悩み・共感
 ============================================ -->
 <section id="pain">
-  <img src="img/nayami1.png" alt="こんなお悩みありませんか？" class="pain-img fade-in">
+  <h2 class="pain-heading">こんなお悩み、<br>ありませんか？</h2>
+  <div class="pain-list">
+    <div class="pain-item">
+      <span class="pain-num">01</span>
+      <p class="pain-text">転写紙メインで作品を作ってきたけど、似たような作り上がりに<span class="em">物足りなさを感じてきた</span></p>
+    </div>
+    <div class="pain-item">
+      <span class="pain-num">02</span>
+      <p class="pain-text">インストラクターコースで絵の具を学んだはずなのに、<span class="em">指導する自信は持っていない</span></p>
+    </div>
+    <div class="pain-item">
+      <span class="pain-num">03</span>
+      <p class="pain-text">絵の具って難しそう。<span class="em">失敗するんじゃないか</span>と思うと、なかなか進まない</p>
+    </div>
+    <div class="pain-item">
+      <span class="pain-num">04</span>
+      <p class="pain-text">絵の具はやってみたけど<span class="em">思い通りにできない</span>、きれいな仕上がりにならない</p>
+    </div>
+    <div class="pain-item">
+      <span class="pain-num">05</span>
+      <p class="pain-text">生徒さんが「次は何を作ろうか」と<span class="em">少し迷い出している</span>のが、自分にも伝わってきている</p>
+    </div>
+    <div class="pain-item">
+      <span class="pain-num">06</span>
+      <p class="pain-text">「こんなの作ってみたい！」と提案したいのに、自分の技術が追いつかず、<span class="em">指導する自信がなくて</span>言い出せない</p>
+    </div>
+  </div>
+  <p class="pain-solve">それ、<b>全部解決</b>できます！</p>
 </section>
 
 
@@ -1671,33 +1718,10 @@
     <div class="gold-line"></div>
   </div>
 
-  <div class="voice-card">
-    <span class="voice-result-badge">成果：卒業後すぐに満席達成</span>
-    <img src="img/seika-taemi.png" alt="夏見妙美さんの実績" class="voice-img">
-    <p class="voice-text">
-      オリジナルレッスンを生徒さまのお悩みからつくり、ストーリーズだけで入りました。
-      卒業後すぐに資格コースのお申し込みも3名入り、満席に。絵の具の技術が上がっただけでなく、唯一無二のデザインが作れるようになり、指導にも自信を持って伝えられるようになりました。
-    </p>
-    <p class="voice-name">夏見 妙美さん（神奈川県在住）</p>
-  </div>
-
-  <div class="voice-card">
-    <span class="voice-result-badge">成果：オリジナル講座構築で月商150万円達成</span>
-    <img src="img/seika-michiko.png" alt="西村美智子さんの実績" class="voice-img">
-    <p class="voice-text">
-      集客の悩みと絵の具の指導への自信のなさがずっとありました。強みを見つけ、他の教室にはない独自の講座を構築。全国からお問い合わせが止まらない状態になりました。
-    </p>
-    <p class="voice-name">西村 美智子さん（ポーセラーツ教室 Iachic 主宰）</p>
-  </div>
-
-  <div class="voice-card">
-    <span class="voice-result-badge">成果：月商6倍の30万円達成・37名以上が受講</span>
-    <img src="img/seika-miho.png" alt="貝原三穂さんの実績" class="voice-img">
-    <p class="voice-text">
-      コンクール受賞歴があり、教室運営も10年以上。でも資格コースの生徒さまはゼロでした。
-      受講後は卒業してすぐに3名のコース予約が入り、オリジナルレッスンを構築して37名以上が受講。月商6倍を達成しました。
-    </p>
-    <p class="voice-name">貝原 三穂さん（広島県在住）</p>
+  <!-- 受講生の声：さおりさん提供の完成版（スマホファースト縦長画像） -->
+  <div class="voice-images">
+    <img src="img/voice-kaihara.png" alt="受講生の声：貝原三穂さん（広島県在住）。卒業後すぐに3名コース予約、オリジナルレッスン構築で37名以上が受講、月商6倍の30万円を達成。">
+    <img src="img/voice-okamoto.png" alt="受講生の声：岡本直子さん（大阪府在住）。強みを活かしてオリジナル講座をスタートさせ30名以上が受講、月商10倍に。">
   </div>
 
   <!-- 講師プロフィール -->
