@@ -915,36 +915,15 @@
       background: linear-gradient(160deg, #F0F4FC 0%, #E0EAF8 100%);
       text-align: center;
     }
-    /* クロージング — 本人写真＋右モヤ＋文字重ね */
-    .closing-hero {
-      position: relative;
-      max-width: 600px;
-      margin: 0 auto 32px;
-      overflow: hidden;
-    }
-    .closing-hero-img { width: 100%; display: block; object-fit: cover; object-position: left center; }
-    .closing-hero-overlay {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: flex-end;
-      background: linear-gradient(90deg, rgba(250,248,243,0) 48%, rgba(250,248,243,0.85) 68%, rgba(250,248,243,0.98) 100%);
-      padding: 24px 26px;
-    }
     #closing h2 { font-size: 1.3rem; color: var(--brown); margin-bottom: 18px; }
-    .closing-hero-overlay .closing-text {
-      width: 42%;
-      font-size: 0.9rem;
-      color: var(--text-mid);
-      text-align: left;
-      line-height: 1.95;
+    /* クロージング — 文字を先に、写真を下に（見切れ防止） */
+    .closing-text {
+      max-width: 600px; margin: 0 auto 30px;
+      font-size: 1.05rem; color: var(--text-mid);
+      text-align: left; line-height: 2;
     }
-    @media (max-width: 720px) {
-      .closing-hero-overlay {
-        background: linear-gradient(180deg, rgba(250,248,243,0) 16%, rgba(250,248,243,0.8) 50%, rgba(250,248,243,0.97) 100%);
-        align-items: flex-end; justify-content: center;
-        padding: 22px 18px 20px;
-      }
-      .closing-hero-overlay .closing-text { width: 100%; font-size: 0.86rem; }
-    }
+    .closing-photo { max-width: 420px; margin: 0 auto; }
+    .closing-photo img { width: 100%; display: block; border-radius: 4px; box-shadow: 0 12px 30px rgba(58,66,104,.16); }
 
     /* =============================================
        フッター
@@ -2164,11 +2143,9 @@
     <div class="gold-line"></div>
   </div>
 
-  <div class="closing-hero">
-    <img class="closing-hero-img" src="img/saori-2.jpg" alt="（仮）尾野さおり ※差し替え予定">
-    <div class="closing-hero-overlay">
-      <p class="closing-text">「できない」「ひらめかない」は、才能やセンスのせいではありません。ただ、これまで学ぶ機会がなかっただけです。<br><br>技術に自信を持ち、アイデアを広げる方法を一緒に学んでいきましょう。<br><br>「いつかやろう」「〇〇が落ち着いたら」と、あなたが動き出すのに完璧なタイミングなんてきません。自分のやりたいことを後回しにできるほど、人生は長くありません。<br><br>ならば時間を効率よく使い、確かな成果を出す。あなたに寄り添いながら、ポーセラーツが生きがいになるよう心を込めてサポートさせていただきます。<br><br>あなたも生徒様も、笑顔があふれる教室が叶うヒントが、きっとここにあります。</p>
-    </div>
+  <p class="closing-text">「できない」「ひらめかない」は、才能やセンスのせいではありません。ただ、これまで学ぶ機会がなかっただけです。<br><br>技術に自信を持ち、アイデアを広げる方法を一緒に学んでいきましょう。<br><br>「いつかやろう」「〇〇が落ち着いたら」と、あなたが動き出すのに完璧なタイミングなんてきません。自分のやりたいことを後回しにできるほど、人生は長くありません。<br><br>ならば時間を効率よく使い、確かな成果を出す。あなたに寄り添いながら、ポーセラーツが生きがいになるよう心を込めてサポートさせていただきます。<br><br>あなたも生徒様も、笑顔があふれる教室が叶うヒントが、きっとここにあります。</p>
+  <div class="closing-photo">
+    <img src="img/saori-2.jpg" alt="講師 尾野さおり">
   </div>
 
   <div class="cta-wrap">
