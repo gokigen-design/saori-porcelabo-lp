@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サオリさん LP 打ち合わせシート 2026/6/17</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Zen Maru Gothic', 'Hiragino Maru Gothic Pro', sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    background: #f7f6f3;
+    color: #2c2c2a;
+    padding: 32px 20px;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500&display=swap');
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 48px;
+    border: 1px solid #e0ddd6;
+  }
+  .header {
+    border-bottom: 1px solid #e0ddd6;
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .label {
+    font-size: 11px;
+    color: #888780;
+    margin-bottom: 4px;
+  }
+  .title {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .meta {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    color: #888780;
+    flex-wrap: wrap;
+  }
+  .meta span::before {
+    margin-right: 4px;
+  }
+  .client-box {
+    background: #f7f6f3;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 12px;
+    line-height: 1.8;
+    min-width: 220px;
+  }
+  .client-box .box-title {
+    font-weight: 500;
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+  .client-box p {
+    color: #5f5e5a;
+  }
+  .notice {
+    margin-top: 14px;
+    background: #e8f1fb;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #185fa5;
+    line-height: 1.7;
+  }
+  .section {
+    background: #fff;
+    border: 1px solid #e0ddd6;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0ede8;
+  }
+  .badge {
+    font-size: 10px;
+    padding: 1px 8px;
+    border-radius: 3px;
+    font-weight: 500;
+    margin-left: auto;
+  }
+  .badge-blue { background: #e8f1fb; color: #0c447c; }
+  .badge-green { background: #e1f5ee; color: #085041; }
+  .agenda-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0ede8;
+  }
+  .agenda-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .time-chip {
+    font-size: 10px;
+    font-weight: 500;
+    color: #5f5e5a;
+    background: #f7f6f3;
+    border-radius: 4px;
+    padding: 2px 8px;
+    white-space: nowrap;
+    min-width: 72px;
+    text-align: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .time-chip-blue {
+    background: #e8f1fb;
+    color: #0c447c;
+  }
+  .agenda-title { font-size: 13px; font-weight: 500; margin-bottom: 3px; }
+  .agenda-sub { font-size: 12px; color: #5f5e5a; line-height: 1.7; }
+  .agenda-highlight {
+    background: #eef4fc;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+  }
+  .agenda-highlight .agenda-title { color: #185fa5; }
+  .agenda-highlight .agenda-sub { color: #3a6fa0; }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .q-row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+  .q-mark {
+    font-size: 10px;
+    font-weight: 500;
+    color: #185fa5;
+    background: #e8f1fb;
+    border-radius: 3px;
+    padding: 1px 5px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .q-text { font-size: 12px; color: #5f5e5a; line-height: 1.6; }
+  .script-box {
+    background: #f7f6f3;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13px;
+    line-height: 2;
+    color: #2c2c2a;
+    margin-bottom: 12px;
+  }
+  .scope-row {
+    font-size: 12px;
+    color: #5f5e5a;
+    line-height: 1.9;
+  }
+  .scope-row span {
+    display: inline-block;
+    margin-right: 6px;
+    color: #1d9e75;
+  }
+  .scope-row-gray span { color: #888780; }
+  .note-row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+  .note-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ef9f27;
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+  .note-text { font-size: 12px; color: #5f5e5a; line-height: 1.7; }
+  .section-warn {
+    border-left: 3px solid #ef9f27;
+  }
+  .footer {
+    text-align: center;
+    font-size: 11px;
+    color: #b4b2a9;
+    margin-top: 24px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <p class="label">打ち合わせ準備シート</p>
+        <p class="title">サオリさん LP 打ち合わせ</p>
+        <div class="meta">
+          <span>2026年6月17日</span>
+          <span>60分</span>
+          <span>ショップ来訪</span>
+        </div>
+      </div>
+      <div class="client-box">
+        <p class="box-title">クライアント背景</p>
+        <p>
+          Claude講座参加 → LP制作依頼に発展<br>
+          実務作業はご自身でしない<br>
+          GitHub使用経験あり
+        </p>
+      </div>
+    </div>
+    <div class="notice">
+      今日の位置づけ：完成品の披露ではなく「方向性の確認 + GitHub引き渡し説明」。最初に「途中ですが一緒に確認させてください」と一言添える。
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      アジェンダ（60分）
+    </div>
+    <div class="agenda-row">
+      <span class="time-chip">0 → 5分</span>
+      <div>
+        <p class="agenda-title">オープニング — ご来店への感謝</p>
+        <p class="agenda-sub">わざわざ来てくださったことへのお礼を丁寧に。場を温める近況トーク。「今日は率直に感想をお聞かせください」と最初に伝えておく。</p>
+      </div>
+    </div>
+    <div class="agenda-row">
+      <span class="time-chip">5 → 25分</span>
+      <div>
+        <p class="agenda-title">LP 方向性確認（制作途中）</p>
+        <p class="agenda-sub">デザイン・色・雰囲気 / コピーのトーン / 写真・画像配置 / CTA（予約導線）の順でスクロールしながら確認。「この方向でよければ詰めていきます」という温度感で進める。</p>
+      </div>
+    </div>
+    <div class="agenda-row">
+      <span class="time-chip">25 → 35分</span>
+      <div>
+        <p class="agenda-title">スローガン変更 — LP反映の確認</p>
+        <p class="agenda-sub">新しいスローガンの候補・方向性を確認し、どの言葉をキャッチに落とし込むかを決める。「スローガンが決まったら、ここに入れます」と画面で場所を示す。</p>
+      </div>
+    </div>
+    <div class="agenda-highlight">
+      <div style="display: flex; gap: 12px; align-items: flex-start;">
+        <span class="time-chip time-chip-blue">35 → 50分</span>
+        <div>
+          <p class="agenda-title">GitHub 引き渡し — 自分で編集できる状態に</p>
+          <p class="agenda-sub" style="color: #3a6fa0;">移管の流れを画面で説明 → 「テキストを変えたい時はここだけ編集すれば OK」と最小操作を実演 → 「更新が必要なときはお声がけください」と継続サポートを自然に添える。</p>
+        </div>
+      </div>
+    </div>
+    <div class="agenda-row" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+      <span class="time-chip">50 → 60分</span>
+      <div>
+        <p class="agenda-title">金額説明 → 次のアクション確認</p>
+        <p class="agenda-sub">スコープと金額をセットで伝える（下記スクリプト参照）。修正点・スローガン決定期限・LP公開目標日・連絡手段を確認してクローズ。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">
+        LP 確認事項
+        <span class="badge badge-blue">必須</span>
+      </div>
+      <div class="q-row"><span class="q-mark">Q</span><span class="q-text">デザイン・世界観は富裕層向けのイメージと合っているか</span></div>
+      <div class="q-row"><span class="q-mark">Q</span><span class="q-text">言葉のトーン・サービス名の表記に違和感はないか</span></div>
+      <div class="q-row"><span class="q-mark">Q</span><span class="q-text">予約・問い合わせはどこへ誘導したいか（LINE／予約サイト／DM）</span></div>
+      <div class="q-row"><span class="q-mark">Q</span><span class="q-text">写真・素材でまだ追加したいものはあるか</span></div>
+      <div class="q-row"><span class="q-mark">Q</span><span class="q-text">公開の目標日はいつ頃を考えているか</span></div>
+    </div>
+    <div class="section">
+      <div class="section-title">
+        ビジネス・今後の意向
+        <span class="badge badge-green">できれば</span>
+      </div>
+      <div class="q-row"><span class="q-mark">Q</span><span class="q-text">LP公開後に連動させたい施策はあるか（SNS・LINE等）</span></div>
+      <div class="q-row"><span class="q-mark">Q</span><span class="q-text">LP更新はご自身でやるか、スタッフにお願いするか</span></div>
+      <div class="q-row"><span class="q-mark">Q</span><span class="q-text">AI活用は誰が担当する予定か（本人・スタッフ・外注）</span></div>
+      <div class="q-row"><span class="q-mark">Q</span><span class="q-text">今のビジネスで一番手がかかっている業務は何か</span></div>
+      <div class="q-row"><span class="q-mark">Q</span><span class="q-text">今後どんなことをAIでやってみたいか</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      金額の伝え方スクリプト
+    </div>
+    <div class="script-box">
+      「今回は、サオリさんにお渡しできる状態のLPを1本つくる、というスコープでお受けしています。GitHubでご自身でも文言を変えられるようにして納品しますので、そこまで含めて<strong>2万円</strong>でご案内しています。よろしければ今日の確認が終わったタイミングで請求書をお送りしますね。」
+    </div>
+    <div class="two-col" style="margin-bottom: 0; gap: 16px;">
+      <div>
+        <p style="font-size: 11px; font-weight: 500; margin-bottom: 6px;">今回の2万円に含まれること</p>
+        <div class="scope-row">
+          <span>✓</span>LP制作・デザインブラッシュアップ<br>
+          <span>✓</span>スローガン変更に伴うコピー反映<br>
+          <span>✓</span>GitHub引き渡し（自己編集できる状態）<br>
+          <span>✓</span>修正1回分
+        </div>
+      </div>
+      <div>
+        <p style="font-size: 11px; font-weight: 500; margin-bottom: 6px; color: #888780;">含まれないこと（聞かれたら答える）</p>
+        <div class="scope-row scope-row-gray">
+          <span>—</span>2回目以降の修正・追加ページ<br>
+          <span>—</span>SNS・LINE等の自動化連携<br>
+          <span>—</span>継続的なサポート（月額相談）
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section-warn">
+    <div class="section-title">
+      注意点 — チームで共有しておくこと
+    </div>
+    <div class="note-row"><div class="note-dot"></div><p class="note-text">「今回はご縁だから安くしました」は言わない。GitHubまで含めたスコープが2万円の理由。</p></div>
+    <div class="note-row"><div class="note-dot"></div><p class="note-text">AI活用の話題は押しつけない。「興味がありそう」なら受ける形で。継続サポートの話は「ご要望があれば」の一言のみ。</p></div>
+    <div class="note-row"><div class="note-dot"></div><p class="note-text">LPが完成前であることは最初に正直に伝える。「途中ですが方向性を確認させてください」の一言でプロとして自然に見える。</p></div>
+    <div class="note-row" style="margin-bottom: 0;"><div class="note-dot"></div><p class="note-text">修正点はその場でメモを取る（口頭だけで終わらせない）。スローガンは今日決まらなくても持ち帰り期限だけ決める。</p></div>
+  </div>
+
+  <div class="footer">作成日 2026/6/17 — チーム内共有用</div>
+
+</div>
+</body>
+</html>

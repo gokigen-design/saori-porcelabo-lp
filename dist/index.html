@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ポーセラボ絵の具コース｜絵の具×デザイン理論で叶える上級ポーセリンアート</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    /* =============================================
+       CSS変数 — ここを変えるだけで色が全体に反映
+    ============================================= */
+    :root {
+      --cream:       #FAF8F3;    /* Ivory */
+      --pink-light:  #EAF2F8;    /* Mist Blue */
+      --accent:      #7A9DCF;    /* くすみブルー */
+      --accent-dark: #5A7FB5;    /* 深めのくすみブルー */
+      --accent-deep: #095FAA;    /* 数字用の濃いブルー */
+      --brown:       #3A4268;    /* Deep navy */
+      --gold:        #C9A870;    /* Champagne Gold */
+      --text:        #2C3550;    /* Dark navy */
+      --text-mid:    #5A6080;
+      --text-light:  #8A90B0;
+      --bg-alt:      #E8EEF8;    /* Mist Blue sections */
+      --white:       #ffffff;
+    }
+
+    /* =============================================
+       Reset & Base
+    ============================================= */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* 最下部のオーバースクロール時に紺色が見えるように（フッターと同色） */
+    html { background: var(--brown); scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Hiragino Serif', Georgia, serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.9;
+      font-size: 16px;
+      padding-bottom: 0;
+      overflow-x: clip;       /* 左右の揺れを防ぐ（縦スクロールは壊さない） */
+      max-width: 100%;
+    }
+
+    /* ===== 全体背景（PC：中央コラムの背面に表示）=====
+       いまは bag.png（クライアント様の動画の1コマ）を表示。
+       5秒に1回ふわっとフェードして「動きがある」ことを示す。
+       将来は #bg-layer の中に <video> を入れて差し替え可能。 */
+    #bg-layer {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(rgba(255,255,255,0.45), rgba(255,255,255,0.45)), url('img/bag.png') center center / cover no-repeat;
+      animation: bgBlink 5s ease-in-out infinite;
+      pointer-events: none;
+    }
+    #bg-layer video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    @keyframes bgBlink {
+      0%, 80%, 100% { opacity: 1; }
+      90% { opacity: 0.3; }
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* =============================================
+       スティッキーCTAバー（画面下部に常時表示）
+    ============================================= */
+    #sticky-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #3A4268;
+      padding: 10px 16px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.18);
+      transform: translateY(120%);
+      opacity: 0;
+      transition: transform 0.45s ease, opacity 0.45s ease;
+    }
+    #sticky-bar.visible { transform: translateY(0); opacity: 1; }
+    #sticky-bar a {
+      display: block;
+      background: linear-gradient(135deg, #E6C871 0%, #C9A24E 45%, #DcB85f 100%);
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(120, 90, 20, 0.35);
+      font-size: 0.95rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 12px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      width: 100%;
+      max-width: 360px;
+    }
+    #sticky-bar .sticky-sub {
+      font-size: 0.68rem;
+      opacity: 0.7;
+      display: block;
+      margin-top: 3px;
+    }
+
+    /* =============================================
+       CTAボタン（各セクション内）
+    ============================================= */
+    .cta-btn {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #E6C871 0%, #C9A24E 45%, #DcB85f 100%);
+      color: #fff;
+      text-shadow: 0 1px 2px rgba(120, 90, 20, 0.35);
+      font-size: 1.05rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 18px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      box-shadow: 0 4px 8px rgba(120, 95, 35, 0.28);
+      transition: box-shadow 0.2s, filter 0.2s;
+      max-width: 360px;
+      margin: 0 auto;
+      min-height: 58px;
+      animation: ctaFloat 2.8s ease-in-out infinite;
+    }
+    /* キラッと光るシャイン */
+    .cta-btn::before {
+      content: "";
+      position: absolute;
+      top: 0; left: -70%;
+      width: 45%; height: 100%;
+      background: linear-gradient(100deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%);
+      transform: skewX(-20deg);
+      animation: ctaShine 3.6s ease-in-out infinite;
+    }
+    @keyframes ctaShine {
+      0% { left: -70%; }
+      35%, 100% { left: 130%; }
+    }
+    @keyframes ctaFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+    .cta-btn:hover, .cta-btn:active {
+      box-shadow: 0 6px 12px rgba(120, 95, 35, 0.34);
+      filter: brightness(1.05);
+    }
+    .cta-note {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-top: 12px;
+    }
+    .cta-wrap {
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    /* =============================================
+       セクション共通
+    ============================================= */
+    section { padding: 68px 22px; }
+
+    /* --- セクションタイトルブロック --- */
+    .title-block {
+      text-align: center;
+      margin-bottom: 46px;
+      position: relative;
+      overflow: hidden;   /* はみ出た筆記体を隠す */
+    }
+
+    /* 大きな筆記体の飾り英語 */
+    .deco-word {
+      display: block;
+      font-family: 'Great Vibes', cursive;
+      font-size: 4.2rem;
+      line-height: 1.15;
+      color: rgba(58, 66, 104, 0.08);  /* ← 薄さはここで調整（0.05〜0.14） */
+      user-select: none;
+      pointer-events: none;
+      margin-bottom: -8px;  /* 日本語タイトルに少し重ねる */
+      letter-spacing: 0.01em;
+    }
+
+    h2.sec-title {
+      font-size: 1.6rem;
+      line-height: 1.55;
+      text-align: center;
+      color: var(--brown);
+      margin-bottom: 10px;
+      position: relative;  /* deco-wordより前面に */
+    }
+    .gold-line {
+      width: 36px; height: 2px;
+      background: var(--gold);
+      margin: 0 auto 32px;
+    }
+
+    @media (min-width: 600px) {
+      .deco-word { font-size: 5.5rem; }
+    }
+
+    /* =============================================
+       ボタニカル花パーツ（各セクションに散りばめ）
+    ============================================= */
+    section { position: relative; }  /* 絶対配置の基準 */
+
+    .bot {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      opacity: 0.18;   /* ← 濃さ調整（0.12〜0.25） */
+    }
+    /* コンテンツはボタニカルの上に */
+    section > *:not(.bot) { position: relative; z-index: 1; }
+
+    /* =============================================
+       1. ファーストビュー（スマホ版リニューアル）
+    ============================================= */
+    #fv {
+      padding: 0;
+      background: var(--white);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* FV画像ラッパー */
+    .fv-img-wrap {
+      position: relative;
+      width: 100%;
+    }
+    .fv-img-wrap img.fv-main-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    /* 画像の上にタイトルオーバーレイ */
+    .fv-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,18,60,0.45) 0%, rgba(10,18,60,0.15) 60%, rgba(10,18,60,0.55) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .fv-title-sub {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+    .fv-title-main {
+      font-size: 1.7rem;
+      font-weight: bold;
+      color: #fff;
+      line-height: 1.45;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.4);
+      letter-spacing: 0.05em;
+    }
+    .fv-title-catch {
+      font-size: 0.92rem;
+      color: #C9D8FF;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    /* FVバッジ（8月開講・全期即満席・満足度98%） */
+    .fv-badges {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 10px; padding: 26px 20px 0;
+    }
+    .fv-badge {
+      display: inline-flex; flex-direction: column; align-items: center;
+      border: 1.5px solid var(--gold);
+      border-radius: 8px;
+      padding: 10px 16px; min-width: 96px;
+      background: var(--white);
+    }
+    .fv-badge .b-main { font-size: 1.12rem; font-weight: bold; color: var(--accent-dark); line-height: 1.2; letter-spacing: 0.02em; }
+    .fv-badge .b-sub { font-size: 0.72rem; color: var(--gold); margin-top: 4px; letter-spacing: 0.04em; }
+
+    /* CTA（画像の下・中央） */
+    .fv-cta-area {
+      background: var(--white);
+      padding: 20px 20px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* =============================================
+       2. 悩み・共感
+    ============================================= */
+    #pain {
+      background: linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.5)), url('img/nayami-bg.png') center / cover no-repeat;
+      padding: 56px 20px 64px;
+    }
+    .pain-heading {
+      text-align: center; font-size: 1.6rem; color: var(--brown);
+      font-weight: bold; line-height: 1.55; letter-spacing: 0.05em;
+      margin-bottom: 34px; text-shadow: 0 2px 10px rgba(255,255,255,0.9);
+    }
+    .pain-list { max-width: 600px; margin: 0 auto; }
+    /* 角ばった四角（AI感を抑える）＝border-radius小さめ */
+    .pain-item {
+      display: flex; gap: 14px; align-items: flex-start;
+      background: rgba(255,255,255,0.93); border-radius: 2px;
+      padding: 16px 18px; margin-bottom: 14px;
+      box-shadow: 0 8px 22px rgba(58,66,104,0.10);
+    }
+    .pain-num { font-family: Georgia, serif; font-size: 1.45rem; font-weight: bold; color: var(--accent-deep); line-height: 1.2; flex: none; }
+    .pain-text { font-size: 1.02rem; color: var(--text); line-height: 1.7; }
+    .pain-text .em { color: #c4707f; font-weight: bold; }
+    .pain-solve {
+      text-align: center; font-size: 1.5rem; color: var(--brown); font-weight: bold;
+      margin-top: 32px; letter-spacing: 0.04em; text-shadow: 0 2px 10px rgba(255,255,255,0.9);
+    }
+    .pain-solve b { color: var(--gold); font-size: 1.74rem; }
+    /* セクションをつなぐブリッジ（引用風＋▼） */
+    .bridge { max-width:560px; margin:0 auto; }
+    .bridge-quote { position:relative; background:var(--white); border:1px solid rgba(136,144,204,.25); border-radius:4px; padding:24px 22px 22px; box-shadow:0 8px 22px rgba(58,66,104,.08); }
+    .bridge-q1 { text-align:center; font-size:1.1rem; font-weight:bold; color:var(--brown); line-height:1.7; }
+    .bridge-q2 { text-align:center; font-size:.98rem; color:var(--text-mid); line-height:1.85; margin-top:8px; }
+    .bridge-arrow { display:flex; justify-content:center; margin:14px 0 0; }
+    .bridge-arrow svg { width:30px; height:30px; }
+    /* 受講生の声：完成版の縦長画像 */
+    .voice-images { max-width: 560px; margin: 0 auto; }
+    .voice-images img { width: 100%; display: block; margin: 0 auto 48px; box-shadow: 0 12px 30px rgba(58,66,104,0.14); }
+    .voice-images img:last-child { margin-bottom: 0; }
+
+    /* ふんわりフェードイン */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =============================================
+       3. 理想の未来
+    ============================================= */
+    #future { background: var(--bg-alt); }
+
+    .future-main {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    /* 縦積みレイアウト：見出し → 写真 → 説明（前回LP準拠） */
+    .future-zigzag { max-width: 540px; margin: 40px auto 0; counter-reset: fznum; }
+    .fz-row { position: relative; margin-bottom: 88px; text-align: center; }
+    .fz-row:last-child { margin-bottom: 0; }
+    /* 番号（自動採番） → 見出し */
+    .fz-head { margin-bottom: 22px; }
+    .fz-head::before {
+      counter-increment: fznum;
+      content: "0" counter(fznum);
+      display: block;
+      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Hiragino Serif', Georgia, serif; font-weight: bold;
+      font-size: 3.4rem; line-height: 1;
+      background: linear-gradient(135deg, var(--accent-deep) 0%, var(--accent) 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+    }
+    .fz-head h3 {
+      font-size: 1.22rem; color: var(--brown);
+      line-height: 1.6; margin: 0 auto; font-weight: bold;
+    }
+    /* 写真ラッパー：青いグラデ背景ボックス＋筆記体ラベル */
+    .fz-photo {
+      position: relative; z-index: 1;
+      width: 86%; margin: 0 auto;
+    }
+    .fz-photo::before {
+      content: ""; position: absolute;
+      top: -20px; left: -22px;
+      width: 58%; height: 70%;
+      background: linear-gradient(135deg, #6A90C6 0%, #B3C8E6 100%);
+      z-index: -1;
+    }
+    .fz-photo img {
+      width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+      border-radius: 0; display: block;
+      box-shadow: 0 14px 34px rgba(58,66,104,0.18);
+    }
+    /* 筆記体の注釈ラベル「Future 1」 */
+    .fz-label {
+      position: absolute; top: -16px; left: -12px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.1rem; line-height: 1; color: var(--accent);
+      text-shadow: 0 2px 8px rgba(255,255,255,0.92), 0 0 2px rgba(255,255,255,0.92);
+      z-index: 3; pointer-events: none;
+    }
+    /* 説明文（写真の前後に配置できる） */
+    .fz-lead { color: var(--text-mid); line-height: 1.95; margin-bottom: 22px; }
+    .fz-desc { color: var(--text-mid); line-height: 1.95; margin-top: 22px; }
+
+    @media (max-width: 600px) {
+      .fz-photo { width: 92%; }
+      .fz-photo::before { top: -14px; left: -16px; }
+      .fz-head::before { font-size: 3rem; }
+      .fz-head h3 { font-size: 1.1rem; }
+    }
+
+    /* =============================================
+       4. サービス内容
+    ============================================= */
+    #service { background: var(--white); }
+
+    .format-box {
+      background: var(--pink-light);
+      border-radius: 0;
+      padding: 20px;
+      margin-bottom: 28px;
+    }
+    .format-box h3 {
+      font-size: 0.95rem;
+      color: var(--brown);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .format-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .format-tags span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--white);
+      border: 1px solid var(--accent);
+      color: var(--accent-dark);
+      font-size: 0.82rem;
+      padding: 6px 14px;
+      border-radius: 0;
+    }
+    .format-tags span svg { width: 17px; height: 17px; flex: none; }
+
+    .step-card {
+      border-radius: 0;
+      padding: 20px;
+      margin-bottom: 14px;
+      background: var(--bg-alt);
+    }
+    .step-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.68rem;
+      padding: 4px 14px;
+      border-radius: 0;
+      margin-bottom: 10px;
+      letter-spacing: 0.08em;
+    }
+    .step-card h3 { font-size: 1rem; color: var(--brown); margin-bottom: 8px; }
+    .step-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.8; }
+    .step-img {
+      width: 100%;
+      border-radius: 0;
+      margin-top: 12px;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+    }
+
+    /* 4ヶ月カリキュラム（左に写真・右に本文で統一） */
+    /* カリキュラム — 月の丸を縦線でつなぐタイムライン */
+    .curriculum-list { max-width: 640px; margin: 0 auto; }
+    .curri-item { }
+    /* 月ラベル（丸マークは廃止 → ピル型のテキストに） */
+    .curri-month {
+      display: inline-block;
+      background: var(--accent); color: #fff;
+      font-size: 0.86rem; font-weight: bold;
+      padding: 5px 18px; border-radius: 40px;
+      letter-spacing: 0.08em;
+    }
+    /* 課題名 */
+    .curri-task {
+      font-size: 0.96rem; color: var(--brown);
+      font-weight: bold; letter-spacing: 0.04em;
+      margin: 14px 0 18px;
+    }
+    .curri-task span { color: var(--accent-dark); }
+
+    .curri-content { padding-bottom: 48px; }
+    .curri-item:last-child .curri-content { padding-bottom: 0; }
+    /* 見出し（色付きバー・大きめ） */
+    .curri-head {
+      background: linear-gradient(135deg, var(--accent-deep) 0%, var(--accent) 100%);
+      color: #fff;
+      font-size: 1.35rem;
+      font-weight: bold;
+      line-height: 1.45;
+      padding: 12px 18px;
+      margin: 14px 0 20px;
+    }
+    /* 作品をしっかり見せる：画像を上に大きく、文章は下に（縦並び） */
+    .curri-2col { display: flex; flex-direction: column; gap: 20px; }
+    .curri-2col .c-photo { width: 100%; }
+    .curri-2col .c-photo img {
+      width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+      border-radius: 0; display: block;
+      box-shadow: 0 12px 32px rgba(58,66,104,0.16);
+    }
+    .curri-2col .c-text { flex: 1; }
+    .curri-2col .c-text p { font-size: 0.93rem; color: var(--text-mid); line-height: 1.9; }
+    /* 支援要素：丸で囲んだピル型 */
+    .curri-supports { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+    .curri-support {
+      display: inline-flex; align-items: center;
+      border: 1.5px solid #B3C8E6;
+      border-radius: 40px;
+      padding: 8px 18px;
+      background: #fff;
+    }
+    .curri-support span.label { font-size: 0.86rem; color: var(--brown); font-weight: 500; }
+    .format-box.after-curri { margin-top: 48px; margin-bottom: 0; }
+
+    @media (max-width: 720px) {
+      .curri-item { grid-template-columns: 54px 1fr; column-gap: 14px; }
+      .curri-circle { width: 54px; height: 54px; }
+      .curri-circle b { font-size: 0.74rem; }
+      .curri-tl::after { left: 27px; top: 54px; bottom: -42px; }
+      .curri-head { font-size: 1.12rem; padding: 10px 14px; margin: 8px 0 16px; }
+      .curri-2col { flex-direction: column; gap: 14px; }
+      .curri-2col .c-photo { flex: none; width: 100%; }
+      .curri-supports { gap: 10px; }
+      .curri-support { padding: 7px 15px; }
+    }
+
+    /* 受講の流れ（縦タイムライン） */
+    /* 受講の流れを白いボックスで囲む */
+    .flow-timeline {
+      max-width: 600px; margin: 0 auto;
+      background: #fff;
+      border: 1px solid #E9E6F3;
+      box-shadow: 0 16px 40px rgba(58,66,104,0.09);
+      padding: 38px 30px;
+    }
+    .flow-item { display: grid; grid-template-columns: 84px 1fr; column-gap: 22px; }
+    .flow-left { position: relative; text-align: center; }
+    /* アイコン下から伸びる点線 */
+    .flow-left::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 72px;
+      bottom: -4px;
+      transform: translateX(-50%);
+      border-left: 2px dashed rgba(136,144,204,0.5);
+    }
+    .flow-item:last-child .flow-left::after { display: none; }
+    .flow-step {
+      font-size: 0.95rem; font-weight: bold;
+      color: var(--accent); letter-spacing: 0.04em; margin-bottom: 10px;
+    }
+    .flow-icon {
+      width: 64px; height: 64px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: var(--pink-light);
+      color: var(--accent-dark);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+    }
+    .flow-icon svg { width: 32px; height: 32px; }
+    .flow-content { padding-bottom: 44px; }
+    .flow-item:last-child .flow-content { padding-bottom: 0; }
+    .flow-content h4 { font-size: 1.08rem; color: var(--accent-dark); margin-bottom: 8px; line-height: 1.4; }
+    .flow-content p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.85; }
+    /* Step1（導入）は少し大きく＋説明ボックス */
+    .flow-item.flow-lead .flow-content h4 { font-size: 1.26rem; color: var(--brown); margin-bottom: 10px; }
+    .flow-item.flow-lead .flow-content > p { font-size: 0.96rem; }
+    .flow-item.flow-lead .flow-icon { width: 72px; height: 72px; }
+    .flow-item.flow-lead .flow-icon svg { width: 36px; height: 36px; }
+    .flow-item.flow-lead .flow-left::after { top: 80px; }
+    .flow-intro {
+      margin-top: 14px;
+      background: var(--pink-light);
+      border-left: 3px solid var(--accent);
+      padding: 14px 16px;
+      font-size: 0.86rem; color: var(--brown); line-height: 1.85;
+    }
+    @media (max-width: 720px) {
+      .flow-timeline { padding: 26px 18px; }
+      .flow-item { grid-template-columns: 56px 1fr; column-gap: 14px; }
+      .flow-left::after { top: 58px; }
+      .flow-icon { width: 52px; height: 52px; }
+      .flow-icon svg { width: 26px; height: 26px; }
+      .flow-step { font-size: 0.8rem; letter-spacing: 0; }
+      .flow-content { padding-bottom: 36px; }
+      .flow-item.flow-lead .flow-icon { width: 58px; height: 58px; }
+      .flow-item.flow-lead .flow-icon svg { width: 28px; height: 28px; }
+      .flow-item.flow-lead .flow-left::after { top: 64px; }
+      .flow-item.flow-lead .flow-content h4 { font-size: 1.12rem; }
+    }
+
+    /* =============================================
+       5. 選ばれる理由
+    ============================================= */
+    #why { background: var(--bg-alt); }
+
+    /* なぜこの講座なのか（背景色の上に白いボックス／角丸なし） */
+    .why-box {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto 44px;
+      background: #fff;
+      padding: 50px 32px 34px;
+      box-shadow: 0 16px 40px rgba(58,66,104,0.10);
+    }
+    .why-box:last-child { margin-bottom: 0; }
+    /* ダイヤ番号（ボックス上辺に重ねる） */
+    .why-diamond {
+      position: absolute;
+      top: -28px; left: 50%;
+      width: 56px; height: 56px;
+      margin: 0;
+      background: #F3EAD6;
+      border: 1px solid #E2CFA6;
+      transform: translateX(-50%) rotate(45deg);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .why-diamond span {
+      transform: rotate(-45deg);
+      font-family: Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: bold;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .why-head {
+      text-align: center;
+      font-size: 1.38rem;
+      color: var(--brown);
+      line-height: 1.55;
+      margin: 0 0 24px;
+      font-weight: bold;
+    }
+    /* 画像は1枚（横長） */
+    .why-imgs { margin-bottom: 22px; }
+    .why-imgs img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-radius: 0;
+      display: block;
+      box-shadow: 0 10px 26px rgba(58,66,104,0.13);
+    }
+    .why-imgs .img-sub { display: none; }
+    .why-text p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.95; }
+
+    @media (max-width: 720px) {
+      .why-box { padding: 44px 20px 28px; }
+      .why-head { font-size: 1.2rem; }
+    }
+
+    /* =============================================
+       6. 実績・お客様の声
+    ============================================= */
+    #voices { background: var(--white); }
+
+    .voice-card {
+      background: var(--bg-alt);
+      border-radius: 0;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .voice-result-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.72rem;
+      padding: 4px 14px;
+      border-radius: 0;
+      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+    }
+    .voice-img { width: 100%; border-radius: 0; margin-bottom: 12px; }
+    .voice-text { font-size: 0.9rem; color: var(--text-mid); line-height: 1.8; }
+    .voice-name { font-size: 0.82rem; color: var(--text-light); margin-top: 10px; text-align: right; }
+
+    /* 講師紹介：ブルー背景の上に白いボックス（角丸なし） */
+    .instructor-profile {
+      background: linear-gradient(135deg, #C7D6EC 0%, #E6EDF7 100%);
+      padding: 16px;
+      margin-top: 44px;
+    }
+    .profile-card { background: #fff; padding: 30px 28px; }
+    .profile-head { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 22px; }
+    .profile-photo {
+      flex: 0 0 42%;
+      max-width: 42%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      box-shadow: 0 12px 28px rgba(58,66,104,0.20);
+    }
+    .profile-meta { flex: 1; }
+    .profile-meta .p-label {
+      font-size: 0.78rem; color: var(--accent-dark);
+      letter-spacing: 0.06em; margin-bottom: 4px;
+    }
+    .profile-meta h3 {
+      font-size: 1.5rem; color: var(--brown);
+      margin-bottom: 14px; line-height: 1.3; letter-spacing: 0.02em;
+    }
+    .p-credits { list-style: none; }
+    .p-credits li {
+      position: relative; padding-left: 15px; margin-bottom: 6px;
+      font-size: 0.84rem; color: var(--text-mid); line-height: 1.65;
+    }
+    .p-credits li::before {
+      content: ""; position: absolute; left: 0; top: 8px;
+      width: 6px; height: 6px; background: var(--gold);
+    }
+    .profile-card > p { font-size: 0.9rem; color: var(--text-mid); line-height: 2; }
+    @media (max-width: 560px) {
+      .instructor-profile { padding: 12px; }
+      .profile-card { padding: 24px 20px; }
+      .profile-head { flex-direction: column; gap: 16px; }
+      .profile-photo { flex: none; max-width: 60%; width: 60%; aspect-ratio: 4 / 5; }
+      .profile-meta h3 { font-size: 1.3rem; }
+    }
+
+    /* =============================================
+       7. 料金・申込条件
+    ============================================= */
+    #price { background: var(--bg-alt); }
+
+    .price-box {
+      background: var(--white);
+      border-radius: 0;
+      padding: 24px 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 22px rgba(90,62,54,0.08);
+    }
+    .price-box h3 {
+      font-size: 1rem;
+      color: var(--brown);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+    .price-text { font-size: 0.92rem; color: var(--text-mid); line-height: 1.9; }
+    .price-note { font-size: 0.8rem; color: var(--text-light); margin-top: 8px; }
+
+    /* 特典 — 明るい上品版（角丸なし） */
+    .tokuten-img { max-width: 460px; margin: 0 auto; }
+    .tokuten-img img { width: 100%; display: block; border-radius: 4px; box-shadow: 0 12px 30px rgba(58,66,104,.16); }
+    .tokuten-total {
+      max-width: 540px;
+      margin: 0 auto 40px;
+      background: #fff;
+      border: 1px solid var(--gold);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .tokuten-total .gift-mark { width: 40px; height: 40px; color: var(--gold); margin: 0 auto 14px; display: block; }
+    .tokuten-total .total-label {
+      font-size: 0.9rem; color: var(--text-mid);
+      letter-spacing: 0.12em; margin-bottom: 10px;
+    }
+    .tokuten-total .total-value {
+      font-family: Georgia, serif;
+      font-size: 2.7rem; font-weight: bold;
+      color: var(--gold); line-height: 1.05; letter-spacing: 0.01em;
+    }
+    .tokuten-total .total-value .unit { font-size: 1.5rem; }
+    .tokuten-total .total-value .plus { font-size: 1.1rem; color: var(--accent-dark); margin-left: 2px; }
+    .tokuten-total .total-sub {
+      font-size: 1.05rem; color: var(--brown); font-weight: bold; margin-top: 12px;
+    }
+    .tokuten-total .total-sub b { color: var(--gold); }
+
+    .tokuten-title {
+      font-size: 1.02rem; color: var(--brown);
+      text-align: center; margin-bottom: 20px; font-weight: bold;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .tokuten-title svg { width: 22px; height: 22px; color: var(--gold); }
+    .tokuten-list { list-style: none; max-width: 640px; margin: 0 auto; }
+    .tokuten-list li {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: #fff;
+      border: 1px solid #EDE7DC;
+      border-left: 3px solid var(--gold);
+      padding: 18px 20px;
+      margin-bottom: 12px;
+    }
+    .tok-num {
+      flex: none; width: 38px; height: 38px;
+      background: var(--accent); color: #fff;
+      font-family: Georgia, serif; font-weight: bold; font-size: 1.02rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tok-body { flex: 1; }
+    .tok-head {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 5px;
+    }
+    .tok-head strong { color: var(--brown); font-size: 0.96rem; }
+    .tok-value {
+      font-size: 0.72rem; color: #fff; background: var(--gold);
+      padding: 3px 10px; font-weight: bold; white-space: nowrap;
+    }
+    .tokuten-list li p { color: var(--text-mid); font-size: 0.88rem; line-height: 1.8; }
+
+    .urgency-box {
+      background: var(--brown);
+      color: var(--white);
+      border-radius: 0;
+      padding: 20px;
+      margin-top: 24px;
+    }
+    .urgency-box h3 { font-size: 0.95rem; color: var(--gold); margin-bottom: 10px; }
+    .urgency-box ul { list-style: none; }
+    .urgency-box ul li {
+      font-size: 0.88rem;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.88);
+    }
+    .urgency-box ul li:last-child { border-bottom: none; }
+    .urgency-box ul li::before { content: "▶ "; color: var(--gold); }
+
+    /* =============================================
+       8. FAQ（アコーディオン）
+       ── <details>/<summary> で JS不要
+    ============================================= */
+    #faq { background: var(--white); }
+
+    #faq .title-block { margin-bottom: 40px; }
+    details {
+      max-width: 540px;
+      margin: 0 auto;
+      border-bottom: 1px solid #D6E0EC;
+    }
+    #faq details:first-of-type { border-top: 1px solid #D6E0EC; }
+
+    summary {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 24px 6px;
+      cursor: pointer;
+      list-style: none;
+      font-weight: 500;
+      color: var(--brown);
+      font-size: 1rem;
+    }
+    summary::-webkit-details-marker { display: none; }
+
+    /* 四角いQバッジ（塗り） */
+    .faq-q-badge {
+      width: 36px; height: 36px;
+      background: var(--brown);
+      color: #fff;
+      font-family: Georgia, serif;
+      font-size: 1rem;
+      font-weight: bold;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .faq-q-text { flex: 1; line-height: 1.6; }
+
+    .faq-toggle {
+      font-size: 1.15rem;
+      color: var(--accent);
+      flex-shrink: 0;
+      transition: transform 0.25s;
+      font-style: normal;
+      font-weight: 300;
+    }
+    details[open] .faq-toggle { transform: rotate(45deg); }
+
+    .faq-answer {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 2px 6px 26px;
+      font-size: 0.93rem;
+      color: var(--text-mid);
+      line-height: 1.95;
+    }
+    /* 四角いAバッジ（線） */
+    .faq-a-badge {
+      width: 36px; height: 36px;
+      background: #fff;
+      border: 1px solid var(--brown);
+      color: var(--brown);
+      font-family: Georgia, serif;
+      font-size: 1rem;
+      font-weight: bold;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* =============================================
+       9. クロージング
+    ============================================= */
+    #closing {
+      background: linear-gradient(160deg, #F0F4FC 0%, #E0EAF8 100%);
+      text-align: center;
+    }
+    #closing h2 { font-size: 1.3rem; color: var(--brown); margin-bottom: 18px; }
+    /* クロージング — 文字を先に、写真を下に（見切れ防止） */
+    .closing-text {
+      max-width: 600px; margin: 0 auto 30px;
+      font-size: 1.05rem; color: var(--text-mid);
+      text-align: left; line-height: 2;
+    }
+    .closing-photo { max-width: 420px; margin: 0 auto; }
+    .closing-photo img { width: 100%; display: block; border-radius: 4px; box-shadow: 0 12px 30px rgba(58,66,104,.16); }
+
+    /* =============================================
+       フッター
+    ============================================= */
+    footer {
+      background: var(--brown);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 32px 20px 36px;
+      font-size: 0.78rem;
+      line-height: 1.8;
+    }
+
+    /* =============================================
+       PC対応（最小限）
+    ============================================= */
+    @media (min-width: 600px) {
+      body { font-size: 17px; padding-bottom: 80px; }
+      section { padding: 92px 40px; }
+      .fv-h1 { font-size: 2rem; }
+      h2.sec-title { font-size: 1.8rem; }
+      .cta-btn { font-size: 1.1rem; }
+      #sticky-bar a { font-size: 1rem; padding: 14px 32px; }
+    }
+    @media (min-width: 760px) {
+      section { max-width: 720px; margin: 0 auto; padding: 108px 44px; }
+      footer { max-width: none; }
+      /* FVも下のセクションと同じ細長い列に揃える（中央配置） */
+      #fv { max-width: 720px; margin: 0 auto; padding: 48px 0 0; }
+      .fv-inner-wrap { max-width: 720px; margin: 0 auto; padding: 0 40px; }
+      /* 縦長FV画像はPCで大きくなりすぎないよう中央に収める */
+      .fv-img-wrap img.fv-main-img { max-width: 480px; margin: 0 auto; }
+    }
+    /* ===== 本文サイズを全セクション統一＋少し大きく（約18px・上品で読みやすく）===== */
+    .fz-lead, .fz-desc, .curri-2col .c-text p, .flow-content p,
+    .flow-item.flow-lead .flow-content > p, .flow-intro,
+    .why-text p, .voice-text, .profile-card > p, .price-text,
+    .tokuten-list li p, .faq-answer, .closing-hero-overlay .closing-text,
+    .step-card p, .learn-block li {
+      font-size: 1.12rem;
+    }
+    /* ===== 見出しサイズの統一＋少し大きく（上品にまとめる）===== */
+    .fz-head h3, .step-card h3, .flow-content h4, .learn-block h3 {
+      font-size: 1.3rem; line-height: 1.55;
+    }
+    .why-head, .profile-meta h3, .curri-head, #closing h2,
+    .flow-item.flow-lead .flow-content h4 {
+      font-size: 1.5rem; line-height: 1.5;
+    }
+    /* ===== 学べること（詳細）===== */
+    #learn { background: var(--white); }
+    .learn-list { max-width: 640px; margin: 0 auto; display: grid; gap: 28px; }
+    .learn-block { background: var(--bg-alt); padding: 24px 24px; }
+    .learn-block h3 {
+      font-size: 1.16rem; color: var(--brown); font-weight: bold;
+      margin-bottom: 14px; letter-spacing: 0.04em;
+      border-left: 4px solid var(--accent); padding-left: 12px;
+    }
+    .learn-block ul { list-style: none; }
+    .learn-block li {
+      position: relative; padding-left: 24px; margin-bottom: 9px;
+      font-size: 0.95rem; color: var(--text-mid); line-height: 1.7;
+    }
+    .learn-block li::before {
+      content: ""; position: absolute; left: 5px; top: 5px;
+      width: 7px; height: 12px;
+      border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+      transform: rotate(45deg);
+    }
+
+    /* ===== ハンバーガーメニュー（右上）＋セクションナビ ===== */
+    #menu-btn {
+      position: fixed; top: 16px; right: 16px; z-index: 1100;
+      width: 46px; height: 46px;
+      background: rgba(58,66,104,0.92);
+      border: none; cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+    }
+    #menu-btn span { display: block; width: 22px; height: 2px; background: #fff; transition: transform 0.3s, opacity 0.3s; }
+    body.menu-open #menu-btn span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    body.menu-open #menu-btn span:nth-child(2) { opacity: 0; }
+    body.menu-open #menu-btn span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    #menu-nav {
+      position: fixed; inset: 0; z-index: 1090;
+      background: rgba(52,60,96,0.97);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+      opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s;
+    }
+    body.menu-open #menu-nav { opacity: 1; visibility: visible; }
+    #menu-nav a {
+      color: #fff; text-decoration: none; font-size: 1.05rem;
+      padding: 13px 24px; letter-spacing: 0.08em;
+    }
+    #menu-nav a.menu-cta {
+      margin-top: 18px; border-radius: 50px; font-weight: bold; padding: 14px 36px;
+      background: linear-gradient(135deg, #E6C871 0%, #C9A24E 45%, #DcB85f 100%);
+    }
+
+    /* ===== スマホ：背景固定画像を非表示＋ボタンの浮遊を停止 =====
+       （iOSで固定背景が揺れる/最下部で動く・ボタンのゆらゆらを防ぐ） */
+    @media (max-width: 760px) {
+      #bg-layer { display: none; }
+      .cta-btn { animation: none; }
+      /* 装飾の葉が画面外にはみ出して横揺れ（ゆらゆら）の原因になるためスマホでは非表示 */
+      .bot { display: none; }
+    }
+    /* ハンバーガーは廃止（スマホは不要・PCはガターのサイドナビに置き換え） */
+    #menu-btn, #menu-nav { display: none; }
+
+    /* =============================================
+       PC左右ガターのサイドナビ（広い画面のみ表示／スマホ・タブレットは非表示）
+    ============================================= */
+    #side-nav, #side-progress { display: none; }
+    @media (min-width: 1140px) {
+      #side-nav {
+        position: fixed; top: 0; left: 0; height: 100vh;
+        width: calc((100vw - 720px) / 2);
+        box-sizing: border-box;
+        padding: 48px 28px 48px 48px;
+        display: flex; flex-direction: column; justify-content: center;
+        align-items: flex-start;
+        z-index: 1080;
+      }
+      .side-brand {
+        font-size: 1.12rem; font-weight: bold; color: var(--brown);
+        line-height: 1.4; margin-bottom: 34px; letter-spacing: 0.05em;
+      }
+      .side-brand span {
+        display: block; font-size: 0.74rem; color: var(--accent-dark);
+        font-weight: normal; letter-spacing: 0.14em; margin-top: 5px;
+      }
+      .side-list { list-style: none; }
+      .side-list a {
+        display: flex; align-items: baseline; gap: 12px;
+        padding: 8px 0; text-decoration: none;
+        color: var(--text-light); transition: color 0.25s;
+      }
+      .side-list a i {
+        font-style: normal; font-family: Georgia, serif;
+        font-size: 0.7rem; color: var(--text-light); width: 18px; transition: color 0.25s;
+      }
+      .side-list a span { font-size: 0.95rem; letter-spacing: 0.04em; position: relative; }
+      .side-list a:hover { color: var(--accent-dark); }
+      .side-list a.active { color: var(--brown); }
+      .side-list a.active i { color: var(--gold); }
+      .side-list a.active span::after {
+        content: ""; position: absolute; left: 0; right: -8px; bottom: -3px;
+        height: 1.5px; background: var(--gold);
+      }
+      #side-progress {
+        position: fixed; top: 50%; right: 0; transform: translateY(-50%);
+        width: calc((100vw - 720px) / 2);
+        display: flex; flex-direction: column; align-items: center; gap: 20px;
+        z-index: 1080; pointer-events: none;
+      }
+      .sp-label {
+        writing-mode: vertical-rl; letter-spacing: 0.3em;
+        font-size: 0.72rem; color: var(--text-light); font-family: Georgia, serif;
+      }
+      .sp-count { font-family: Georgia, serif; font-size: 0.82rem; color: var(--text-light); }
+      .sp-count b { color: var(--brown); font-size: 1.1rem; }
+    }
+    /* ===== 見出しの字間を少しゆったりに（詰まり防止）===== */
+    h2.sec-title, .why-head, .curri-head, .fz-head h3,
+    .flow-content h4, .accel-title, .profile-meta h3,
+    .tokuten-title, .urgency-box h3, .price-box h3, #closing h2 {
+      letter-spacing: 0.06em;
+    }
+
+    /* =============================================
+       受講形式：あなたの活動を加速させる充実したカリキュラム
+    ============================================= */
+    .accel-wrap { margin-top: 8px; }
+    .accel-title { text-align:center; font-size:1.32rem; color:var(--brown); font-weight:bold; line-height:1.5; margin-bottom:28px; letter-spacing:0.05em; }
+    .accel-list { max-width:620px; margin:0 auto; display:grid; gap:18px; }
+    .accel-item { display:flex; gap:16px; background:var(--bg-alt); padding:22px; align-items:flex-start; }
+    .accel-num { font-family:Georgia,serif; font-size:1.7rem; font-weight:bold; color:var(--accent); line-height:1; flex:none; }
+    .accel-body h4 { font-size:1.14rem; color:var(--brown); font-weight:bold; margin-bottom:8px; line-height:1.55; }
+    .accel-body p { font-size:1.02rem; color:var(--text-mid); line-height:1.85; }
+
+    /* =============================================
+       安心感（あなたでも、できる）
+    ============================================= */
+    #assurance { background: var(--white); }
+    .assurance-lead { text-align:center; font-size:1.12rem; line-height:2; color:var(--text-mid); margin-bottom:36px; }
+    .assurance-lead b { color:var(--accent-dark); }
+    /* ポーセラボでできること：写真付きカード */
+    .env-list { max-width:600px; margin:0 auto; display:grid; gap:26px; }
+    .env-item { background:var(--bg-alt); border-radius:2px; overflow:hidden; box-shadow:0 10px 28px rgba(58,66,104,.10); }
+    .env-photo { width:100%; aspect-ratio:3/2; object-fit:cover; object-position:center top; display:block; }
+    .env-photo.mid { object-position:center 58%; }
+    .env-body { padding:20px 22px 24px; }
+    .env-body h4 { font-size:1.16rem; color:var(--brown); font-weight:bold; line-height:1.55; margin-bottom:10px; border-left:4px solid var(--accent); padding-left:12px; }
+    .env-num { color:var(--accent-deep); font-family:Georgia,serif; margin-right:7px; }
+    .env-body p { font-size:1.02rem; color:var(--text-mid); line-height:1.9; }
+
+    /* =============================================
+       私も同じように悩んでいました（ストーリー）
+    ============================================= */
+    #story { background: var(--bg-alt); }
+    .story-body { max-width:620px; margin:0 auto; }
+    .story-body p { font-size:1.05rem; color:var(--text-mid); line-height:2; margin-bottom:18px; }
+    .story-points { max-width:620px; margin:36px auto 0; background:var(--white); padding:30px 24px; }
+    .story-points-lead { text-align:center; font-size:1.12rem; color:var(--brown); font-weight:bold; line-height:1.7; margin-bottom:20px; }
+    .story-points ol { list-style:none; counter-reset:sp; max-width:480px; margin:0 auto 18px; }
+    .story-points li { counter-increment:sp; position:relative; padding-left:46px; margin-bottom:15px; font-size:1.05rem; color:var(--brown); line-height:1.7; font-weight:bold; }
+    .story-points li::before { content:counter(sp); position:absolute; left:0; top:-2px; width:31px; height:31px; background:linear-gradient(135deg, var(--accent-deep) 0%, var(--accent) 100%); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:Georgia,serif; font-size:0.95rem; }
+    .story-points-foot { font-size:1.02rem; color:var(--text-mid); line-height:1.9; text-align:center; }
+
+    /* =============================================
+       受講生の声：スクショの壁（静止・もっと見る）
+    ============================================= */
+    .ss-wall { max-width: 600px; margin: 12px auto 0; }
+    .ss-wall-lead { text-align:center; font-size:1.2rem; color:var(--brown); font-weight:bold; line-height:1.55; letter-spacing:.04em; margin-bottom:6px; }
+    .ss-wall-sub { text-align:center; font-size:.82rem; color:var(--text-light); margin-bottom:22px; }
+    .ss-clip { position:relative; max-height:560px; overflow:hidden; transition:max-height .45s ease; }
+    .ss-clip.open { max-height:14000px; }
+    .ss-cols { column-count:2; column-gap:10px; }
+    .ss-shot { width:100%; display:block; margin:0 0 10px; border-radius:4px; box-shadow:0 4px 14px rgba(58,66,104,.10); break-inside:avoid; }
+    .ss-fade { position:absolute; left:0; right:0; bottom:0; height:130px; background:linear-gradient(rgba(255,255,255,0), var(--white)); pointer-events:none; transition:opacity .3s; }
+    .ss-clip.open .ss-fade { opacity:0; }
+    .ss-more {
+      display:flex; align-items:center; justify-content:center; gap:7px;
+      width:max-content; margin:20px auto 0; cursor:pointer;
+      background:#fff; border:1.5px solid var(--accent); color:var(--accent-dark);
+      font-family:inherit; font-size:.95rem; font-weight:bold; letter-spacing:.04em;
+      padding:11px 30px; border-radius:30px;
+    }
+    .ss-more .ss-ico { transition:transform .3s; font-size:.7rem; }
+    .ss-more.open .ss-ico { transform:rotate(180deg); }
+
+    /* =============================================
+       作品ギャラリー（左から流れてくる）
+    ============================================= */
+    #gallery { background: var(--cream); overflow: hidden; }
+    /* 作品タイル敷き詰め（3列） */
+    .gallery-grid { max-width:600px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+    .gallery-grid img { width:100%; aspect-ratio:1; object-fit:cover; display:block; border-radius:2px; box-shadow:0 4px 12px rgba(58,66,104,.12); transition:transform .35s ease, box-shadow .35s ease; cursor:pointer; }
+    .gallery-grid img:hover { transform:scale(1.08); box-shadow:0 12px 28px rgba(58,66,104,.26); position:relative; z-index:2; }
+    /* FV直下の作品ギャラリー（ワクワク感を伝える） */
+    .fv-gallery { background: var(--white); overflow: hidden; padding: 4px 0 44px; }
+    .fv-gallery-cap {
+      text-align: center;
+      font-size: 1.08rem;
+      color: var(--accent-dark);
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      margin-bottom: 22px;
+    }
+    .gallery-lead {
+      text-align: center;
+      font-size: 1.12rem;
+      color: var(--text-mid);
+      line-height: 1.95;
+      margin-bottom: 40px;
+    }
+    /* 横スクロールの窓（両端をふんわりフェード） */
+    /* 通常は自動スクロール（JS）、指で触れると手動スクロールできる横スクロール領域 */
+    .marquee {
+      position: relative;
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+              mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+    }
+    .marquee::-webkit-scrollbar { display: none; }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+    }
+    .marquee-item {
+      flex: 0 0 auto;
+      width: 240px;
+      height: 240px;
+      margin-right: 11px;          /* 隙間を半分に（22→11） */
+      background: var(--white);
+      box-shadow: 0 14px 32px rgba(58,66,104,0.16);
+      overflow: hidden;
+    }
+    .marquee-item img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    @media (min-width: 760px) {
+      .marquee-item { width: 300px; height: 300px; margin-right: 14px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ハンバーガーメニュー（右上）＋セクションナビ -->
+<button id="menu-btn" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+<nav id="menu-nav">
+  <a href="#pain">こんなお悩み</a>
+  <a href="#future">受講後の未来</a>
+  <a href="#service">講座で学ぶこと</a>
+  <a href="#why">選ばれる理由</a>
+  <a href="#voices">受講生の声・講師紹介</a>
+  <a href="#price">料金・特典</a>
+  <a href="#faq">よくあるご質問</a>
+  <a href="#gallery">作品ギャラリー</a>
+  <a href="#closing" class="menu-cta">無料相談会に参加する</a>
+</nav>
+
+<!-- PC左ガターのサイドナビ（PC幅のみ表示・スマホ/タブレットは非表示） -->
+<nav id="side-nav" aria-label="セクションナビ">
+  <div class="side-brand">ポーセラボ<span>絵の具コース</span></div>
+  <ul class="side-list">
+    <li><a href="#fv" data-sec="fv"><i>01</i><span>ようこそ</span></a></li>
+    <li><a href="#pain" data-sec="pain"><i>02</i><span>こんなお悩み</span></a></li>
+    <li><a href="#future" data-sec="future"><i>03</i><span>叶えたい未来</span></a></li>
+    <li><a href="#service" data-sec="service"><i>04</i><span>4ヶ月の学び</span></a></li>
+    <li><a href="#why" data-sec="why"><i>05</i><span>選ばれる理由</span></a></li>
+    <li><a href="#voices" data-sec="voices"><i>06</i><span>受講生の声</span></a></li>
+    <li><a href="#price" data-sec="price"><i>07</i><span>料金・特典</span></a></li>
+    <li><a href="#faq" data-sec="faq"><i>08</i><span>よくあるご質問</span></a></li>
+    <li><a href="#closing" data-sec="closing"><i>09</i><span>まずは無料相談</span></a></li>
+    <li><a href="#gallery" data-sec="gallery"><i>10</i><span>作品ギャラリー</span></a></li>
+  </ul>
+</nav>
+<!-- PC右ガターのスクロール表示（現在地カウンター） -->
+<div id="side-progress" aria-hidden="true">
+  <span class="sp-label">SCROLL</span>
+  <span class="sp-count"><b>01</b> / 10</span>
+</div>
+
+<!-- 全体背景レイヤー（PCで中央コラムの背面に表示・5秒ごとにフェード）
+     将来この中に <video autoplay muted loop playsinline> を入れて動画背景に差し替え -->
+<div id="bg-layer"></div>
+
+<!-- ============================================
+     スティッキーCTAバー（画面下部に固定）
+============================================ -->
+<div id="sticky-bar">
+  <a href="ここに申込先URLを入力">
+    無料相談会に参加する
+  </a>
+</div>
+
+<script>
+  /* ふんわりフェードイン（DOM構築後に実行 / 非対応環境でも必ず表示） */
+  document.addEventListener('DOMContentLoaded', function () {
+    var els = document.querySelectorAll('.fade-in');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function(el) { el.classList.add('visible'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05 });
+    els.forEach(function(el) { observer.observe(el); });
+    /* 保険：3秒後にまだ表示されていなければ強制表示 */
+    setTimeout(function () {
+      els.forEach(function(el) { el.classList.add('visible'); });
+    }, 3000);
+  });
+
+  /* FVを過ぎたらスティッキーバー表示・最下部（フッター手前）では隠す
+     （#fv より先に実行されるので DOMContentLoaded 後に） */
+  document.addEventListener('DOMContentLoaded', function () {
+    var bar = document.getElementById('sticky-bar');
+    var fv  = document.getElementById('fv');
+    if (!bar || !fv) return;
+    function onScroll() {
+      var pastFv = fv.getBoundingClientRect().bottom < 0;
+      var nearBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 140);
+      if (pastFv && !nearBottom) {
+        bar.classList.add('visible');
+      } else {
+        bar.classList.remove('visible');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    onScroll();
+  });
+
+  /* PCサイドナビ：スクロールに合わせて現在のセクションをハイライト＋カウンター更新 */
+  document.addEventListener('DOMContentLoaded', function () {
+    var links = document.querySelectorAll('#side-nav .side-list a');
+    if (!links.length) return;
+    var counter = document.querySelector('#side-progress .sp-count b');
+    var items = Array.from(links).map(function (a, i) {
+      return { a: a, n: i + 1, sec: document.getElementById(a.getAttribute('data-sec')) };
+    }).filter(function (it) { return it.sec; });
+    function onSpy() {
+      var line = window.innerHeight * 0.4;   /* 画面の上から40%の位置を基準線に */
+      var cur = items[0];
+      for (var i = 0; i < items.length; i++) {
+        if (items[i].sec.getBoundingClientRect().top - line <= 0) cur = items[i]; else break;
+      }
+      links.forEach(function (a) { a.classList.remove('active'); });
+      cur.a.classList.add('active');
+      if (counter) counter.textContent = ('0' + cur.n).slice(-2);
+    }
+    window.addEventListener('scroll', onSpy, { passive: true });
+    window.addEventListener('resize', onSpy, { passive: true });
+    onSpy();
+  });
+
+  /* スクショの壁：もっと見る／閉じる */
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('ssMore');
+    var clip = document.getElementById('ssClip');
+    if (!btn || !clip) return;
+    btn.addEventListener('click', function () {
+      var open = clip.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.firstChild.nodeValue = open ? '閉じる ' : 'もっと見る ';
+    });
+  });
+
+  /* 作品ギャラリー：通常は自動スクロール、指で触れたら手動スクロール（離すと自動に戻る） */
+  document.addEventListener('DOMContentLoaded', function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('.marquee').forEach(function (m) {
+      if (!m.querySelector('.marquee-track')) return;
+      var paused = !!reduce, timer = null;
+      function step() {
+        if (!paused) {
+          m.scrollLeft += 0.5;
+          var half = m.scrollWidth / 2;
+          if (half > 0 && m.scrollLeft >= half) m.scrollLeft -= half;
+        }
+        requestAnimationFrame(step);
+      }
+      function pause() { paused = true; if (timer) { clearTimeout(timer); timer = null; } }
+      function resume() { if (reduce) return; if (timer) clearTimeout(timer); timer = setTimeout(function () { paused = false; }, 1500); }
+      ['pointerdown', 'touchstart', 'mousedown', 'wheel'].forEach(function (ev) { m.addEventListener(ev, pause, { passive: true }); });
+      ['pointerup', 'pointercancel', 'touchend', 'touchcancel', 'mouseleave'].forEach(function (ev) { m.addEventListener(ev, resume, { passive: true }); });
+      requestAnimationFrame(step);
+    });
+  });
+
+</script>
+
+
+<!-- ============================================
+     1. ファーストビュー（スマホ版）
+============================================ -->
+<section id="fv">
+  <!-- FV画像 -->
+  <div class="fv-img-wrap">
+    <img src="img/spfv.png" alt="絵の具苦手から技術とデザイン力UPで選ばれる先生になる｜ポーセラボ絵の具コース" class="fv-main-img">
+  </div>
+
+  <!-- FVバッジ：前回LPと同じ3要素 -->
+  <div class="fv-badges">
+    <div class="fv-badge"><span class="b-main">8月</span><span class="b-sub">開講</span></div>
+    <div class="fv-badge"><span class="b-main">全期</span><span class="b-sub">即満席</span></div>
+    <div class="fv-badge"><span class="b-main">98%</span><span class="b-sub">満足度・継続率</span></div>
+  </div>
+
+  <!-- CTAボタン（画像の下・中央） -->
+  <div class="fv-cta-area">
+    <a href="ここに申込先URLを入力" class="cta-btn">無料相談会に参加する</a>
+  </div>
+
+  <!-- FV直下の作品ギャラリー（「こんな作品が作れる！」のワクワク感）※画像は仮 -->
+  <div class="fv-gallery">
+    <p class="fv-gallery-cap">こんな作品が作れるようになります</p>
+    <div class="marquee">
+      <div class="marquee-track">
+        <div class="marquee-item"><img src="img/gallery1.jpg" alt="絵の具で描いたブルーラスターのカップ＆ソーサー"></div>
+        <div class="marquee-item"><img src="img/gallery2.jpg" alt="モネの睡蓮を描いた淡い色合いのプレート"></div>
+        <div class="marquee-item"><img src="img/gallery3.jpg" alt="ミモザのドレスを描いた額装作品"></div>
+        <div class="marquee-item"><img src="img/gallery4.jpg" alt="桜を描いたオーナメントボックス"></div>
+        <div class="marquee-item"><img src="img/gallery5.jpg" alt="マリン柄のカップ＆ソーサー"></div>
+        <div class="marquee-item"><img src="img/gallery6.jpg" alt="水彩のような風合いのマグカップ"></div>
+        <div class="marquee-item"><img src="img/gallery1.jpg" alt="" aria-hidden="true"></div>
+        <div class="marquee-item"><img src="img/gallery2.jpg" alt="" aria-hidden="true"></div>
+        <div class="marquee-item"><img src="img/gallery3.jpg" alt="" aria-hidden="true"></div>
+        <div class="marquee-item"><img src="img/gallery4.jpg" alt="" aria-hidden="true"></div>
+        <div class="marquee-item"><img src="img/gallery5.jpg" alt="" aria-hidden="true"></div>
+        <div class="marquee-item"><img src="img/gallery6.jpg" alt="" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- つなぎ：作品 → お悩み -->
+  <div class="bridge" style="padding:8px 20px 48px;">
+    <div class="bridge-quote">
+      <p class="bridge-q1">「私にも、こんな作品が作れたら…」</p>
+      <p class="bridge-q2">そう憧れる一方で、<br>こんなお悩み、ありませんか？</p>
+    </div>
+    <div class="bridge-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A870" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M5 13l7 7 7-7"/></svg></div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     2. 悩み・共感
+============================================ -->
+<section id="pain">
+  <div class="pain-list">
+    <div class="pain-item">
+      <span class="pain-num">01</span>
+      <p class="pain-text">転写紙メインで作品を作ってきたけど、似たような作り上がりに<span class="em">物足りなさを感じてきた</span></p>
+    </div>
+    <div class="pain-item">
+      <span class="pain-num">02</span>
+      <p class="pain-text">インストラクターコースで絵の具を学んだはずなのに、<span class="em">指導する自信は持っていない</span></p>
+    </div>
+    <div class="pain-item">
+      <span class="pain-num">03</span>
+      <p class="pain-text">絵の具って難しそう。<span class="em">失敗するんじゃないか</span>と思うと、なかなか進まない</p>
+    </div>
+    <div class="pain-item">
+      <span class="pain-num">04</span>
+      <p class="pain-text">絵の具はやってみたけど<span class="em">思い通りにできない</span>、きれいな仕上がりにならない</p>
+    </div>
+    <div class="pain-item">
+      <span class="pain-num">05</span>
+      <p class="pain-text">生徒さんが「次は何を作ろうか」と<span class="em">少し迷い出している</span>のが、自分にも伝わってきている</p>
+    </div>
+    <div class="pain-item">
+      <span class="pain-num">06</span>
+      <p class="pain-text">「こんなの作ってみたい！」と提案したいのに、自分の技術が追いつかず、<span class="em">指導する自信がなくて</span>言い出せない</p>
+    </div>
+  </div>
+  <p class="pain-solve">それ、<b>全部解決</b>できます！</p>
+</section>
+
+
+<!-- ============================================
+     3. 理想の未来
+============================================ -->
+<section id="future">
+  <div class="bot" style="top:-10px;left:-16px;transform:rotate(-15deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" width="68" height="68"><g transform="translate(27,27)" fill="none" stroke="#A3BCE0" stroke-width="0.9"><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(0)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(72)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(144)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(216)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(288)"/><circle r="4" fill="#E6EEF8"/></g></svg>
+  </div>
+  <div class="bot" style="bottom:20px;right:-10px;transform:rotate(12deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 55" width="45" height="55"><g fill="none" stroke="#7A9DCF" stroke-width="0.8"><line x1="22" y1="52" x2="22" y2="28"/><line x1="22" y1="38" x2="10" y2="24"/><line x1="22" y1="33" x2="34" y2="20"/><line x1="10" y1="24" x2="5" y2="12"/><line x1="10" y1="24" x2="16" y2="12"/><line x1="34" y1="20" x2="28" y2="8"/><line x1="34" y1="20" x2="40" y2="8"/><circle cx="5" cy="9" r="3.5" fill="#CFDDF0"/><circle cx="16" cy="9" r="3.5" fill="#CFDDF0"/><circle cx="28" cy="5" r="3.5" fill="#CFDDF0"/><circle cx="40" cy="5" r="3.5" fill="#CFDDF0"/></g></svg>
+  </div>
+  <!-- つなぎ：お悩み → 未来 -->
+  <div class="bridge" style="margin-bottom:42px;">
+    <div class="bridge-quote">
+      <p class="bridge-q1">安心してください。</p>
+      <p class="bridge-q2">多くの方が同じ思いを抱えています。<br>ポーセラボではあなたの想いに寄り添い、<br>解決に導きます。</p>
+    </div>
+    <div class="bridge-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A870" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M5 13l7 7 7-7"/></svg></div>
+  </div>
+
+  <div class="title-block">
+    <span class="deco-word">Future</span>
+    <h2 class="sec-title">絵の具が、<br>あなたの強みになる</h2>
+    <div class="gold-line"></div>
+  </div>
+
+  <div class="future-zigzag">
+
+    <!-- 01：見出し → 説明 → 写真 → 説明 -->
+    <div class="fz-row">
+      <div class="fz-head"><h3>作れる作品の幅が何倍も広がる</h3></div>
+      <p class="fz-lead">転写紙に頼る作品作りから卒業して、絵の具で表現できる世界がぐっと広がります。</p>
+      <div class="fz-photo">
+        <span class="fz-label">Future 1</span>
+        <img src="img/gallery5.jpg" alt="マリン柄のカップ＆ソーサー">
+      </div>
+      <p class="fz-desc">頭の中にあるイメージをそのまま作品に落とし込めるようになると、作品作りが何倍も楽しくなります。</p>
+    </div>
+
+    <!-- 02：見出し → 写真 → 説明 -->
+    <div class="fz-row">
+      <div class="fz-head"><h3>苦手だった絵の具で、<br>絵が描けるようになる</h3></div>
+      <div class="fz-photo">
+        <span class="fz-label">Future 2</span>
+        <img src="img/gallery10.jpg" alt="チューリップを描いた小皿の作品">
+      </div>
+      <p class="fz-desc">道具や溶剤の使い方、基礎からお伝えしますので初心者の方でも安心です。筆の運び方、絵の具の濃淡の作り方、順序を経て絵を描く手順をわかりやすく学べるカリキュラムとなっています。</p>
+    </div>
+
+    <!-- 03：見出し → 写真 → 説明 -->
+    <div class="fz-row">
+      <div class="fz-head"><h3>絵の具に自信が持て、<br>指導できるようになる</h3></div>
+      <div class="fz-photo">
+        <span class="fz-label">Future 3</span>
+        <img src="img/gallery3.jpg" alt="ミモザのドレスを描いた額装作品">
+      </div>
+      <p class="fz-desc">自分で描けるだけでなく、生徒さんに「なぜそう描くのか」を説明できるまでがカリキュラムとなっています。指導の際にお使いいただける資料や動画も揃っているので、指導に迷うことなく、すぐにレッスンを始められます。</p>
+    </div>
+
+    <!-- 04：見出し → 写真 → 説明 -->
+    <div class="fz-row">
+      <div class="fz-head"><h3>「そんな食器見たことない！」と言われる作品が生まれる</h3></div>
+      <div class="fz-photo">
+        <span class="fz-label">Future 4</span>
+        <img src="img/gallery2.jpg" alt="モネの睡蓮を描いた淡い色合いのプレート">
+      </div>
+      <p class="fz-desc">転写紙では出せない、唯一無二の表現が手に入ります。どこかで見たことのある作品ではなく、オリジナルを生み出す力を養います。</p>
+    </div>
+
+    <!-- 05：見出し → 写真 → 説明 -->
+    <div class="fz-row">
+      <div class="fz-head"><h3>「この先生からしか習えない」と選ばれる存在になれる</h3></div>
+      <div class="fz-photo">
+        <span class="fz-label">Future 5</span>
+        <img src="img/gallery12.jpg" alt="レモンとリボンを描いたプレートの作品">
+      </div>
+      <p class="fz-desc">転写紙メインの教室が多いからこそ、絵の具を教えられることは大きな差別化に。選ばれる教室作りが叶います。</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================
+     4. サービス内容
+============================================ -->
+<section id="service">
+  <div class="bot" style="top:-12px;right:-16px;transform:rotate(10deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 90" width="48" height="86"><g fill="none" stroke="#7A9DCF" stroke-width="0.85"><line x1="25" y1="88" x2="25" y2="8"/><ellipse cx="14" cy="70" rx="10" ry="7" transform="rotate(-40 14 70)"/><ellipse cx="36" cy="55" rx="10" ry="7" transform="rotate(40 36 55)"/><ellipse cx="14" cy="40" rx="9" ry="6" transform="rotate(-40 14 40)"/><ellipse cx="36" cy="28" rx="9" ry="6" transform="rotate(40 36 28)"/><ellipse cx="25" cy="14" rx="5" ry="8"/></g></svg>
+  </div>
+  <div class="bot" style="bottom:16px;left:-12px;transform:rotate(-8deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" width="60" height="60"><g transform="translate(27,27)" fill="none" stroke="#A3BCE0" stroke-width="0.9"><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(0)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(72)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(144)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(216)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(288)"/><circle r="4" fill="#E6EEF8"/></g></svg>
+  </div>
+
+  <div class="title-block">
+    <span class="deco-word">Contents</span>
+    <h2 class="sec-title">ポーセラボ絵の具コースで<br>学ぶこと</h2>
+    <div class="gold-line"></div>
+  </div>
+
+  <p style="font-size:1.05rem;color:var(--brown);font-weight:bold;margin-bottom:24px;text-align:center;">カリキュラム（4ヶ月）</p>
+
+  <div class="curriculum-list">
+
+    <!-- 1ヶ月目 -->
+    <div class="curri-item">
+      <div class="curri-content">
+        <p class="curri-month">1ヶ月目</p>
+        <h3 class="curri-head">絵の具の基礎から本質的理解</h3>
+        <p class="curri-task">課題：<span>リーフボックス</span></p>
+        <div class="curri-2col">
+          <div class="c-photo"><img src="img/curriculum-1.png" alt="1ヶ月目の課題作品：リーフボックス"></div>
+          <div class="c-text"><p>「なんとなく」から卒業。絵の具の性質・使い方・調整まで、「なぜこれが必要か」を理解することで、自分が意図したように扱えるようになる。</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2ヶ月目 -->
+    <div class="curri-item">
+      <div class="curri-content">
+        <p class="curri-month">2ヶ月目</p>
+        <h3 class="curri-head">ポーセラーツの技術との融合と応用</h3>
+        <p class="curri-task">課題：<span>シルエットフラワー</span></p>
+        <div class="curri-2col">
+          <div class="c-photo"><img src="img/curriculum-2.png" alt="2ヶ月目の課題作品：シルエットフラワー"></div>
+          <div class="c-text"><p>基礎を土台に、表現の幅を広げる技術を習得。転写紙を分解・構成する楽しさと絵の具を組み合わせることで、これまでにない作品が生まれる。絵を描いたことがない人でも描けるようになる。</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3ヶ月目 -->
+    <div class="curri-item">
+      <div class="curri-content">
+        <p class="curri-month">3ヶ月目</p>
+        <h3 class="curri-head">ポーセラーツのためのデザイン理論</h3>
+        <p class="curri-task">課題：<span>フラワーガール</span></p>
+        <div class="curri-2col">
+          <div class="c-photo"><img src="img/curriculum-3.png" alt="3ヶ月目の課題作品：フラワーガール"></div>
+          <div class="c-text"><p>デザインとは、おしゃれな見た目にすることではありません。20年のデザイナー実績から構築した独自のデザイン理論で、見ている人の心に届く作品を体系的に学びます。</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4ヶ月目 -->
+    <div class="curri-item">
+      <div class="curri-content">
+        <p class="curri-month">4ヶ月目</p>
+        <h3 class="curri-head">ポーセラーツのためのデザイン理論</h3>
+        <div class="curri-2col">
+          <div class="c-photo"><img src="img/gallery9.jpg" alt="4ヶ月目の作品例：デザイン理論で仕上げたメリーゴーランドの作品"></div>
+          <div class="c-text"><p>技術を学ぶだけでは、誰かに届く作品は作れません。尾野さおりの20年のデザイナー経験から導いた「ポーセラーツのためのデザイン理論」を用いて、届く作品づくりと、お教室業に必要なマーケティング＆集客メソッドを学びます。売り込まずに生徒さまが集まる仕組みと方法をお伝えします。</p></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+<!-- ============================================
+     5. 選ばれる理由
+============================================ -->
+<section id="why">
+  <div class="bot" style="top:-18px;left:-20px;transform:rotate(-12deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" width="86" height="86"><g transform="translate(45,45)" fill="none" stroke="#7A9DCF" stroke-width="1"><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(0)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(60)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(120)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(180)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(240)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(300)"/><circle r="6" fill="#E3ECF7"/></g></svg>
+  </div>
+  <div class="bot" style="bottom:10px;right:-14px;transform:rotate(15deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 55" width="42" height="52"><g fill="none" stroke="#7A9DCF" stroke-width="0.8"><line x1="22" y1="52" x2="22" y2="28"/><line x1="22" y1="38" x2="10" y2="24"/><line x1="22" y1="33" x2="34" y2="20"/><line x1="10" y1="24" x2="5" y2="12"/><line x1="10" y1="24" x2="16" y2="12"/><line x1="34" y1="20" x2="28" y2="8"/><line x1="34" y1="20" x2="40" y2="8"/><circle cx="5" cy="9" r="3.5" fill="#CFDDF0"/><circle cx="16" cy="9" r="3.5" fill="#CFDDF0"/><circle cx="28" cy="5" r="3.5" fill="#CFDDF0"/><circle cx="40" cy="5" r="3.5" fill="#CFDDF0"/></g></svg>
+  </div>
+  <div class="title-block">
+    <span class="deco-word">Reason</span>
+    <h2 class="sec-title">なぜ、ポーセラボ<br>絵の具コースなのか</h2>
+    <div class="gold-line"></div>
+  </div>
+
+  <div class="why-box">
+    <div class="why-diamond"><span>01</span></div>
+    <h3 class="why-head">技術とデザイン、教室運営が<br>学べる唯一の講座</h3>
+    <div class="why-imgs">
+      <img class="img-main" src="img/saori-2.jpg" alt="講師 尾野さおり">
+    </div>
+    <div class="why-text">
+      <p>ポーセラーツ講師歴13年・累計1万人以上の指導実績に加え、<br>美大卒・デザイナー歴20年。<br>絵の具とデザイン知識までを一貫して学べる、<br>唯一無二の講座です。</p>
+    </div>
+  </div>
+
+  <div class="why-box">
+    <div class="why-diamond"><span>02</span></div>
+    <h3 class="why-head">「センスがない」ではなく<br>「知らなかっただけ」</h3>
+    <div class="why-imgs">
+      <img class="img-main" src="img/gallery1.jpg" alt="絵の具で描いたカップ＆ソーサーの作品">
+    </div>
+    <div class="why-text">
+      <p>センスは、知識で磨けるもの。学べば必ず身につきます。<br>今まで「できない」と思っていたことが、「できた」に変わると、<br>作品づくりが、驚くほど楽しくなっていきます！</p>
+    </div>
+  </div>
+
+  <div class="why-box">
+    <div class="why-diamond"><span>03</span></div>
+    <h3 class="why-head">「苦手」から始めたからこそ、<br>寄り添える</h3>
+    <div class="why-imgs">
+      <img class="img-main" src="img/real-1.png" alt="リアル勉強会で指導する様子">
+    </div>
+    <div class="why-text">
+      <p>私自身も「絵の具が苦手」「指導する自信がない」という経験をしてきました。<br>だからこそ、同じ悩みを持つ方の気持ちがわかります。<br>つまずくポイントを先回りして、最後まで丁寧に伴走します。</p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ============================================
+     安心感（あなたでも、できる）
+============================================ -->
+<section id="assurance">
+  <div class="title-block">
+    <span class="deco-word">Program</span>
+    <h2 class="sec-title">あなたの活動を加速させる<br>充実したカリキュラム</h2>
+    <div class="gold-line"></div>
+  </div>
+  <p class="assurance-lead">オンラインでも、リアルでも。<br>あなたの学びと教室運営を、<br>しっかり支える環境が整っています。</p>
+  <div class="env-list">
+    <div class="env-item">
+      <img class="env-photo" loading="lazy" src="img/env-online.jpg" alt="オンラインで学ぶ尾野さおり">
+      <div class="env-body">
+        <h4><span class="env-num">01</span>オリジナル動画コンテンツ</h4>
+        <p>通勤や家事をしながら聞いたり、空き時間に学びを進めることができます。</p>
+      </div>
+    </div>
+    <div class="env-item">
+      <img class="env-photo" loading="lazy" src="img/env-support.jpg" alt="手元を見ながら丁寧に指導する様子">
+      <div class="env-body">
+        <h4><span class="env-num">02</span>講座は全て動画・アーカイブあり</h4>
+        <p>何度でも見返せるので、わからない部分や復習したいところを安心して学べます。</p>
+      </div>
+    </div>
+    <div class="env-item">
+      <img class="env-photo mid" loading="lazy" src="img/env-marketing.jpg" alt="マーケティング・集客勉強会の様子">
+      <div class="env-body">
+        <h4><span class="env-num">03</span>お教室業に必要なマーケティング＆集客勉強会</h4>
+        <p>スキルを磨いても生徒さまは来ません。売り込まずに生徒さまが集まる仕組みと方法をお伝えします。</p>
+      </div>
+    </div>
+    <div class="env-item">
+      <img class="env-photo" loading="lazy" src="img/env-real.jpg" alt="リアル勉強会で仲間と学ぶ様子">
+      <div class="env-body">
+        <h4><span class="env-num">04</span>2回のリアル勉強会</h4>
+        <p>講座中、2回のリアル勉強会があります。実際に手元を見て丁寧に指導させていただきます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     私も同じように悩んでいました（ストーリー）
+============================================ -->
+<section id="story">
+  <div class="title-block">
+    <span class="deco-word">Story</span>
+    <h2 class="sec-title">私も同じように<br>悩んでいました</h2>
+    <div class="gold-line"></div>
+  </div>
+  <div class="story-body">
+    <p>ポーセラーツに魅了され、当時OLだった私は、資格を取得して会社を辞め、ポーセラーツの教室を始めました。</p>
+    <p>ワクワクした気持ちで始めたはずの教室。でも、現実はそう甘くはありませんでした。</p>
+    <p>「資格があれば教えられる」と思っていたのに、実際は転写紙を貼る技術以上のことが自分にはできない。資格はあるのに自信がない。教える自信もないという状態だったのです。</p>
+    <p>必死に手探りで続けていましたが、ある程度作品を作られた生徒様は、次々と教室を離れていってしまいました。</p>
+    <p>大好きなポーセラーツを仕事にしたのに、「このままでは続けていけないかもしれない」。</p>
+    <p>そう気づいたとき、やみくもにスキルアップレッスンを受けたり、資格を増やすことをやめました。</p>
+    <p>私に本当に必要だったのは、絵の具や特殊技法を本質から理解し、実践に活かせる力。そして、自信を持って生徒様に届ける力でした。</p>
+    <p>そこに時間と自己投資を注いだ結果、今では「また来たい」と言っていただける教室になりました。笑顔があふれる場所を、やっとつくれるようになったのです。</p>
+  </div>
+  <div class="story-points">
+    <p class="story-points-lead">13年教室づくりをしてきて気付いた、<br>大切なことが3つあります。</p>
+    <ol>
+      <li>本質から学んだ技術を磨くこと</li>
+      <li>ちゃんと生徒様に届くデザインを作ること</li>
+      <li>売り込まずに、自然と生徒様が集まる仕組みを作ること</li>
+    </ol>
+    <p class="story-points-foot">これが、今より作品づくりを楽しみながら、周りの人に笑顔を届けられる先生になるための法則です。</p>
+  </div>
+</section>
+
+
+
+
+
+<!-- ============================================
+     6. 実績・お客様の声
+============================================ -->
+<section id="voices">
+  <div class="bot" style="top:-14px;right:-16px;transform:rotate(8deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 90" width="46" height="82"><g fill="none" stroke="#7A9DCF" stroke-width="0.85"><line x1="25" y1="88" x2="25" y2="8"/><ellipse cx="14" cy="70" rx="10" ry="7" transform="rotate(-40 14 70)"/><ellipse cx="36" cy="55" rx="10" ry="7" transform="rotate(40 36 55)"/><ellipse cx="14" cy="40" rx="9" ry="6" transform="rotate(-40 14 40)"/><ellipse cx="36" cy="28" rx="9" ry="6" transform="rotate(40 36 28)"/><ellipse cx="25" cy="14" rx="5" ry="8"/></g></svg>
+  </div>
+  <div class="bot" style="bottom:14px;left:-18px;transform:rotate(-22deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" width="80" height="80"><g transform="translate(45,45)" fill="none" stroke="#7A9DCF" stroke-width="1"><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(0)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(60)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(120)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(180)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(240)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(300)"/><circle r="6" fill="#E3ECF7"/></g></svg>
+  </div>
+  <div class="title-block">
+    <span class="deco-word">Voices</span>
+    <h2 class="sec-title">受講生の声</h2>
+    <div class="gold-line"></div>
+  </div>
+
+  <!-- 受講生の声：さおりさん提供の完成版（スマホファースト縦長画像） -->
+  <div class="voice-images">
+    <img class="fade-in" src="img/voice-kaihara.png" alt="受講生の声：貝原三穂さん（広島県在住）。卒業後すぐに3名コース予約、オリジナルレッスン構築で37名以上が受講、月商6倍の30万円を達成。">
+    <img class="fade-in" src="img/voice-okamoto.png" alt="受講生の声：岡本直子さん（大阪府在住）。強みを活かしてオリジナル講座をスタートさせ30名以上が受講、月商10倍に。">
+    <img class="fade-in" src="img/voice-hayashi.jpg" alt="受講生の声：林佳子さん（愛知県在住）。趣味起業からスキルアップ講座20名以上が受講、月商4倍の20万円を達成。">
+  </div>
+
+  <!-- スクショの壁：たくさんの生の声（静止・もっと見る） -->
+  <div class="ss-wall">
+    <p class="ss-wall-lead">ほかにも、こんなに<br>たくさんの声が届いています</p>
+    <p class="ss-wall-sub">※ご本人の掲載許可をいただいています</p>
+    <div class="ss-clip" id="ssClip">
+      <div class="ss-cols">
+        <img class="ss-shot" loading="lazy" src="img/ss01.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss02.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss03.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss04.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss05.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss06.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss07.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss08.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss09.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss10.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss11.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss12.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss13.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss14.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss15.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss16.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss17.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss18.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss19.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss20.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss21.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss22.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss23.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss24.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss25.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss26.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss27.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss28.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss29.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss30.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss31.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss32.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss33.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss34.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss35.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss36.jpg" alt="受講生さまからの喜びの声">
+        <img class="ss-shot" loading="lazy" src="img/ss37.jpg" alt="受講生さまからの喜びの声">
+      </div>
+      <div class="ss-fade"></div>
+    </div>
+    <button class="ss-more" id="ssMore" type="button">もっと見る <span class="ss-ico">▼</span></button>
+  </div>
+
+  <!-- 講師プロフィール -->
+  <div class="instructor-profile">
+    <div class="profile-card">
+      <div class="profile-head">
+        <img class="profile-photo" src="img/saori-3.jpg" alt="講師 尾野さおり">
+        <div class="profile-meta">
+          <p class="p-label">ポーセラボ主宰 / 講師</p>
+          <h3>尾野さおり</h3>
+          <ul class="p-credits">
+            <li>ポーセラーツ講師歴13年</li>
+            <li>美大卒・デザイナー歴20年</li>
+            <li>1万人以上を指導・75名以上のインストラクターを輩出</li>
+            <li>リピート率9割以上の満席教室</li>
+            <li>メディア掲載多数</li>
+          </ul>
+        </div>
+      </div>
+    <p>
+      美大でデザインを学び、メーカーでデザイナーとして働いていましたが、家族の都合で20代のうちに退職。キャリアも夢も見えなくなり、心が折れていました。<br><br>
+      そんなときに出会ったのがポーセラーツです。雑誌で見た一枚の作品に衝撃を受け、これに人生をかけようと会社を辞め、講師の道へ進みました。<br><br>
+      でも、資格を取っても絵の具は思い通りにならず、指導する自信もありません。だから一から学び直し、デザイナーの経験を理論化することで、自分の作品と指導に自信が持てるようになりました。今では1万人以上を指導し、75名以上のインストラクターを輩出しています。<br><br>
+      <strong>技術もセンスも、「ないんじゃない」。ただ知らなかっただけ。<br>あなたにも必ずできる瞬間がきます。</strong>
+    </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================
+     受講の流れ（スリム版・申込→学習スタート→修了）
+============================================ -->
+<section id="flow">
+  <div class="title-block">
+    <span class="deco-word">Flow</span>
+    <h2 class="sec-title">受講の流れ</h2>
+    <div class="gold-line"></div>
+  </div>
+
+  <div class="flow-timeline">
+
+    <div class="flow-item flow-lead">
+      <div class="flow-left">
+        <div class="flow-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="16" rx="2"/><rect x="9" y="3" width="6" height="3" rx="1"/><path d="M8.5 13l2.2 2.2 4-4.4"/></svg>
+        </div>
+      </div>
+      <div class="flow-content">
+        <h4>まずは無料相談会・お申し込み</h4>
+        <p>無料相談会に参加し、納得できたらお申し込み。お手続き後、進め方をご案内します。</p>
+        <p class="flow-intro">相談会では、4ヶ月の流れ・進め方・料金プランまで、あなたの状況に合わせて丁寧にご説明します。「自分にできるかな」という不安も、ここで解消できます。</p>
+      </div>
+    </div>
+
+    <div class="flow-item">
+      <div class="flow-left">
+        <div class="flow-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4M10.5 8.5l4 2.5-4 2.5z"/></svg>
+        </div>
+      </div>
+      <div class="flow-content">
+        <h4>学習スタート（即日）</h4>
+        <p>特典動画と学習サイトは、お申し込み後すぐに視聴可能。開講を待たずに今日から始められます。そこから4ヶ月のカリキュラムを進めていきます。</p>
+      </div>
+    </div>
+
+    <div class="flow-item">
+      <div class="flow-left">
+        <div class="flow-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-4 9 4-9 4-9-4z"/><path d="M7 11v4c0 1.1 2.2 2 5 2s5-.9 5-2v-4"/><path d="M21 9v5"/></svg>
+        </div>
+      </div>
+      <div class="flow-content">
+        <h4>修了・指導スタート</h4>
+        <p>学びを自分のレッスンに落とし込み、指導をスタート。絵の具があなたの強みになります。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================
+     7. 料金・申込条件
+============================================ -->
+<section id="price">
+  <div class="bot" style="top:-16px;right:-18px;transform:rotate(25deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" width="88" height="88"><g transform="translate(45,45)" fill="none" stroke="#7A9DCF" stroke-width="1"><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(0)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(60)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(120)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(180)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(240)"/><ellipse cx="0" cy="-18" rx="7" ry="14" transform="rotate(300)"/><circle r="6" fill="#E3ECF7"/></g></svg>
+  </div>
+  <div class="bot" style="bottom:20px;left:-14px;transform:rotate(-10deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" width="62" height="62"><g transform="translate(27,27)" fill="none" stroke="#A3BCE0" stroke-width="0.9"><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(0)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(72)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(144)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(216)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(288)"/><circle r="4" fill="#E6EEF8"/></g></svg>
+  </div>
+  <div class="title-block">
+    <span class="deco-word">Pricing</span>
+    <h2 class="sec-title">受講料・<br>お申し込みについて</h2>
+    <div class="gold-line"></div>
+  </div>
+
+  <div class="price-box">
+    <h3>受講料について</h3>
+    <p class="price-text">
+      ご受講料は個別相談会にてご案内しています。あなたの現状やお悩みをお聞きした上で、複数のプランの中からご提案します。<br><br>
+      まずはお気軽に相談会にご参加ください。<strong>相談会への参加は完全無料</strong>です。
+    </p>
+  </div>
+
+  <!-- 特典コーナー（画像・文字込み／ChatGPT生成→tokuten.jpg） -->
+  <div class="tokuten-img">
+    <img src="img/tokuten.jpg" alt="早期お申込み特典 総額8万円相当が無料：01 無料個別相談会への参加券／02 指導ポイント勉強会動画（3万円相当）／03 絵の具コース動画レッスン3本プレゼント（5万円相当）／04 コンテンツ・学習サイト即日開放／05 卒業後も安心サポート">
+  </div>
+
+  <div class="urgency-box">
+    <ul>
+      <li>募集人数に限りがあります。定員に達し次第、締め切ります</li>
+      <li>次回の募集時期は未定です</li>
+      <li>期間限定割引価格でのご案内です。期間終了後は通常価格に戻ります</li>
+    </ul>
+  </div>
+
+  <div style="margin-top:32px;" class="cta-wrap">
+    <a href="ここに申込先URLを入力" class="cta-btn">
+      無料相談会に参加する
+    </a>
+  </div>
+</section>
+
+
+<!-- ============================================
+     8. FAQ（アコーディオン）
+     ── <details>/<summary>でJSなしで開閉
+============================================ -->
+<section id="faq">
+  <div class="bot" style="top:-12px;left:-16px;transform:rotate(-18deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 55" width="44" height="54"><g fill="none" stroke="#7A9DCF" stroke-width="0.8"><line x1="22" y1="52" x2="22" y2="28"/><line x1="22" y1="38" x2="10" y2="24"/><line x1="22" y1="33" x2="34" y2="20"/><line x1="10" y1="24" x2="5" y2="12"/><line x1="10" y1="24" x2="16" y2="12"/><line x1="34" y1="20" x2="28" y2="8"/><line x1="34" y1="20" x2="40" y2="8"/><circle cx="5" cy="9" r="3.5" fill="#CFDDF0"/><circle cx="16" cy="9" r="3.5" fill="#CFDDF0"/><circle cx="28" cy="5" r="3.5" fill="#CFDDF0"/><circle cx="40" cy="5" r="3.5" fill="#CFDDF0"/></g></svg>
+  </div>
+  <div class="bot" style="bottom:16px;right:-14px;transform:rotate(20deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 90" width="44" height="78"><g fill="none" stroke="#7A9DCF" stroke-width="0.85"><line x1="25" y1="88" x2="25" y2="8"/><ellipse cx="14" cy="70" rx="10" ry="7" transform="rotate(-40 14 70)"/><ellipse cx="36" cy="55" rx="10" ry="7" transform="rotate(40 36 55)"/><ellipse cx="14" cy="40" rx="9" ry="6" transform="rotate(-40 14 40)"/><ellipse cx="36" cy="28" rx="9" ry="6" transform="rotate(40 36 28)"/><ellipse cx="25" cy="14" rx="5" ry="8"/></g></svg>
+  </div>
+  <div class="title-block">
+    <span class="deco-word">Question</span>
+    <h2 class="sec-title">よくあるご質問</h2>
+    <div class="gold-line"></div>
+  </div>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">本当に絵が苦手ですが、描けるようになりますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>大丈夫です。受講生の多くが「絵は苦手」というスタートでした。基礎からわかりやすくお伝えしますので、苦手な方こそ大きな変化を実感していただけます。</span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">初心者でもついていけますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>はい。絵の具の基礎から丁寧にお伝えしますので、はじめての方でも安心してついていただける内容です。</span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">仕事や育児で忙しくても続けられますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>参加できない日は勉強会のアーカイブ動画でいつでも受講できます。わからないことはいつでもサポートしますので、忙しい方でも無理なく続けていただけます。</span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">対面レッスンは可能ですか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>オンラインでも成果が出る環境を整えています。2回のリアル勉強会がありますので、難しいところはリアルで学んでいただけます。神戸に教室がありますので、対面をご希望の方は相談会にてご相談ください。</span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">受講後に本当に指導できるようになりますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>はい。技術だけでなくすぐに指導までできるカリキュラムになっています。修了後すぐに指導をスタートされた卒業生も多くいらっしゃいます。</span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">受講料はどのくらいですか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>受講料は個別相談会にてご案内しています。複数のプランをご用意していますので、あなたの状況に合わせてご提案します。まずはお気軽にご参加ください。</span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">キャンセルや返金はできますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>キャンセル・返金については相談会にてご説明します。ご不安な点はお気軽にお聞きください。<br><!-- ここにキャンセルポリシーが決まり次第記入 --></span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">受講に必要な機器・ツールはありますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>スマートフォンがあれば受講できます。パソコンがある方はより快適にご参加いただけます。詳細は相談会にてご確認ください。<br><!-- 確認後に正確な要件を記入 --></span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">今は忙しくて…次回の募集はありますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>次回は未定で、定員にも限りがあります。「どうすればやれるか」を一緒に考えてみましょう！まずは無料相談会にお話し聞かせてください。</span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">ポーセラーツの資格がなくても参加できますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>はい、資格は不問です。「お皿作りが好き」「学びたい」という気持ちがあれば、どなたでも歓迎しています。</span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">焼成窯がなくても参加できますか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>参加できます。焼成代行を無料で行っていますので、窯をお持ちでない方もご安心ください。（送料は別途必要です）</span>
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      <div class="faq-q-badge">Q</div>
+      <span class="faq-q-text">パソコンが苦手でも大丈夫ですか？</span>
+      <span class="faq-toggle">＋</span>
+    </summary>
+    <div class="faq-answer">
+      <div class="faq-a-badge">A</div>
+      <span>大丈夫です。操作方法はわかりやすくご案内しますので、パソコン音痴の方でも問題なくご受講いただけます。</span>
+    </div>
+  </details>
+
+</section>
+
+
+<!-- ============================================
+     9. クロージング＋最終CTA
+============================================ -->
+<section id="closing">
+  <div class="bot" style="top:-14px;left:-18px;transform:rotate(-15deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" width="65" height="65"><g transform="translate(27,27)" fill="none" stroke="#A3BCE0" stroke-width="0.9"><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(0)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(72)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(144)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(216)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(288)"/><circle r="4" fill="#E6EEF8"/></g></svg>
+  </div>
+  <div class="bot" style="top:-14px;right:-18px;transform:rotate(15deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" width="65" height="65"><g transform="translate(27,27)" fill="none" stroke="#A3BCE0" stroke-width="0.9"><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(0)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(72)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(144)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(216)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(288)"/><circle r="4" fill="#E6EEF8"/></g></svg>
+  </div>
+  <div class="bot" style="bottom:60px;left:-14px;transform:rotate(-25deg);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 55" width="40" height="50"><g fill="none" stroke="#7A9DCF" stroke-width="0.8"><line x1="22" y1="52" x2="22" y2="28"/><line x1="22" y1="38" x2="10" y2="24"/><line x1="22" y1="33" x2="34" y2="20"/><line x1="10" y1="24" x2="5" y2="12"/><line x1="10" y1="24" x2="16" y2="12"/><line x1="34" y1="20" x2="28" y2="8"/><line x1="34" y1="20" x2="40" y2="8"/><circle cx="5" cy="9" r="3.5" fill="#CFDDF0"/><circle cx="16" cy="9" r="3.5" fill="#CFDDF0"/><circle cx="28" cy="5" r="3.5" fill="#CFDDF0"/><circle cx="40" cy="5" r="3.5" fill="#CFDDF0"/></g></svg>
+  </div>
+  <div class="title-block">
+    <span class="deco-word">Message</span>
+    <h2 class="sec-title">ここまで読んでくださった<br>あなたへ</h2>
+    <div class="gold-line"></div>
+  </div>
+
+  <p class="closing-text">「できない」「ひらめかない」は、才能やセンスのせいではありません。ただ、これまで学ぶ機会がなかっただけです。<br><br>技術に自信を持ち、アイデアを広げる方法を一緒に学んでいきましょう。<br><br>「いつかやろう」「〇〇が落ち着いたら」と、あなたが動き出すのに完璧なタイミングなんてきません。自分のやりたいことを後回しにできるほど、人生は長くありません。<br><br>ならば時間を効率よく使い、確かな成果を出す。あなたに寄り添いながら、ポーセラーツが生きがいになるよう心を込めてサポートさせていただきます。<br><br>あなたも生徒様も、笑顔があふれる教室が叶うヒントが、きっとここにあります。</p>
+  <div class="closing-photo">
+    <img src="img/saori-2.jpg" alt="講師 尾野さおり">
+  </div>
+
+  <div class="cta-wrap">
+    <a href="ここに申込先URLを入力" class="cta-btn">
+      無料相談会に参加する
+    </a>
+  </div>
+</section>
+
+
+<!-- ============================================
+     作品ギャラリー（左から流れてくる）
+     ※画像は仮。さおりさんの作品写真に差し替え予定
+============================================ -->
+<section id="gallery">
+  <div class="title-block">
+    <span class="deco-word">Gallery</span>
+    <h2 class="sec-title">作品ギャラリー</h2>
+    <div class="gold-line"></div>
+  </div>
+  <p class="gallery-lead">絵の具で広がる、無限のポーセリンアートの世界。<br>あなたも、こんな作品が作れるようになります。</p>
+
+  <!-- タイル状に敷き詰め（3列×4段） -->
+  <div class="gallery-grid">
+    <img loading="lazy" src="img/gallery1.jpg" alt="絵の具で描いたブルーラスターのカップ＆ソーサー">
+    <img loading="lazy" src="img/gallery2.jpg" alt="モネの睡蓮を描いた淡い色合いのプレート">
+    <img loading="lazy" src="img/gallery3.jpg" alt="ミモザのドレスを描いた額装作品">
+    <img loading="lazy" src="img/gallery4.jpg" alt="桜を描いたオーナメントボックス">
+    <img loading="lazy" src="img/gallery5.jpg" alt="マリン柄のカップ＆ソーサー">
+    <img loading="lazy" src="img/gallery6.jpg" alt="水彩のような風合いのマグカップ">
+    <img loading="lazy" src="img/gallery9.jpg" alt="メリーゴーランドを描いた作品">
+    <img loading="lazy" src="img/gallery10.jpg" alt="チューリップを描いた小皿">
+    <img loading="lazy" src="img/gallery11.jpg" alt="オリエンタルフラワーのプレート">
+    <img loading="lazy" src="img/gallery12.jpg" alt="レモンとリボンを描いたプレート">
+    <img loading="lazy" src="img/gallery7.jpg" alt="北欧風のグレーの小皿">
+    <img loading="lazy" src="img/gallery8.jpg" alt="水彩のプレート">
+  </div>
+</section>
+
+
+<!-- ============================================
+     フッター
+============================================ -->
+<footer>
+  <p>ポーセラボ 絵の具コース</p>
+  <p style="margin-top:6px;">主宰：尾野さおり｜神戸</p>
+  <p style="margin-top:12px;">© 2024 Porcelab. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
