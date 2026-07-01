@@ -236,6 +236,7 @@
     }
 
     /* FV画像ラッパー */
+    .fv-img-link { display: block; text-decoration: none; }
     .fv-img-wrap {
       position: relative;
       width: 100%;
@@ -338,9 +339,20 @@
     .bridge-arrow { display:flex; justify-content:center; margin:14px 0 0; }
     .bridge-arrow svg { width:30px; height:30px; }
     /* 受講生の声：完成版の縦長画像 */
-    .voice-images { max-width: 560px; margin: 0 auto; }
-    .voice-images img { width: 100%; display: block; margin: 0 auto 48px; box-shadow: 0 12px 30px rgba(58,66,104,0.14); }
-    .voice-images img:last-child { margin-bottom: 0; }
+    /* 受講生の声：横スクロール（自動で流れる・タップで止まる・手で動かせる） */
+    .voice-marquee .marquee-track { display: flex; width: max-content; align-items: flex-start; }
+    .voice-card {
+      flex: 0 0 auto;
+      width: 260px;
+      margin-right: 16px;
+    }
+    .voice-card img {
+      width: 100%; height: auto; display: block;
+      box-shadow: 0 12px 30px rgba(58,66,104,0.14);
+    }
+    @media (min-width: 760px) {
+      .voice-card { width: 300px; margin-right: 20px; }
+    }
 
     /* ふんわりフェードイン */
     .fade-in {
@@ -1381,22 +1393,12 @@
      1. ファーストビュー（スマホ版）
 ============================================ -->
 <section id="fv">
-  <!-- FV画像 -->
-  <div class="fv-img-wrap">
-    <img src="img/spfv.png" alt="絵の具苦手から技術とデザイン力UPで選ばれる先生になる｜ポーセラボ絵の具コース" class="fv-main-img">
-  </div>
-
-  <!-- FVバッジ：前回LPと同じ3要素 -->
-  <div class="fv-badges">
-    <div class="fv-badge"><span class="b-main">8月</span><span class="b-sub">開講</span></div>
-    <div class="fv-badge"><span class="b-main">全期</span><span class="b-sub">即満席</span></div>
-    <div class="fv-badge"><span class="b-main">98%</span><span class="b-sub">満足度・継続率</span></div>
-  </div>
-
-  <!-- CTAボタン（画像の下・中央） -->
-  <div class="fv-cta-area">
-    <a href="ここに申込先URLを入力" class="cta-btn">無料相談会に参加する</a>
-  </div>
+  <!-- FV画像（タイトル・バッジ・ボタンを含む完成版・画像全体がリンク） -->
+  <a href="ここに申込先URLを入力" class="fv-img-link">
+    <div class="fv-img-wrap">
+      <img src="img/fv.jpg" alt="絵の具苦手から技術とデザイン力UPで選ばれる先生になる｜ポーセラボ絵の具コース｜8月開講・全期即満席・満足度継続率98%" class="fv-main-img">
+    </div>
+  </a>
 
   <!-- FV直下の作品ギャラリー（「こんな作品が作れる！」のワクワク感）※画像は仮 -->
   <div class="fv-gallery">
@@ -1771,11 +1773,21 @@
     <div class="gold-line"></div>
   </div>
 
-  <!-- 受講生の声：さおりさん提供の完成版（スマホファースト縦長画像） -->
-  <div class="voice-images">
-    <img class="fade-in" src="img/voice-kaihara.png" alt="受講生の声：貝原三穂さん（広島県在住）。卒業後すぐに3名コース予約、オリジナルレッスン構築で37名以上が受講、月商6倍の30万円を達成。">
-    <img class="fade-in" src="img/voice-okamoto.png" alt="受講生の声：岡本直子さん（大阪府在住）。強みを活かしてオリジナル講座をスタートさせ30名以上が受講、月商10倍に。">
-    <img class="fade-in" src="img/voice-hayashi.jpg" alt="受講生の声：林佳子さん（愛知県在住）。趣味起業からスキルアップ講座20名以上が受講、月商4倍の20万円を達成。">
+  <!-- 受講生の声：横スクロール（自動で流れる／タップで止まる／手で動かせる） -->
+  <div class="voice-marquee marquee">
+    <div class="marquee-track">
+      <div class="voice-card"><img src="img/voice-kaihara.png" alt="受講生の声：貝原三穂さん（広島県在住）。卒業後すぐに3名コース予約、オリジナルレッスン構築で37名以上が受講、月商6倍の30万円を達成。"></div>
+      <div class="voice-card"><img src="img/voice-okamoto.png" alt="受講生の声：岡本直子さん（大阪府在住）。強みを活かしてオリジナル講座をスタートさせ30名以上が受講、月商10倍に。"></div>
+      <div class="voice-card"><img src="img/voice-hayashi.jpg" alt="受講生の声：林佳子さん（愛知県在住）。趣味起業からスキルアップ講座20名以上が受講、月商4倍の20万円を達成。"></div>
+      <div class="voice-card"><img src="img/voice-nishimura.jpg" alt="受講生の声：西村美智子さん（ポーセラーツ教室lachic主宰）。オリジナル講座構築で月商150万円を達成。"></div>
+      <div class="voice-card"><img src="img/voice-natsumi.jpg" alt="受講生の声：夏見妙美さん。卒業後すぐに3名のお申込み、ストーリーズだけで集客、資格コースにも3名がご成約。"></div>
+      <!-- ↓シームレスなループ用の複製 -->
+      <div class="voice-card"><img src="img/voice-kaihara.png" alt="" aria-hidden="true"></div>
+      <div class="voice-card"><img src="img/voice-okamoto.png" alt="" aria-hidden="true"></div>
+      <div class="voice-card"><img src="img/voice-hayashi.jpg" alt="" aria-hidden="true"></div>
+      <div class="voice-card"><img src="img/voice-nishimura.jpg" alt="" aria-hidden="true"></div>
+      <div class="voice-card"><img src="img/voice-natsumi.jpg" alt="" aria-hidden="true"></div>
+    </div>
   </div>
 
   <!-- スクショの壁：たくさんの生の声（静止・もっと見る） -->
