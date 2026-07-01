@@ -14,8 +14,9 @@
     :root {
       --cream:       #FAF8F3;    /* Ivory */
       --pink-light:  #EAF2F8;    /* Mist Blue */
-      --accent:      #7A9DCF;    /* Periwinkle lavender */
-      --accent-dark: #5A7FB5;    /* Deeper periwinkle */
+      --accent:      #7A9DCF;    /* くすみブルー */
+      --accent-dark: #5A7FB5;    /* 深めのくすみブルー */
+      --accent-deep: #095FAA;    /* 数字用の濃いブルー */
       --brown:       #3A4268;    /* Deep navy */
       --gold:        #C9A870;    /* Champagne Gold */
       --text:        #2C3550;    /* Dark navy */
@@ -321,7 +322,7 @@
       padding: 16px 18px; margin-bottom: 14px;
       box-shadow: 0 8px 22px rgba(58,66,104,0.10);
     }
-    .pain-num { font-family: Georgia, serif; font-size: 1.45rem; font-weight: bold; color: var(--accent); line-height: 1.2; flex: none; }
+    .pain-num { font-family: Georgia, serif; font-size: 1.45rem; font-weight: bold; color: var(--accent-deep); line-height: 1.2; flex: none; }
     .pain-text { font-size: 1.02rem; color: var(--text); line-height: 1.7; }
     .pain-text .em { color: #c4707f; font-weight: bold; }
     .pain-solve {
@@ -375,7 +376,10 @@
       content: "0" counter(fznum);
       display: block;
       font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Hiragino Serif', Georgia, serif; font-weight: bold;
-      font-size: 3.4rem; color: var(--accent); line-height: 1;
+      font-size: 3.4rem; line-height: 1;
+      background: linear-gradient(135deg, var(--accent-deep) 0%, var(--accent) 100%);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
       letter-spacing: 0.02em;
       margin-bottom: 10px;
     }
@@ -500,7 +504,7 @@
     .curri-item:last-child .curri-content { padding-bottom: 0; }
     /* 見出し（色付きバー・大きめ） */
     .curri-head {
-      background: linear-gradient(135deg, #7A9DCF 0%, #A6C0E2 100%);
+      background: linear-gradient(135deg, var(--accent-deep) 0%, var(--accent) 100%);
       color: #fff;
       font-size: 1.35rem;
       font-weight: bold;
@@ -1119,7 +1123,7 @@
     .env-photo.mid { object-position:center 58%; }
     .env-body { padding:20px 22px 24px; }
     .env-body h4 { font-size:1.16rem; color:var(--brown); font-weight:bold; line-height:1.55; margin-bottom:10px; border-left:4px solid var(--accent); padding-left:12px; }
-    .env-num { color:var(--accent); font-family:Georgia,serif; margin-right:7px; }
+    .env-num { color:var(--accent-deep); font-family:Georgia,serif; margin-right:7px; }
     .env-body p { font-size:1.02rem; color:var(--text-mid); line-height:1.9; }
 
     /* =============================================
@@ -1132,7 +1136,7 @@
     .story-points-lead { text-align:center; font-size:1.12rem; color:var(--brown); font-weight:bold; line-height:1.7; margin-bottom:20px; }
     .story-points ol { list-style:none; counter-reset:sp; max-width:480px; margin:0 auto 18px; }
     .story-points li { counter-increment:sp; position:relative; padding-left:46px; margin-bottom:15px; font-size:1.05rem; color:var(--brown); line-height:1.7; font-weight:bold; }
-    .story-points li::before { content:counter(sp); position:absolute; left:0; top:-2px; width:31px; height:31px; background:var(--accent); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:Georgia,serif; font-size:0.95rem; }
+    .story-points li::before { content:counter(sp); position:absolute; left:0; top:-2px; width:31px; height:31px; background:linear-gradient(135deg, var(--accent-deep) 0%, var(--accent) 100%); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:Georgia,serif; font-size:0.95rem; }
     .story-points-foot { font-size:1.02rem; color:var(--text-mid); line-height:1.9; text-align:center; }
 
     /* =============================================
