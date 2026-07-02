@@ -1197,6 +1197,22 @@
     .gallery-grid { max-width:600px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
     .gallery-grid img { width:100%; aspect-ratio:1; object-fit:cover; display:block; border-radius:2px; box-shadow:0 4px 12px rgba(58,66,104,.12); transition:transform .35s ease, box-shadow .35s ease; cursor:pointer; }
     .gallery-grid img:hover { transform:scale(1.08); box-shadow:0 12px 28px rgba(58,66,104,.26); position:relative; z-index:2; }
+    /* クリックで拡大表示（ライトボックス） */
+    .lightbox {
+      position:fixed; inset:0; z-index:9999;
+      background:rgba(20,25,50,.9);
+      display:none; align-items:center; justify-content:center;
+      padding:24px; cursor:zoom-out;
+      opacity:0; transition:opacity .25s ease;
+    }
+    .lightbox.open { display:flex; opacity:1; }
+    .lightbox img { max-width:100%; max-height:90vh; border-radius:3px; box-shadow:0 20px 60px rgba(0,0,0,.5); }
+    .lightbox-close {
+      position:absolute; top:16px; right:20px;
+      width:44px; height:44px; border:none; background:rgba(255,255,255,.15);
+      color:#fff; font-size:1.6rem; line-height:1; border-radius:50%; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+    }
     /* FV直下の作品ギャラリー（ワクワク感を伝える） */
     .fv-gallery { background: var(--white); overflow: hidden; padding: 4px 0 44px; }
     .fv-gallery-cap {
@@ -2218,6 +2234,26 @@
     <img loading="lazy" src="img/gallery8.jpg" alt="水彩のプレート">
   </div>
 </section>
+
+<!-- 作品ギャラリー：クリックで拡大表示 -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" type="button" aria-label="閉じる">×</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var lb = document.getElementById('lightbox');
+    var lbImg = document.getElementById('lightboxImg');
+    if (!lb || !lbImg) return;
+    function open(src, alt) { lbImg.src = src; lbImg.alt = alt || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function close() { lb.classList.remove('open'); document.body.style.overflow = ''; lbImg.src = ''; }
+    document.querySelectorAll('.gallery-grid img').forEach(function (im) {
+      im.addEventListener('click', function () { open(im.getAttribute('src'), im.getAttribute('alt')); });
+    });
+    lb.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  });
+</script>
 
 
 <!-- ============================================
