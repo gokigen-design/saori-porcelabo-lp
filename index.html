@@ -504,19 +504,19 @@
       z-index: 1;
     }
     .pain-solve { position: relative; z-index: 2; }
-    #pain::before,
     #pain::after {
       content: "";
       position: absolute;
       bottom: -1px;
-      width: 50.5%;
-      height: 62px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      height: 74px;
       background: #FBFAF7;   /* 次のセクションと同じ色 */
       z-index: 1;
       pointer-events: none;
+      clip-path: polygon(0 0, 50% 100%, 100% 0, 100% 100%, 0 100%);
     }
-    #pain::before { left: 0;  clip-path: polygon(0 0, 0 100%, 100% 100%); }
-    #pain::after  { right: 0; clip-path: polygon(100% 0, 0 100%, 100% 100%); }
     @media (min-width: 760px) {
       .pain-intro {
         min-height: 310px;
