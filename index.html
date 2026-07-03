@@ -557,35 +557,28 @@
       box-shadow:0 14px 28px rgba(47,120,212,0.14);
     }
     .voices-title-block .gold-line { display:none; }
-    .voice-marquee {
-      display:grid;
-      gap:18px;
-      overflow:hidden;
+    /* 受講生の声：自動では動かない・自分でスワイプ。1枚がLP幅いっぱいの大きさ */
+    .voice-carousel {
+      display:flex;
+      gap:16px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      scrollbar-width:none;
+      -ms-overflow-style:none;
       margin-left:calc(-50vw + 50%);
       margin-right:calc(-50vw + 50%);
       width:100vw;
-      padding:6px 0 18px;
+      padding:6px 6vw 14px;
+      scroll-padding:0 6vw;
     }
-    .voice-row { overflow:hidden; }
-    .voice-track {
-      display:flex;
-      width:max-content;
-      gap:18px;
-      animation:voiceLoop 52s linear infinite;
-      will-change:transform;
-    }
-    .voice-row.is-bottom .voice-track {
-      animation-duration:42s;
-      animation-direction:reverse;
-    }
-    .voice-set {
-      display:flex;
-      gap:18px;
-    }
+    .voice-carousel::-webkit-scrollbar { display:none; }
     .voice-card {
-      flex:0 0 min(78vw, 360px);
+      flex:0 0 88vw;
+      max-width:600px;
+      scroll-snap-align:center;
       background:#EDF3FB;
-      padding:14px;
+      padding:12px;
       box-shadow:0 14px 34px rgba(58,66,104,0.14);
     }
     .voice-card img {
@@ -594,19 +587,15 @@
       display:block;
       box-shadow:0 8px 20px rgba(58,66,104,0.10);
     }
-    @keyframes voiceLoop {
-      from { transform:translateX(0); }
-      to { transform:translateX(calc(-50% - 9px)); }
-    }
-    @media (hover:hover) {
-      .voice-marquee:hover .voice-track { animation-play-state:paused; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .voice-track { animation:none; }
-      .voice-row { overflow-x:auto; }
+    .voice-swipe-note {
+      text-align:center;
+      font-size:.85rem;
+      color:var(--text-light);
+      letter-spacing:.05em;
+      margin-bottom:6px;
     }
     @media (min-width: 760px) {
-      .voice-card { flex-basis:360px; }
+      .voice-card { flex-basis:600px; }
     }
 
     /* ふんわりフェードイン */
@@ -2407,34 +2396,14 @@
     <div class="gold-line"></div>
   </div>
 
-  <!-- 受講生の声：上段3名・下段2名で自然に流れ続ける -->
-  <div class="voice-marquee" aria-label="受講生の声">
-    <div class="voice-row is-top">
-      <div class="voice-track">
-        <div class="voice-set">
-          <div class="voice-card"><img src="img/voice-kaihara.png" alt="受講生の声：貝原三穂さん（広島県在住）。卒業後すぐに3名コース予約、オリジナルレッスン構築で37名以上が受講、月商6倍の30万円を達成。"></div>
-          <div class="voice-card"><img src="img/voice-okamoto.png" alt="受講生の声：岡本直子さん（大阪府在住）。強みを活かしてオリジナル講座をスタートさせ30名以上が受講、月商10倍に。"></div>
-          <div class="voice-card"><img src="img/voice-hayashi.jpg" alt="受講生の声：林佳子さん（愛知県在住）。趣味起業からスキルアップ講座20名以上が受講、月商4倍の20万円を達成。"></div>
-        </div>
-        <div class="voice-set" aria-hidden="true">
-          <div class="voice-card"><img src="img/voice-kaihara.png" alt=""></div>
-          <div class="voice-card"><img src="img/voice-okamoto.png" alt=""></div>
-          <div class="voice-card"><img src="img/voice-hayashi.jpg" alt=""></div>
-        </div>
-      </div>
-    </div>
-    <div class="voice-row is-bottom">
-      <div class="voice-track">
-        <div class="voice-set">
-          <div class="voice-card"><img src="img/voice-nishimura.jpg" alt="受講生の声：西村美智子さん（ポーセラーツ教室lachic主宰）。オリジナル講座構築で月商150万円を達成。"></div>
-          <div class="voice-card"><img src="img/voice-natsumi.jpg" alt="受講生の声：夏見妙美さん。卒業後すぐに3名のお申込み、ストーリーズだけで集客、資格コースにも3名がご成約。"></div>
-        </div>
-        <div class="voice-set" aria-hidden="true">
-          <div class="voice-card"><img src="img/voice-nishimura.jpg" alt=""></div>
-          <div class="voice-card"><img src="img/voice-natsumi.jpg" alt=""></div>
-        </div>
-      </div>
-    </div>
+  <!-- 受講生の声：自分でスワイプして1枚ずつ見る（自動では動かない） -->
+  <p class="voice-swipe-note">横にスワイプしてご覧いただけます</p>
+  <div class="voice-carousel" aria-label="受講生の声">
+    <div class="voice-card"><img src="img/voice-kaihara.png" alt="受講生の声：貝原三穂さん（広島県在住）。卒業後すぐに3名コース予約、オリジナルレッスン構築で37名以上が受講、月商6倍の30万円を達成。"></div>
+    <div class="voice-card"><img src="img/voice-okamoto.png" alt="受講生の声：岡本直子さん（大阪府在住）。強みを活かしてオリジナル講座をスタートさせ30名以上が受講、月商10倍に。"></div>
+    <div class="voice-card"><img src="img/voice-hayashi.jpg" alt="受講生の声：林佳子さん（愛知県在住）。趣味起業からスキルアップ講座20名以上が受講、月商4倍の20万円を達成。"></div>
+    <div class="voice-card"><img src="img/voice-nishimura.jpg" alt="受講生の声：西村美智子さん（ポーセラーツ教室lachic主宰）。オリジナル講座構築で月商150万円を達成。"></div>
+    <div class="voice-card"><img src="img/voice-natsumi.jpg" alt="受講生の声：夏見妙美さん。卒業後すぐに3名のお申込み、ストーリーズだけで集客、資格コースにも3名がご成約。"></div>
   </div>
 
   <!-- 受講生の声：動画 -->
