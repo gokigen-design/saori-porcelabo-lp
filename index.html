@@ -637,7 +637,13 @@
     .fz-row { position: relative; margin-bottom: 96px; text-align: left; }
     .fz-row:last-child { margin-bottom: 0; }
     /* 番号（自動採番） → 見出し */
-    .fz-head { margin-bottom: 24px; }
+    .fz-head {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 18px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
     .fz-head::before {
       counter-increment: fznum;
       content: "0" counter(fznum);
@@ -647,7 +653,7 @@
       font-size: 4.2rem; line-height: 0.92;
       color: #55B7D2;
       letter-spacing: 0;
-      margin: 0 0 16px 4px;
+      margin: -6px 0 0 0;
       transform: rotate(-7deg);
       text-shadow: 0 1px 0 rgba(255,255,255,0.85);
     }
@@ -655,6 +661,7 @@
       font-size: 1.5rem; color: var(--brown);
       line-height: 1.55; margin: 0; font-weight: bold;
       letter-spacing: 0.06em;
+      text-align: left;
     }
     /* 写真ラッパー：青いグラデ背景ボックス＋筆記体ラベル */
     .fz-photo {
@@ -691,18 +698,19 @@
       transform: rotate(-8deg);
     }
     /* 説明文（写真の前後に配置できる） */
-    .fz-lead { color: var(--text-mid); line-height: 1.95; margin: 0 0 26px; font-size: 1.08rem; }
-    .fz-desc { color: var(--text-mid); line-height: 1.95; margin: 28px 0 0; font-size: 1.08rem; text-align: center; }
+    .fz-lead { color: var(--text-mid); line-height: 1.95; margin: 0 0 26px; font-size: 1.08rem; text-align: left; }
+    .fz-desc { color: var(--text-mid); line-height: 1.95; margin: 28px 0 0; font-size: 1.08rem; text-align: left; }
 
     @media (max-width: 600px) {
       .future-zigzag { max-width: 540px; }
-      .fz-row { text-align: center; margin-bottom: 88px; }
+      .fz-row { text-align: left; margin-bottom: 88px; }
+      .fz-head { grid-template-columns: 72px 1fr; gap: 14px; margin-bottom: 20px; }
       .fz-photo { width: 92%; margin-top: 34px; }
       .fz-photo::before { top: -20px; right: -16px; width: 74%; height: 58%; }
       .fz-photo::after { left: -16px; bottom: -18px; width: 48%; height: 46%; }
-      .fz-head::before { font-size: 3.25rem; margin-left: 0; }
-      .fz-head h3 { font-size: 1.14rem; }
-      .fz-lead, .fz-desc { font-size: 1.02rem; text-align: center; }
+      .fz-head::before { font-size: 3.25rem; margin: -3px 0 0; }
+      .fz-head h3 { font-size: 1.14rem; text-align: left; }
+      .fz-lead, .fz-desc { font-size: 1.02rem; text-align: left; }
       .fz-label { font-size: 2.15rem; top: -17px; left: -10px; }
     }
 
