@@ -448,22 +448,22 @@
     }
     .pain-intro {
       position: relative;
-      min-height: 390px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+      min-height: 430px;
+      padding-top: 2px;
     }
     .pain-intro .bridge {
       width: 100%;
       max-width: 520px;
       position: relative;
       z-index: 2;
+      margin: 0 auto;
     }
     .pain-woman {
-      width: min(70vw, 330px);
-      margin: -4px auto -8px;
-      position: relative;
-      z-index: 1;
+      width: min(52vw, 240px);
+      position: absolute;
+      left: max(0px, calc(50% - 275px));
+      top: 176px;
+      z-index: 3;
       filter: drop-shadow(0 18px 28px rgba(58,66,104,0.16));
     }
     .pain-list { max-width: 600px; margin: 10px auto 0; }
@@ -495,18 +495,13 @@
     }
     @media (min-width: 760px) {
       .pain-intro {
-        min-height: 360px;
-        display: grid;
-        grid-template-columns: 1.05fr .85fr;
-        align-items: center;
-        column-gap: 8px;
+        min-height: 330px;
+        padding-top: 0;
       }
-      .pain-intro .bridge { grid-column: 1 / 2; grid-row: 1; }
       .pain-woman {
-        grid-column: 2 / 3;
-        grid-row: 1;
-        width: 330px;
-        margin: 24px 0 0 -36px;
+        width: 238px;
+        left: 10px;
+        top: 124px;
       }
       .pain-item { align-content: start; }
     }
@@ -1622,6 +1617,12 @@
     /* =============================================
        受講生の声：スクショの壁（静止・もっと見る）
     ============================================= */
+    /* 受講生の声：動画（Vimeo） */
+    .voice-video { max-width: 600px; margin: 44px auto 0; }
+    .voice-video-lead { text-align: center; font-size: 1.05rem; color: var(--brown); font-weight: bold; line-height: 1.8; margin-bottom: 16px; }
+    .voice-video .vwrap { position: relative; padding-top: 56.25%; background: #000; box-shadow: 0 12px 30px rgba(58,66,104,0.16); }
+    .voice-video .vwrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
+
     .ss-wall { max-width: 600px; margin: 36px auto 0; }
     .ss-wall-lead {
       width:max-content;
@@ -2373,51 +2374,31 @@
     </div>
   </div>
 
-  <!-- スクショの壁：たくさんの生の声（静止・もっと見る） -->
+  <!-- 受講生の声：動画 -->
+  <div class="voice-video">
+    <p class="voice-video-lead">受講生さんの声を、動画でもご覧いただけます</p>
+    <div class="vwrap">
+      <iframe src="https://player.vimeo.com/video/1206664136?h=31ce5fe819" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="受講生の声（動画）"></iframe>
+    </div>
+  </div>
+
+  <!-- スクショの壁：特に嬉しかった声を厳選（マーカー入り） -->
   <div class="ss-wall">
     <p class="ss-wall-lead">ほかにも、こんなに<br>たくさんの声が届いています</p>
-    <div class="ss-clip" id="ssClip">
-      <div class="ss-cols">
-        <img class="ss-shot" loading="lazy" src="img/ss01.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss02.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss03.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss05.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss06.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss07.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss08.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss09.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss10.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss11.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss12.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss13.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss14.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss15.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss16.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss17.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss18.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss19.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss20.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss21.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss22.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss23.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss24.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss25.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss26.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss27.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss28.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss29.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss30.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss31.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss32.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss33.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss34.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss35.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss36.jpg" alt="受講生さまからの喜びの声">
-        <img class="ss-shot" loading="lazy" src="img/ss37.jpg" alt="受講生さまからの喜びの声">
-      </div>
-      <div class="ss-fade"></div>
+    <div class="ss-cols">
+      <img class="ss-shot" loading="lazy" src="img/ss02m.jpg" alt="受講生さまの声:4月は月収150万円を超えました">
+      <img class="ss-shot" loading="lazy" src="img/ss17m.jpg" alt="受講生さまの声:体験60名、本講座17名">
+      <img class="ss-shot" loading="lazy" src="img/ss21m.jpg" alt="受講生さまの声:月収が100万円を越しました">
+      <img class="ss-shot" loading="lazy" src="img/ss03m.jpg" alt="受講生さまの声:人生丸っと変わったと思います">
+      <img class="ss-shot" loading="lazy" src="img/ss16m.jpg" alt="受講生さまの声:教室のレッスンも入れると3桁越しました">
+      <img class="ss-shot" loading="lazy" src="img/ss22m.jpg" alt="受講生さまの声:インストラクターコース9名">
+      <img class="ss-shot" loading="lazy" src="img/ss24m.jpg" alt="受講生さまの声:講座の受講生が50名を超えました">
+      <img class="ss-shot" loading="lazy" src="img/ss20m.jpg" alt="受講生さまの声:70名の生徒さんからお申込み">
+      <img class="ss-shot" loading="lazy" src="img/ss25m.jpg" alt="受講生さまの声:ワークショップがほぼ満席に">
+      <img class="ss-shot" loading="lazy" src="img/ss27m.jpg" alt="受講生さまの声:コースレッスンで月商が6倍に">
+      <img class="ss-shot" loading="lazy" src="img/ss29m.jpg" alt="受講生さまの声:200名近く参加、年商も過去最高">
+      <img class="ss-shot" loading="lazy" src="img/ss01m.jpg" alt="受講生さまの声:ラボに入って本当に良かったです">
     </div>
-    <button class="ss-more" id="ssMore" type="button">もっと見る <span class="ss-ico">▼</span></button>
   </div>
 
   <!-- 講師プロフィール -->
