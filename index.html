@@ -6,7 +6,7 @@
   <title>ポーセラボ絵の具コース｜絵の具×デザイン理論で叶える上級ポーセリンアート</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Hachi+Maru+Pop&family=Yomogi&display=swap" rel="stylesheet">
   <style>
     /* =============================================
        CSS変数 — ここを変えるだけで色が全体に反映
@@ -1027,14 +1027,17 @@
     /* 講師紹介：ブルー背景の上に白いボックス（角丸なし） */
     .instructor-profile {
       background: linear-gradient(135deg, #C7D6EC 0%, #E6EDF7 100%);
-      padding: 16px;
+      padding: 28px 18px;
       margin-top: 44px;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      width: 100vw;
     }
-    .profile-card { background: #fff; padding: 30px 28px; }
-    .profile-head { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 22px; }
+    .profile-card { background: #fff; padding: 30px 24px; max-width: 640px; margin: 0 auto; box-shadow:0 18px 44px rgba(58,66,104,0.12); }
+    .profile-head { display: grid; grid-template-columns: minmax(132px, 42%) 1fr; gap: 22px; align-items: center; margin-bottom: 24px; }
     .profile-photo {
-      flex: 0 0 42%;
-      max-width: 42%;
+      width: 100%;
+      max-width: none;
       aspect-ratio: 3 / 4;
       object-fit: cover;
       object-position: center top;
@@ -1061,17 +1064,47 @@
     }
     .profile-card > p { font-size: 0.9rem; color: var(--text-mid); line-height: 2; }
     @media (max-width: 560px) {
-      .instructor-profile { padding: 12px; }
-      .profile-card { padding: 24px 20px; }
-      .profile-head { flex-direction: column; gap: 16px; }
-      .profile-photo { flex: none; max-width: 60%; width: 60%; aspect-ratio: 4 / 5; }
-      .profile-meta h3 { font-size: 1.3rem; }
+      .instructor-profile { padding: 22px 12px; }
+      .profile-card { padding: 22px 18px; }
+      .profile-head { grid-template-columns: 42% 1fr; gap: 14px; }
+      .profile-meta h3 { font-size: 1.28rem; }
+      .p-credits li { font-size: 0.8rem; line-height: 1.55; }
     }
 
     /* =============================================
        7. 料金・申込条件
     ============================================= */
     #price { background: var(--bg-alt); }
+
+    .flow-title-block,
+    .price-title-block { margin-bottom: 42px; }
+    .flow-title-block .deco-word,
+    .price-title-block .deco-word {
+      color: rgba(58,66,104,0.08);
+      font-size: clamp(3.4rem, 11vw, 6.2rem);
+      transform: rotate(-6deg);
+    }
+    .flow-title-block .sec-title,
+    .price-title-block .sec-title {
+      display:grid;
+      justify-items:center;
+      gap:12px;
+      margin-top:14px;
+      line-height:1.25;
+      font-size:clamp(1.34rem, 5vw, 1.78rem);
+    }
+    .flow-main-line,
+    .price-main-line {
+      display:inline-block;
+      width:max-content;
+      max-width:min(92vw, 560px);
+      padding:10px 38px 12px;
+      color:#fff;
+      background:linear-gradient(100deg, #2F78D4 0%, #43BED1 100%);
+      box-shadow:0 14px 28px rgba(47,120,212,0.14);
+    }
+    .flow-title-block .gold-line,
+    .price-title-block .gold-line { display:none; }
 
     .price-box {
       background: var(--white);
@@ -1250,11 +1283,33 @@
     #closing h2 { font-size: 1.3rem; color: var(--brown); margin-bottom: 18px; }
     /* クロージング — 文字を先に、写真を下に（見切れ防止） */
     .closing-text {
-      max-width: 600px; margin: 0 auto 30px;
+      max-width: 600px; margin: 0 auto 24px;
       font-size: 1.05rem; color: var(--text-mid);
       text-align: left; line-height: 2;
     }
-    .closing-photo { max-width: 420px; margin: 0 auto; }
+    .closing-letter {
+      position:relative;
+      max-width:620px;
+      margin:0 auto 30px;
+      background:rgba(255,255,255,0.88);
+      border:1px solid rgba(122,157,207,0.28);
+      padding:30px 24px 34px;
+      box-shadow:0 22px 54px rgba(58,66,104,0.14);
+      text-align:left;
+    }
+    .closing-letter::before {
+      content:"";
+      position:absolute;
+      top:14px;
+      right:18px;
+      width:54px;
+      height:54px;
+      border:1px solid rgba(207,169,99,0.55);
+      border-radius:50%;
+      opacity:0.55;
+    }
+    .closing-letter .cta-wrap { margin-top:26px; text-align:center; }
+    .closing-photo { max-width: 360px; margin: 0 auto; }
     .closing-photo img { width: 100%; display: block; border-radius: 4px; box-shadow: 0 12px 30px rgba(58,66,104,.16); }
 
     /* =============================================
@@ -1567,10 +1622,26 @@
     /* =============================================
        受講生の声：スクショの壁（静止・もっと見る）
     ============================================= */
-    .ss-wall { max-width: 600px; margin: 12px auto 0; }
-    .ss-wall-lead { text-align:center; font-size:1.2rem; color:var(--brown); font-weight:bold; line-height:1.55; letter-spacing:.04em; margin-bottom:6px; }
+    .ss-wall { max-width: 600px; margin: 36px auto 0; }
+    .ss-wall-lead {
+      width:max-content;
+      max-width:92vw;
+      margin:0 auto 26px;
+      padding:0 8px;
+      text-align:center;
+      font-family:"花とちょうちょ", "Hachi Maru Pop", "Yomogi", "Hannotate SC", "HanziPen SC", cursive;
+      font-size:clamp(1.46rem, 5.8vw, 1.98rem);
+      color:var(--accent-dark);
+      font-weight:400;
+      line-height:1.62;
+      letter-spacing:.04em;
+      background:none;
+      box-shadow:none;
+      transform:rotate(-5deg);
+      transform-origin:center;
+    }
     .ss-wall-sub { text-align:center; font-size:.82rem; color:var(--text-light); margin-bottom:22px; }
-    .ss-clip { position:relative; max-height:560px; overflow:hidden; transition:max-height .45s ease; }
+    .ss-clip { position:relative; max-height:980px; overflow:hidden; transition:max-height .45s ease; }
     .ss-clip.open { max-height:14000px; }
     .ss-cols { column-count:2; column-gap:10px; }
     .ss-shot { width:100%; display:block; margin:0 0 10px; border-radius:0; box-shadow:0 4px 14px rgba(58,66,104,.10); break-inside:avoid; }
@@ -2381,9 +2452,9 @@
      受講の流れ（スリム版・申込→学習スタート→修了）
 ============================================ -->
 <section id="flow">
-  <div class="title-block">
+  <div class="title-block flow-title-block">
     <span class="deco-word">Flow</span>
-    <h2 class="sec-title">受講の流れ</h2>
+    <h2 class="sec-title"><span class="flow-main-line">受講の流れ</span></h2>
     <div class="gold-line"></div>
   </div>
 
@@ -2440,9 +2511,9 @@
   <div class="bot" style="bottom:20px;left:-14px;transform:rotate(-10deg);">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" width="62" height="62"><g transform="translate(27,27)" fill="none" stroke="#A3BCE0" stroke-width="0.9"><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(0)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(72)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(144)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(216)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(288)"/><circle r="4" fill="#E6EEF8"/></g></svg>
   </div>
-  <div class="title-block">
+  <div class="title-block price-title-block">
     <span class="deco-word">Pricing</span>
-    <h2 class="sec-title">受講料・<br>お申し込みについて</h2>
+    <h2 class="sec-title"><span class="price-main-line">受講料・</span><span class="price-main-line">お申し込みについて</span></h2>
     <div class="gold-line"></div>
   </div>
 
@@ -2658,15 +2729,16 @@
     <div class="gold-line"></div>
   </div>
 
-  <p class="closing-text">「できない」「ひらめかない」は、才能やセンスのせいではありません。ただ、これまで学ぶ機会がなかっただけです。<br><br>技術に自信を持ち、アイデアを広げる方法を一緒に学んでいきましょう。<br><br>「いつかやろう」「〇〇が落ち着いたら」と、あなたが動き出すのに完璧なタイミングなんてきません。自分のやりたいことを後回しにできるほど、人生は長くありません。<br><br>ならば時間を効率よく使い、確かな成果を出す。あなたに寄り添いながら、ポーセラーツが生きがいになるよう心を込めてサポートさせていただきます。<br><br>あなたも生徒様も、笑顔があふれる教室が叶うヒントが、きっとここにあります。</p>
+  <div class="closing-letter">
+    <p class="closing-text">「できない」「ひらめかない」は、才能やセンスのせいではありません。ただ、これまで学ぶ機会がなかっただけです。<br><br>技術に自信を持ち、アイデアを広げる方法を一緒に学んでいきましょう。<br><br>「いつかやろう」「〇〇が落ち着いたら」と、あなたが動き出すのに完璧なタイミングなんてきません。自分のやりたいことを後回しにできるほど、人生は長くありません。<br><br>ならば時間を効率よく使い、確かな成果を出す。あなたに寄り添いながら、ポーセラーツが生きがいになるよう心を込めてサポートさせていただきます。<br><br>あなたも生徒様も、笑顔があふれる教室が叶うヒントが、きっとここにあります。</p>
+    <div class="cta-wrap">
+      <a href="ここに申込先URLを入力" class="cta-btn">
+        無料相談会に参加する
+      </a>
+    </div>
+  </div>
   <div class="closing-photo">
     <img src="img/saori-2.jpg" alt="講師 尾野さおり">
-  </div>
-
-  <div class="cta-wrap">
-    <a href="ここに申込先URLを入力" class="cta-btn">
-      無料相談会に参加する
-    </a>
   </div>
 </section>
 
