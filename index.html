@@ -482,26 +482,39 @@
       letter-spacing: 0.04em; text-shadow: 0 2px 10px rgba(255,255,255,0.9);
     }
     .pain-solve b { color: var(--gold); font-size: 1.74rem; }
-    /* 下向き矢印の帯：青グラデの帯＋左右下に背景色(ベージュ)の三角を重ねてV字に見せる */
+    /* 下向き矢印：お悩みの背景そのものが三角で終わって見えるよう、
+       セクション下端の左右に次セクションと同色(#FBFAF7)の三角を重ねる */
     .pain-solve-band {
       position: relative;
-      z-index: 2;
-      width: min(100vw, 720px);
-      margin: 28px auto -1px;
-      background: linear-gradient(180deg, #EAF3FB 0%, #A9C9E6 100%);
-      padding: 46px 20px 96px;
+      margin: 24px 0 0;
+      padding: 34px 0 112px;
     }
-    .pain-solve-band::before,
-    .pain-solve-band::after {
+    .pain-solve-band::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 100vw;
+      height: 118px;
+      background: linear-gradient(180deg, rgba(232,238,248,0.98) 0%, rgba(232,238,248,0.64) 44%, rgba(232,238,248,0) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .pain-solve { position: relative; z-index: 2; }
+    #pain::before,
+    #pain::after {
       content: "";
       position: absolute;
       bottom: -1px;
       width: 50.5%;
-      height: 58px;
-      background: var(--cream);
+      height: 62px;
+      background: #FBFAF7;   /* 次のセクションと同じ色 */
+      z-index: 1;
+      pointer-events: none;
     }
-    .pain-solve-band::before { left: 0;  clip-path: polygon(0 0, 0 100%, 100% 100%); }
-    .pain-solve-band::after  { right: 0; clip-path: polygon(100% 0, 0 100%, 100% 100%); }
+    #pain::before { left: 0;  clip-path: polygon(0 0, 0 100%, 100% 100%); }
+    #pain::after  { right: 0; clip-path: polygon(100% 0, 0 100%, 100% 100%); }
     @media (min-width: 760px) {
       .pain-intro {
         min-height: 310px;
