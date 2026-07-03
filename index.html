@@ -448,7 +448,7 @@
     }
     .pain-intro {
       position: relative;
-      min-height: 430px;
+      min-height: 390px;
       padding-top: 2px;
     }
     .pain-intro .bridge {
@@ -459,10 +459,10 @@
       margin: 0 auto;
     }
     .pain-woman {
-      width: min(52vw, 240px);
+      width: min(48vw, 218px);
       position: absolute;
-      left: max(0px, calc(50% - 275px));
-      top: 176px;
+      left: max(0px, calc(50% - 250px));
+      top: 150px;
       z-index: 3;
       filter: drop-shadow(0 18px 28px rgba(58,66,104,0.16));
     }
@@ -479,29 +479,38 @@
     .pain-text .em { color: #c4707f; font-weight: bold; }
     .pain-solve {
       text-align: center; font-size: 1.5rem; color: var(--brown); font-weight: bold;
-      margin-top: 28px; letter-spacing: 0.04em; text-shadow: 0 2px 10px rgba(255,255,255,0.9);
+      letter-spacing: 0.04em; text-shadow: 0 2px 10px rgba(255,255,255,0.9);
     }
     .pain-solve b { color: var(--gold); font-size: 1.74rem; }
-    .pain-triangle {
+    /* 下向き矢印の帯：青グラデの帯＋左右下に背景色(ベージュ)の三角を重ねてV字に見せる */
+    .pain-solve-band {
       position: relative;
       z-index: 2;
-      display: block;
       width: min(100vw, 720px);
-      height: 168px;
-      max-width: none;
-      margin: 20px auto -1px;
-      object-fit: fill;
-      pointer-events: none;
+      margin: 28px auto -1px;
+      background: linear-gradient(180deg, #EAF3FB 0%, #A9C9E6 100%);
+      padding: 46px 20px 96px;
     }
+    .pain-solve-band::before,
+    .pain-solve-band::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      width: 50.5%;
+      height: 58px;
+      background: var(--cream);
+    }
+    .pain-solve-band::before { left: 0;  clip-path: polygon(0 0, 0 100%, 100% 100%); }
+    .pain-solve-band::after  { right: 0; clip-path: polygon(100% 0, 0 100%, 100% 100%); }
     @media (min-width: 760px) {
       .pain-intro {
-        min-height: 330px;
+        min-height: 310px;
         padding-top: 0;
       }
       .pain-woman {
-        width: 238px;
-        left: 10px;
-        top: 124px;
+        width: 220px;
+        left: 34px;
+        top: 112px;
       }
       .pain-item { align-content: start; }
     }
@@ -2000,9 +2009,10 @@
         <p class="pain-text">「こんなの作ってみたい！」と提案したいのに、自分の技術が追いつかず、<span class="em">指導する自信がなくて</span>言い出せない</p>
       </div>
     </div>
+  </div>
+  <div class="pain-solve-band">
     <p class="pain-solve">それ、<b>全部解決</b>できます！</p>
   </div>
-  <img class="pain-triangle" src="img/5.png" alt="" aria-hidden="true">
 </section>
 
 
