@@ -776,55 +776,72 @@
     .curriculum-list { max-width: 640px; margin: 0 auto; }
     .curri-item { }
     /* 月ラベル：白地にブルー枠で軽く見せる */
-    .curri-month {
-      display: inline-flex;
+    /* 月見出し：薄い水色の座布団に「1ヶ月目」＋見出しを横並び。左端に濃いブルーの三角 */
+    .curri-head-band {
+      position: relative;
+      display: flex;
       align-items: center;
-      justify-content: center;
-      min-width: 96px;
-      min-height: 44px;
-      background: #fff;
-      color: var(--accent-deep);
-      border: 2px solid rgba(122,157,207,0.72);
-      box-shadow: 0 8px 20px rgba(122,157,207,0.12);
-      font-size: 0.9rem;
-      font-weight: bold;
-      padding: 6px 18px;
-      border-radius: 999px;
-      letter-spacing: 0.08em;
+      gap: 16px;
+      background: linear-gradient(90deg, #E4EEF9 0%, #EEF4FB 100%);
+      padding: 22px 20px 22px 26px;
+      margin: 0 0 18px;
+      overflow: hidden;
     }
-    /* 課題名 */
+    .curri-head-band::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 86px;
+      background: linear-gradient(135deg, rgba(90,127,181,0.34) 0%, rgba(122,157,207,0.20) 100%);
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+      pointer-events: none;
+    }
+    .curri-month {
+      position: relative;
+      flex: none;
+      font-family: Georgia, 'Hiragino Mincho ProN', serif;
+      font-style: italic;
+      font-size: 1.08rem;
+      font-weight: bold;
+      color: var(--accent-deep);
+      letter-spacing: 0.06em;
+      align-self: flex-start;
+    }
+    /* 課題名：写真の左上に重ねるバッジ */
     .curri-task {
+      position: absolute;
+      top: 10px; left: 10px;
+      z-index: 2;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 0.92rem;
+      gap: 6px;
+      font-size: 0.88rem;
       color: var(--brown);
       font-weight: bold;
       letter-spacing: 0.04em;
-      margin: 2px 0 18px;
-      padding: 8px 16px;
-      background: rgba(122,157,207,0.08);
-      border: 1px solid rgba(122,157,207,0.22);
+      padding: 7px 14px;
+      background: rgba(255,255,255,0.93);
+      box-shadow: 0 4px 14px rgba(58,66,104,0.16);
     }
     .curri-task span { color: var(--accent-dark); }
 
     .curri-content { padding-bottom: 48px; }
     .curri-item:last-child .curri-content { padding-bottom: 0; }
-    /* 見出し：座布団をやめ、白地＋ブルー枠で上品に */
     .curri-head {
-      background: #fff;
+      position: relative;
+      background: none;
+      border: none;
+      box-shadow: none;
       color: var(--brown);
-      border: 2px solid rgba(122,157,207,0.58);
-      font-size: 1.35rem;
+      font-size: 1.28rem;
       font-weight: bold;
-      line-height: 1.45;
-      padding: 14px 18px;
-      margin: 16px 0 18px;
-      box-shadow: 0 10px 24px rgba(122,157,207,0.08);
+      line-height: 1.5;
+      padding: 0;
+      margin: 0;
     }
     /* 作品をしっかり見せる：画像を上に大きく、文章は下に（縦並び） */
     .curri-2col { display: flex; flex-direction: column; gap: 20px; }
-    .curri-2col .c-photo { width: 100%; }
+    .curri-2col .c-photo { width: 100%; position: relative; }
     .curri-2col .c-photo img {
       width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
       border-radius: 0; display: block;
@@ -885,7 +902,9 @@
       .curri-circle { width: 54px; height: 54px; }
       .curri-circle b { font-size: 0.74rem; }
       .curri-tl::after { left: 27px; top: 54px; bottom: -42px; }
-      .curri-head { font-size: 1.12rem; padding: 10px 14px; margin: 8px 0 16px; }
+      .curri-head { font-size: 1.12rem; }
+      .curri-head-band { padding: 16px 14px 16px 20px; gap: 12px; }
+      .curri-head-band::before { width: 64px; }
       .curri-2col { flex-direction: column; gap: 14px; }
       .curri-2col .c-photo { flex: none; width: 100%; }
       .curri-supports { gap: 10px; }
@@ -1389,7 +1408,6 @@
       .curri-head {
         font-size: clamp(1.08rem, 4.7vw, 1.24rem);
         line-height: 1.45;
-        padding: 12px 14px;
       }
     }
     /* ===== 学べること（詳細）===== */
@@ -2143,11 +2161,15 @@
     <!-- 1ヶ月目 -->
     <div class="curri-item">
       <div class="curri-content">
-        <p class="curri-month">1ヶ月目</p>
-        <h3 class="curri-head">絵の具の基礎から本質的理解</h3>
-        <p class="curri-task">制作課題：<span>リーフボックス</span></p>
+        <div class="curri-head-band">
+          <p class="curri-month">1ヶ月目</p>
+          <h3 class="curri-head">絵の具の基礎から本質的理解</h3>
+        </div>
         <div class="curri-2col">
-          <div class="c-photo"><img src="img/curriculum-1.png" alt="1ヶ月目の課題作品：リーフボックス"></div>
+          <div class="c-photo">
+            <p class="curri-task">制作課題：<span>リーフボックス</span></p>
+            <img src="img/curriculum-1.png" alt="1ヶ月目の課題作品：リーフボックス">
+          </div>
           <div class="c-text">
             <p class="curri-lead">基本をしっかり学び、絵の具に必要な知識・理論の土台づくりをします。</p>
             <p>「なんとなく」から卒業。絵の具の性質・使い方・調整まで、「なぜこれが必要か」を理解することで、自分が意図したように扱えるようになります。</p>
@@ -2168,11 +2190,15 @@
     <!-- 2ヶ月目 -->
     <div class="curri-item">
       <div class="curri-content">
-        <p class="curri-month">2ヶ月目</p>
-        <h3 class="curri-head">ポーセラーツの技術との融合と応用</h3>
-        <p class="curri-task">課題：<span>シルエットフラワー</span></p>
+        <div class="curri-head-band">
+          <p class="curri-month">2ヶ月目</p>
+          <h3 class="curri-head">ポーセラーツの技術との融合と応用</h3>
+        </div>
         <div class="curri-2col">
-          <div class="c-photo"><img src="img/curriculum-2.png" alt="2ヶ月目の課題作品：シルエットフラワー"></div>
+          <div class="c-photo">
+            <p class="curri-task">課題：<span>シルエットフラワー</span></p>
+            <img src="img/curriculum-2.png" alt="2ヶ月目の課題作品：シルエットフラワー">
+          </div>
           <div class="c-text"><p>基礎を土台に、表現の幅を広げる技術を習得。転写紙を分解・構成する楽しさと絵の具を組み合わせることで、これまでにない作品が生まれる。絵を描いたことがない人でも描けるようになる。</p></div>
         </div>
       </div>
@@ -2181,11 +2207,15 @@
     <!-- 3ヶ月目 -->
     <div class="curri-item">
       <div class="curri-content">
-        <p class="curri-month">3ヶ月目</p>
-        <h3 class="curri-head">ポーセラーツのためのデザイン理論</h3>
-        <p class="curri-task">課題：<span>フラワーガール</span></p>
+        <div class="curri-head-band">
+          <p class="curri-month">3ヶ月目</p>
+          <h3 class="curri-head">ポーセラーツのためのデザイン理論</h3>
+        </div>
         <div class="curri-2col">
-          <div class="c-photo"><img src="img/curriculum-3.png" alt="3ヶ月目の課題作品：フラワーガール"></div>
+          <div class="c-photo">
+            <p class="curri-task">課題：<span>フラワーガール</span></p>
+            <img src="img/curriculum-3.png" alt="3ヶ月目の課題作品：フラワーガール">
+          </div>
           <div class="c-text"><p>デザインとは、おしゃれな見た目にすることではありません。20年のデザイナー実績から構築した独自のデザイン理論で、見ている人の心に届く作品を体系的に学びます。</p></div>
         </div>
       </div>
@@ -2194,8 +2224,10 @@
     <!-- 4ヶ月目 -->
     <div class="curri-item">
       <div class="curri-content">
-        <p class="curri-month">4ヶ月目</p>
-        <h3 class="curri-head">ポーセラーツのためのデザイン理論</h3>
+        <div class="curri-head-band">
+          <p class="curri-month">4ヶ月目</p>
+          <h3 class="curri-head">ポーセラーツのためのデザイン理論</h3>
+        </div>
         <div class="curri-2col">
           <div class="c-photo"><img src="img/gallery9.jpg" alt="4ヶ月目の作品例：デザイン理論で仕上げたメリーゴーランドの作品"></div>
           <div class="c-text"><p>技術を学ぶだけでは、誰かに届く作品は作れません。尾野さおりの20年のデザイナー経験から導いた「ポーセラーツのためのデザイン理論」を用いて、届く作品づくりと、お教室業に必要なマーケティング＆集客メソッドを学びます。売り込まずに生徒さまが集まる仕組みと方法をお伝えします。</p></div>
