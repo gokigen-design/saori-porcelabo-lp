@@ -464,7 +464,7 @@
       width: min(48vw, 218px);
       position: absolute;
       left: max(0px, calc(50% - 250px));
-      top: 150px;
+      top: 96px;   /* 白いボックスに少し重ねる */
       z-index: 3;
       filter: drop-shadow(0 18px 28px rgba(58,66,104,0.16));
     }
@@ -525,7 +525,7 @@
       .pain-woman {
         width: 220px;
         left: 34px;
-        top: 112px;
+        top: 72px;   /* 白いボックスに少し重ねる */
       }
       .pain-item { align-content: start; }
     }
@@ -1780,9 +1780,9 @@
     }
     .marquee-item {
       flex: 0 0 auto;
-      width: 240px;
-      height: 240px;
-      margin-right: 11px;          /* 隙間を半分に（22→11） */
+      width: 320px;
+      height: 320px;
+      margin-right: 12px;
       background: var(--white);
       box-shadow: 0 14px 32px rgba(58,66,104,0.16);
       overflow: hidden;
@@ -1798,7 +1798,7 @@
       filter: brightness(1.04);
     }
     @media (min-width: 760px) {
-      .marquee-item { width: 300px; height: 300px; margin-right: 14px; }
+      .marquee-item { width: 400px; height: 400px; margin-right: 16px; }
     }
     @media (max-width: 520px) {
       .lightbox { padding:20px 14px 72px; }
@@ -2011,7 +2011,6 @@
           <p class="bridge-q1">「私にも、こんな作品が作れたら…」</p>
           <p class="bridge-q2">そう憧れる一方で、<br>こんなお悩み、ありませんか？</p>
         </div>
-        <div class="bridge-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A870" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M5 13l7 7 7-7"/></svg></div>
       </div>
       <img class="pain-woman" src="img/4.png" alt="作品づくりや指導に悩む女性">
     </div>
