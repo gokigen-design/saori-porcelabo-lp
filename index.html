@@ -430,7 +430,7 @@
     ============================================= */
     #pain {
       position: relative;
-      background: linear-gradient(rgba(250,248,243,0.16), rgba(232,238,248,0.82)), url('img/3.png') center top / cover no-repeat;
+      background: linear-gradient(rgba(58,66,104,0.38) 0%, rgba(58,66,104,0.16) 34%, rgba(232,238,248,0.82) 68%), url('img/3.png') center top / cover no-repeat;
       padding: 32px 20px 0;
       overflow: hidden;
     }
@@ -450,8 +450,24 @@
     }
     .pain-intro {
       position: relative;
-      min-height: 390px;
-      padding-top: 2px;
+      min-height: 330px;
+      padding-top: 10px;
+    }
+    /* 白ボックスをやめて、白い文字でしっとりと */
+    .pain-intro .bridge-quote {
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: 12px 0 0;
+    }
+    .pain-intro .bridge-q1 {
+      color: #fff;
+      font-size: 1.16rem;
+      text-shadow: 0 2px 12px rgba(40,50,80,0.55);
+    }
+    .pain-intro .bridge-q2 {
+      color: rgba(255,255,255,0.94);
+      text-shadow: 0 2px 12px rgba(40,50,80,0.55);
     }
     .pain-intro .bridge {
       width: 100%;
@@ -468,7 +484,7 @@
       z-index: 3;
       filter: drop-shadow(0 18px 28px rgba(58,66,104,0.16));
     }
-    .pain-list { max-width: 600px; margin: 10px auto 0; }
+    .pain-list { max-width: 600px; margin: 0 auto; }
     /* 角ばった四角（AI感を抑える）＝border-radius小さめ */
     .pain-item {
       display: flex; gap: 14px; align-items: flex-start;
@@ -476,7 +492,7 @@
       padding: 16px 18px; margin-bottom: 14px;
       box-shadow: 0 8px 22px rgba(58,66,104,0.10);
     }
-    .pain-num { font-family: Georgia, serif; font-size: 1.45rem; font-weight: bold; color: var(--accent-deep); line-height: 1.2; flex: none; }
+    .pain-check { flex: none; width: 26px; height: 26px; color: var(--accent-deep); margin-top: 3px; }
     .pain-text { font-size: 1.02rem; color: var(--text); line-height: 1.7; }
     .pain-text .em { color: #c4707f; font-weight: bold; }
     .pain-solve {
@@ -488,8 +504,8 @@
        セクション下端の左右に次セクションと同色(#FBFAF7)の三角を重ねる */
     .pain-solve-band {
       position: relative;
-      margin: 24px 0 0;
-      padding: 34px 0 112px;
+      margin: 8px 0 0;
+      padding: 30px 0 102px;   /* 下は矢印の三角(62px)込み＝見た目約40px */
     }
     .pain-solve-band::before {
       content: "";
@@ -519,7 +535,7 @@
     }
     @media (min-width: 760px) {
       .pain-intro {
-        min-height: 310px;
+        min-height: 290px;
         padding-top: 0;
       }
       .pain-woman {
@@ -645,19 +661,18 @@
       letter-spacing: 0.06em;
       text-align: center;
     }
-    /* 数字バッジ：写真の左上に重ねる */
+    /* 数字：筆記体の手書き風で写真の左上に斜めに重ねる */
     .fz-num {
       position: absolute;
-      top: 10px; left: 10px;
+      top: -4px; left: 8px;
       z-index: 2;
-      font-family: Georgia, 'Hiragino Mincho ProN', serif;
-      font-style: italic;
-      font-size: 1.05rem;
-      font-weight: bold;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.7rem;
+      line-height: 1;
       color: var(--accent-deep);
-      background: rgba(255,255,255,0.85);
-      padding: 4px 12px;
-      letter-spacing: 0.06em;
+      transform: rotate(-9deg);
+      text-shadow: 0 1px 2px rgba(255,255,255,0.95), 0 2px 10px rgba(255,255,255,0.75);
+      pointer-events: none;
     }
     /* 写真ラッパー：青いグラデ背景ボックス＋筆記体ラベル */
     .fz-photo {
@@ -1976,27 +1991,27 @@
 
     <div class="pain-list">
       <div class="pain-item">
-        <span class="pain-num">01</span>
+        <svg class="pain-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 12.5l3 3L16.5 9"/></svg>
         <p class="pain-text">転写紙メインで作品を作ってきたけど、似たような作り上がりに<span class="em">物足りなさを感じてきた</span></p>
       </div>
       <div class="pain-item">
-        <span class="pain-num">02</span>
+        <svg class="pain-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 12.5l3 3L16.5 9"/></svg>
         <p class="pain-text">インストラクターコースで絵の具を学んだはずなのに、<span class="em">指導する自信は持っていない</span></p>
       </div>
       <div class="pain-item">
-        <span class="pain-num">03</span>
+        <svg class="pain-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 12.5l3 3L16.5 9"/></svg>
         <p class="pain-text">絵の具って難しそう。<span class="em">失敗するんじゃないか</span>と思うと、なかなか進まない</p>
       </div>
       <div class="pain-item">
-        <span class="pain-num">04</span>
+        <svg class="pain-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 12.5l3 3L16.5 9"/></svg>
         <p class="pain-text">絵の具はやってみたけど<span class="em">思い通りにできない</span>、きれいな仕上がりにならない</p>
       </div>
       <div class="pain-item">
-        <span class="pain-num">05</span>
+        <svg class="pain-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 12.5l3 3L16.5 9"/></svg>
         <p class="pain-text">生徒さんが「次は何を作ろうか」と<span class="em">少し迷い出している</span>のが、自分にも伝わってきている</p>
       </div>
       <div class="pain-item">
-        <span class="pain-num">06</span>
+        <svg class="pain-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 12.5l3 3L16.5 9"/></svg>
         <p class="pain-text">「こんなの作ってみたい！」と提案したいのに、自分の技術が追いつかず、<span class="em">指導する自信がなくて</span>言い出せない</p>
       </div>
     </div>
@@ -2041,7 +2056,7 @@
         <span class="fz-num">01</span>
         <img src="img/gallery5.jpg" alt="マリン柄のカップ＆ソーサー">
       </div>
-      <p class="fz-desc">転写紙に頼る作品作りから卒業して、絵の具で表現できる世界がぐっと広がります。頭の中にあるイメージをそのまま作品に落とし込めるようになると、作品作りが何倍も楽しくなります。</p>
+      <p class="fz-desc">転写紙に頼る作品作りから卒業して、絵の具で表現できる世界がぐっと広がります。<br><br>頭の中にあるイメージをそのまま作品に落とし込めるようになると、作品作りが何倍も楽しくなります。</p>
     </div>
 
     <!-- 02：見出し → 写真 → 説明 -->
