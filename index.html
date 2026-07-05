@@ -6,7 +6,7 @@
   <title>ポーセラボ絵の具コース｜絵の具×デザイン理論で叶える上級ポーセリンアート</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Hachi+Maru+Pop&family=Yomogi&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Klee+One:wght@600&display=swap" rel="stylesheet">
   <style>
     /* =============================================
        CSS変数 — ここを変えるだけで色が全体に反映
@@ -605,6 +605,8 @@
     .voice-swipe-note svg { flex:none; opacity:.75; }
     @media (min-width: 760px) {
       .voice-card { flex-basis:600px; }
+      .voice-carousel { margin-left:0; margin-right:0; width:100%; }
+      .voice-carousel .marquee-track { padding:0 16px; }
     }
 
     /* ふんわりフェードイン */
@@ -1096,21 +1098,21 @@
     .flow-title-block .gold-line,
     .price-title-block .gold-line { display:none; }
 
+    /* 受講料について：箱に入れずさらっと見せる */
     .price-box {
-      background: var(--white);
-      border-radius: 0;
-      padding: 24px 20px;
-      margin-bottom: 24px;
-      box-shadow: 0 4px 22px rgba(90,62,54,0.08);
+      max-width: 600px;
+      margin: 0 auto 28px;
+      text-align: center;
     }
     .price-box h3 {
-      font-size: 1rem;
+      font-size: 1.06rem;
       color: var(--brown);
+      display: inline-block;
       border-bottom: 2px solid var(--gold);
       padding-bottom: 8px;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
-    .price-text { font-size: 0.92rem; color: var(--text-mid); line-height: 1.9; }
+    .price-text { font-size: 0.95rem; color: var(--text-mid); line-height: 2; }
     .price-note { font-size: 0.8rem; color: var(--text-light); margin-top: 8px; }
 
     /* 特典 — 明るい上品版（角丸なし） */
@@ -1173,23 +1175,21 @@
     }
     .tokuten-list li p { color: var(--text-mid); font-size: 0.88rem; line-height: 1.8; }
 
+    /* 注意書き：箱に入れずさらっと */
     .urgency-box {
-      background: var(--brown);
-      color: var(--white);
-      border-radius: 0;
-      padding: 20px;
-      margin-top: 24px;
+      max-width: 560px;
+      margin: 26px auto 0;
     }
-    .urgency-box h3 { font-size: 0.95rem; color: var(--gold); margin-bottom: 10px; }
     .urgency-box ul { list-style: none; }
     .urgency-box ul li {
       font-size: 0.88rem;
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.88);
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(122,157,207,0.22);
+      color: var(--text-mid);
+      line-height: 1.8;
     }
     .urgency-box ul li:last-child { border-bottom: none; }
-    .urgency-box ul li::before { content: "▶ "; color: var(--gold); }
+    .urgency-box ul li::before { content: "▶ "; color: var(--gold); font-size: 0.72rem; }
 
     /* =============================================
        8. FAQ（アコーディオン）
@@ -1627,7 +1627,7 @@
       margin:0 auto 26px;
       padding:0 8px;
       text-align:center;
-      font-family:"花とちょうちょ", "Hachi Maru Pop", "Yomogi", "Hannotate SC", "HanziPen SC", cursive;
+      font-family:"花とちょうちょ", "Klee One", "Hannotate SC", "HanziPen SC", cursive;
       font-size:clamp(1.46rem, 5.8vw, 1.98rem);
       color:var(--accent-dark);
       font-weight:400;
@@ -1658,9 +1658,13 @@
     /* =============================================
        作品ギャラリー（左から流れてくる）
     ============================================= */
-    #gallery { background: var(--cream); overflow: hidden; }
+    #gallery { background: var(--white); overflow: hidden; }
+    #faq .deco-word, #gallery .deco-word { color: rgba(58,66,104,0.28); }
     /* 作品タイル敷き詰め（3列） */
-    .gallery-grid { max-width:600px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+    .gallery-grid { max-width:680px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+    @media (max-width:759px) {
+      .gallery-grid { max-width:none; margin:0 calc(-50vw + 50%); width:100vw; padding:0 4px; }
+    }
     .gallery-grid img { width:100%; aspect-ratio:1; object-fit:cover; display:block; border-radius:2px; box-shadow:0 4px 12px rgba(58,66,104,.12); transition:transform .35s ease, box-shadow .35s ease; cursor:pointer; }
     .gallery-grid img:hover { transform:scale(1.08); box-shadow:0 12px 28px rgba(58,66,104,.26); position:relative; z-index:2; }
     /* クリックで拡大表示（ライトボックス） */
@@ -2500,7 +2504,7 @@
   </div>
   <div class="title-block price-title-block">
     <span class="deco-word">Pricing</span>
-    <h2 class="sec-title"><span class="price-main-line">受講料・</span><span class="price-main-line">お申し込みについて</span></h2>
+    <h2 class="sec-title"><span class="price-main-line">受講料</span><span class="price-main-line">お申し込みについて</span></h2>
     <div class="gold-line"></div>
   </div>
 
@@ -2740,7 +2744,7 @@
     <h2 class="sec-title">作品ギャラリー</h2>
     <div class="gold-line"></div>
   </div>
-  <p class="gallery-lead">絵の具で広がる、無限のポーセリンアートの世界。<br>あなたも、こんな作品が作れるようになります。</p>
+  <p class="gallery-lead">絵の具で広がる、<br>無限のポーセリンアートの世界。<br>あなたも、こんな作品が<br>作れるようになります。</p>
 
   <!-- タイル状に敷き詰め（3列×4段） -->
   <div class="gallery-grid">
