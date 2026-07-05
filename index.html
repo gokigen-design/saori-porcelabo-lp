@@ -1374,7 +1374,7 @@
     .fz-head h3, .step-card h3, .flow-content h4, .learn-block h3 {
       font-size: 1.3rem; line-height: 1.55;
     }
-    .why-head, .profile-meta h3, .curri-head, #closing h2,
+    .profile-meta h3, #closing h2,
     .flow-item.flow-lead .flow-content h4 {
       font-size: 1.5rem; line-height: 1.5;
     }
@@ -1548,6 +1548,7 @@
     /* ポーセラボでできること：写真付きカード */
     .env-list { max-width:600px; margin:0 auto; display:grid; gap:34px; }
     .env-item {
+      position:relative;
       background:var(--white);
       border-radius:2px;
       overflow:hidden;
@@ -1557,23 +1558,23 @@
     .env-photo { width:100%; aspect-ratio:3/2; object-fit:cover; object-position:center 34%; display:block; }
     .env-item:first-child .env-photo { object-position:center 38%; }
     .env-photo.mid { object-position:center 58%; }
-    .env-body { padding:28px 24px 32px; background:#fff; }
-    .env-body h4 { display:flex; align-items:center; gap:14px; font-size:1.32rem; color:var(--brown); font-weight:bold; line-height:1.45; margin-bottom:12px; border-left:none; padding-left:0; }
+    .env-body { padding:26px 24px 32px; background:#fff; }
+    .env-body h4 { text-align:center; font-size:1.26rem; color:var(--brown); font-weight:bold; line-height:1.55; margin-bottom:12px; }
+    /* 番号：写真の左上に大きくブルーグラデーションで重ねる */
     .env-num {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:58px;
-      flex:none;
-      color:var(--accent-deep);
-      background:none;
-      font-family:"Great Vibes", cursive;
-      font-size:3.2rem;
-      font-weight:400;
-      line-height:0.9;
-      margin-right:0;
-      transform:rotate(-8deg);
-      text-shadow:0 6px 14px rgba(122,157,207,0.18);
+      position:absolute;
+      top:6px; left:14px;
+      z-index:2;
+      font-family:Georgia,'Hiragino Mincho ProN',serif;
+      font-style:italic;
+      font-size:3.4rem;
+      font-weight:bold;
+      line-height:1;
+      background:linear-gradient(135deg, #095FAA 0%, #55B7D2 100%);
+      -webkit-background-clip:text; background-clip:text;
+      -webkit-text-fill-color:transparent; color:transparent;
+      filter:drop-shadow(0 1px 2px rgba(255,255,255,0.95)) drop-shadow(0 2px 8px rgba(255,255,255,0.65));
+      pointer-events:none;
     }
     .env-body p { font-size:1rem; color:var(--text-mid); line-height:1.9; }
 
@@ -2241,7 +2242,7 @@
       <img class="img-main" src="img/saori-2.jpg" alt="講師 尾野さおり">
     </div>
     <div class="why-text">
-      <p>ポーセラーツ講師歴13年・累計1万人以上の指導実績に加え、<br>美大卒・デザイナー歴20年。<br>絵の具とデザイン知識までを一貫して学べる、<br>唯一無二の講座です。</p>
+      <p>ポーセラーツ講師歴13年・累計1万人以上の指導実績に加え、美大卒・デザイナー歴20年。<br>絵の具とデザイン知識までを一貫して学べる、唯一無二の講座です。</p>
     </div>
   </div>
 
@@ -2252,7 +2253,7 @@
       <img class="img-main" src="img/gallery1.jpg" alt="絵の具で描いたカップ＆ソーサーの作品">
     </div>
     <div class="why-text">
-      <p>センスは、知識で磨けるもの。学べば必ず身につきます。<br>今まで「できない」と思っていたことが、「できた」に変わると、<br>作品づくりが、驚くほど楽しくなっていきます！</p>
+      <p>センスは、知識で磨けるもの。学べば必ず身につきます。<br>今まで「できない」と思っていたことが、「できた」に変わると、作品づくりが、驚くほど楽しくなっていきます！</p>
     </div>
   </div>
 
@@ -2285,30 +2286,34 @@
   <p class="assurance-lead">オンラインでも、リアルでも。<br>あなたの学びと教室運営を、<br>しっかり支える環境が整っています。</p>
   <div class="env-list">
     <div class="env-item">
-      <img class="env-photo" loading="lazy" src="img/env-online.jpg" alt="オンラインで学ぶ尾野さおり">
+      <span class="env-num">01</span>
+      <img class="env-photo" loading="lazy" src="img/env-zoom.jpg" alt="Zoomでのオンライン勉強会の様子" style="object-position:center center;">
       <div class="env-body">
-        <h4><span class="env-num">01</span>オリジナル動画コンテンツ</h4>
+        <h4>オリジナル動画コンテンツ</h4>
         <p>通勤や家事をしながら聞いたり、空き時間に学びを進めることができます。</p>
       </div>
     </div>
     <div class="env-item">
+      <span class="env-num">02</span>
       <img class="env-photo" loading="lazy" src="img/env-support.jpg" alt="手元を見ながら丁寧に指導する様子">
       <div class="env-body">
-        <h4><span class="env-num">02</span>講座は全て動画・アーカイブあり</h4>
+        <h4>講座は全て<br>動画・アーカイブあり</h4>
         <p>何度でも見返せるので、わからない部分や復習したいところを安心して学べます。</p>
       </div>
     </div>
     <div class="env-item">
+      <span class="env-num">03</span>
       <img class="env-photo mid" loading="lazy" src="img/env-marketing.jpg" alt="マーケティング・集客勉強会の様子">
       <div class="env-body">
-        <h4><span class="env-num">03</span>お教室業に必要なマーケティング＆集客勉強会</h4>
+        <h4>お教室業に必要な<br>マーケティング＆集客勉強会</h4>
         <p>スキルを磨いても生徒さまは来ません。売り込まずに生徒さまが集まる仕組みと方法をお伝えします。</p>
       </div>
     </div>
     <div class="env-item">
+      <span class="env-num">04</span>
       <img class="env-photo" loading="lazy" src="img/env-real.jpg" alt="リアル勉強会で仲間と学ぶ様子">
       <div class="env-body">
-        <h4><span class="env-num">04</span>2回のリアル勉強会</h4>
+        <h4>2回のリアル勉強会</h4>
         <p>講座中、2回のリアル勉強会があります。実際に手元を見て丁寧に指導させていただきます。</p>
       </div>
     </div>
