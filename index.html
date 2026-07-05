@@ -180,16 +180,22 @@
     }
 
     /* 大きな筆記体の飾り英語 */
+    /* 英語の筆記体＝飾り。透過して見出しの左上に右上がりで重ねる */
+    .title-block { position: relative; }
     .deco-word {
+      position: absolute;
+      top: -30px;
+      left: 4%;
       display: block;
       font-family: 'Great Vibes', cursive;
-      font-size: 4.2rem;
-      line-height: 1.15;
-      color: rgba(58, 66, 104, 0.08);  /* ← 薄さはここで調整（0.05〜0.14） */
+      font-size: 3rem;
+      line-height: 1;
+      color: rgba(58, 66, 104, 0.16);
+      transform: rotate(-8deg);
       user-select: none;
       pointer-events: none;
-      margin-bottom: -8px;  /* 日本語タイトルに少し重ねる */
       letter-spacing: 0.01em;
+      z-index: 0;
     }
 
     h2.sec-title {
@@ -207,7 +213,7 @@
     }
 
     @media (min-width: 600px) {
-      .deco-word { font-size: 5.5rem; }
+      .deco-word { font-size: 3.6rem; top: -36px; }
     }
 
     /* Future見出しだけ：参考画像のようにグラデーションの座布団を敷く */
@@ -215,14 +221,6 @@
     #future .future-title-block {
       overflow: visible;
       margin-bottom: 50px;
-    }
-    #future .future-title-block .deco-word {
-      font-size: 2.7rem;
-      color: #63B9D5;
-      opacity: 0.95;
-      margin-bottom: 16px;
-      transform: rotate(-3deg);
-      text-shadow: 0 1px 0 rgba(255,255,255,0.7);
     }
     #future .future-title-block .sec-title {
       display: inline-grid;
@@ -245,14 +243,6 @@
     #service .service-title-block {
       overflow: visible;
       margin-bottom: 46px;
-    }
-    #service .service-title-block .deco-word {
-      font-size: 2.7rem;
-      color: #63B9D5;
-      opacity: 0.95;
-      margin-bottom: 16px;
-      transform: rotate(-4deg);
-      text-shadow: 0 1px 0 rgba(255,255,255,0.7);
     }
     #service .service-title-block .sec-title {
       display: inline-grid;
@@ -280,14 +270,6 @@
       overflow: visible;
       margin-bottom: 56px;
     }
-    #why .why-title-block .deco-word {
-      font-size: 2.7rem;
-      color: #63B9D5;
-      opacity: 0.95;
-      margin-bottom: 16px;
-      transform: rotate(-4deg);
-      text-shadow: 0 1px 0 rgba(255,255,255,0.7);
-    }
     #why .why-title-block .sec-title {
       display: inline-grid;
       gap: 8px;
@@ -306,24 +288,21 @@
     #why .gold-line { display: none; }
 
     @media (min-width: 600px) {
-      #future .future-title-block .deco-word { font-size: 3.35rem; }
-      #future .future-title-block .sec-title {
+        #future .future-title-block .sec-title {
         font-size: 2.05rem;
         gap: 10px;
       }
       #future .future-main-line {
         padding: 9px 32px 10px;
       }
-      #service .service-title-block .deco-word { font-size: 3.35rem; }
-      #service .service-title-block .sec-title {
+        #service .service-title-block .sec-title {
         font-size: 2.05rem;
         gap: 10px;
       }
       #service .service-main-line {
         padding: 9px 32px 10px;
       }
-      #why .why-title-block .deco-word { font-size: 3.35rem; }
-      #why .why-title-block .sec-title {
+        #why .why-title-block .sec-title {
         font-size: 2.05rem;
         gap: 10px;
       }
@@ -554,11 +533,6 @@
     .bridge-arrow svg { width:30px; height:30px; }
     /* 受講生の声：2段で自然に流れる無限ループ */
     .voices-title-block { margin-bottom: 42px; }
-    .voices-title-block .deco-word {
-      color: rgba(58,66,104,0.08);
-      font-size: clamp(3.4rem, 11vw, 6.2rem);
-      transform: rotate(-6deg);
-    }
     .voices-title-block .sec-title {
       display:grid;
       justify-items:center;
@@ -1089,12 +1063,6 @@
 
     .flow-title-block,
     .price-title-block { margin-bottom: 42px; }
-    .flow-title-block .deco-word,
-    .price-title-block .deco-word {
-      color: rgba(58,66,104,0.08);
-      font-size: clamp(3.4rem, 11vw, 6.2rem);
-      transform: rotate(-6deg);
-    }
     .flow-title-block .sec-title,
     .price-title-block .sec-title {
       display:grid;
@@ -1511,11 +1479,6 @@
     ============================================= */
     #assurance { background: #FBF8F1; }
     .program-title-block { margin-bottom: 34px; }
-    .program-title-block .deco-word {
-      color: rgba(58,66,104,0.08);
-      font-size: clamp(3.4rem, 11vw, 6.2rem);
-      transform: rotate(-7deg);
-    }
     .program-title-block .sec-title {
       display: grid;
       justify-items: center;
@@ -1678,7 +1641,6 @@
        作品ギャラリー（左から流れてくる）
     ============================================= */
     #gallery { background: var(--white); overflow: hidden; }
-    #faq .deco-word, #gallery .deco-word { color: rgba(58,66,104,0.28); }
     /* 作品タイル敷き詰め（3列） */
     .gallery-grid { max-width:680px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
     @media (max-width:759px) {
