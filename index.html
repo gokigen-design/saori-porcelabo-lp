@@ -628,31 +628,27 @@
     .fz-row { position: relative; margin-bottom: 96px; text-align: left; }
     .fz-row:last-child { margin-bottom: 0; }
     /* 番号（自動採番） → 見出し */
-    .fz-head {
-      display: grid;
-      grid-template-columns: 88px 1fr;
-      gap: 18px;
-      align-items: start;
-      margin-bottom: 24px;
-    }
-    .fz-head::before {
-      counter-increment: fznum;
-      content: "0" counter(fznum);
-      display: block;
-      font-family: 'Great Vibes', cursive;
-      font-weight: normal;
-      font-size: 4.2rem; line-height: 0.92;
-      color: #55B7D2;
-      letter-spacing: 0;
-      margin: -6px 0 0 0;
-      transform: rotate(-7deg);
-      text-shadow: 0 1px 0 rgba(255,255,255,0.85);
-    }
+    /* 見出し：数字は写真の上に移動したので、見出しだけ中央揃えでシンプルに */
+    .fz-head { margin-bottom: 22px; }
     .fz-head h3 {
-      font-size: 1.5rem; color: var(--brown);
-      line-height: 1.55; margin: 0; font-weight: bold;
+      font-size: 1.3rem; color: var(--brown);
+      line-height: 1.6; margin: 0 auto; font-weight: bold;
       letter-spacing: 0.06em;
-      text-align: left;
+      text-align: center;
+    }
+    /* 数字バッジ：写真の左上に重ねる */
+    .fz-num {
+      position: absolute;
+      top: 10px; left: 10px;
+      z-index: 2;
+      font-family: Georgia, 'Hiragino Mincho ProN', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: var(--accent-deep);
+      background: rgba(255,255,255,0.85);
+      padding: 4px 12px;
+      letter-spacing: 0.06em;
     }
     /* 写真ラッパー：青いグラデ背景ボックス＋筆記体ラベル */
     .fz-photo {
@@ -680,29 +676,20 @@
       box-shadow: 0 12px 30px rgba(58,66,104,0.10);
     }
     /* 筆記体の注釈ラベル「Future 1」 */
-    .fz-label {
-      position: absolute; top: -22px; left: -18px;
-      font-family: 'Great Vibes', cursive;
-      font-size: 2.55rem; line-height: 1; color: rgba(58,66,104,0.92);
-      text-shadow: 0 2px 8px rgba(255,255,255,0.72);
-      z-index: 3; pointer-events: none;
-      transform: rotate(-8deg);
-    }
-    /* 説明文（写真の前後に配置できる） */
-    .fz-lead { color: var(--text-mid); line-height: 1.95; margin: 0 0 26px; font-size: 1.08rem; text-align: left; }
-    .fz-desc { color: var(--text-mid); line-height: 1.95; margin: 28px 0 0; font-size: 1.08rem; text-align: left; }
+    /* 筆記体の「Future N」は非表示（ごちゃつき防止） */
+    .fz-label { display: none; }
+    /* 説明文：すべて写真の下に統一 */
+    .fz-lead, .fz-desc { color: var(--text-mid); line-height: 1.95; margin: 22px 0 0; font-size: 1.08rem; text-align: left; }
 
     @media (max-width: 600px) {
       .future-zigzag { max-width: 540px; }
       .fz-row { text-align: left; margin-bottom: 88px; }
-      .fz-head { grid-template-columns: 72px 1fr; gap: 14px; margin-bottom: 20px; }
-      .fz-photo { width: 92%; margin-top: 34px; }
+      .fz-head { margin-bottom: 18px; }
+      .fz-photo { width: 92%; }
       .fz-photo::before { top: -20px; right: -16px; width: 74%; height: 58%; }
       .fz-photo::after { left: -16px; bottom: -18px; width: 48%; height: 46%; }
-      .fz-head::before { font-size: 3.25rem; margin: -3px 0 0; }
-      .fz-head h3 { font-size: 1.14rem; text-align: left; }
-      .fz-lead, .fz-desc { font-size: 1.02rem; text-align: left; }
-      .fz-label { font-size: 2.15rem; top: -17px; left: -10px; }
+      .fz-head h3 { font-size: 1.14rem; }
+      .fz-lead, .fz-desc { font-size: 1.02rem; }
     }
 
     /* =============================================
@@ -767,14 +754,11 @@
     .curriculum-list { max-width: 640px; margin: 0 auto; }
     .curri-item { }
     /* 月ラベル：白地にブルー枠で軽く見せる */
-    /* 月見出し：薄い水色の座布団に「1ヶ月目」＋見出しを横並び。左端に濃いブルーの三角 */
+    /* 月見出し：薄い水色の座布団。「1ヶ月目」は筆記体風で左上・見出しはその下 */
     .curri-head-band {
       position: relative;
-      display: flex;
-      align-items: center;
-      gap: 16px;
       background: linear-gradient(90deg, #E4EEF9 0%, #EEF4FB 100%);
-      padding: 22px 20px 22px 26px;
+      padding: 38px 22px 20px 26px;
       margin: 0 0 18px;
       overflow: hidden;
     }
@@ -788,31 +772,30 @@
       pointer-events: none;
     }
     .curri-month {
-      position: relative;
-      flex: none;
+      position: absolute;
+      top: 9px; left: 16px;
       font-family: Georgia, 'Hiragino Mincho ProN', serif;
       font-style: italic;
-      font-size: 1.08rem;
+      font-size: 0.98rem;
       font-weight: bold;
       color: var(--accent-deep);
-      letter-spacing: 0.06em;
-      align-self: flex-start;
+      letter-spacing: 0.08em;
     }
-    /* 課題名：写真の左上に重ねるバッジ */
+    /* 課題名：写真の右下に小さく（白は透過して作品を邪魔しない） */
     .curri-task {
       position: absolute;
-      top: 10px; left: 10px;
+      bottom: 10px; right: 10px;
       z-index: 2;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      font-size: 0.88rem;
+      gap: 5px;
+      font-size: 0.78rem;
       color: var(--brown);
       font-weight: bold;
       letter-spacing: 0.04em;
-      padding: 7px 14px;
-      background: rgba(255,255,255,0.93);
-      box-shadow: 0 4px 14px rgba(58,66,104,0.16);
+      padding: 5px 11px;
+      background: rgba(255,255,255,0.72);
+      box-shadow: 0 3px 10px rgba(58,66,104,0.12);
     }
     .curri-task span { color: var(--accent-dark); }
 
@@ -894,7 +877,7 @@
       .curri-circle b { font-size: 0.74rem; }
       .curri-tl::after { left: 27px; top: 54px; bottom: -42px; }
       .curri-head { font-size: 1.12rem; }
-      .curri-head-band { padding: 16px 14px 16px 20px; gap: 12px; }
+      .curri-head-band { padding: 36px 14px 16px 20px; }
       .curri-head-band::before { width: 64px; }
       .curri-2col { flex-direction: column; gap: 14px; }
       .curri-2col .c-photo { flex: none; width: 100%; }
@@ -2043,7 +2026,7 @@
     </div>
   </div>
   <div class="pain-solve-band">
-    <p class="pain-solve">それ、<b>全部解決</b>できます！</p>
+    <p class="pain-solve">それ、<br><b>全部解決</b>できます！</p>
   </div>
 </section>
 
@@ -2077,20 +2060,19 @@
 
     <!-- 01：見出し → 説明 → 写真 → 説明 -->
     <div class="fz-row">
-      <div class="fz-head"><h3>作れる作品の幅が何倍も広がる</h3></div>
-      <p class="fz-lead">転写紙に頼る作品作りから卒業して、絵の具で表現できる世界がぐっと広がります。</p>
+      <div class="fz-head"><h3>作れる作品の幅が<br>何倍も広がる</h3></div>
       <div class="fz-photo">
-        <span class="fz-label">Future 1</span>
+        <span class="fz-num">01</span>
         <img src="img/gallery5.jpg" alt="マリン柄のカップ＆ソーサー">
       </div>
-      <p class="fz-desc">頭の中にあるイメージをそのまま作品に落とし込めるようになると、作品作りが何倍も楽しくなります。</p>
+      <p class="fz-desc">転写紙に頼る作品作りから卒業して、絵の具で表現できる世界がぐっと広がります。頭の中にあるイメージをそのまま作品に落とし込めるようになると、作品作りが何倍も楽しくなります。</p>
     </div>
 
     <!-- 02：見出し → 写真 → 説明 -->
     <div class="fz-row">
       <div class="fz-head"><h3>苦手だった絵の具で、<br>絵が描けるようになる</h3></div>
       <div class="fz-photo">
-        <span class="fz-label">Future 2</span>
+        <span class="fz-num">02</span>
         <img src="img/gallery10.jpg" alt="チューリップを描いた小皿の作品">
       </div>
       <p class="fz-desc">道具や溶剤の使い方、基礎からお伝えしますので初心者の方でも安心です。筆の運び方、絵の具の濃淡の作り方、順序を経て絵を描く手順をわかりやすく学べるカリキュラムとなっています。</p>
@@ -2100,7 +2082,7 @@
     <div class="fz-row">
       <div class="fz-head"><h3>絵の具に自信が持て、<br>指導できるようになる</h3></div>
       <div class="fz-photo">
-        <span class="fz-label">Future 3</span>
+        <span class="fz-num">03</span>
         <img src="img/gallery3.jpg" alt="ミモザのドレスを描いた額装作品">
       </div>
       <p class="fz-desc">自分で描けるだけでなく、生徒さんに「なぜそう描くのか」を説明できるまでがカリキュラムとなっています。指導の際にお使いいただける資料や動画も揃っているので、指導に迷うことなく、すぐにレッスンを始められます。</p>
@@ -2108,9 +2090,9 @@
 
     <!-- 04：見出し → 写真 → 説明 -->
     <div class="fz-row">
-      <div class="fz-head"><h3>「そんな食器見たことない！」と言われる作品が生まれる</h3></div>
+      <div class="fz-head"><h3>「そんな食器見たことない！」と<br>言われる作品が生まれる</h3></div>
       <div class="fz-photo">
-        <span class="fz-label">Future 4</span>
+        <span class="fz-num">04</span>
         <img src="img/gallery2.jpg" alt="モネの睡蓮を描いた淡い色合いのプレート">
       </div>
       <p class="fz-desc">転写紙では出せない、唯一無二の表現が手に入ります。どこかで見たことのある作品ではなく、オリジナルを生み出す力を養います。</p>
@@ -2118,9 +2100,9 @@
 
     <!-- 05：見出し → 写真 → 説明 -->
     <div class="fz-row">
-      <div class="fz-head"><h3>「この先生からしか習えない」と選ばれる存在になれる</h3></div>
+      <div class="fz-head"><h3>「この先生からしか習えない」と<br>選ばれる存在になれる</h3></div>
       <div class="fz-photo">
-        <span class="fz-label">Future 5</span>
+        <span class="fz-num">05</span>
         <img src="img/gallery12.jpg" alt="レモンとリボンを描いたプレートの作品">
       </div>
       <p class="fz-desc">転写紙メインの教室が多いからこそ、絵の具を教えられることは大きな差別化に。選ばれる教室作りが叶います。</p>
@@ -2222,7 +2204,7 @@
           <h3 class="curri-head">ポーセラーツのためのデザイン理論</h3>
         </div>
         <div class="curri-2col">
-          <div class="c-photo"><img src="img/gallery9.jpg" alt="4ヶ月目の作品例：デザイン理論で仕上げたメリーゴーランドの作品"></div>
+          <div class="c-photo"><img src="img/gallery9.jpg" alt="4ヶ月目の作品例：デザイン理論で仕上げたメリーゴーランドの作品" style="object-position:center 32%;"></div>
           <div class="c-text"><p>技術を学ぶだけでは、誰かに届く作品は作れません。尾野さおりの20年のデザイナー経験から導いた「ポーセラーツのためのデザイン理論」を用いて、届く作品づくりと、お教室業に必要なマーケティング＆集客メソッドを学びます。売り込まずに生徒さまが集まる仕組みと方法をお伝えします。</p></div>
         </div>
       </div>
