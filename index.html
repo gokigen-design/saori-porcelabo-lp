@@ -22,7 +22,7 @@
       --text:        #2C3550;    /* Dark navy */
       --text-mid:    #5A6080;
       --text-light:  #8A90B0;
-      --bg-alt:      #E8EEF8;    /* Mist Blue sections */
+      --bg-alt:      #E9F1FC;    /* Clean Blue sections */
       --white:       #ffffff;
     }
 
@@ -531,13 +531,22 @@
       letter-spacing: 0.04em; text-shadow: 0 2px 10px rgba(255,255,255,0.9);
     }
     .pain-solve b { color: var(--gold); font-size: 1.74rem; }
-    /* 解決宣言 */
+    /* 解決宣言＋散らした作品（背景透過の丸皿） */
     .solve-block {
       position: relative;
-      padding: 34px 0 44px;
+      padding: 48px 0 56px;
       margin-bottom: 30px;
     }
     .solve-block .pain-solve { position: relative; z-index: 1; }
+    .solve-deco {
+      position: absolute;
+      z-index: 0;
+      filter: drop-shadow(0 10px 22px rgba(58,66,104,0.22));
+      pointer-events: none;
+    }
+    .solve-deco.d1 { width: 86px;  top: -26px;  left: 1%;  transform: rotate(-14deg); }
+    .solve-deco.d2 { width: 96px; top: -30px;  right: 1%; transform: rotate(11deg); }
+    .solve-deco.d3 { width: 72px;  bottom: -14px; right: 6%; transform: rotate(-7deg); }
     /* 下向き矢印：お悩みの背景そのものが三角で終わって見えるよう、
        セクション下端の左右に次セクションと同色(#FBFAF7)の三角を重ねる */
     .pain-solve-band {
@@ -566,7 +575,7 @@
       transform: translateX(-50%);
       width: 100vw;
       height: 74px;
-      background: #FBFAF7;   /* 次のセクションと同じ色 */
+      background: #E9F1FC;   /* 次のセクションと同じ色 */
       z-index: 1;
       pointer-events: none;
       clip-path: polygon(0 0, 50% 100%, 100% 0, 100% 100%, 0 100%);
@@ -673,7 +682,7 @@
     /* =============================================
        3. 理想の未来
     ============================================= */
-    #future { background: #FBFAF7; }
+    #future { background: #E9F1FC; }
 
     .future-main {
       text-align: center;
@@ -684,22 +693,31 @@
     }
     /* 縦積みレイアウト：見出し → 写真 → 説明（前回LP準拠） */
     .future-zigzag { max-width: 620px; margin: 40px auto 0; counter-reset: fznum; }
-    .fz-row { position: relative; margin-bottom: 96px; text-align: left; }
+    .fz-row {
+      position: relative;
+      margin-bottom: 44px;
+      text-align: left;
+      background: var(--white);
+      padding: 28px 20px 30px;
+      box-shadow: 0 14px 34px rgba(58,66,104,0.10);
+    }
     .fz-row:last-child { margin-bottom: 0; }
     /* 番号（自動採番） → 見出し */
     /* 見出し：大きく＋薄ブルーの座布団で項目の区切りを明確に */
     .fz-head {
-      background: linear-gradient(90deg, #E4EEF9 0%, #EEF4FB 100%);
-      padding: 18px 12px;
-      margin-bottom: 26px;
+      background: none;
+      padding: 0 0 4px;
+      margin-bottom: 18px;
       display: flex;
       align-items: center;
       gap: 10px;
+      border-bottom: 1px solid rgba(122,157,207,0.35);
+      padding-bottom: 16px;
     }
     .br-sp { display: inline; }
     @media (min-width: 600px) {
       .br-sp { display: none; }
-      .fz-head { padding: 18px 16px; gap: 14px; }
+      .fz-head { gap: 14px; }
     }
     .fz-head h3 {
       flex: 1;
@@ -720,25 +738,10 @@
     @media (min-width: 600px) {
       .fz-num { font-size: 2.6rem; }
     }
-    /* 写真ラッパー：青いグラデ背景ボックス＋筆記体ラベル */
+    /* 写真：白カードの中にすっきり */
     .fz-photo {
       position: relative; z-index: 1;
-      width: 86%; margin: 42px auto 0;
-    }
-    .fz-photo::before {
-      content: ""; position: absolute;
-      top: -34px; right: -34px;
-      width: 78%; height: 64%;
-      background: linear-gradient(90deg, #7FA4D5 0%, #8BE2E0 100%);
-      z-index: -1;
-    }
-    .fz-photo::after {
-      content: ""; position: absolute;
-      left: -32px; bottom: -28px;
-      width: 58%; height: 50%;
-      background: linear-gradient(180deg, #7FA4D5 0%, #B9D0EC 100%);
-      z-index: -1;
-      display: none;
+      width: 100%; margin: 0 auto;
     }
     .fz-photo img {
       width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
@@ -753,11 +756,9 @@
 
     @media (max-width: 600px) {
       .future-zigzag { max-width: 540px; }
-      .fz-row { text-align: left; margin-bottom: 88px; }
-      .fz-head { margin-bottom: 20px; padding: 15px 10px; }
-      .fz-photo { width: 92%; }
-      .fz-photo::before { top: -20px; right: -16px; width: 74%; height: 58%; }
-      .fz-photo::after { left: -16px; bottom: -18px; width: 48%; height: 46%; }
+      .fz-row { text-align: left; margin-bottom: 36px; padding: 24px 16px 26px; }
+      .fz-head { margin-bottom: 16px; }
+      .fz-photo { width: 100%; }
       .fz-head h3 { font-size: 1.4rem; letter-spacing: 0.02em; }
       .fz-lead, .fz-desc { font-size: 1.02rem; }
     }
@@ -827,7 +828,7 @@
     /* 月見出し：薄い水色の座布団。「1ヶ月目」は筆記体風で左上・見出しはその下 */
     .curri-head-band {
       position: relative;
-      background: linear-gradient(90deg, #E4EEF9 0%, #EEF4FB 100%);
+      background: linear-gradient(90deg, #E7F0FC 0%, #F2F7FE 100%);
       padding: 26px 18px 22px;
       margin: 26px 0 18px;
       overflow: visible;
@@ -905,7 +906,9 @@
       display: grid;
       gap: 8px;
       margin: 0;
-      padding: 0;
+      padding: 18px 20px;
+      background: rgba(247,250,253,0.9);
+      border: 1px solid rgba(201,168,112,0.5);
     }
     .curri-detail-list li {
       position: relative;
@@ -1066,7 +1069,7 @@
     /* =============================================
        6. 実績・お客様の声
     ============================================= */
-    #voices { background: var(--white); }
+    #voices { background: linear-gradient(rgba(255,255,255,0.42), rgba(255,255,255,0.42)), url('img/kirakira.jpg') center / cover no-repeat; }
 
     .voice-result-badge {
       display: inline-block;
@@ -1601,7 +1604,7 @@
     /* =============================================
        安心感（あなたでも、できる）
     ============================================= */
-    #assurance { background: #FBF8F1; }
+    #assurance { background: var(--white); }
     .program-title-block { margin-bottom: 34px; }
     .program-title-block .sec-title {
       display: grid;
@@ -1711,7 +1714,7 @@
     .story-body { max-width:640px; margin:0 auto; }
     /* 3つの段落をひとつの白いボックスにまとめる */
     .story-magazine {
-      background:rgba(255,255,255,0.88);
+      background:rgba(255,255,255,0.96);
       padding:24px 20px 28px;
       box-shadow:0 14px 34px rgba(58,66,104,0.10);
       display:grid; gap:30px;
@@ -2072,8 +2075,10 @@
         }
         requestAnimationFrame(step);
       }
-      function pause() { paused = true; if (timer) { clearTimeout(timer); timer = null; } }
-      function resume() { if (reduce) return; if (timer) clearTimeout(timer); timer = setTimeout(function () { paused = false; }, 1500); }
+      var manual = false;
+      var isVoices = m.classList.contains('voice-carousel');
+      function pause() { paused = true; if (isVoices) manual = true; if (timer) { clearTimeout(timer); timer = null; } }
+      function resume() { if (reduce || manual) return; if (timer) clearTimeout(timer); timer = setTimeout(function () { paused = false; }, 1500); }
       ['pointerdown', 'touchstart', 'mousedown', 'wheel'].forEach(function (ev) { m.addEventListener(ev, pause, { passive: true }); });
       ['pointerup', 'pointercancel', 'touchend', 'touchcancel', 'mouseleave'].forEach(function (ev) { m.addEventListener(ev, resume, { passive: true }); });
       requestAnimationFrame(step);
@@ -2183,6 +2188,9 @@
   </div>
   <!-- それ、全部解決できます！（矢印の下・作品を散らして） -->
   <div class="solve-block">
+    <img class="solve-deco d1" src="img/作品/cut-sakura.png" alt="" aria-hidden="true">
+    <img class="solve-deco d2" src="img/作品/cut-lemon.png" alt="" aria-hidden="true">
+    <img class="solve-deco d3" src="img/作品/cut-oriental.png" alt="" aria-hidden="true">
     <p class="pain-solve">それ、<br><b>全部解決</b>できます！</p>
   </div>
 
@@ -2207,7 +2215,7 @@
     <div class="fz-row">
       <div class="fz-head"><span class="fz-num">01</span><h3>作れる作品の幅が<br>何倍も広がる</h3></div>
       <div class="fz-photo">
-        <img src="img/作品/future-1.jpg" alt="フリルの丸いお皿に描いたオリエンタルデザインの作品">
+        <img src="img/作品/future-1.jpg" alt="花柄の絵付けカップ＆ソーサーの作品">
       </div>
       <p class="fz-desc">転写紙に頼る作品作りから卒業して、<b>絵の具で表現できる世界がぐっと広がります。</b><br><br>頭の中にあるイメージをそのまま作品に落とし込めるようになると、<b>作品作りが何倍も楽しくなります。</b></p>
     </div>
