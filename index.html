@@ -2160,11 +2160,15 @@
         var half = Math.floor(k.length / 2);
         return k[half].offsetLeft - k[0].offsetLeft;
       }
+      var pos = m.scrollLeft;
       function step() {
         if (!paused) {
-          m.scrollLeft += 0.5;
+          pos += 0.6;
           var lw = loopW();
-          if (lw > 0 && m.scrollLeft >= lw) m.scrollLeft -= lw;
+          if (lw > 0 && pos >= lw) pos -= lw;
+          m.scrollLeft = pos;   /* iOSは小数を切り捨てるため、内部で小数を積んで整数で反映 */
+        } else {
+          pos = m.scrollLeft;   /* 手動スクロール位置に追従 */
         }
         requestAnimationFrame(step);
       }
