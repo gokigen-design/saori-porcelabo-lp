@@ -247,7 +247,10 @@
       letter-spacing: 0.08em;
     }
     #future .future-main-line {
-      display: inline-block;
+      display: block;
+      width: max-content;
+      max-width: 92vw;
+      margin: 0 auto;
       background: linear-gradient(90deg, #2266C4 0%, #4190D8 100%);
       padding: 7px 22px 8px;
       box-shadow: 0 4px 10px rgba(58,66,104,0.10);
@@ -468,20 +471,25 @@
     }
     .pain-intro {
       position: relative;
-      padding-top: 10px;
+      padding-top: 0;
     }
     /* 白ボックスをやめて、白い文字でしっとりと */
     .pain-intro .bridge-quote {
       background: none;
       border: none;
       box-shadow: none;
-      padding: 12px 0 0;
+      padding: 0;
     }
     .pain-intro .bridge-q1 {
       color: #fff;
-      font-size: 1.52rem;
+      font-size: 1.22rem;
+      letter-spacing: 0;
+      white-space: nowrap;
       line-height: 1.6;
       text-shadow: 0 2px 14px rgba(40,50,80,0.72);
+    }
+    @media (min-width: 600px) {
+      .pain-intro .bridge-q1 { font-size: 1.7rem; }
     }
     .pain-intro .bridge-q2 {
       color: rgba(255,255,255,0.96);
@@ -499,7 +507,7 @@
     /* 悩む女性の写真：画面幅いっぱい・左の余白に問いかけを重ねる */
     .pain-photo-wrap {
       position: relative;
-      margin: 30px -22px 8px;   /* セクション余白を突き抜けて左右いっぱい */
+      margin: 18px -22px 8px;   /* セクション余白を突き抜けて左右いっぱい */
     }
     .pain-photo-wrap img {
       width: 100%;
@@ -522,7 +530,7 @@
       left: 9%;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 1.62rem;
+      font-size: 1.88rem;
       font-weight: bold;
       color: var(--brown);
       line-height: 1.8;
@@ -600,7 +608,7 @@
         padding-top: 0;
       }
       .pain-photo-wrap { margin: 34px 0 10px; }
-      .pain-ask { font-size: 1.95rem; left: 11%; }
+      .pain-ask { font-size: 2.2rem; left: 11%; }
       .pain-item { align-content: start; }
     }
     /* セクションをつなぐブリッジ（引用風＋▼） */
@@ -2243,7 +2251,7 @@
     <div class="pain-intro">
       <div class="bridge">
         <div class="bridge-quote">
-          <p class="bridge-q1">「私にも、こんな作品が<br class="br-sp">作れたら…」</p>
+          <p class="bridge-q1">「私にも、こんな作品が作れたら…」</p>
           <p class="bridge-q2">そう憧れる一方で、</p>
         </div>
       </div>
@@ -2314,7 +2322,7 @@
   <div class="future-blue">
   <div class="title-block future-title-block">
     <span class="deco-word">Future</span>
-    <h2 class="sec-title"><span class="future-main-line">絵の具が、</span><span class="future-main-line">あなたの強みになる</span></h2>
+    <h2 class="sec-title"><span class="future-main-line">絵の具が</span><span class="future-main-line">あなたの強みになる</span></h2>
     <div class="gold-line"></div>
   </div>
 
