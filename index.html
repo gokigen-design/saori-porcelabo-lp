@@ -217,7 +217,7 @@
     }
 
     h2.sec-title {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       line-height: 1.55;
       text-align: center;
       color: var(--brown);
@@ -416,19 +416,31 @@
       margin-top: max(-96px, -20vw);
       position: relative;
       z-index: 2;
-      padding: 0 16px 44px;
+      padding: 0 16px 52px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
     .fv-micro {
-      font-size: 0.92rem;
+      font-size: 1.16rem;
       font-weight: bold;
       color: var(--accent-deep);
-      letter-spacing: 0.03em;
-      margin-bottom: 12px;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
       text-align: center;
       white-space: nowrap;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.9);
+    }
+    /* FV直下のボタンはひときわ大きく・スマホでもふわふわ＋キラッ */
+    .fv-cta-area .cta-btn {
+      font-size: 1.32rem;
+      padding: 24px 44px;
+      max-width: 480px;
+      width: 100%;
+      min-height: 76px;
+      letter-spacing: 0.1em;
+      box-shadow: 0 10px 26px rgba(120, 95, 35, 0.38);
+      animation: ctaFloat 2.8s ease-in-out infinite !important;
     }
 
     /* =============================================
@@ -467,12 +479,15 @@
     }
     .pain-intro .bridge-q1 {
       color: #fff;
-      font-size: 1.16rem;
-      text-shadow: 0 2px 12px rgba(40,50,80,0.55);
+      font-size: 1.52rem;
+      line-height: 1.6;
+      text-shadow: 0 2px 14px rgba(40,50,80,0.72);
     }
     .pain-intro .bridge-q2 {
-      color: rgba(255,255,255,0.94);
-      text-shadow: 0 2px 12px rgba(40,50,80,0.55);
+      color: rgba(255,255,255,0.96);
+      font-size: 1.14rem;
+      text-shadow: 0 2px 12px rgba(40,50,80,0.7);
+      margin-top: 6px;
     }
     .pain-intro .bridge {
       width: 100%;
@@ -504,10 +519,10 @@
     .pain-ask {
       position: absolute;
       z-index: 2;
-      left: 5%;
+      left: 9%;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 1.42rem;
+      font-size: 1.62rem;
       font-weight: bold;
       color: var(--brown);
       line-height: 1.8;
@@ -585,7 +600,7 @@
         padding-top: 0;
       }
       .pain-photo-wrap { margin: 34px 0 10px; }
-      .pain-ask { font-size: 1.7rem; }
+      .pain-ask { font-size: 1.95rem; left: 11%; }
       .pain-item { align-content: start; }
     }
     /* セクションをつなぐブリッジ（引用風＋▼） */
@@ -1434,7 +1449,7 @@
       body { font-size: 17px; padding-bottom: 80px; }
       section { padding: 92px 40px; }
       .fv-h1 { font-size: 2rem; }
-      h2.sec-title { font-size: 1.8rem; }
+      h2.sec-title { font-size: 2.05rem; }
       .cta-btn { font-size: 1.1rem; }
       #sticky-bar a { font-size: 1rem; padding: 14px 32px; }
     }
@@ -1858,7 +1873,7 @@
     .lightbox-prev svg,
     .lightbox-next svg { width:25px; height:25px; stroke:currentColor; stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
     /* FV直下の作品ギャラリー（ワクワク感を伝える） */
-    .fv-gallery { background: var(--white); overflow: hidden; padding: 4px 0 44px; }
+    .fv-gallery { background: var(--white); overflow: hidden; padding: 0 0 44px; }
     .fv-gallery-cap {
       text-align: center;
       font-size: 1.08rem;
@@ -2105,7 +2120,6 @@
 
   <!-- FV直下の作品ギャラリー（「こんな作品が作れる！」のワクワク感）※画像は仮 -->
   <div class="fv-gallery">
-    <p class="fv-gallery-cap">こんな作品が作れるようになります</p>
     <div class="marquee">
       <div class="marquee-track">
         <div class="marquee-item"><img src="img/作品/gallery1.jpg" alt="絵の具で描いたブルーラスターのカップ＆ソーサー" data-gallery="fv"></div>
@@ -2114,12 +2128,24 @@
         <div class="marquee-item"><img src="img/作品/gallery4.jpg" alt="桜を描いたオーナメントボックス" data-gallery="fv"></div>
         <div class="marquee-item"><img src="img/作品/gallery5.jpg" alt="マリン柄のカップ＆ソーサー" data-gallery="fv"></div>
         <div class="marquee-item"><img src="img/作品/gallery6.jpg" alt="水彩のような風合いのマグカップ" data-gallery="fv"></div>
+        <div class="marquee-item"><img src="img/作品/gallery19.jpg" alt="ピンクストライプのデミタスカップ" data-gallery="fv"></div>
+        <div class="marquee-item"><img src="img/作品/gallery20.jpg" alt="淡い色彩のアブストラクトなカップ＆ソーサー" data-gallery="fv"></div>
+        <div class="marquee-item"><img src="img/作品/gallery21.jpg" alt="ピオニーとリボンを描いたボックス" data-gallery="fv"></div>
+        <div class="marquee-item"><img src="img/作品/gallery22.jpg" alt="モロッカン柄のプレート" data-gallery="fv"></div>
+        <div class="marquee-item"><img src="img/作品/gallery23.jpg" alt="デイジーを描いたケーキ皿" data-gallery="fv"></div>
+        <div class="marquee-item"><img src="img/作品/gallery24.jpg" alt="パステルチェックのカップ＆ソーサー" data-gallery="fv"></div>
         <div class="marquee-item"><img src="img/作品/gallery1.jpg" alt="" aria-hidden="true"></div>
         <div class="marquee-item"><img src="img/作品/gallery2.jpg" alt="" aria-hidden="true"></div>
         <div class="marquee-item"><img src="img/作品/gallery3.jpg" alt="" aria-hidden="true"></div>
         <div class="marquee-item"><img src="img/作品/gallery4.jpg" alt="" aria-hidden="true"></div>
         <div class="marquee-item"><img src="img/作品/gallery5.jpg" alt="" aria-hidden="true"></div>
         <div class="marquee-item"><img src="img/作品/gallery6.jpg" alt="" aria-hidden="true"></div>
+        <div class="marquee-item"><img src="img/作品/gallery19.jpg" alt="" aria-hidden="true"></div>
+        <div class="marquee-item"><img src="img/作品/gallery20.jpg" alt="" aria-hidden="true"></div>
+        <div class="marquee-item"><img src="img/作品/gallery21.jpg" alt="" aria-hidden="true"></div>
+        <div class="marquee-item"><img src="img/作品/gallery22.jpg" alt="" aria-hidden="true"></div>
+        <div class="marquee-item"><img src="img/作品/gallery23.jpg" alt="" aria-hidden="true"></div>
+        <div class="marquee-item"><img src="img/作品/gallery24.jpg" alt="" aria-hidden="true"></div>
       </div>
     </div>
   </div>
@@ -2135,7 +2161,7 @@
     <div class="pain-intro">
       <div class="bridge">
         <div class="bridge-quote">
-          <p class="bridge-q1">「私にも、こんな作品が作れたら…」</p>
+          <p class="bridge-q1">「私にも、こんな作品が<br class="br-sp">作れたら…」</p>
           <p class="bridge-q2">そう憧れる一方で、</p>
         </div>
       </div>
