@@ -32,7 +32,7 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     /* 最下部のオーバースクロール時に紺色が見えるように（フッターと同色） */
-    html { background: var(--brown); scroll-behavior: smooth; overflow-x: hidden; }
+    html { background: linear-gradient(var(--cream) 0%, var(--cream) 50%, var(--brown) 50%, var(--brown) 100%); scroll-behavior: smooth; overflow-x: hidden; }
     body {
       font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Hiragino Serif', Georgia, serif;
       background: var(--cream);
@@ -52,17 +52,35 @@
       position: fixed;
       inset: 0;
       z-index: -1;
-      background: linear-gradient(rgba(255,255,255,0.45), rgba(255,255,255,0.45)), url('img/bag.png') center center / cover no-repeat;
-      animation: bgBlink 5s ease-in-out infinite;
+      overflow: hidden;
       pointer-events: none;
     }
-    #bg-layer video {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%; object-fit: cover;
+    /* 背景画像はゆーっくり寄る（ケンバーンズ）。点滅はやめた */
+    #bg-layer::before {
+      content: "";
+      position: absolute;
+      inset: -6%;
+      background: url('img/bag.png') center center / cover no-repeat;
+      animation: bgDrift 48s ease-in-out infinite alternate;
     }
-    @keyframes bgBlink {
-      0%, 80%, 100% { opacity: 1; }
-      90% { opacity: 0.3; }
+    /* 白いベール：動きがうっすら見える程度に */
+    #bg-layer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.58);
+    }
+    #bg-layer video {
+      position: absolute; inset: -6%;
+      width: 112%; height: 112%; object-fit: cover;
+      animation: bgDrift 48s ease-in-out infinite alternate;
+    }
+    @keyframes bgDrift {
+      0%   { transform: scale(1) translateY(0); }
+      100% { transform: scale(1.09) translateY(-1.4%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #bg-layer::before, #bg-layer video { animation: none; }
     }
 
     img { max-width: 100%; height: auto; display: block; }
@@ -932,7 +950,12 @@
     }
 
     /* 受講の流れ：番号丸＋ボックス＋下向き矢印（背景は白のみ） */
-    #flow { background: var(--white); }
+    #flow {
+      background:
+        linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)),
+        url('img/flow-bg.jpg') center / cover no-repeat;
+      padding-top: 40px;
+    }
     .flow-steps { max-width: 600px; margin: 0 auto; }
     .flow-box {
       display: flex; gap: 18px; align-items: flex-start;
@@ -1344,9 +1367,24 @@
        9. クロージング
     ============================================= */
     #closing {
-      background: linear-gradient(160deg, #F0F4FC 0%, #E0EAF8 100%);
+      background: var(--white);
       text-align: center;
     }
+    /* FAQとの区切り：シンプルな飾り線（金ライン＋小さなひし形） */
+    .sec-divider {
+      display: flex; align-items: center; justify-content: center;
+      gap: 14px;
+      max-width: 320px;
+      margin: 0 auto 40px;
+    }
+    .sec-divider::before, .sec-divider::after {
+      content: ""; flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(201,168,112,0), rgba(201,168,112,0.7));
+    }
+    .sec-divider::after {
+      background: linear-gradient(90deg, rgba(201,168,112,0.7), rgba(201,168,112,0));
+    }
+    .sec-divider svg { flex: none; }
     #closing h2 { font-family: "花とちょうちょ", "Klee One", cursive; font-size: 1.5rem; color: var(--brown); margin-bottom: 18px; }
     /* クロージング — 文字を先に、写真を下に（見切れ防止） */
     .closing-text {
@@ -1358,10 +1396,10 @@
       position:relative;
       max-width:620px;
       margin:0 auto 30px;
-      background:rgba(255,255,255,0.88);
-      border:1px solid rgba(122,157,207,0.28);
-      padding:30px 24px 34px;
-      box-shadow:0 22px 54px rgba(58,66,104,0.14);
+      background:none;
+      border:none;
+      padding:6px 4px 0;
+      box-shadow:none;
       text-align:left;
     }
     .closing-letter .cta-wrap { margin-top:26px; text-align:center; }
@@ -1398,6 +1436,7 @@
       #sticky-bar a { font-size: 1rem; padding: 14px 32px; }
     }
     @media (min-width: 760px) {
+      body { background: transparent; }
       section { max-width: 720px; margin: 0 auto; padding: 108px 44px; }
       footer { max-width: none; }
       /* FVも下のセクションと同じ細長い列に揃える（中央配置） */
@@ -1704,7 +1743,7 @@
     }
     .story-points {
       max-width:620px; margin:36px auto 0;
-      background: linear-gradient(rgba(255,255,255,0.84), rgba(255,255,255,0.84)), url('img/points-bg.jpg') center / cover no-repeat;
+      background: var(--white);
       padding:34px 22px 30px;
       box-shadow:0 14px 34px rgba(58,66,104,0.12);
     }
@@ -1713,12 +1752,12 @@
     .story-points li {
       position:relative;
       background:rgba(231,240,250,0.92);
-      padding:13px 16px 13px 44px;
+      padding:13px 16px;
       margin-bottom:12px;
       font-size:0.99rem; color:var(--brown); line-height:1.7; font-weight:bold;
+      text-align:center;
       box-shadow:0 4px 12px rgba(58,66,104,0.06);
     }
-    .story-points li::before { content:""; position:absolute; left:14px; top:calc(0.86em + 13px); width:20px; height:2px; background:linear-gradient(90deg, var(--gold) 0%, rgba(122,157,207,0.58) 100%); }
     .story-points-foot { font-size:1.02rem; color:var(--text-mid); line-height:1.9; text-align:center; }
 
     /* =============================================
@@ -2458,8 +2497,8 @@
     <p class="story-points-lead">13年教室づくりをしてきて気付いた、<br>大切なことが3つあります。</p>
     <ol>
       <li>本質から学んだ技術を磨くこと</li>
-      <li>ちゃんと生徒様に届くデザインを作ること</li>
-      <li>売り込まずに、自然と生徒様が集まる仕組みを作ること</li>
+      <li>ちゃんと生徒様に届く<br class="br-sp">デザインを作ること</li>
+      <li>売り込まずに、自然と生徒様が<br class="br-sp">集まる仕組みを作ること</li>
     </ol>
     <p class="story-points-foot">これが、今より作品づくりを楽しみながら、周りの人に笑顔を届けられる先生になるための法則です。</p>
   </div>
@@ -2840,6 +2879,9 @@
      9. クロージング＋最終CTA
 ============================================ -->
 <section id="closing">
+  <div class="sec-divider" aria-hidden="true">
+    <svg width="12" height="12" viewBox="0 0 12 12"><rect x="2.35" y="2.35" width="7.3" height="7.3" transform="rotate(45 6 6)" fill="none" stroke="#C9A870" stroke-width="1"/></svg>
+  </div>
   <div class="title-block">
     <span class="deco-word">Message</span>
     <h2 class="sec-title">ここまで読んでくださった<br>あなたへ</h2>
@@ -2886,6 +2928,12 @@
     <img loading="lazy" src="img/作品/gallery12.jpg" alt="レモンとリボンを描いたプレート">
     <img loading="lazy" src="img/作品/gallery7.jpg" alt="北欧風のグレーの小皿">
     <img loading="lazy" src="img/作品/gallery8.jpg" alt="水彩のプレート">
+    <img loading="lazy" src="img/作品/gallery13.jpg" alt="メリーゴーランドを描いたカード作品">
+    <img loading="lazy" src="img/作品/gallery14.jpg" alt="カラフルなモザイク柄のカップ＆ソーサー">
+    <img loading="lazy" src="img/作品/gallery15.jpg" alt="リボンのギフトボックスの作品">
+    <img loading="lazy" src="img/作品/gallery16.jpg" alt="バタフライレースのプレート">
+    <img loading="lazy" src="img/作品/gallery17.jpg" alt="気球柄のティーフォーワン">
+    <img loading="lazy" src="img/作品/gallery18.jpg" alt="ピンクの薔薇のティーカップ">
   </div>
 </section>
 
