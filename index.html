@@ -727,10 +727,10 @@
     .future-zigzag { max-width: 620px; margin: 40px auto 0; counter-reset: fznum; }
     .fz-row {
       position: relative;
-      margin-bottom: 44px;
+      margin-bottom: 52px;
       text-align: left;
       background: var(--white);
-      padding: 28px 20px 30px;
+      padding: 42px 20px 24px;
       box-shadow: 0 14px 34px rgba(58,66,104,0.10);
     }
     .fz-row:last-child { margin-bottom: 0; }
@@ -738,8 +738,8 @@
     /* 見出し：大きく＋薄ブルーの座布団で項目の区切りを明確に */
     .fz-head {
       background: none;
-      padding: 0 0 16px;
-      margin-bottom: 18px;
+      padding: 0 0 12px;
+      margin-bottom: 14px;
       text-align: center;
       border-bottom: 1px solid rgba(122,157,207,0.35);
     }
@@ -753,31 +753,24 @@
       letter-spacing: 0.05em;
       text-align: center;
     }
-    /* 数字：金のダイヤ（ひし形）の中に・中央配置 */
+    /* 数字：選ばれる理由と同じ仕様（カード上端にまたがるベージュのダイヤ） */
     .fz-num {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 46px;
-      height: 46px;
-      margin: 6px auto 20px;
-      background: linear-gradient(135deg, #E6C871 0%, #C9A24E 60%, #DCB85F 100%);
-      transform: rotate(45deg);
-      box-shadow: 0 6px 16px rgba(160,125,45,0.30);
+      position: absolute;
+      top: -28px; left: 50%;
+      width: 56px; height: 56px;
+      background: #F3EAD6;
+      border: 1px solid #E2CFA6;
+      transform: translateX(-50%) rotate(45deg);
+      display: flex; align-items: center; justify-content: center;
     }
     .fz-num i {
       transform: rotate(-45deg);
       font-style: normal;
-      font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif;
-      font-size: 1.16rem;
+      font-family: Georgia, serif;
+      font-size: 1.45rem;
       font-weight: bold;
-      color: #fff;
-      letter-spacing: 0.04em;
-    }
-    @media (min-width: 600px) {
-      .fz-num { width: 52px; height: 52px; }
-      .fz-num i { font-size: 1.3rem; }
+      color: var(--gold);
+      line-height: 1;
     }
     /* 写真：白カードの中にすっきり */
     .fz-photo {
@@ -793,11 +786,11 @@
     /* 筆記体の「Future N」は非表示（ごちゃつき防止） */
     .fz-label { display: none; }
     /* 説明文：すべて写真の下に統一 */
-    .fz-lead, .fz-desc { color: var(--text-mid); line-height: 1.95; margin: 22px 0 0; font-size: 1.08rem; text-align: left; }
+    .fz-lead, .fz-desc { color: var(--text-mid); line-height: 1.9; margin: 16px 0 0; font-size: 1.08rem; text-align: left; }
 
     @media (max-width: 600px) {
       .future-zigzag { max-width: 540px; }
-      .fz-row { text-align: left; margin-bottom: 36px; padding: 24px 16px 26px; }
+      .fz-row { text-align: left; margin-bottom: 48px; padding: 40px 16px 22px; }
       .fz-head { margin-bottom: 16px; }
       .fz-photo { width: 100%; }
       .fz-head h3 { font-size: 1.24rem; letter-spacing: 0 !important; }
@@ -2021,8 +2014,24 @@
       h2.sec-title, h2.sec-title span:not(.program-line-sub) { font-size: 2rem !important; }
     }
     #closing h2.sec-title { font-size: 1.5rem !important; }
-    #service .service-main-line { padding-left: 8px; padding-right: 8px; letter-spacing: 0.02em; }
+    #service .service-main-line { padding-left: 8px; padding-right: 8px; letter-spacing: 0 !important; }
     .program-main-line:not(.program-line-sub) { padding-left: 20px !important; padding-right: 20px !important; }
+
+    /* ===== セクションの切れ目をラウンドでつなぐ（前回LP風） ===== */
+    #pain, #service, #assurance, #why, #story, #voices, #flow, #price, #faq, #closing, #gallery {
+      position: relative;
+      border-radius: 46px 46px 0 0;
+      margin-top: -46px;
+      padding-top: 88px !important;
+    }
+    #flow { padding-top: 72px !important; }
+    #pain { padding-top: 60px !important; }
+    @media (min-width: 760px) {
+      #pain, #service, #assurance, #why, #story, #voices, #flow, #price, #faq, #closing, #gallery {
+        border-radius: 64px 64px 0 0;
+        padding-top: 112px !important;
+      }
+    }
 </style>
 </head>
 
@@ -2157,6 +2166,8 @@
 
   /* 作品ギャラリー：通常は自動スクロール、指で触れたら手動スクロール（離すと自動に戻る） */
   document.addEventListener('DOMContentLoaded', function () {
+    // 角丸の切り替えが正しく重なるよう、後のセクションほど手前に
+    document.querySelectorAll('body > section').forEach(function (sec, i) { sec.style.zIndex = i + 1; });
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     document.querySelectorAll('.marquee').forEach(function (m) {
       if (!m.querySelector('.marquee-track')) return;
