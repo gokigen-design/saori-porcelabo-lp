@@ -1739,10 +1739,12 @@
       background: rgba(122,157,207,0.42);
       box-shadow: 0 1px 3px rgba(58,66,104,0.10);
     }
-    .polaroid.p-a { width: 72%; top: 4px; left: 2%; transform: rotate(-4deg); z-index: 1; }
+    .polaroid.p-a { width: 76%; top: 0; left: -7%; transform: rotate(-7deg); z-index: 1; }
     .polaroid.p-a img { aspect-ratio: 4 / 3; }
-    .polaroid.p-b { width: 58%; bottom: 4px; right: 2%; transform: rotate(3deg); z-index: 2; }
+    .polaroid.p-b { width: 62%; bottom: 0; right: -6%; transform: rotate(5deg); z-index: 2; }
     .polaroid.p-b img { aspect-ratio: 4 / 3; }
+    /* コラージュはカードから大胆にはみ出す（動きを出す） */
+    .env-item:has(.env-collage) { overflow: visible; }
     @media (min-width: 600px) {
       .env-collage { height: 400px; margin: 18px 20px 6px; }
     }
@@ -1751,9 +1753,13 @@
        私も同じように悩んでいました（ストーリー）
     ============================================= */
     #story {
-      background: linear-gradient(rgba(240,244,251,0.82), rgba(240,244,251,0.88)), url('img/story-bg.jpg') center / cover no-repeat;
+      background:
+        linear-gradient(180deg, rgba(50,58,94,0.55) 0%, rgba(90,110,160,0.30) 30%, rgba(240,244,251,0.72) 62%, rgba(255,255,255,0.96) 100%),
+        url('img/story-bg.jpg') center / cover no-repeat;
       padding-top: 56px;
     }
+    /* 暗めの入り口では見出しを白に */
+    #story .sec-title { color: #fff; text-shadow: 0 2px 14px rgba(30,38,70,0.55); }
     .story-connector {
       display:grid;
       justify-content:center;
@@ -2416,7 +2422,7 @@
           <h3 class="curri-head">ポーセラーツのための<br>デザイン理論</h3>
         </div>
         <div class="curri-2col">
-          <div class="c-photo"><img src="img/作品/curriculum-4.jpg" alt="デザイン理論のイメージ：モノトーンと花のデザインコースター" style="aspect-ratio:auto;"></div>
+          <div class="c-photo"><img src="img/作品/curriculum-4.jpg" alt="デザイン理論のイメージ：白いお皿とデザイン下絵・配色見本" style="aspect-ratio:auto;"></div>
           <div class="c-text"><p>技術を学ぶだけでは、誰かに届く作品は作れません。尾野さおりの20年のデザイナー経験から導いた「ポーセラーツのためのデザイン理論」を用いて、届く作品づくりと、お教室業に必要なマーケティング＆集客メソッドを学びます。<b>売り込まずに生徒さまが集まる仕組みと方法</b>をお伝えします。</p></div>
         </div>
       </div>
@@ -2625,7 +2631,7 @@
 
   <!-- 受講生の声：動画 -->
   <div class="voice-video">
-    <p class="voice-video-lead">リアルな声をお聞きください</p>
+    <p class="voice-video-lead">＼ リアルな声をお聞きください ／</p>
     <div class="vwrap">
       <iframe src="https://player.vimeo.com/video/1206664136?h=31ce5fe819" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="受講生の声（動画）"></iframe>
     </div>
