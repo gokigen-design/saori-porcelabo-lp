@@ -181,10 +181,10 @@
 
     /* 大きな筆記体の飾り英語 */
     /* 英語の筆記体＝飾り。透過して見出しの左上に右上がりで重ねる */
-    .title-block { position: relative; }
+    .title-block { position: relative; padding-top: 34px; }
     .deco-word {
       position: absolute;
-      top: -30px;
+      top: 0;
       left: 4%;
       display: block;
       font-family: 'Great Vibes', cursive;
@@ -209,7 +209,8 @@
     .gold-line { display: none; }
 
     @media (min-width: 600px) {
-      .deco-word { font-size: 3.6rem; top: -36px; }
+      .deco-word { font-size: 3.6rem; }
+      .title-block { padding-top: 42px; }
     }
 
     /* Future見出しだけ：参考画像のようにグラデーションの座布団を敷く */
@@ -478,8 +479,8 @@
     /* 解決宣言＋散らした作品（背景透過の丸皿） */
     .solve-block {
       position: relative;
-      padding: 30px 0 40px;
-      margin-bottom: 34px;
+      padding: 48px 0 56px;
+      margin-bottom: 30px;
     }
     .solve-block .pain-solve { position: relative; z-index: 1; }
     .solve-deco {
@@ -488,9 +489,9 @@
       filter: drop-shadow(0 10px 22px rgba(58,66,104,0.22));
       pointer-events: none;
     }
-    .solve-deco.d1 { width: 92px;  top: -20px;  left: 4%;  transform: rotate(-14deg); }
-    .solve-deco.d2 { width: 104px; top: -16px;  right: 2%; transform: rotate(11deg); }
-    .solve-deco.d3 { width: 74px;  bottom: -6px; left: 13%; transform: rotate(-7deg); }
+    .solve-deco.d1 { width: 86px;  top: -26px;  left: 1%;  transform: rotate(-14deg); }
+    .solve-deco.d2 { width: 96px; top: -30px;  right: 1%; transform: rotate(11deg); }
+    .solve-deco.d3 { width: 72px;  bottom: -14px; right: 6%; transform: rotate(-7deg); }
     /* 下向き矢印：お悩みの背景そのものが三角で終わって見えるよう、
        セクション下端の左右に次セクションと同色(#FBFAF7)の三角を重ねる */
     .pain-solve-band {
@@ -545,7 +546,6 @@
     .bridge-arrow svg { width:30px; height:30px; }
     /* 受講生の声：2段で自然に流れる無限ループ */
     .voices-title-block { margin-bottom: 42px; }
-    #voices .deco-word { top: -8px; }
     .voices-title-block .sec-title {
       display:grid;
       justify-items:center;
@@ -907,12 +907,18 @@
       background: #F0F5FB; border-radius: 10px;
       padding: 24px 20px;
     }
-    .flow-num {
-      flex: none; width: 52px; height: 52px; border-radius: 50%;
+    .flow-ico {
+      flex: none; width: 54px; height: 54px; border-radius: 50%;
       background: #fff; color: var(--accent-deep);
       display: flex; align-items: center; justify-content: center;
-      font-family: Georgia, serif; font-weight: bold; font-size: 1.15rem;
-      box-shadow: 0 4px 12px rgba(58,66,104,0.10);
+      box-shadow: 0 4px 12px rgba(58,66,104,0.12);
+    }
+    .flow-ico svg { width: 26px; height: 26px; }
+    .flow-step {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.35rem; line-height: 1;
+      color: rgba(9,95,170,0.55);
+      margin-bottom: 7px;
     }
     .flow-body h4 { font-size: 1.12rem; color: var(--brown); font-weight: bold; line-height: 1.5; margin-bottom: 8px; }
     .flow-body p { font-size: 0.98rem; color: var(--text-mid); line-height: 1.9; }
@@ -1269,7 +1275,7 @@
       background: linear-gradient(160deg, #F0F4FC 0%, #E0EAF8 100%);
       text-align: center;
     }
-    #closing h2 { font-size: 1.3rem; color: var(--brown); margin-bottom: 18px; }
+    #closing h2 { font-family: "花とちょうちょ", "Klee One", cursive; font-size: 1.5rem; color: var(--brown); margin-bottom: 18px; }
     /* クロージング — 文字を先に、写真を下に（見切れ防止） */
     .closing-text {
       max-width: 600px; margin: 0 auto 24px;
@@ -1298,8 +1304,14 @@
       opacity:0.55;
     }
     .closing-letter .cta-wrap { margin-top:26px; text-align:center; }
-    .closing-photo { max-width: 360px; margin: 0 auto; }
-    .closing-photo img { width: 100%; display: block; border-radius: 4px; box-shadow: 0 12px 30px rgba(58,66,104,.16); }
+    /* 写真は白ボックスの続きとして上端を白フェードでつなぐ */
+    .closing-photo { position: relative; margin: 6px 0 26px; }
+    .closing-photo::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 120px;
+      background: linear-gradient(#ffffff, rgba(255,255,255,0));
+      z-index: 1; pointer-events: none;
+    }
+    .closing-photo img { width: 100%; display: block; border-radius: 0 0 4px 4px; }
 
     /* =============================================
        フッター
@@ -1637,7 +1649,7 @@
       background:rgba(231,240,250,0.92);
       padding:13px 16px 13px 44px;
       margin-bottom:12px;
-      font-size:1.05rem; color:var(--brown); line-height:1.7; font-weight:bold;
+      font-size:0.99rem; color:var(--brown); line-height:1.7; font-weight:bold;
       box-shadow:0 4px 12px rgba(58,66,104,0.06);
     }
     .story-points li::before { content:""; position:absolute; left:14px; top:calc(0.86em + 13px); width:20px; height:2px; background:linear-gradient(90deg, var(--gold) 0%, rgba(122,157,207,0.58) 100%); }
@@ -2060,7 +2072,7 @@
   </div>
   <!-- それ、全部解決できます！（矢印の下・作品を散らして） -->
   <div class="solve-block">
-    <img class="solve-deco d1" src="img/cut-tulip.png" alt="" aria-hidden="true">
+    <img class="solve-deco d1" src="img/cut-sakura.png" alt="" aria-hidden="true">
     <img class="solve-deco d2" src="img/cut-lemon.png" alt="" aria-hidden="true">
     <img class="solve-deco d3" src="img/cut-oriental.png" alt="" aria-hidden="true">
     <p class="pain-solve">それ、<br><b>全部解決</b>できます！</p>
@@ -2508,8 +2520,9 @@
   <div class="flow-steps">
 
     <div class="flow-box">
-      <span class="flow-num">01</span>
+      <span class="flow-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 01-8 8H5l-2 2V12a8 8 0 018-8h2a8 8 0 018 8z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg></span>
       <div class="flow-body">
+        <p class="flow-step">Step 01</p>
         <h4>まずは無料相談会・お申し込み</h4>
         <p>無料相談会に参加し、納得できたらお申し込み。お手続き後、進め方をご案内します。</p>
         <p class="flow-intro">相談会では、4ヶ月の流れ・進め方・料金プランまで、あなたの状況に合わせて丁寧にご説明します。「自分にできるかな」という不安も、ここで解消できます。</p>
@@ -2519,8 +2532,9 @@
     <div class="flow-sep" aria-hidden="true"></div>
 
     <div class="flow-box">
-      <span class="flow-num">02</span>
+      <span class="flow-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="M10 9l5 2.5-5 2.5zM8 21h8"/></svg></span>
       <div class="flow-body">
+        <p class="flow-step">Step 02</p>
         <h4>学習スタート（即日）</h4>
         <p>特典動画と学習サイトは、<b>お申し込み後すぐに視聴可能</b>。開講を待たずに今日から始められます。そこから4ヶ月のカリキュラムを進めていきます。</p>
       </div>
@@ -2529,8 +2543,9 @@
     <div class="flow-sep" aria-hidden="true"></div>
 
     <div class="flow-box">
-      <span class="flow-num">03</span>
+      <span class="flow-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M9 13.5L7.5 21l4.5-2.5L16.5 21 15 13.5"/></svg></span>
       <div class="flow-body">
+        <p class="flow-step">Step 03</p>
         <h4>修了・指導スタート</h4>
         <p>学びを自分のレッスンに落とし込み、指導をスタート。<b>絵の具があなたの強みになります</b>。</p>
       </div>
@@ -2560,7 +2575,7 @@
     <h3>受講料について</h3>
     <p class="price-text">
       ご受講料は個別相談会にてご案内しています。あなたの現状やお悩みをお聞きした上で、複数のプランの中からご提案します。<br><br>
-      まずはお気軽に相談会にご参加ください。<strong>相談会への参加は完全無料</strong>です。
+      まずはお気軽に相談会にご参加ください。<br><strong>相談会への参加は完全無料です。</strong>
     </p>
   </div>
 
@@ -2770,14 +2785,14 @@
 
   <div class="closing-letter">
     <p class="closing-text">「できない」「ひらめかない」は、才能やセンスのせいではありません。ただ、これまで学ぶ機会がなかっただけです。<br><br>技術に自信を持ち、アイデアを広げる方法を一緒に学んでいきましょう。<br><br>「いつかやろう」「〇〇が落ち着いたら」と、あなたが動き出すのに完璧なタイミングなんてきません。自分のやりたいことを後回しにできるほど、人生は長くありません。<br><br>ならば時間を効率よく使い、確かな成果を出す。あなたに寄り添いながら、ポーセラーツが生きがいになるよう心を込めてサポートさせていただきます。<br><br>あなたも生徒様も、笑顔があふれる教室が叶うヒントが、きっとここにあります。</p>
+    <div class="closing-photo">
+      <img src="img/saori-2.jpg" alt="講師 尾野さおり">
+    </div>
     <div class="cta-wrap">
       <a href="ここに申込先URLを入力" class="cta-btn">
         無料相談会に参加する
       </a>
     </div>
-  </div>
-  <div class="closing-photo">
-    <img src="img/saori-2.jpg" alt="講師 尾野さおり">
   </div>
 </section>
 
