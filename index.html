@@ -395,10 +395,22 @@
     /* CTA（画像の下・中央） */
     .fv-cta-area {
       background: var(--white);
-      padding: 20px 20px 40px;
+      margin-top: max(-96px, -20vw);
+      position: relative;
+      z-index: 2;
+      padding: 0 16px 44px;
       display: flex;
       flex-direction: column;
       align-items: center;
+    }
+    .fv-micro {
+      font-size: 0.92rem;
+      font-weight: bold;
+      color: var(--accent-deep);
+      letter-spacing: 0.03em;
+      margin-bottom: 12px;
+      text-align: center;
+      white-space: nowrap;
     }
 
     /* =============================================
@@ -2008,9 +2020,13 @@
   <!-- FV画像（タイトル・バッジ・ボタンを含む完成版・画像全体がリンク） -->
   <a href="ここに申込先URLを入力" class="fv-img-link">
     <div class="fv-img-wrap">
-      <img src="img/spfv.png" alt="絵の具苦手から技術とデザイン力UPで選ばれる先生になる｜ポーセラボ絵の具コース｜8月開講・全期即満席・満足度継続率98%" class="fv-main-img">
+      <img src="img/fv.jpg" alt="絵の具苦手から技術とデザイン力UPで選ばれる先生になる｜ポーセラボ絵の具コース｜8月開講・全期即満席・満足度継続率98%" class="fv-main-img">
     </div>
   </a>
+  <div class="fv-cta-area">
+    <p class="fv-micro">＼ 相談会ご参加で総額8万円相当の特典 ／</p>
+    <a href="ここに申込先URLを入力" class="cta-btn">無料相談会に参加する</a>
+  </div>
 
   <!-- FV直下の作品ギャラリー（「こんな作品が作れる！」のワクワク感）※画像は仮 -->
   <div class="fv-gallery">
