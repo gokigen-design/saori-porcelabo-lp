@@ -559,9 +559,9 @@
       filter: drop-shadow(0 10px 22px rgba(58,66,104,0.22));
       pointer-events: none;
     }
-    .solve-deco.d1 { width: 86px;  top: -26px;  left: 1%;  transform: rotate(-14deg); }
-    .solve-deco.d2 { width: 96px; top: -30px;  right: 1%; transform: rotate(11deg); }
-    .solve-deco.d3 { width: 72px;  bottom: -14px; right: 6%; transform: rotate(-7deg); }
+    .solve-deco.d1 { width: 118px; top: -20px;  left: 2%;  transform: rotate(-10deg); }
+    .solve-deco.d2 { width: 104px; top: -26px;  right: 2%; transform: rotate(9deg); }
+    .solve-deco.d3 { width: 106px; bottom: -8px; right: 5%; transform: rotate(-6deg); }
     /* 下向き矢印：お悩みの背景そのものが三角で終わって見えるよう、
        セクション下端の左右に次セクションと同色(#FBFAF7)の三角を重ねる */
     .pain-solve-band {
@@ -590,7 +590,7 @@
       transform: translateX(-50%);
       width: 100vw;
       height: 74px;
-      background: #E9F1FC;   /* 次のセクションと同じ色 */
+      background: #ffffff;   /* 次のセクションと同じ色 */
       z-index: 1;
       pointer-events: none;
       clip-path: polygon(0 0, 50% 100%, 100% 0, 100% 100%, 0 100%);
@@ -697,7 +697,16 @@
     /* =============================================
        3. 理想の未来
     ============================================= */
-    #future { background: #E9F1FC; }
+    #future { background: var(--white); }
+    /* 「絵の具があなたの強みになる」以降だけブルー背景（全部解決エリアは白でコントラスト） */
+    .future-blue {
+      margin: 0 -22px -68px;
+      padding: 56px 22px 68px;
+      background: #E9F1FC;
+    }
+    @media (min-width: 760px) {
+      .future-blue { margin: 0 -44px -108px; padding: 64px 44px 108px; }
+    }
 
     .future-main {
       text-align: center;
@@ -2242,9 +2251,9 @@
   </div>
   <!-- それ、全部解決できます！（矢印の下・作品を散らして） -->
   <div class="solve-block">
-    <img class="solve-deco d1" src="img/作品/cut-sakura.png" alt="" aria-hidden="true">
-    <img class="solve-deco d2" src="img/作品/cut-lemon.png" alt="" aria-hidden="true">
-    <img class="solve-deco d3" src="img/作品/cut-oriental.png" alt="" aria-hidden="true">
+    <img class="solve-deco d1" src="img/作品/deco-shell.png" alt="" aria-hidden="true">
+    <img class="solve-deco d2" src="img/作品/deco-lemon.png" alt="" aria-hidden="true">
+    <img class="solve-deco d3" src="img/作品/deco-coral.png" alt="" aria-hidden="true">
     <p class="pain-solve">それ、<br><b>全部解決</b>できます！</p>
   </div>
 
@@ -2257,6 +2266,7 @@
     <div class="bridge-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A870" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M5 13l7 7 7-7"/></svg></div>
   </div>
 
+  <div class="future-blue">
   <div class="title-block future-title-block">
     <span class="deco-word">Future</span>
     <h2 class="sec-title"><span class="future-main-line">絵の具が、</span><span class="future-main-line">あなたの強みになる</span></h2>
@@ -2269,7 +2279,7 @@
     <div class="fz-row">
       <div class="fz-head"><span class="fz-num">01</span><h3>作れる作品の幅が<br>何倍も広がる</h3></div>
       <div class="fz-photo">
-        <img src="img/作品/future-1.jpg" alt="花柄の絵付けカップ＆ソーサーの作品">
+        <img src="img/作品/gallery11.jpg" alt="フリルの丸いお皿に描いたオリエンタルデザインの作品">
       </div>
       <p class="fz-desc">転写紙に頼る作品作りから卒業して、<b>絵の具で表現できる世界がぐっと広がります。</b><br><br>頭の中にあるイメージをそのまま作品に落とし込めるようになると、<b>作品作りが何倍も楽しくなります。</b></p>
     </div>
@@ -2310,6 +2320,7 @@
       <p class="fz-desc">転写紙メインの教室が多いからこそ、絵の具を教えられることは<b>大きな差別化</b>に。<b>選ばれる教室作り</b>が叶います。</p>
     </div>
 
+  </div>
   </div>
 </section>
 
