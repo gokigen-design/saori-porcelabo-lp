@@ -181,10 +181,10 @@
 
     /* 大きな筆記体の飾り英語 */
     /* 英語の筆記体＝飾り。透過して見出しの左上に右上がりで重ねる */
-    .title-block { position: relative; padding-top: 34px; }
+    .title-block { position: relative; padding-top: 46px; }
     .deco-word {
       position: absolute;
-      top: 0;
+      top: 10px;
       left: 4%;
       display: block;
       font-family: 'Great Vibes', cursive;
@@ -210,7 +210,7 @@
 
     @media (min-width: 600px) {
       .deco-word { font-size: 3.6rem; }
-      .title-block { padding-top: 42px; }
+      .title-block { padding-top: 56px; }
     }
 
     /* Future見出しだけ：参考画像のようにグラデーションの座布団を敷く */
@@ -438,7 +438,6 @@
     }
     .pain-intro {
       position: relative;
-      min-height: 330px;
       padding-top: 10px;
     }
     /* 白ボックスをやめて、白い文字でしっとりと */
@@ -464,28 +463,38 @@
       z-index: 2;
       margin: 0 auto;
     }
-    .pain-woman {
-      width: min(52vw, 236px);
-      position: absolute;
-      left: -20px;   /* セクション余白を突き抜けて画面左端へ（頭の切れを見せない） */
-      top: 88px;
-      z-index: 3;
-      filter: drop-shadow(0 18px 28px rgba(58,66,104,0.16));
+    /* 悩む女性の写真：画面幅いっぱい・左の余白に問いかけを重ねる */
+    .pain-photo-wrap {
+      position: relative;
+      margin: 30px -22px 8px;   /* セクション余白を突き抜けて左右いっぱい */
     }
-    /* 女性の右に大きく並べる問いかけ */
+    .pain-photo-wrap img {
+      width: 100%;
+      display: block;
+    }
+    /* 少し暗め＝お悩みの空気感を残すための薄いネイビーの膜＋左を白っぽく */
+    .pain-photo-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(238,243,250,0.62) 0%, rgba(238,243,250,0) 50%),
+        linear-gradient(rgba(58,66,104,0.14), rgba(58,66,104,0.14));
+      pointer-events: none;
+      z-index: 1;
+    }
     .pain-ask {
       position: absolute;
-      z-index: 3;
-      left: 49vw;
-      right: 0;
-      top: 182px;
-      text-align: center;
+      z-index: 2;
+      left: 5%;
+      top: 50%;
+      transform: translateY(-50%);
       font-size: 1.42rem;
       font-weight: bold;
-      color: #fff;
-      line-height: 1.75;
-      letter-spacing: 0.03em;
-      text-shadow: 0 2px 14px rgba(40,50,80,0.6);
+      color: var(--brown);
+      line-height: 1.8;
+      letter-spacing: 0.04em;
+      text-shadow: 0 2px 10px rgba(255,255,255,0.9), 0 0 26px rgba(255,255,255,0.75);
       white-space: nowrap;
     }
     .pain-list { max-width: 600px; margin: 0 auto; }
@@ -504,22 +513,13 @@
       letter-spacing: 0.04em; text-shadow: 0 2px 10px rgba(255,255,255,0.9);
     }
     .pain-solve b { color: var(--gold); font-size: 1.74rem; }
-    /* 解決宣言＋散らした作品（背景透過の丸皿） */
+    /* 解決宣言 */
     .solve-block {
       position: relative;
-      padding: 48px 0 56px;
+      padding: 34px 0 44px;
       margin-bottom: 30px;
     }
     .solve-block .pain-solve { position: relative; z-index: 1; }
-    .solve-deco {
-      position: absolute;
-      z-index: 0;
-      filter: drop-shadow(0 10px 22px rgba(58,66,104,0.22));
-      pointer-events: none;
-    }
-    .solve-deco.d1 { width: 86px;  top: -26px;  left: 1%;  transform: rotate(-14deg); }
-    .solve-deco.d2 { width: 96px; top: -30px;  right: 1%; transform: rotate(11deg); }
-    .solve-deco.d3 { width: 72px;  bottom: -14px; right: 6%; transform: rotate(-7deg); }
     /* 下向き矢印：お悩みの背景そのものが三角で終わって見えるよう、
        セクション下端の左右に次セクションと同色(#FBFAF7)の三角を重ねる */
     .pain-solve-band {
@@ -555,15 +555,10 @@
     }
     @media (min-width: 760px) {
       .pain-intro {
-        min-height: 290px;
         padding-top: 0;
       }
-      .pain-woman {
-        width: 230px;
-        left: -34px;
-        top: 64px;
-      }
-      .pain-ask { left: 235px; right: auto; top: 158px; font-size: 1.7rem; }
+      .pain-photo-wrap { margin: 34px 0 10px; }
+      .pain-ask { font-size: 1.7rem; }
       .pain-item { align-content: start; }
     }
     /* セクションをつなぐブリッジ（引用風＋▼） */
@@ -677,27 +672,35 @@
     /* 見出し：大きく＋薄ブルーの座布団で項目の区切りを明確に */
     .fz-head {
       background: linear-gradient(90deg, #E4EEF9 0%, #EEF4FB 100%);
-      padding: 18px 14px;
+      padding: 18px 12px;
       margin-bottom: 26px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .br-sp { display: inline; }
+    @media (min-width: 600px) {
+      .br-sp { display: none; }
+      .fz-head { padding: 18px 16px; gap: 14px; }
     }
     .fz-head h3 {
+      flex: 1;
       font-size: 1.9rem; color: var(--brown);
-      line-height: 1.5; margin: 0 auto; font-weight: bold;
+      line-height: 1.5; margin: 0; font-weight: bold;
       letter-spacing: 0.05em;
       text-align: center;
     }
-    /* 数字：筆記体の手書き風で写真の左上に斜めに重ねる */
+    /* 数字：見出しの左側に筆記体で（読みやすさ優先・まっすぐ） */
     .fz-num {
-      position: absolute;
-      top: -4px; left: 8px;
-      z-index: 2;
+      flex: none;
       font-family: 'Great Vibes', cursive;
-      font-size: 2.7rem;
+      font-size: 2.2rem;
       line-height: 1;
       color: var(--accent-deep);
-      transform: rotate(-9deg);
-      text-shadow: 0 1px 2px rgba(255,255,255,0.95), 0 2px 10px rgba(255,255,255,0.75);
-      pointer-events: none;
+      padding-bottom: 4px;
+    }
+    @media (min-width: 600px) {
+      .fz-num { font-size: 2.6rem; }
     }
     /* 写真ラッパー：青いグラデ背景ボックス＋筆記体ラベル */
     .fz-photo {
@@ -737,7 +740,7 @@
       .fz-photo { width: 92%; }
       .fz-photo::before { top: -20px; right: -16px; width: 74%; height: 58%; }
       .fz-photo::after { left: -16px; bottom: -18px; width: 48%; height: 46%; }
-      .fz-head h3 { font-size: 1.5rem; }
+      .fz-head h3 { font-size: 1.4rem; letter-spacing: 0.02em; }
       .fz-lead, .fz-desc { font-size: 1.02rem; }
     }
 
@@ -1150,8 +1153,48 @@
     .price-note { font-size: 0.8rem; color: var(--text-light); margin-top: 8px; }
 
     /* 特典 — 明るい上品版（角丸なし） */
-    .tokuten-img { max-width: 460px; margin: 0 auto; }
-    .tokuten-img img { width: 100%; display: block; border-radius: 4px; box-shadow: 0 12px 30px rgba(58,66,104,.16); }
+    /* 特典リスト（HTML版） */
+    .tokuten-box {
+      max-width: 480px;
+      margin: 0 auto;
+      background: var(--white);
+      border-top: 3px solid var(--gold);
+      padding: 30px 22px 26px;
+      box-shadow: 0 12px 30px rgba(58,66,104,.14);
+    }
+    .tokuten-title {
+      text-align: center;
+      font-size: 1.32rem;
+      font-weight: bold;
+      color: var(--brown);
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+    }
+    .tokuten-list { list-style: none; margin: 0; padding: 0; }
+    .tokuten-list li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: linear-gradient(90deg, #EEF4FB 0%, #F7FAFD 100%);
+      padding: 13px 16px;
+      margin-bottom: 10px;
+    }
+    .tokuten-list li:last-child { margin-bottom: 0; }
+    .tk-num {
+      flex: none;
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.7rem;
+      line-height: 1;
+      color: var(--gold);
+      padding-bottom: 3px;
+    }
+    .tk-text {
+      font-size: 1.0rem;
+      font-weight: bold;
+      color: var(--brown);
+      line-height: 1.6;
+    }
+    .tk-text small { font-size: 0.82rem; font-weight: normal; color: var(--text-mid); }
     .tokuten-total {
       max-width: 540px;
       margin: 0 auto 40px;
@@ -1320,17 +1363,6 @@
       padding:30px 24px 34px;
       box-shadow:0 22px 54px rgba(58,66,104,0.14);
       text-align:left;
-    }
-    .closing-letter::before {
-      content:"";
-      position:absolute;
-      top:14px;
-      right:18px;
-      width:54px;
-      height:54px;
-      border:1px solid rgba(207,169,99,0.55);
-      border-radius:50%;
-      opacity:0.55;
     }
     .closing-letter .cta-wrap { margin-top:26px; text-align:center; }
     /* 写真は白ボックスの続きとして上端を白フェードでつなぐ */
@@ -1718,7 +1750,6 @@
       letter-spacing:.04em;
       background:none;
       box-shadow:none;
-      transform:rotate(-5deg);
       transform-origin:center;
     }
     .ss-wall-sub { text-align:center; font-size:.82rem; color:var(--text-light); margin-bottom:22px; }
@@ -1875,7 +1906,7 @@
     <li><a href="#fv" data-sec="fv"><i>01</i><span>ようこそ</span></a></li>
     <li><a href="#pain" data-sec="pain"><i>02</i><span>こんなお悩み</span></a></li>
     <li><a href="#future" data-sec="future"><i>03</i><span>叶えたい未来</span></a></li>
-    <li><a href="#service" data-sec="service"><i>04</i><span>4ヶ月の学び</span></a></li>
+    <li><a href="#service" data-sec="service"><i>04</i><span>カリキュラム</span></a></li>
     <li><a href="#why" data-sec="why"><i>05</i><span>選ばれる理由</span></a></li>
     <li><a href="#voices" data-sec="voices"><i>06</i><span>受講生の声</span></a></li>
     <li><a href="#price" data-sec="price"><i>07</i><span>料金・特典</span></a></li>
@@ -2024,7 +2055,7 @@
     </div>
   </a>
   <div class="fv-cta-area">
-    <p class="fv-micro">＼ 相談会ご参加で総額8万円相当の特典 ／</p>
+    <p class="fv-micro">＼ 早期お申込みで6大特典プレゼント ／</p>
     <a href="ここに申込先URLを入力" class="cta-btn">無料相談会に参加する</a>
   </div>
 
@@ -2064,8 +2095,10 @@
           <p class="bridge-q2">そう憧れる一方で、</p>
         </div>
       </div>
-      <img class="pain-woman" src="img/4.png" alt="作品づくりや指導に悩む女性">
-      <p class="pain-ask">こんなお悩み、<br>ありませんか？</p>
+      <div class="pain-photo-wrap">
+        <img class="pain-photo" src="img/nayami-woman.jpg" alt="作品づくりや指導に悩む女性">
+        <p class="pain-ask">こんなお悩み、<br>ありませんか？</p>
+      </div>
     </div>
 
     <div class="pain-list">
@@ -2111,9 +2144,6 @@
   </div>
   <!-- それ、全部解決できます！（矢印の下・作品を散らして） -->
   <div class="solve-block">
-    <img class="solve-deco d1" src="img/cut-sakura.png" alt="" aria-hidden="true">
-    <img class="solve-deco d2" src="img/cut-lemon.png" alt="" aria-hidden="true">
-    <img class="solve-deco d3" src="img/cut-oriental.png" alt="" aria-hidden="true">
     <p class="pain-solve">それ、<br><b>全部解決</b>できます！</p>
   </div>
 
@@ -2136,19 +2166,17 @@
 
     <!-- 01：見出し → 説明 → 写真 → 説明 -->
     <div class="fz-row">
-      <div class="fz-head"><h3>作れる作品の幅が<br>何倍も広がる</h3></div>
+      <div class="fz-head"><span class="fz-num">01</span><h3>作れる作品の幅が<br>何倍も広がる</h3></div>
       <div class="fz-photo">
-        <span class="fz-num">01</span>
-        <img src="img/gallery5.jpg" alt="マリン柄のカップ＆ソーサー">
+        <img src="img/future-1.jpg" alt="フリルの丸いお皿に描いたオリエンタルデザインの作品">
       </div>
       <p class="fz-desc">転写紙に頼る作品作りから卒業して、<b>絵の具で表現できる世界がぐっと広がります。</b><br><br>頭の中にあるイメージをそのまま作品に落とし込めるようになると、<b>作品作りが何倍も楽しくなります。</b></p>
     </div>
 
     <!-- 02：見出し → 写真 → 説明 -->
     <div class="fz-row">
-      <div class="fz-head"><h3>苦手だった絵の具で、<br>絵が描けるようになる</h3></div>
+      <div class="fz-head"><span class="fz-num">02</span><h3>苦手だった絵の具で、<br>絵が描けるようになる</h3></div>
       <div class="fz-photo">
-        <span class="fz-num">02</span>
         <img src="img/gallery10.jpg" alt="チューリップを描いた小皿の作品">
       </div>
       <p class="fz-desc">道具や溶剤の使い方、基礎からお伝えしますので<b>初心者の方でも安心</b>です。筆の運び方、絵の具の濃淡の作り方、順序を経て絵を描く手順を<b>わかりやすく学べるカリキュラム</b>となっています。</p>
@@ -2156,19 +2184,17 @@
 
     <!-- 03：見出し → 写真 → 説明 -->
     <div class="fz-row">
-      <div class="fz-head"><h3>絵の具に自信が持て、<br>指導できるようになる</h3></div>
+      <div class="fz-head"><span class="fz-num">03</span><h3>絵の具に自信を持ち、<br>指導できるようになる</h3></div>
       <div class="fz-photo">
-        <span class="fz-num">03</span>
-        <img src="img/gallery3.jpg" alt="ミモザのドレスを描いた額装作品">
+        <img src="img/future-3.jpg" alt="教室で生徒さまに指導する尾野さおり">
       </div>
-      <p class="fz-desc">自分で描けるだけでなく、生徒さんに<b>「なぜそう描くのか」を説明できるまで</b>がカリキュラムとなっています。指導の際にお使いいただける資料や動画も揃っているので、指導に迷うことなく、<b>すぐにレッスンを始められます</b>。</p>
+      <p class="fz-desc">自分で描けるだけでなく、生徒さまに<b>「なぜそう描くのか」を説明できるまで</b>がカリキュラムとなっています。指導の際にお使いいただける資料や動画も揃っているので、指導に迷うことなく、<b>すぐにレッスンを始められます</b>。</p>
     </div>
 
     <!-- 04：見出し → 写真 → 説明 -->
     <div class="fz-row">
-      <div class="fz-head"><h3>「そんな食器見たことない！」と<br>言われる作品が生まれる</h3></div>
+      <div class="fz-head"><span class="fz-num">04</span><h3>「そんな食器<br class="br-sp">見たことない！」と<br>言われる作品が生まれる</h3></div>
       <div class="fz-photo">
-        <span class="fz-num">04</span>
         <img src="img/gallery2.jpg" alt="モネの睡蓮を描いた淡い色合いのプレート">
       </div>
       <p class="fz-desc">転写紙では出せない、<b>唯一無二の表現</b>が手に入ります。どこかで見たことのある作品ではなく、<b>オリジナルを生み出す力</b>を養います。</p>
@@ -2176,10 +2202,9 @@
 
     <!-- 05：見出し → 写真 → 説明 -->
     <div class="fz-row">
-      <div class="fz-head"><h3>「この先生からしか習えない」と<br>選ばれる存在になれる</h3></div>
+      <div class="fz-head"><span class="fz-num">05</span><h3>「この先生から<br class="br-sp">習いたい」と<br>選ばれる存在になれる</h3></div>
       <div class="fz-photo">
-        <span class="fz-num">05</span>
-        <img src="img/gallery12.jpg" alt="レモンとリボンを描いたプレートの作品">
+        <img src="img/future-5.jpg" alt="筆で絵付けをする尾野さおりの手元">
       </div>
       <p class="fz-desc">転写紙メインの教室が多いからこそ、絵の具を教えられることは<b>大きな差別化</b>に。<b>選ばれる教室作り</b>が叶います。</p>
     </div>
@@ -2205,7 +2230,7 @@
     <div class="gold-line"></div>
   </div>
 
-  <p style="font-size:1.05rem;color:var(--brown);font-weight:bold;margin-bottom:24px;text-align:center;">カリキュラム（4ヶ月）</p>
+  <p style="font-size:1.05rem;color:var(--brown);font-weight:bold;margin-bottom:24px;text-align:center;">カリキュラム内容</p>
 
   <div class="curriculum-list">
 
@@ -2213,17 +2238,15 @@
     <div class="curri-item">
       <div class="curri-content">
         <div class="curri-head-band">
-          <p class="curri-month">1ヶ月目</p>
-          <h3 class="curri-head">絵の具の基礎から<br>本質的理解</h3>
+          <p class="curri-month">製作1</p>
+          <h3 class="curri-head">リーフボックス</h3>
         </div>
         <div class="curri-2col">
           <div class="c-photo">
-            <p class="curri-task">制作課題：<span>リーフボックス</span></p>
             <img src="img/curriculum-1.png" alt="1ヶ月目の課題作品：リーフボックス">
           </div>
           <div class="c-text">
             <p class="curri-lead">基本をしっかり学び、絵の具に必要な知識・理論の土台づくりをします。</p>
-            <p>「なんとなく」から卒業。絵の具の性質・使い方・調整まで、「なぜこれが必要か」を理解することで、<b>自分が意図したように扱えるようになります</b>。</p>
             <p class="curri-detail-title">学べる具体的な内容</p>
             <ul class="curri-detail-list">
               <li>道具の使い方とおすすめの道具</li>
@@ -2242,12 +2265,11 @@
     <div class="curri-item">
       <div class="curri-content">
         <div class="curri-head-band">
-          <p class="curri-month">2ヶ月目</p>
-          <h3 class="curri-head">ポーセラーツの技術との<br>融合と応用</h3>
+          <p class="curri-month">製作2</p>
+          <h3 class="curri-head">シルエットフラワー</h3>
         </div>
         <div class="curri-2col">
           <div class="c-photo">
-            <p class="curri-task">課題：<span>シルエットフラワー</span></p>
             <img src="img/curriculum-2.png" alt="2ヶ月目の課題作品：シルエットフラワー">
           </div>
           <div class="c-text"><p>基礎を土台に、表現の幅を広げる技術を習得。転写紙を分解・構成する楽しさと絵の具を組み合わせることで、<b>これまでにない作品</b>が生まれる。<b>絵を描いたことがない人でも描けるようになる</b>。</p></div>
@@ -2259,15 +2281,14 @@
     <div class="curri-item">
       <div class="curri-content">
         <div class="curri-head-band">
-          <p class="curri-month">3ヶ月目</p>
-          <h3 class="curri-head">ポーセラーツのための<br>デザイン理論</h3>
+          <p class="curri-month">製作3</p>
+          <h3 class="curri-head">フラワーガール</h3>
         </div>
         <div class="curri-2col">
           <div class="c-photo">
-            <p class="curri-task">課題：<span>フラワーガール</span></p>
             <img src="img/curriculum-3.png" alt="3ヶ月目の課題作品：フラワーガール">
           </div>
-          <div class="c-text"><p>デザインとは、おしゃれな見た目にすることではありません。20年のデザイナー実績から構築した独自のデザイン理論で、<b>見ている人の心に届く作品</b>を体系的に学びます。</p></div>
+          <div class="c-text"><p>数種類用意された女の子のデザインを自由にカスタムし、<b>お花のドレス</b>を着せます。背景に色を入れたり、装飾方法も学べます。</p></div>
         </div>
       </div>
     </div>
@@ -2276,11 +2297,10 @@
     <div class="curri-item">
       <div class="curri-content">
         <div class="curri-head-band">
-          <p class="curri-month">4ヶ月目</p>
           <h3 class="curri-head">ポーセラーツのための<br>デザイン理論</h3>
         </div>
         <div class="curri-2col">
-          <div class="c-photo"><img src="img/gallery9.jpg" alt="4ヶ月目の作品例：デザイン理論で仕上げたメリーゴーランドの作品" style="object-position:center 32%;"></div>
+          <div class="c-photo"><img src="img/curriculum-4.jpg" alt="デザイン理論のイメージ：モノトーンと花のデザインコースター"></div>
           <div class="c-text"><p>技術を学ぶだけでは、誰かに届く作品は作れません。尾野さおりの20年のデザイナー経験から導いた「ポーセラーツのためのデザイン理論」を用いて、届く作品づくりと、お教室業に必要なマーケティング＆集客メソッドを学びます。<b>売り込まずに生徒さまが集まる仕組みと方法</b>をお伝えします。</p></div>
         </div>
       </div>
@@ -2293,6 +2313,59 @@
 
 
 
+
+
+<!-- ============================================
+     安心感（あなたでも、できる）
+============================================ -->
+<section id="assurance">
+  <div class="title-block program-title-block">
+    <span class="deco-word">Program</span>
+    <h2 class="sec-title">
+      <span class="program-main-line">あなたの活動を加速させる</span>
+      <span class="program-main-line">充実したカリキュラム</span>
+    </h2>
+    <div class="gold-line"></div>
+  </div>
+  <p class="assurance-lead">オンラインでも、リアルでも。<br>あなたの学びと教室運営を、<br>しっかり支える環境が整っています。</p>
+  <div class="env-list">
+    <div class="env-item">
+      <img class="env-photo" loading="lazy" src="img/env-zoom.jpg" alt="Zoomでのオンライン勉強会の様子" style="object-position:center center;">
+      <div class="env-body">
+        <span class="env-num">01</span>
+        <h4><span>オリジナル<br>動画コンテンツ</span></h4>
+        <p>通勤や家事をしながら聞いたり、<b>空き時間に学びを進めることができます</b>。</p>
+      </div>
+    </div>
+    <div class="env-item">
+      <img class="env-photo" loading="lazy" src="img/env-support.jpg" alt="手元を見ながら丁寧に指導する様子">
+      <div class="env-body">
+        <span class="env-num">02</span>
+        <h4><span>講座は全て<br>動画・アーカイブあり</span></h4>
+        <p><b>何度でも見返せる</b>ので、わからない部分や復習したいところを安心して学べます。</p>
+      </div>
+    </div>
+    <div class="env-item">
+      <img class="env-photo mid" loading="lazy" src="img/env-marketing.jpg" alt="マーケティング・集客勉強会の様子">
+      <div class="env-body">
+        <span class="env-num">03</span>
+        <h4><span>ポーセラーツのお教室に必要な<br>生徒様が集まる仕組み作り</span></h4>
+        <p>スキルを磨いても生徒さまは来ません。<b>売り込まずに生徒さまが集まる仕組みと方法</b>をお伝えします。</p>
+      </div>
+    </div>
+    <div class="env-item">
+      <div class="env-collage" aria-label="リアル勉強会の様子">
+        <figure class="polaroid p-a"><img loading="lazy" src="img/env-real.jpg" alt="リアル勉強会で仲間と笑顔の集合写真"></figure>
+        <figure class="polaroid p-b"><img loading="lazy" src="img/env-support.jpg" alt="手元を見ながら学ぶ様子"></figure>
+      </div>
+      <div class="env-body">
+        <span class="env-num">04</span>
+        <h4>2回のリアル勉強会</h4>
+        <p>講座中、2回のリアル勉強会があります。<b>実際に手元を見て丁寧に指導</b>させていただきます。</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ============================================
      5. 選ばれる理由
@@ -2346,58 +2419,6 @@
 
 
 
-<!-- ============================================
-     安心感（あなたでも、できる）
-============================================ -->
-<section id="assurance">
-  <div class="title-block program-title-block">
-    <span class="deco-word">Program</span>
-    <h2 class="sec-title">
-      <span class="program-main-line">あなたの活動を加速させる</span>
-      <span class="program-main-line">充実したカリキュラム</span>
-    </h2>
-    <div class="gold-line"></div>
-  </div>
-  <p class="assurance-lead">オンラインでも、リアルでも。<br>あなたの学びと教室運営を、<br>しっかり支える環境が整っています。</p>
-  <div class="env-list">
-    <div class="env-item">
-      <img class="env-photo" loading="lazy" src="img/env-zoom.jpg" alt="Zoomでのオンライン勉強会の様子" style="object-position:center center;">
-      <div class="env-body">
-        <span class="env-num">01</span>
-        <h4><span>オリジナル<br>動画コンテンツ</span></h4>
-        <p>通勤や家事をしながら聞いたり、<b>空き時間に学びを進めることができます</b>。</p>
-      </div>
-    </div>
-    <div class="env-item">
-      <img class="env-photo" loading="lazy" src="img/env-support.jpg" alt="手元を見ながら丁寧に指導する様子">
-      <div class="env-body">
-        <span class="env-num">02</span>
-        <h4><span>講座は全て<br>動画・アーカイブあり</span></h4>
-        <p><b>何度でも見返せる</b>ので、わからない部分や復習したいところを安心して学べます。</p>
-      </div>
-    </div>
-    <div class="env-item">
-      <img class="env-photo mid" loading="lazy" src="img/env-marketing.jpg" alt="マーケティング・集客勉強会の様子">
-      <div class="env-body">
-        <span class="env-num">03</span>
-        <h4><span>お教室業に必要な<br>マーケティング＆集客勉強会</span></h4>
-        <p>スキルを磨いても生徒さまは来ません。<b>売り込まずに生徒さまが集まる仕組みと方法</b>をお伝えします。</p>
-      </div>
-    </div>
-    <div class="env-item">
-      <div class="env-collage" aria-label="リアル勉強会の様子">
-        <figure class="polaroid p-a"><img loading="lazy" src="img/env-real.jpg" alt="リアル勉強会で仲間と笑顔の集合写真"></figure>
-        <figure class="polaroid p-b"><img loading="lazy" src="img/env-support.jpg" alt="手元を見ながら学ぶ様子"></figure>
-      </div>
-      <div class="env-body">
-        <span class="env-num">04</span>
-        <h4>2回のリアル勉強会</h4>
-        <p>講座中、2回のリアル勉強会があります。<b>実際に手元を見て丁寧に指導</b>させていただきます。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 <!-- ============================================
      私も同じように悩んでいました（ストーリー）
@@ -2425,7 +2446,7 @@
       </div>
     </div>
     <div class="story-panel">
-      <img class="story-photo" loading="lazy" src="img/real-1.png" alt="リアル勉強会で生徒さまと向き合う様子">
+      <img class="story-photo" loading="lazy" src="img/real-1.png" alt="リアル勉強会で生徒さまと向き合う様子" style="object-position:center top;">
       <div class="story-text">
         <p>そう気づいたとき、やみくもにスキルアップレッスンを受けたり、資格を増やすことをやめました。</p>
         <p>私に本当に必要だったのは、<span class="story-marker">絵の具や特殊技法を本質から理解し、実践に活かせる力</span>。そして、自信を持って生徒様に届ける力でした。</p>
@@ -2488,7 +2509,7 @@
 
   <!-- 受講生の声：動画 -->
   <div class="voice-video">
-    <p class="voice-video-lead">受講生さんの声を、動画でもご覧いただけます</p>
+    <p class="voice-video-lead">リアルな声をお聞きください</p>
     <div class="vwrap">
       <iframe src="https://player.vimeo.com/video/1206664136?h=31ce5fe819" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="受講生の声（動画）"></iframe>
     </div>
@@ -2511,12 +2532,12 @@
         <img class="ss-shot" loading="lazy" src="img/ss27m.jpg" alt="受講生さまの声:コースレッスンで月商が6倍に">
         <img class="ss-shot" loading="lazy" src="img/ss29m.jpg" alt="受講生さまの声:200名近く参加、年商も過去最高">
         <img class="ss-shot" loading="lazy" src="img/ss01m.jpg" alt="受講生さまの声:ラボに入って本当に良かったです">
-        <img class="ss-shot" loading="lazy" src="img/ss06.jpg" alt="受講生さまの声:70名以上の方にご受講いただきました">
-        <img class="ss-shot" loading="lazy" src="img/ss13.jpg" alt="受講生さまの声:励まされて、いよいよ明日です">
-        <img class="ss-shot" loading="lazy" src="img/ss30.jpg" alt="受講生さまの声">
-        <img class="ss-shot" loading="lazy" src="img/ss33.jpg" alt="受講生さまの声">
-        <img class="ss-shot" loading="lazy" src="img/ss34.jpg" alt="受講生さまの声">
-        <img class="ss-shot" loading="lazy" src="img/ss37.jpg" alt="受講生さまの声">
+        <img class="ss-shot" loading="lazy" src="img/ss06m.jpg" alt="受講生さまの声:70名以上の方にご受講いただきました">
+        <img class="ss-shot" loading="lazy" src="img/ss13m.jpg" alt="受講生さまの声:励まされて、いよいよ明日です">
+        <img class="ss-shot" loading="lazy" src="img/ss30m.jpg" alt="受講生さまの声">
+        <img class="ss-shot" loading="lazy" src="img/ss33m.jpg" alt="受講生さまの声">
+        <img class="ss-shot" loading="lazy" src="img/ss34m.jpg" alt="受講生さまの声">
+        <img class="ss-shot" loading="lazy" src="img/ss37m.jpg" alt="受講生さまの声">
       </div>
       <div class="ss-fade"></div>
     </div>
@@ -2622,9 +2643,17 @@
     </p>
   </div>
 
-  <!-- 特典コーナー（画像・文字込み／ChatGPT生成→tokuten.jpg） -->
-  <div class="tokuten-img">
-    <img src="img/tokuten.jpg" alt="早期お申込み特典 総額8万円相当が無料：01 無料個別相談会への参加券／02 指導ポイント勉強会動画（3万円相当）／03 絵の具コース動画レッスン3本プレゼント（5万円相当）／04 コンテンツ・学習サイト即日開放／05 卒業後も安心サポート">
+  <!-- 特典コーナー（さおりさん指定の6項目） -->
+  <div class="tokuten-box">
+    <p class="tokuten-title">早期お申込み特典</p>
+    <ul class="tokuten-list">
+      <li><span class="tk-num">01</span><span class="tk-text">コンテンツ・学習サイト 即日開放</span></li>
+      <li><span class="tk-num">02</span><span class="tk-text">インスタプロフィール添削</span></li>
+      <li><span class="tk-num">03</span><span class="tk-text">インスタ攻略動画プレゼント</span></li>
+      <li><span class="tk-num">04</span><span class="tk-text">愛され先生のマル秘テクニック</span></li>
+      <li><span class="tk-num">05</span><span class="tk-text">卒業後の安心サポート</span></li>
+      <li><span class="tk-num">06</span><span class="tk-text">過去人気レッスンを2つ無料で受講<small>（プランにより）</small></span></li>
+    </ul>
   </div>
 
   <div class="urgency-box">
@@ -2811,15 +2840,6 @@
      9. クロージング＋最終CTA
 ============================================ -->
 <section id="closing">
-  <div class="bot" style="top:-14px;left:-18px;transform:rotate(-15deg);">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" width="65" height="65"><g transform="translate(27,27)" fill="none" stroke="#A3BCE0" stroke-width="0.9"><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(0)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(72)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(144)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(216)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(288)"/><circle r="4" fill="#E6EEF8"/></g></svg>
-  </div>
-  <div class="bot" style="top:-14px;right:-18px;transform:rotate(15deg);">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 55" width="65" height="65"><g transform="translate(27,27)" fill="none" stroke="#A3BCE0" stroke-width="0.9"><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(0)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(72)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(144)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(216)"/><ellipse cx="0" cy="-12" rx="5" ry="9" transform="rotate(288)"/><circle r="4" fill="#E6EEF8"/></g></svg>
-  </div>
-  <div class="bot" style="bottom:60px;left:-14px;transform:rotate(-25deg);">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 55" width="40" height="50"><g fill="none" stroke="#7A9DCF" stroke-width="0.8"><line x1="22" y1="52" x2="22" y2="28"/><line x1="22" y1="38" x2="10" y2="24"/><line x1="22" y1="33" x2="34" y2="20"/><line x1="10" y1="24" x2="5" y2="12"/><line x1="10" y1="24" x2="16" y2="12"/><line x1="34" y1="20" x2="28" y2="8"/><line x1="34" y1="20" x2="40" y2="8"/><circle cx="5" cy="9" r="3.5" fill="#CFDDF0"/><circle cx="16" cy="9" r="3.5" fill="#CFDDF0"/><circle cx="28" cy="5" r="3.5" fill="#CFDDF0"/><circle cx="40" cy="5" r="3.5" fill="#CFDDF0"/></g></svg>
-  </div>
   <div class="title-block">
     <span class="deco-word">Message</span>
     <h2 class="sec-title">ここまで読んでくださった<br>あなたへ</h2>
@@ -2963,7 +2983,6 @@
 ============================================ -->
 <footer>
   <p>ポーセラボ 絵の具コース</p>
-  <p style="margin-top:6px;">主宰：尾野さおり｜神戸</p>
   <p style="margin-top:12px;">© 2024 Porcelab. All rights reserved.</p>
 </footer>
 
