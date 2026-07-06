@@ -206,11 +206,7 @@
       margin-bottom: 10px;
       position: relative;  /* deco-wordより前面に */
     }
-    .gold-line {
-      width: 36px; height: 2px;
-      background: var(--gold);
-      margin: 0 auto 32px;
-    }
+    .gold-line { display: none; }
 
     @media (min-width: 600px) {
       .deco-word { font-size: 3.6rem; top: -36px; }
@@ -1569,7 +1565,10 @@
     /* =============================================
        私も同じように悩んでいました（ストーリー）
     ============================================= */
-    #story { background: var(--bg-alt); padding-top: 56px; }
+    #story {
+      background: linear-gradient(rgba(240,244,251,0.82), rgba(240,244,251,0.88)), url('img/story-bg.jpg') center / cover no-repeat;
+      padding-top: 56px;
+    }
     .story-connector {
       display:grid;
       justify-content:center;
@@ -1584,13 +1583,14 @@
     }
     #story .title-block { margin-bottom: 34px; }
     .story-body { max-width:640px; margin:0 auto; }
-    .story-magazine { display:grid; gap:24px; }
-    /* 写真は角丸なしの横長・文章は全幅（細長くしない） */
-    .story-panel {
-      background:rgba(255,255,255,0.72);
-      padding:18px 18px 22px;
-      box-shadow:0 12px 28px rgba(58,66,104,0.08);
+    /* 3つの段落をひとつの白いボックスにまとめる */
+    .story-magazine {
+      background:rgba(255,255,255,0.88);
+      padding:24px 20px 28px;
+      box-shadow:0 14px 34px rgba(58,66,104,0.10);
+      display:grid; gap:30px;
     }
+    .story-panel { background:none; padding:0; box-shadow:none; }
     .story-photo {
       width:100%;
       aspect-ratio:16 / 10;
@@ -1615,11 +1615,23 @@
       .story-photo { max-width:230px; }
       .story-text p { font-size:1.02rem; }
     }
-    .story-points { max-width:620px; margin:36px auto 0; background:var(--white); padding:30px 24px; }
-    .story-points-lead { text-align:center; font-size:1.12rem; color:var(--brown); font-weight:bold; line-height:1.7; margin-bottom:20px; }
+    .story-points {
+      max-width:620px; margin:36px auto 0;
+      background: linear-gradient(rgba(255,255,255,0.84), rgba(255,255,255,0.84)), url('img/points-bg.jpg') center / cover no-repeat;
+      padding:34px 22px 30px;
+      box-shadow:0 14px 34px rgba(58,66,104,0.12);
+    }
+    .story-points-lead { text-align:center; font-size:1.04rem; color:var(--brown); font-weight:bold; line-height:1.75; margin-bottom:20px; }
     .story-points ol { list-style:none; max-width:480px; margin:0 auto 18px; }
-    .story-points li { position:relative; padding-left:42px; margin-bottom:15px; font-size:1.05rem; color:var(--brown); line-height:1.7; font-weight:bold; }
-    .story-points li::before { content:""; position:absolute; left:0; top:0.86em; width:24px; height:2px; background:linear-gradient(90deg, var(--gold) 0%, rgba(122,157,207,0.58) 100%); }
+    .story-points li {
+      position:relative;
+      background:rgba(231,240,250,0.92);
+      padding:13px 16px 13px 44px;
+      margin-bottom:12px;
+      font-size:1.05rem; color:var(--brown); line-height:1.7; font-weight:bold;
+      box-shadow:0 4px 12px rgba(58,66,104,0.06);
+    }
+    .story-points li::before { content:""; position:absolute; left:14px; top:calc(0.86em + 13px); width:20px; height:2px; background:linear-gradient(90deg, var(--gold) 0%, rgba(122,157,207,0.58) 100%); }
     .story-points-foot { font-size:1.02rem; color:var(--text-mid); line-height:1.9; text-align:center; }
 
     /* =============================================
