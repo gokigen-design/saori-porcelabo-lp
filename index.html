@@ -1811,17 +1811,25 @@
       padding:34px 22px 30px;
       box-shadow:0 14px 34px rgba(58,66,104,0.12);
     }
-    .story-points-lead { text-align:center; font-size:1.04rem; color:var(--brown); font-weight:bold; line-height:1.75; margin-bottom:20px; }
-    .story-points ol { list-style:none; max-width:480px; margin:0 auto 18px; }
-    .story-points li {
-      position:relative;
+    .story-points-lead {
+      text-align:center; font-size:1.02rem; color:var(--brown); font-weight:bold; line-height:1.8; letter-spacing:0;
+      background: linear-gradient(90deg, #E7F0FC 0%, #F2F7FE 100%);
+      padding: 14px 12px;
+      margin-bottom:18px;
+    }
+    .story-points ol {
+      list-style:none; max-width:480px; margin:0 auto 18px;
       background:rgba(231,240,250,0.92);
-      padding:13px 16px;
-      margin-bottom:12px;
-      font-size:0.99rem; color:var(--brown); line-height:1.7; font-weight:bold;
-      text-align:center;
+      padding:6px 14px;
       box-shadow:0 4px 12px rgba(58,66,104,0.06);
     }
+    .story-points li {
+      position:relative;
+      padding:12px 4px;
+      font-size:0.99rem; color:var(--brown); line-height:1.7; font-weight:bold;
+      text-align:center;
+    }
+    .story-points li + li { border-top:1px solid rgba(122,157,207,0.30); }
     .story-points-foot { font-size:1.02rem; color:var(--text-mid); line-height:1.9; text-align:center; }
 
     /* =============================================
@@ -1983,7 +1991,16 @@
       .lightbox-prev { left:calc(50% - 62px); }
       .lightbox-next { right:calc(50% - 62px); }
     }
-  </style>
+  
+    /* ===== セクション見出しサイズの統一（受講生の声・受講の流れ等のバラつき解消） ===== */
+    h2.sec-title, h2.sec-title span:not(.program-line-sub) { font-size: 1.6rem !important; }
+    @media (min-width: 600px) {
+      h2.sec-title, h2.sec-title span:not(.program-line-sub) { font-size: 2rem !important; }
+    }
+    #closing h2.sec-title { font-size: 1.5rem !important; }
+    #service .service-main-line { padding-left: 8px; padding-right: 8px; letter-spacing: 0.02em; }
+    .program-main-line:not(.program-line-sub) { padding-left: 20px !important; padding-right: 20px !important; }
+</style>
 </head>
 
 <body>
@@ -2576,7 +2593,7 @@
     </div>
   </div>
   <div class="story-points">
-    <p class="story-points-lead">13年教室づくりをしてきて気付いた、<br>大切なことが3つあります。</p>
+    <p class="story-points-lead">13年教室づくりをしてきて<br class="br-sp">気付いた、<br>大切なことが3つあります。</p>
     <ol>
       <li>本質から学んだ技術を磨くこと</li>
       <li>ちゃんと生徒様に届く<br class="br-sp">デザインを作ること</li>
