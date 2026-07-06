@@ -453,12 +453,28 @@
       margin: 0 auto;
     }
     .pain-woman {
-      width: min(48vw, 218px);
+      width: min(52vw, 236px);
       position: absolute;
-      left: max(0px, calc(50% - 250px));
-      top: 96px;   /* 白いボックスに少し重ねる */
+      left: -20px;   /* セクション余白を突き抜けて画面左端へ（頭の切れを見せない） */
+      top: 88px;
       z-index: 3;
       filter: drop-shadow(0 18px 28px rgba(58,66,104,0.16));
+    }
+    /* 女性の右に大きく並べる問いかけ */
+    .pain-ask {
+      position: absolute;
+      z-index: 3;
+      left: 49vw;
+      right: 0;
+      top: 182px;
+      text-align: center;
+      font-size: 1.42rem;
+      font-weight: bold;
+      color: #fff;
+      line-height: 1.75;
+      letter-spacing: 0.03em;
+      text-shadow: 0 2px 14px rgba(40,50,80,0.6);
+      white-space: nowrap;
     }
     .pain-list { max-width: 600px; margin: 0 auto; }
     /* 角ばった四角（AI感を抑える）＝border-radius小さめ */
@@ -531,10 +547,11 @@
         padding-top: 0;
       }
       .pain-woman {
-        width: 220px;
-        left: 34px;
-        top: 72px;   /* 白いボックスに少し重ねる */
+        width: 230px;
+        left: -34px;
+        top: 64px;
       }
+      .pain-ask { left: 235px; right: auto; top: 158px; font-size: 1.7rem; }
       .pain-item { align-content: start; }
     }
     /* セクションをつなぐブリッジ（引用風＋▼） */
@@ -1536,20 +1553,25 @@
     .env-photo { width:100%; aspect-ratio:3/2; object-fit:cover; object-position:center 34%; display:block; }
     .env-item:first-child .env-photo { object-position:center 38%; }
     .env-photo.mid { object-position:center 58%; }
-    .env-body { padding:26px 24px 32px; background:#fff; }
+    .env-body { position:relative; padding:30px 24px 32px; background:#fff; }
     .env-body h4 {
-      display:flex; align-items:center; justify-content:center; gap:14px;
-      text-align:center; font-size:1.26rem; color:var(--brown); font-weight:bold; line-height:1.55; margin-bottom:12px;
+      text-align:center; font-size:1.62rem; color:var(--brown); font-weight:bold; line-height:1.5; margin-bottom:12px;
     }
-    /* 番号：見出しの左に筆記体・透過で（Point 04 風） */
+    @media (max-width: 600px) {
+      .env-body h4 { font-size:1.44rem; }
+    }
+    /* 番号：写真の下端に装飾的に重ねる（筆記体・透過） */
     .env-num {
-      flex:none;
+      position:absolute;
+      left:12px;
+      top:-34px;
       font-family:'Great Vibes', cursive;
-      font-size:2.5rem;
+      font-size:3.3rem;
       font-weight:400;
       line-height:1;
-      color:rgba(9,95,170,0.45);
-      transform:rotate(-5deg);
+      color:rgba(9,95,170,0.52);
+      transform:rotate(-7deg);
+      text-shadow:0 1px 2px rgba(255,255,255,0.9), 0 2px 10px rgba(255,255,255,0.6);
       pointer-events:none;
     }
     .env-body p { font-size:1rem; color:var(--text-mid); line-height:1.9; }
@@ -2023,10 +2045,11 @@
       <div class="bridge">
         <div class="bridge-quote">
           <p class="bridge-q1">「私にも、こんな作品が作れたら…」</p>
-          <p class="bridge-q2">そう憧れる一方で、<br>こんなお悩み、ありませんか？</p>
+          <p class="bridge-q2">そう憧れる一方で、</p>
         </div>
       </div>
       <img class="pain-woman" src="img/4.png" alt="作品づくりや指導に悩む女性">
+      <p class="pain-ask">こんなお悩み、<br>ありませんか？</p>
     </div>
 
     <div class="pain-list">
@@ -2324,21 +2347,24 @@
     <div class="env-item">
       <img class="env-photo" loading="lazy" src="img/env-zoom.jpg" alt="Zoomでのオンライン勉強会の様子" style="object-position:center center;">
       <div class="env-body">
-        <h4><span class="env-num">01</span><span>オリジナル<br>動画コンテンツ</span></h4>
+        <span class="env-num">01</span>
+        <h4><span>オリジナル<br>動画コンテンツ</span></h4>
         <p>通勤や家事をしながら聞いたり、<b>空き時間に学びを進めることができます</b>。</p>
       </div>
     </div>
     <div class="env-item">
       <img class="env-photo" loading="lazy" src="img/env-support.jpg" alt="手元を見ながら丁寧に指導する様子">
       <div class="env-body">
-        <h4><span class="env-num">02</span><span>講座は全て<br>動画・アーカイブあり</span></h4>
+        <span class="env-num">02</span>
+        <h4><span>講座は全て<br>動画・アーカイブあり</span></h4>
         <p><b>何度でも見返せる</b>ので、わからない部分や復習したいところを安心して学べます。</p>
       </div>
     </div>
     <div class="env-item">
       <img class="env-photo mid" loading="lazy" src="img/env-marketing.jpg" alt="マーケティング・集客勉強会の様子">
       <div class="env-body">
-        <h4><span class="env-num">03</span><span>お教室業に必要な<br>マーケティング＆集客勉強会</span></h4>
+        <span class="env-num">03</span>
+        <h4><span>お教室業に必要な<br>マーケティング＆集客勉強会</span></h4>
         <p>スキルを磨いても生徒さまは来ません。<b>売り込まずに生徒さまが集まる仕組みと方法</b>をお伝えします。</p>
       </div>
     </div>
@@ -2348,7 +2374,8 @@
         <figure class="polaroid p-b"><img loading="lazy" src="img/env-support.jpg" alt="手元を見ながら学ぶ様子"></figure>
       </div>
       <div class="env-body">
-        <h4><span class="env-num">04</span>2回のリアル勉強会</h4>
+        <span class="env-num">04</span>
+        <h4>2回のリアル勉強会</h4>
         <p>講座中、2回のリアル勉強会があります。<b>実際に手元を見て丁寧に指導</b>させていただきます。</p>
       </div>
     </div>
