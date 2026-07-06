@@ -479,12 +479,28 @@
       letter-spacing: 0.04em; text-shadow: 0 2px 10px rgba(255,255,255,0.9);
     }
     .pain-solve b { color: var(--gold); font-size: 1.74rem; }
+    /* 解決宣言＋散らした作品（背景透過の丸皿） */
+    .solve-block {
+      position: relative;
+      padding: 30px 0 40px;
+      margin-bottom: 34px;
+    }
+    .solve-block .pain-solve { position: relative; z-index: 1; }
+    .solve-deco {
+      position: absolute;
+      z-index: 0;
+      filter: drop-shadow(0 10px 22px rgba(58,66,104,0.22));
+      pointer-events: none;
+    }
+    .solve-deco.d1 { width: 92px;  top: -20px;  left: 4%;  transform: rotate(-14deg); }
+    .solve-deco.d2 { width: 104px; top: -16px;  right: 2%; transform: rotate(11deg); }
+    .solve-deco.d3 { width: 74px;  bottom: -6px; left: 13%; transform: rotate(-7deg); }
     /* 下向き矢印：お悩みの背景そのものが三角で終わって見えるよう、
        セクション下端の左右に次セクションと同色(#FBFAF7)の三角を重ねる */
     .pain-solve-band {
       position: relative;
       margin: 8px 0 0;
-      padding: 30px 0 102px;   /* 下は矢印の三角(62px)込み＝見た目約40px */
+      padding: 0 0 78px;   /* V字の矢印ぶんの余白のみ */
     }
     .pain-solve-band::before {
       content: "";
@@ -764,24 +780,16 @@
       margin: 0 0 18px;
       overflow: hidden;
     }
-    .curri-head-band::before {
-      content: "";
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 86px;
-      background: linear-gradient(135deg, rgba(90,127,181,0.34) 0%, rgba(122,157,207,0.20) 100%);
-      clip-path: polygon(0 0, 100% 0, 0 100%);
-      pointer-events: none;
-    }
     .curri-month {
       position: absolute;
-      top: 9px; left: 16px;
-      font-family: Georgia, 'Hiragino Mincho ProN', serif;
+      top: 7px; left: 14px;
+      font-family: "花とちょうちょ", "Klee One", cursive;
       font-style: italic;
-      font-size: 0.98rem;
+      font-size: 1.12rem;
       font-weight: bold;
-      color: var(--accent-deep);
-      letter-spacing: 0.08em;
+      color: rgba(9,95,170,0.62);
+      letter-spacing: 0.1em;
+      transform: rotate(-6deg);
     }
     /* 課題名：写真の右下に小さく（白は透過して作品を邪魔しない） */
     .curri-task {
@@ -809,7 +817,7 @@
       border: none;
       box-shadow: none;
       color: var(--brown);
-      font-size: 1.28rem;
+      font-size: 1.46rem;
       font-weight: bold;
       line-height: 1.5;
       padding: 0;
@@ -880,7 +888,6 @@
       .curri-tl::after { left: 27px; top: 54px; bottom: -42px; }
       .curri-head { font-size: 1.12rem; }
       .curri-head-band { padding: 36px 14px 16px 20px; }
-      .curri-head-band::before { width: 64px; }
       .curri-2col { flex-direction: column; gap: 14px; }
       .curri-2col .c-photo { flex: none; width: 100%; }
       .curri-supports { gap: 10px; }
@@ -1339,8 +1346,8 @@
     }
     @media (max-width: 720px) {
       .curri-head {
-        font-size: clamp(1.08rem, 4.7vw, 1.24rem);
-        line-height: 1.45;
+        font-size: clamp(1.22rem, 5.4vw, 1.4rem);
+        line-height: 1.5;
       }
     }
     /* ===== 学べること（詳細）===== */
@@ -2009,9 +2016,7 @@
       </div>
     </div>
   </div>
-  <div class="pain-solve-band">
-    <p class="pain-solve">それ、<br><b>全部解決</b>できます！</p>
-  </div>
+  <div class="pain-solve-band" aria-hidden="true"></div>
 </section>
 
 
@@ -2025,6 +2030,14 @@
   <div class="bot" style="bottom:20px;right:-10px;transform:rotate(12deg);">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 55" width="45" height="55"><g fill="none" stroke="#7A9DCF" stroke-width="0.8"><line x1="22" y1="52" x2="22" y2="28"/><line x1="22" y1="38" x2="10" y2="24"/><line x1="22" y1="33" x2="34" y2="20"/><line x1="10" y1="24" x2="5" y2="12"/><line x1="10" y1="24" x2="16" y2="12"/><line x1="34" y1="20" x2="28" y2="8"/><line x1="34" y1="20" x2="40" y2="8"/><circle cx="5" cy="9" r="3.5" fill="#CFDDF0"/><circle cx="16" cy="9" r="3.5" fill="#CFDDF0"/><circle cx="28" cy="5" r="3.5" fill="#CFDDF0"/><circle cx="40" cy="5" r="3.5" fill="#CFDDF0"/></g></svg>
   </div>
+  <!-- それ、全部解決できます！（矢印の下・作品を散らして） -->
+  <div class="solve-block">
+    <img class="solve-deco d1" src="img/cut-tulip.png" alt="" aria-hidden="true">
+    <img class="solve-deco d2" src="img/cut-lemon.png" alt="" aria-hidden="true">
+    <img class="solve-deco d3" src="img/cut-oriental.png" alt="" aria-hidden="true">
+    <p class="pain-solve">それ、<br><b>全部解決</b>できます！</p>
+  </div>
+
   <!-- つなぎ：お悩み → 未来 -->
   <div class="bridge future-bridge" style="margin-bottom:42px;" hidden>
     <div class="bridge-quote">
