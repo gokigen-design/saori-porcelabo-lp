@@ -482,7 +482,7 @@
       z-index: 1;
       max-width: 640px;
       margin: 0 auto;
-      padding: 16px 0 40px;
+      padding: 16px 0 18px;
     }
     .pain-intro {
       position: relative;
@@ -566,7 +566,10 @@
     .pain-text .em { color: #c4707f; font-weight: bold; }
     .pain-solve {
       text-align: center; font-size: 1.5rem; color: var(--brown); font-weight: bold;
-      letter-spacing: 0.04em; text-shadow: 0 2px 10px rgba(255,255,255,0.9);
+      letter-spacing: 0.04em;
+      text-shadow:
+        0 0 6px rgba(255,255,255,0.98), 0 0 14px rgba(255,255,255,0.95),
+        0 0 28px rgba(255,255,255,0.9), 0 2px 10px rgba(255,255,255,0.9);
     }
     .pain-solve b { color: var(--gold); font-size: 1.74rem; }
     /* 解決宣言：写真背景の上にそのまま */
@@ -574,6 +577,19 @@
       position: relative;
       padding: 44px 0 64px;
       margin-bottom: 10px;
+    }
+    /* 文字が載る部分に白いぼかしを敷いて読みやすく */
+    .solve-block::before {
+      content: "";
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: min(520px, 96vw);
+      height: 200px;
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.72) 52%, rgba(255,255,255,0) 100%);
+      filter: blur(5px);
+      pointer-events: none;
+      z-index: 0;
     }
     .solve-block .pain-solve { position: relative; z-index: 1; }
     /* 下向き矢印：お悩みの背景そのものが三角で終わって見えるよう、
