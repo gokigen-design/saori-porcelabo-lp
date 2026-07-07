@@ -1211,6 +1211,15 @@
       margin-bottom: 14px; line-height: 1.3; letter-spacing: 0.02em;
     }
     .p-tagline { font-size: 0.92rem; color: var(--text-mid); line-height: 1.8; }
+    /* スマホ：肩書きの「クリエイティブディレクター」を1行に・経歴も1行に収める */
+    @media (max-width: 480px) {
+      .profile-head { grid-template-columns: 44% 1fr !important; }
+      .p-tagline { font-size: 0.78rem; letter-spacing: -0.01em; }
+      .cred-list { padding: 18px 10px; }
+      .cred-list li { font-size: 0.86rem; letter-spacing: -0.03em; padding-left: 16px; }
+      .cred-list li b { font-size: 1.06em; }
+      .cred-list li::before { left: 0; width: 8px; height: 8px; top: 0.9em; }
+    }
     /* 実績を数字で見せるグリッド */
     .cred-grid {
       display: grid;
@@ -2977,7 +2986,7 @@
       </div>
       <!-- 経歴：前回LPと同じ箇条書きスタイル -->
       <ul class="cred-list">
-        <li>講師歴<b>13年目</b>、<br class="br-sp">指導数<b>1万人</b>超え</li>
+        <li>講師歴<b>13年目</b>、指導数<b>1万人</b>超え</li>
         <li>ヴォーグ社ポーセラーツ<br class="br-sp">本部講師経験</li>
         <li>オリジナル講座多数</li>
         <li>リピート率<b>9割</b>超え</li>
@@ -3310,7 +3319,7 @@
     <img loading="lazy" src="img/作品/gallery6.jpg" alt="水彩のような風合いのマグカップ">
     <img loading="lazy" src="img/作品/gallery9.jpg" alt="メリーゴーランドを描いた作品">
     <img loading="lazy" src="img/作品/gallery10.jpg" alt="チューリップを描いた小皿">
-    <img loading="lazy" src="img/作品/gallery11.jpg" alt="すみれと蝶を描いたカップ＆ソーサー">
+    <img loading="lazy" src="img/作品/gallery11.jpg" alt="オリエンタルフラワーのプレート">
     <img loading="lazy" src="img/作品/gallery12.jpg" alt="レモンとリボンを描いたプレート">
     <img loading="lazy" src="img/作品/gallery7.jpg" alt="北欧風のグレーの小皿">
     <img loading="lazy" src="img/作品/gallery8.jpg" alt="水彩のプレート">
