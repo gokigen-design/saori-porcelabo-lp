@@ -1160,7 +1160,8 @@
     /* =============================================
        6. 実績・お客様の声
     ============================================= */
-    #voices { background: linear-gradient(rgba(255,255,255,0.30), rgba(255,255,255,0.30)), url('img/voices-bg.jpg') center / cover no-repeat; }
+    /* 上はボケ光・下に向かって白へ（スクショの壁の白フェードが浮かないように） */
+    #voices { background: linear-gradient(180deg, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.72) 45%, #FFFFFF 72%), url('img/voices-bg.jpg') top center / cover no-repeat, var(--white); }
 
     .voice-result-badge {
       display: inline-block;
@@ -1865,19 +1866,31 @@
       .env-collage { height: 400px; margin: 18px 20px 6px; }
     }
 
-    /* FAQ下：リアル勉強会の集合写真 */
-    .community-photo { max-width: 640px; margin: 52px auto 0; }
+    /* FAQ下：リアル勉強会の集合写真（横幅いっぱい・下からクロージングのドームが重なる） */
+    .community-photo { margin: 52px calc(-50vw + 50%) 0; width: 100vw; max-width: none; }
     .community-photo img {
       width: 100%;
       display: block;
-      box-shadow: 0 14px 34px rgba(58,66,104,0.16);
+      box-shadow: none;
     }
-    .community-caption {
+    #faq { padding-bottom: 0 !important; }
+    @media (min-width: 760px) {
+      .community-photo { margin: 64px -40px 0; width: auto; }
+    }
+    @media (min-width: 1140px) {
+      .community-photo { margin: 64px -44px 0; }
+    }
+    /* クロージング：筆記体と金の区切り線は非表示・写真の上にドームが乗る */
+    #closing .sec-divider, #closing .deco-word { display: none; }
+    /* CTA上のマイクロコピー（FVと同系） */
+    .cta-micro {
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: var(--accent-deep);
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
       text-align: center;
-      font-size: 0.88rem;
-      color: var(--text-mid);
-      margin-top: 12px;
-      line-height: 1.8;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.9);
     }
 
     /* =============================================
@@ -2146,15 +2159,15 @@
       padding-top: 100px !important;
     }
     #flow { padding-top: 86px !important; }
-    /* 受講生の声・FAQ・選ばれる理由：ラウンドと見出しの間を詰める */
-    #voices, #faq, #why { padding-top: 62px !important; }
+    /* 受講生の声・FAQ・選ばれる理由・クロージング：ラウンドと見出しの間を詰める */
+    #voices, #faq, #why, #closing { padding-top: 62px !important; }
     @media (min-width: 760px) {
       #service, #why, #voices, #flow, #faq, #closing, #gallery {
         border-radius: 50% 50% 0 0 / 92px 92px 0 0;
         margin-top: -92px;
         padding-top: 136px !important;
       }
-      #voices, #faq, #why { padding-top: 100px !important; }
+      #voices, #faq, #why, #closing { padding-top: 100px !important; }
     }
 
     /* ===== 充実したカリキュラム：写真そのまま＋大きなドーム型アーチで切り替え（前回LP風） ===== */
@@ -2788,7 +2801,7 @@
       </div>
     </div>
     <div class="story-panel">
-      <img class="story-photo" loading="lazy" src="img/作品/story-works.jpg" alt="13年間で生まれた、たくさんの絵の具の作品たち">
+      <img class="story-photo" loading="lazy" src="img/作品/story-branch.jpg" alt="ユーカリの枝と、絵の具で描いた馬のデザインタイル">
       <div class="story-text">
         <p>「資格があれば教えられる」と思っていたのに、実際は転写紙を貼る技術以上のことが自分にはできない。<span class="story-marker">資格はあるのに自信がない</span>。教える自信もないという状態だったのです。</p>
         <p>必死に手探りで続けていましたが、ある程度作品を作られた生徒様は、次々と教室を離れていってしまいました。</p>
@@ -3011,6 +3024,7 @@
   </div>
 
   <div style="margin-top:32px;" class="cta-wrap">
+    <p class="cta-micro">＼ 早期お申込みで6大特典プレゼント ／</p>
     <a href="ここに申込先URLを入力" class="cta-btn">
       無料相談会に参加する
     </a>
@@ -3179,10 +3193,9 @@
     </div>
   </details>
 
-  <!-- リアル勉強会の集合写真 -->
+  <!-- リアル勉強会の集合写真（横幅いっぱい） -->
   <div class="community-photo">
     <img src="img/人物/community-photo.jpg" alt="リアル勉強会での受講生の皆さまとの集合写真" loading="lazy">
-    <p class="community-caption">リアル勉強会にて。受講生の皆さまと</p>
   </div>
 
 </section>
@@ -3207,6 +3220,7 @@
       <img src="img/人物/saori-2.jpg" alt="講師 尾野さおり">
     </div>
     <div class="cta-wrap">
+      <p class="cta-micro">＼ あなたに合う学び方を一緒に整理しましょう ／</p>
       <a href="ここに申込先URLを入力" class="cta-btn">
         無料相談会に参加する
       </a>
