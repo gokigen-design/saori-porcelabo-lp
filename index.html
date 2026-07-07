@@ -1619,6 +1619,12 @@
     .step-card p, .learn-block li, .curri-detail-list li {
       font-size: 1.12rem;
     }
+    /* スマホでは「学べる内容」を1行で収める（変な折り返し防止） */
+    @media (max-width: 480px) {
+      .curri-content { padding-left: 14px; padding-right: 14px; }
+      .curri-detail-list { padding: 14px 6px 14px 8px; }
+      .curri-detail-list li { font-size: 0.875rem; padding-left: 12px; letter-spacing: -0.02em; }
+    }
     /* ===== 見出しサイズの統一＋少し大きく（上品にまとめる）===== */
     .step-card h3, .flow-content h4, .learn-block h3 {
       font-size: 1.3rem; line-height: 1.55;
