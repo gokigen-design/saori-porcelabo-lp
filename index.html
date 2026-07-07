@@ -469,7 +469,8 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.72) 46%, rgba(232,238,248,0.9) 100%);
+      /* 上〜中央は白っぽく（お悩みボックスを読みやすく）、底のV字は鮮やかなブルーに */
+      background: linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.60) 36%, rgba(150,190,235,0.50) 70%, rgba(65,144,216,0.85) 100%);
       pointer-events: none;
     }
     .pain-visual {
@@ -601,8 +602,9 @@
       top: 0;
       transform: translateX(-50%);
       width: 100vw;
-      height: 118px;
-      background: linear-gradient(180deg, rgba(232,238,248,0.98) 0%, rgba(232,238,248,0.64) 44%, rgba(232,238,248,0) 100%);
+      height: 150px;
+      /* 矢印の続きのブルーが、写真へ自然にグラデして溶ける */
+      background: linear-gradient(180deg, rgba(65,144,216,0.82) 0%, rgba(120,170,225,0.42) 40%, rgba(255,255,255,0) 100%);
       pointer-events: none;
       z-index: 1;
     }
@@ -721,8 +723,8 @@
     ============================================= */
     #future {
       background:
-        linear-gradient(rgba(255,255,255,0.62), rgba(255,255,255,0.62)),
-        url('img/作品/future-works-bg.webp') top center / 100% auto no-repeat,
+        linear-gradient(rgba(255,255,255,0.58), rgba(255,255,255,0.58)),
+        url('img/作品/sense-works.webp') top center / cover no-repeat,
         var(--white);
       margin-top: -76px;
       padding-top: 100px;
