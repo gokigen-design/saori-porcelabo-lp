@@ -1007,18 +1007,19 @@
     }
     .curri-detail-list li {
       position: relative;
-      padding-left: 18px;
+      padding-left: 22px;
       color: var(--text-mid);
       font-size: 0.93rem;
-      line-height: 1.45;
+      line-height: 1.7;
     }
+    /* 点は1行目の中央に合わせる（line-height1.7基準） */
     .curri-detail-list li::before {
       content: "";
       position: absolute;
-      left: 0;
-      top: 0.82em;
-      width: 6px;
-      height: 6px;
+      left: 3px;
+      top: 0.66em;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: var(--accent);
     }
@@ -1093,7 +1094,12 @@
     /* =============================================
        5. 選ばれる理由
     ============================================= */
-    #why { background: var(--bg-alt); }
+    /* 上のセクションと同系色なのでドームの曲線が見えづらい→白めのグラデ＋影で「丸い縁」を浮かせる */
+    #why {
+      background: linear-gradient(180deg, #FBFCFE 0%, var(--bg-alt) 120px);
+      box-shadow: 0 -14px 26px rgba(90,120,180,0.13);
+      margin-top: -48px !important;
+    }
 
     /* なぜこの講座なのか（背景色の上に白いボックス／角丸なし） */
     .why-box {
@@ -1679,11 +1685,11 @@
     .step-card p, .learn-block li, .curri-detail-list li {
       font-size: 1.12rem;
     }
-    /* スマホでは「学べる内容」を1行で収める（変な折り返し防止） */
+    /* スマホ：年配の方にも読めるよう少し大きく（改行はOK）・点の位置は共通ルールで揃える */
     @media (max-width: 480px) {
-      .curri-content { padding-left: 14px; padding-right: 14px; }
-      .curri-detail-list { padding: 14px 6px 14px 8px; }
-      .curri-detail-list li { font-size: 0.875rem; padding-left: 12px; letter-spacing: -0.02em; }
+      .curri-content { padding-left: 16px; padding-right: 16px; }
+      .curri-detail-list { padding: 16px 12px; }
+      .curri-detail-list li { font-size: 1rem; padding-left: 22px; }
     }
     /* ===== 見出しサイズの統一＋少し大きく（上品にまとめる）===== */
     .step-card h3, .flow-content h4, .learn-block h3 {
@@ -2602,7 +2608,7 @@
     <div class="fz-row">
       <div class="fz-head"><span class="fz-num"><i>02</i></span><h3>苦手だった絵の具で、<br>絵が描けるようになる</h3></div>
       <div class="fz-photo">
-        <img src="img/作品/gallery10.webp" alt="チューリップを描いた小皿の作品">
+        <img src="img/作品/future-02.webp" alt="ユーカリの枝と、絵の具で描いた馬のデザインタイルの作品">
       </div>
       <p class="fz-desc">道具や溶剤の使い方、基礎からお伝えしますので<b>初心者の方でも安心</b>です。筆の運び方、絵の具の濃淡の作り方、順序を経て絵を描く手順を<b>わかりやすく学べるカリキュラム</b>となっています。</p>
     </div>
@@ -2620,7 +2626,7 @@
     <div class="fz-row">
       <div class="fz-head"><span class="fz-num"><i>04</i></span><h3>「そんな食器見たことない！」と<br>言われる作品が生まれる</h3></div>
       <div class="fz-photo">
-        <img src="img/作品/gallery2.webp" alt="モネの睡蓮を描いた淡い色合いのプレート">
+        <img src="img/作品/future-04.webp" alt="モネの睡蓮を描いた淡い色合いのプレート">
       </div>
       <p class="fz-desc">転写紙では出せない、<b>唯一無二の表現</b>が手に入ります。どこかで見たことのある作品ではなく、<b>オリジナルを生み出す力</b>を養います。</p>
     </div>
