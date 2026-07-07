@@ -661,7 +661,7 @@
       padding:6px 0 14px;
     }
     .voice-carousel::-webkit-scrollbar { display:none; }
-    .marquee.voice-carousel { -webkit-mask-image:none; mask-image:none; }
+    .marquee.voice-carousel { -webkit-mask-image:none; mask-image:none; width:100vw; }
     .voice-carousel .marquee-track {
       display:flex;
       gap:16px;
@@ -694,10 +694,15 @@
       margin:10px 0 0;
     }
     .voice-swipe-note svg { flex:none; opacity:.75; }
+    /* スマホ：1枚ずつ中央でピタッと止まる（切れた状態で止まらない） */
+    @media (max-width: 759px) {
+      .voice-carousel { scroll-snap-type: x mandatory; }
+      .voice-card { scroll-snap-align: center; }
+    }
+    /* PC：列に閉じ込めず画面幅ギリギリまで使う */
     @media (min-width: 760px) {
       .voice-card { flex-basis:600px; }
-      .voice-carousel { margin-left:0; margin-right:0; width:100%; }
-      .voice-carousel .marquee-track { padding:0 16px; }
+      .voice-carousel .marquee-track { padding:0 24px; }
     }
 
     /* 本文の強調（太字）はネイビーで際立たせる */
@@ -2327,6 +2332,8 @@
       }
       var manual = false;
       var isVoices = m.classList.contains('voice-carousel');
+      /* スマホの声カルーセルは自動送りなし（スワイプ＋スナップで1枚ずつ見せる） */
+      if (isVoices && window.matchMedia('(max-width: 759px)').matches) { paused = true; manual = true; }
       function pause() { paused = true; if (isVoices) manual = true; if (timer) { clearTimeout(timer); timer = null; } }
       function resume() { if (reduce || manual) return; if (timer) clearTimeout(timer); timer = setTimeout(function () { paused = false; }, 1500); }
       ['pointerdown', 'touchstart', 'mousedown', 'wheel'].forEach(function (ev) { m.addEventListener(ev, pause, { passive: true }); });
@@ -2838,7 +2845,7 @@
   </div>
   <p class="voice-swipe-note">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
-    横にスワイプしてもご覧いただけます
+    横にスワイプしてご覧ください
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
   </p>
 
