@@ -1160,8 +1160,8 @@
     /* =============================================
        6. 実績・お客様の声
     ============================================= */
-    /* 上はボケ光・下に向かって白へ（スクショの壁の白フェードが浮かないように） */
-    #voices { background: linear-gradient(180deg, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.72) 45%, #FFFFFF 72%), url('img/voices-bg.jpg') top center / cover no-repeat, var(--white); }
+    /* 受講生の声：白背景（あや指示 2026/7/7） */
+    #voices { background: var(--white); }
 
     .voice-result-badge {
       display: inline-block;
@@ -1240,6 +1240,44 @@
     .cred-num small { font-size: 1.05rem; margin-left: 1px; }
     .cred-num .cred-sub { font-size: 0.82rem; font-weight: normal; color: var(--text-mid); margin-left: 3px; }
     .cred-num-text { font-size: 1.12rem; padding: 10px 0 6px; letter-spacing: 0.02em; }
+    /* 経歴の箇条書き（前回LP風・数字を太く大きくメリハリ） */
+    .cred-list {
+      list-style: none;
+      margin: 0 0 18px;
+      padding: 18px 16px;
+      background: linear-gradient(180deg, #F2F7FE 0%, #FDFEFF 100%);
+      border-top: 2px solid var(--gold);
+    }
+    .cred-list li {
+      position: relative;
+      padding: 7px 0 7px 22px;
+      font-size: 1.02rem;
+      color: var(--brown);
+      font-weight: bold;
+      line-height: 1.7;
+    }
+    .cred-list li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 0.95em;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent-deep);
+    }
+    .cred-list li b {
+      color: var(--accent-deep);
+      font-size: 1.22em;
+      padding: 0 1px;
+    }
+    .cred-foot {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.9;
+      text-align: center;
+      margin-bottom: 22px;
+    }
     .cred-label {
       display: block;
       font-size: 0.82rem;
@@ -1774,7 +1812,7 @@
     /* =============================================
        安心感（あなたでも、できる）
     ============================================= */
-    .program-line-sub { font-size: 0.98rem !important; letter-spacing: 0.02em; }
+    .program-line-sub { font-size: 1.16rem !important; letter-spacing: 0.02em; }
     @media (min-width: 600px) {
       .program-line-sub { font-size: 1.5rem !important; }
     }
@@ -1823,8 +1861,8 @@
     /* 番号：写真の下端に装飾的に重ねる（筆記体・透過） */
     .env-num {
       position:absolute;
-      left:auto;
-      right:20px;
+      left:16px;
+      right:auto;
       top:-34px;
       font-family:'Great Vibes', cursive;
       font-size:4.7rem;
@@ -1873,11 +1911,25 @@
     }
 
     /* FAQ下：リアル勉強会の集合写真（横幅いっぱい・下からクロージングのドームが重なる） */
-    .community-photo { margin: 52px calc(-50vw + 50%) 0; width: 100vw; max-width: none; }
+    .community-photo { position: relative; margin: 52px calc(-50vw + 50%) 0; width: 100vw; max-width: none; }
     .community-photo img {
       width: 100%;
       display: block;
       box-shadow: none;
+    }
+    /* 写真の下側を白いフェードでふんわり（ドームの縁がパキッとしないように） */
+    .community-photo::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 48%;
+      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.35) 62%, rgba(255,255,255,0.88) 100%);
+      pointer-events: none;
+    }
+    /* ドームの写真へのかかりを浅く */
+    #closing { margin-top: -38px !important; }
+    @media (min-width: 760px) {
+      #closing { margin-top: -60px !important; }
     }
     #faq { padding-bottom: 0 !important; }
     @media (min-width: 760px) {
@@ -2920,17 +2972,18 @@
         <div class="profile-meta">
           <p class="p-label">ポーセラボ主宰 / 講師</p>
           <h3>尾野さおり</h3>
-          <p class="p-tagline">美大卒・デザイナー出身の<br>ポーセラーツ講師</p>
+          <p class="p-tagline">絵付け講師<br>デザイナー<br>クリエイティブディレクター</p>
         </div>
       </div>
-      <div class="cred-grid">
-        <div class="cred"><span class="cred-num">13<small>年</small></span><span class="cred-label">ポーセラーツ講師歴</span></div>
-        <div class="cred"><span class="cred-num">20<small>年</small></span><span class="cred-label">デザイナー歴</span></div>
-        <div class="cred"><span class="cred-num">1<small>万人</small><span class="cred-sub">以上</span></span><span class="cred-label">指導実績</span></div>
-        <div class="cred"><span class="cred-num">75<small>名</small><span class="cred-sub">以上</span></span><span class="cred-label">インストラクター輩出</span></div>
-        <div class="cred"><span class="cred-num">9<small>割</small><span class="cred-sub">以上</span></span><span class="cred-label">リピート率の満席教室</span></div>
-        <div class="cred"><span class="cred-num cred-num-text">メディア掲載</span><span class="cred-label">テレビ・雑誌など多数</span></div>
-      </div>
+      <!-- 経歴：前回LPと同じ箇条書きスタイル -->
+      <ul class="cred-list">
+        <li>講師歴<b>13年目</b>、<br class="br-sp">指導数<b>1万人</b>超え</li>
+        <li>ヴォーグ社ポーセラーツ<br class="br-sp">本部講師経験</li>
+        <li>オリジナル講座多数</li>
+        <li>リピート率<b>9割</b>超え</li>
+        <li>ポーセラボ設立、<b>1期生即満席</b></li>
+      </ul>
+      <p class="cred-foot">豊富な経験を活かし、<br class="br-sp">寄り添った指導で丁寧にお伝えします。</p>
     <p>
       美大でデザインを学び、メーカーでデザイナーとして働いていましたが、家族の都合で20代のうちに退職。キャリアも夢も見えなくなり、心が折れていました。<br><br>
       そんなときに出会ったのがポーセラーツです。雑誌で見た一枚の作品に衝撃を受け、これに人生をかけようと会社を辞め、講師の道へ進みました。<br><br>
