@@ -1120,7 +1120,7 @@
     /* =============================================
        6. 実績・お客様の声
     ============================================= */
-    #voices { background: linear-gradient(rgba(255,255,255,0.42), rgba(255,255,255,0.42)), url('img/kirakira.jpg') center / cover no-repeat; }
+    #voices { background: linear-gradient(rgba(255,255,255,0.30), rgba(255,255,255,0.30)), url('img/voices-bg.jpg') center / cover no-repeat; }
 
     .voice-result-badge {
       display: inline-block;
@@ -1194,7 +1194,7 @@
     }
     .cred-num small { font-size: 1.05rem; margin-left: 1px; }
     .cred-num .cred-sub { font-size: 0.82rem; font-weight: normal; color: var(--text-mid); margin-left: 3px; }
-    .cred-num-text { font-size: 1.6rem; padding: 4px 0; }
+    .cred-num-text { font-size: 1.12rem; padding: 10px 0 6px; letter-spacing: 0.02em; }
     .cred-label {
       display: block;
       font-size: 0.82rem;
@@ -1256,6 +1256,28 @@
     }
     .price-text { font-size: 0.95rem; color: var(--text-mid); line-height: 2; }
     .price-note { font-size: 0.8rem; color: var(--text-light); margin-top: 8px; }
+    /* 受講料について：箇条書きでメリハリ */
+    .price-points { list-style: none; margin: 0 auto; padding: 0; max-width: 520px; text-align: left; }
+    .price-points li {
+      position: relative;
+      padding: 11px 0 11px 1.5em;
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      line-height: 1.9;
+      border-bottom: 1px solid rgba(122,157,207,0.22);
+    }
+    .price-points li:last-child { border-bottom: none; }
+    .price-points li::before {
+      content: "▶";
+      position: absolute;
+      left: 0;
+      top: 14px;
+      color: var(--gold);
+      font-size: 0.72rem;
+    }
+    .price-points .pp-em { font-style: normal; font-weight: bold; font-size: 1.08em; color: #2266C4; }
+    .price-points .pp-free { font-style: normal; font-weight: bold; font-size: 1.28em; color: #2266C4; }
+    .price-points .pp-zero { font-size: 0.82em; color: var(--gold); font-weight: bold; }
 
     /* 特典 — 明るい上品版（角丸なし） */
     /* 特典リスト（HTML版） */
@@ -1364,14 +1386,22 @@
     }
     .urgency-box ul { list-style: none; }
     .urgency-box ul li {
+      position: relative;
       font-size: 0.88rem;
-      padding: 9px 0;
+      padding: 9px 0 9px 1.5em;
       border-bottom: 1px solid rgba(122,157,207,0.22);
       color: var(--text-mid);
       line-height: 1.8;
     }
     .urgency-box ul li:last-child { border-bottom: none; }
-    .urgency-box ul li::before { content: "▶ "; color: var(--gold); font-size: 0.72rem; }
+    .urgency-box ul li::before {
+      content: "▶";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      color: var(--gold);
+      font-size: 0.72rem;
+    }
 
     /* =============================================
        8. FAQ（アコーディオン）
@@ -1845,7 +1875,8 @@
     }
     .story-points-lead {
       text-align:center; font-size:1.02rem; color:var(--brown); font-weight:bold; line-height:1.8; letter-spacing:0;
-      background: linear-gradient(90deg, #E7F0FC 0%, #F2F7FE 100%);
+      background: #fff;
+      border: 1.5px solid #2266C4;
       padding: 14px 12px;
       margin-bottom:18px;
     }
@@ -2034,19 +2065,22 @@
     .program-main-line:not(.program-line-sub) { padding-left: 20px !important; padding-right: 20px !important; }
 
     /* ===== セクションの切れ目：大きなドーム型アーチでつなぐ（前回LP風） ===== */
-    #service, #why, #story, #voices, #flow, #price, #faq, #closing, #gallery {
+    #service, #why, #voices, #flow, #faq, #closing, #gallery {
       position: relative;
       border-radius: 50% 50% 0 0 / 60px 60px 0 0;
       margin-top: -60px;
       padding-top: 100px !important;
     }
     #flow { padding-top: 86px !important; }
+    /* 受講生の声：ラウンドと見出しの間を詰める */
+    #voices { padding-top: 62px !important; }
     @media (min-width: 760px) {
-      #service, #why, #story, #voices, #flow, #price, #faq, #closing, #gallery {
+      #service, #why, #voices, #flow, #faq, #closing, #gallery {
         border-radius: 50% 50% 0 0 / 92px 92px 0 0;
         margin-top: -92px;
         padding-top: 136px !important;
       }
+      #voices { padding-top: 100px !important; }
     }
 
     /* ===== 充実したカリキュラム：写真そのまま＋大きなドーム型アーチで切り替え（前回LP風） ===== */
@@ -2800,7 +2834,7 @@
         <div class="cred"><span class="cred-num">1<small>万人</small><span class="cred-sub">以上</span></span><span class="cred-label">指導実績</span></div>
         <div class="cred"><span class="cred-num">75<small>名</small><span class="cred-sub">以上</span></span><span class="cred-label">インストラクター輩出</span></div>
         <div class="cred"><span class="cred-num">9<small>割</small><span class="cred-sub">以上</span></span><span class="cred-label">リピート率の満席教室</span></div>
-        <div class="cred"><span class="cred-num cred-num-text">多数</span><span class="cred-label">メディア掲載</span></div>
+        <div class="cred"><span class="cred-num cred-num-text">メディア掲載</span><span class="cred-label">テレビ・雑誌など多数</span></div>
       </div>
     <p>
       美大でデザインを学び、メーカーでデザイナーとして働いていましたが、家族の都合で20代のうちに退職。キャリアも夢も見えなくなり、心が折れていました。<br><br>
@@ -2879,10 +2913,12 @@
 
   <div class="price-box">
     <h3>受講料について</h3>
-    <p class="price-text">
-      ご受講料は個別相談会にてご案内しています。あなたの現状やお悩みをお聞きした上で、複数のプランの中からご提案します。<br><br>
-      まずはお気軽に相談会にご参加ください。<br><strong>相談会への参加は完全無料です。</strong>
-    </p>
+    <ul class="price-points">
+      <li>ご受講料は<em class="pp-em">個別相談会</em>にてご案内しています</li>
+      <li>あなたの現状やお悩みをお聞きした上で、<em class="pp-em">複数のプラン</em>の中からご提案します</li>
+      <li>相談会への参加は<em class="pp-free">完全無料<span class="pp-zero">（0円）</span></em>です</li>
+    </ul>
+    <p class="price-text" style="margin-top:18px;">まずはお気軽に<br class="br-sp">相談会にご参加ください。</p>
   </div>
 
   <!-- 特典コーナー（さおりさん指定の6項目） -->
