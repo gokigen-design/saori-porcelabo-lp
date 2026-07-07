@@ -1005,7 +1005,7 @@
       position: relative;
       padding-left: 18px;
       color: var(--text-mid);
-      font-size: 1.02rem;
+      font-size: 0.93rem;
       line-height: 1.45;
     }
     .curri-detail-list li::before {
@@ -1318,6 +1318,13 @@
     .price-points .pp-free { font-style: normal; font-weight: bold; font-size: 1.28em; color: #2266C4; }
     .price-points .pp-zero { font-size: 0.82em; color: var(--gold); font-weight: bold; }
 
+    /* 特典 — 生成画像版 */
+    .tokuten-image { max-width: 480px; margin: 0 auto; }
+    .tokuten-image img {
+      width: 100%;
+      display: block;
+      box-shadow: 0 12px 30px rgba(58,66,104,0.14);
+    }
     /* 特典 — 明るい上品版（角丸なし） */
     /* 特典リスト（HTML版） */
     .tokuten-box {
@@ -1601,7 +1608,7 @@
     .flow-item.flow-lead .flow-content > p, .flow-intro,
     .why-text p, .voice-text, .profile-card > p, .price-text,
     .tokuten-list li p, .faq-answer, .closing-hero-overlay .closing-text,
-    .step-card p, .learn-block li {
+    .step-card p, .learn-block li, .curri-detail-list li {
       font-size: 1.12rem;
     }
     /* ===== 見出しサイズの統一＋少し大きく（上品にまとめる）===== */
@@ -2538,7 +2545,7 @@
     <div class="curri-item">
       <div class="curri-content">
         <div class="curri-head-band">
-          <h3 class="curri-head"><span class="kadai-no">課題1.</span>リーフボックス</h3>
+          <h3 class="curri-head"><span class="kadai-no">製作1.</span>リーフボックス</h3>
         </div>
         <div class="curri-2col">
           <div class="c-photo">
@@ -2564,7 +2571,7 @@
     <div class="curri-item">
       <div class="curri-content">
         <div class="curri-head-band">
-          <h3 class="curri-head"><span class="kadai-no">課題2.</span>シルエットフラワー</h3>
+          <h3 class="curri-head"><span class="kadai-no">製作2.</span>シルエットフラワー</h3>
         </div>
         <div class="curri-2col">
           <div class="c-photo">
@@ -2588,7 +2595,7 @@
     <div class="curri-item">
       <div class="curri-content">
         <div class="curri-head-band">
-          <h3 class="curri-head"><span class="kadai-no">課題3.</span>フラワーガール</h3>
+          <h3 class="curri-head"><span class="kadai-no">製作3.</span>フラワーガール</h3>
         </div>
         <div class="curri-2col">
           <div class="c-photo">
@@ -2975,17 +2982,9 @@
     <p class="price-text" style="margin-top:18px;">まずはお気軽に<br class="br-sp">相談会にご参加ください。</p>
   </div>
 
-  <!-- 特典コーナー（さおりさん指定の6項目） -->
-  <div class="tokuten-box">
-    <p class="tokuten-title">早期お申込み特典</p>
-    <ul class="tokuten-list">
-      <li><span class="tk-num">01</span><span class="tk-text">コンテンツ・学習サイト 即日開放</span></li>
-      <li><span class="tk-num">02</span><span class="tk-text">インスタプロフィール添削</span></li>
-      <li><span class="tk-num">03</span><span class="tk-text">インスタ攻略動画プレゼント</span></li>
-      <li><span class="tk-num">04</span><span class="tk-text">愛され先生のマル秘テクニック</span></li>
-      <li><span class="tk-num">05</span><span class="tk-text">卒業後の安心サポート</span></li>
-      <li><span class="tk-num">06</span><span class="tk-text">過去人気レッスンを2つ無料で受講<small>（プランにより）</small></span></li>
-    </ul>
+  <!-- 特典コーナー（さおりさん生成の特典画像） -->
+  <div class="tokuten-image">
+    <img src="img/present.jpg" alt="早期お申込み特典：01 コンテンツ・学習サイト即日開放、02 インスタプロフィール添削、03 インスタ攻略動画プレゼント、04 愛され先生のマル秘テクニック、05 卒業後の安心サポート、06 過去人気レッスンを2つ無料で受講（プランにより異なります）" loading="lazy">
   </div>
 
   <div class="urgency-box">
