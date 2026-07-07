@@ -349,13 +349,8 @@
     ============================================= */
     section { position: relative; }  /* 絶対配置の基準 */
 
-    .bot {
-      position: absolute;
-      pointer-events: none;
-      user-select: none;
-      z-index: 0;
-      opacity: 0.18;   /* ← 濃さ調整（0.12〜0.25） */
-    }
+    /* 手書き風ボタニカル装飾は全デバイスで非表示（あや指示 2026/7/7） */
+    .bot { display: none !important; }
     /* コンテンツはボタニカルの上に */
     section > *:not(.bot) { position: relative; z-index: 1; }
 
@@ -1819,18 +1814,19 @@
     /* 番号：写真の下端に装飾的に重ねる（筆記体・透過） */
     .env-num {
       position:absolute;
-      left:14px;
-      top:-40px;
+      left:auto;
+      right:20px;
+      top:-34px;
       font-family:'Great Vibes', cursive;
-      font-size:4rem;
+      font-size:4.7rem;
       font-weight:400;
       line-height:1;
       color:#2266C4;
       transform:rotate(-7deg);
-      /* 袋文字（白いフチ） */
+      /* 袋文字（細めの白フチで上品に） */
       text-shadow:
-        2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
-        2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff,
+        1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff,
+        1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff,
         0 4px 14px rgba(58,66,104,0.25);
       pointer-events:none;
     }
@@ -2147,15 +2143,15 @@
       padding-top: 100px !important;
     }
     #flow { padding-top: 86px !important; }
-    /* 受講生の声・FAQ：ラウンドと見出しの間を詰める */
-    #voices, #faq { padding-top: 62px !important; }
+    /* 受講生の声・FAQ・選ばれる理由：ラウンドと見出しの間を詰める */
+    #voices, #faq, #why { padding-top: 62px !important; }
     @media (min-width: 760px) {
       #service, #why, #voices, #flow, #faq, #closing, #gallery {
         border-radius: 50% 50% 0 0 / 92px 92px 0 0;
         margin-top: -92px;
         padding-top: 136px !important;
       }
-      #voices, #faq { padding-top: 100px !important; }
+      #voices, #faq, #why { padding-top: 100px !important; }
     }
 
     /* ===== 充実したカリキュラム：写真そのまま＋大きなドーム型アーチで切り替え（前回LP風） ===== */
@@ -2615,7 +2611,7 @@
         </div>
         <div class="curri-2col">
           <div class="c-photo">
-            <img src="img/作品/curriculum-3.png" alt="課題3の作品：フラワーガール">
+            <img src="img/作品/curriculum-3b.jpg" alt="製作3の作品：フラワーガール">
           </div>
           <div class="c-text">
             <p class="curri-lead">数種類用意された女の子のデザインを自由にカスタムし、<b>お花のドレス</b>を着せます。背景に色を入れたり、装飾方法も習得します。</p>
@@ -2680,7 +2676,7 @@
   <p class="assurance-lead">オンラインでも、リアルでも。<br>あなたの学びと教室運営を、<br>しっかり支える環境が整っています。</p>
   <div class="env-list">
     <div class="env-item">
-      <img class="env-photo" loading="lazy" src="img/人物/env-zoom.jpg" alt="Zoomでのオンライン勉強会の様子" style="object-position:center center;">
+      <img class="env-photo" loading="lazy" src="img/人物/env-zoom2.jpg" alt="Zoomでのオンライン勉強会の様子（大人数の参加者）" style="aspect-ratio:16/9;">
       <div class="env-body">
         <span class="env-num">01</span>
         <h4><span>オリジナル<br>動画コンテンツ</span></h4>
