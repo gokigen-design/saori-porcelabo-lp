@@ -1352,33 +1352,47 @@
     .price-points { list-style: none; margin: 0 auto; padding: 0; max-width: 520px; text-align: left; }
     .price-points li {
       position: relative;
-      padding: 11px 0 11px 1.5em;
+      padding: 11px 0;
       font-size: 0.95rem;
       color: var(--text-mid);
       line-height: 1.9;
       border-bottom: 1px solid rgba(122,157,207,0.22);
     }
     .price-points li:last-child { border-bottom: none; }
-    .price-points li::before {
-      content: "▶";
-      position: absolute;
-      left: 0;
-      top: 14px;
-      color: var(--gold);
-      font-size: 0.72rem;
-    }
     /* 色を増やさずネイビー1色・サイズと太さでメリハリ */
     .price-points .pp-em { font-style: normal; font-weight: bold; font-size: 1.08em; color: var(--brown); }
     .price-points .pp-free { font-style: normal; font-weight: bold; font-size: 1.3em; color: var(--brown); }
     .price-points .pp-zero { font-size: 0.82em; color: var(--brown); font-weight: bold; }
 
-    /* 特典 — 生成画像版 */
-    .tokuten-image { max-width: 480px; margin: 0 auto; }
+    /* 特典 — 生成画像版：水色キラキラの帯の上に、ふわふわ浮かせて見せる */
+    .tokuten-image {
+      margin: 0 -22px;
+      padding: 38px 22px 44px;
+      background:
+        linear-gradient(rgba(255,255,255,0.16), rgba(255,255,255,0.16)),
+        url('img/voices-bg.jpg') center / cover no-repeat;
+    }
     .tokuten-image img {
       width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
       display: block;
       /* 背景透過画像なので影は輪郭に沿わせる */
-      filter: drop-shadow(0 10px 22px rgba(58,66,104,0.18));
+      filter: drop-shadow(0 12px 24px rgba(58,66,104,0.22));
+      animation: tokutenFloat 4.2s ease-in-out infinite;
+    }
+    @keyframes tokutenFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .tokuten-image img { animation: none; }
+    }
+    @media (min-width: 760px) {
+      .tokuten-image { margin: 0 -40px; }
+    }
+    @media (min-width: 1140px) {
+      .tokuten-image { margin: 0 -44px; }
     }
     /* 特典 — 明るい上品版（角丸なし） */
     /* 特典リスト（HTML版） */
@@ -1489,20 +1503,12 @@
     .urgency-box ul li {
       position: relative;
       font-size: 0.88rem;
-      padding: 9px 0 9px 1.5em;
+      padding: 9px 0;
       border-bottom: 1px solid rgba(122,157,207,0.22);
       color: var(--text-mid);
       line-height: 1.8;
     }
     .urgency-box ul li:last-child { border-bottom: none; }
-    .urgency-box ul li::before {
-      content: "▶";
-      position: absolute;
-      left: 0;
-      top: 12px;
-      color: var(--gold);
-      font-size: 0.72rem;
-    }
 
     /* =============================================
        8. FAQ（アコーディオン）
