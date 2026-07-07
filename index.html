@@ -425,8 +425,8 @@
 
     /* CTA（画像の下・中央） */
     .fv-cta-area {
-      background: var(--white);
-      margin-top: max(-96px, -20vw);
+      background: none;
+      margin-top: max(-118px, -31.5vw);  /* 画像下の白ゾーンに深く重ねて1画面目にボタンまで見せる */
       position: relative;
       z-index: 2;
       padding: 0 16px 52px;
@@ -435,23 +435,23 @@
       align-items: center;
     }
     .fv-micro {
-      font-size: clamp(0.9rem, 4.2vw, 1.16rem);  /* 長文でも1行で収まるように */
+      font-size: clamp(0.85rem, 4vw, 1.02rem);  /* 長文でも1行で収まるように */
       font-weight: bold;
       color: var(--accent-deep);
       letter-spacing: 0.04em;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
       text-align: center;
       white-space: nowrap;
       text-shadow: 0 1px 0 rgba(255,255,255,0.9);
     }
-    /* FV直下のボタンはひときわ大きく・スマホでもふわふわ＋キラッ */
+    /* FV直下のボタン：1画面目に収まるよう少しコンパクトに */
     .fv-cta-area .cta-btn {
-      font-size: 1.32rem;
-      padding: 24px 44px;
-      max-width: 480px;
+      font-size: 1.18rem;
+      padding: 18px 36px;
+      max-width: 440px;
       width: 100%;
-      min-height: 76px;
-      letter-spacing: 0.1em;
+      min-height: 64px;
+      letter-spacing: 0.08em;
       box-shadow: 0 10px 26px rgba(120, 95, 35, 0.38);
       animation: ctaFloat 2.8s ease-in-out infinite !important;
     }
