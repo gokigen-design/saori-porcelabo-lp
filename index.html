@@ -2035,19 +2035,19 @@
     #service .service-main-line { padding-left: 8px; padding-right: 8px; letter-spacing: 0 !important; }
     .program-main-line:not(.program-line-sub) { padding-left: 20px !important; padding-right: 20px !important; }
 
-    /* ===== セクションの切れ目をラウンドでつなぐ（前回LP風） ===== */
-    #pain, #service, #assurance, #why, #story, #voices, #flow, #price, #faq, #closing, #gallery {
+    /* ===== セクションの切れ目：大きなドーム型アーチでつなぐ（前回LP風） ===== */
+    #service, #why, #story, #voices, #flow, #price, #faq, #closing, #gallery {
       position: relative;
-      border-radius: 46px 46px 0 0;
-      margin-top: -46px;
-      padding-top: 88px !important;
+      border-radius: 50% 50% 0 0 / 60px 60px 0 0;
+      margin-top: -60px;
+      padding-top: 100px !important;
     }
-    #flow { padding-top: 72px !important; }
-    #pain { padding-top: 60px !important; }
+    #flow { padding-top: 86px !important; }
     @media (min-width: 760px) {
-      #pain, #service, #assurance, #why, #story, #voices, #flow, #price, #faq, #closing, #gallery {
-        border-radius: 64px 64px 0 0;
-        padding-top: 112px !important;
+      #service, #why, #story, #voices, #flow, #price, #faq, #closing, #gallery {
+        border-radius: 50% 50% 0 0 / 92px 92px 0 0;
+        margin-top: -92px;
+        padding-top: 136px !important;
       }
     }
 
