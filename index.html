@@ -90,21 +90,24 @@
     ============================================= */
     #sticky-bar {
       position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: #3A4268;
-      padding: 10px 16px;
+      bottom: 10px; left: 0; right: 0;
+      background: none;
+      padding: 0 16px;
       z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 -4px 16px rgba(0,0,0,0.18);
-      transform: translateY(120%);
+      pointer-events: none;
+      transform: translateY(140%);
       opacity: 0;
       transition: transform 0.45s ease, opacity 0.45s ease;
     }
     #sticky-bar.visible { transform: translateY(0); opacity: 1; }
     #sticky-bar a {
       display: block;
+      position: relative;
+      overflow: hidden;
+      pointer-events: auto;
       background: linear-gradient(135deg, #E6C871 0%, #C9A24E 45%, #DcB85f 100%);
       color: #fff;
       text-shadow: 0 1px 2px rgba(120, 90, 20, 0.35);
@@ -117,6 +120,18 @@
       letter-spacing: 0.06em;
       width: 100%;
       max-width: 360px;
+      box-shadow: 0 8px 22px rgba(58,66,104,0.32), 0 4px 8px rgba(120,95,35,0.28);
+      animation: ctaFloat 2.8s ease-in-out infinite;
+    }
+    /* 上部ボタンと同じキラッと光るシャイン */
+    #sticky-bar a::before {
+      content: "";
+      position: absolute;
+      top: 0; left: -70%;
+      width: 45%; height: 100%;
+      background: linear-gradient(100deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%);
+      transform: skewX(-20deg);
+      animation: ctaShine 3.6s ease-in-out infinite;
     }
     #sticky-bar .sticky-sub {
       font-size: 0.68rem;
