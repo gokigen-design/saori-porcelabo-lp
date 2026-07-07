@@ -209,7 +209,7 @@
       text-align: center;
       margin-bottom: 46px;
       position: relative;
-      overflow: hidden;   /* はみ出た筆記体を隠す */
+      overflow: visible;
     }
 
     /* 大きな筆記体の飾り英語 */
@@ -1334,10 +1334,14 @@
     .flow-title-block .gold-line,
     .price-title-block .gold-line { display:none; }
 
-    /* 受講料について：箱に入れずさらっと見せる */
+    /* 受講料について：白いカードに入れて読みやすく（水色背景×ブルー文字の見にくさ解消） */
     .price-box {
       max-width: 600px;
-      margin: 0 auto 28px;
+      margin: 0 auto 30px;
+      background: var(--white);
+      border-top: 3px solid var(--gold);
+      padding: 26px 22px 24px;
+      box-shadow: 0 12px 30px rgba(58,66,104,0.12);
       text-align: center;
     }
     .price-box h3 {
@@ -1945,8 +1949,11 @@
     }
     /* ドームの写真へのかかりを浅く */
     #closing { margin-top: -38px !important; }
+    /* ラウンドと見出しの間を詰める（deco-word非表示ぶんの余白を削る） */
+    #closing .title-block { padding-top: 4px; }
+    #closing { padding-top: 42px !important; }
     @media (min-width: 760px) {
-      #closing { margin-top: -60px !important; }
+      #closing { margin-top: -60px !important; padding-top: 70px !important; }
     }
     #faq { padding-bottom: 0 !important; }
     @media (min-width: 760px) {
@@ -1959,12 +1966,13 @@
     #closing .sec-divider, #closing .deco-word { display: none; }
     /* CTA上のマイクロコピー（FVと同系） */
     .cta-micro {
-      font-size: 1.05rem;
+      font-size: clamp(0.72rem, 3.2vw, 1.05rem);  /* 長文でも1行で収まるように */
       font-weight: bold;
       color: var(--accent-deep);
       letter-spacing: 0.02em;
       margin-bottom: 12px;
       text-align: center;
+      white-space: nowrap;
       text-shadow: 0 1px 0 rgba(255,255,255,0.9);
     }
 
@@ -2227,10 +2235,16 @@
     .program-main-line:not(.program-line-sub) { padding-left: 20px !important; padding-right: 20px !important; }
 
     /* ===== セクションの切れ目：大きなドーム型アーチでつなぐ（前回LP風） ===== */
-    #service, #why, #voices, #flow, #faq, #closing, #gallery {
+    /* 食い込みを浅く＝ドームの頂点を下げて、前セクションのボタンとの間隔を空ける */
+    #service, #why, #voices, #flow, #faq, #gallery {
       position: relative;
       border-radius: 50% 50% 0 0 / 60px 60px 0 0;
-      margin-top: -60px;
+      margin-top: -26px;
+      padding-top: 100px !important;
+    }
+    #closing {
+      position: relative;
+      border-radius: 50% 50% 0 0 / 60px 60px 0 0;
       padding-top: 100px !important;
     }
     #flow { padding-top: 86px !important; }
@@ -2239,7 +2253,7 @@
     @media (min-width: 760px) {
       #service, #why, #voices, #flow, #faq, #closing, #gallery {
         border-radius: 50% 50% 0 0 / 92px 92px 0 0;
-        margin-top: -92px;
+        margin-top: -46px;
         padding-top: 136px !important;
       }
       #voices, #faq, #why, #closing { padding-top: 100px !important; }
@@ -2528,7 +2542,7 @@
       </div>
       <div class="pain-item">
         <svg class="pain-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17"/><path d="M7.5 12.5l3 3L16.5 9"/></svg>
-        <p class="pain-text">生徒さんが「次は何を作ろうか」と<span class="em">少し迷い出している</span>のが、自分にも伝わってきている</p>
+        <p class="pain-text">生徒さまが「次は何を作ろうか」と<span class="em">少し迷い出している</span>のが、自分にも伝わってきている</p>
       </div>
       <div class="pain-item">
         <svg class="pain-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17"/><path d="M7.5 12.5l3 3L16.5 9"/></svg>
@@ -2702,7 +2716,7 @@
         </div>
         <div class="curri-2col">
           <div class="c-photo">
-            <img src="img/作品/curriculum-3b.webp" alt="製作3の作品：フラワーガール">
+            <img src="img/作品/curriculum-3-toneup.png" alt="製作3の作品：フラワーガール">
           </div>
           <div class="c-text">
             <p class="curri-lead">数種類用意された女の子のデザインを自由にカスタムし、<b>お花のドレス</b>を着せます。背景に色を入れたり、装飾方法も習得します。</p>
@@ -2965,7 +2979,7 @@
         <img class="ss-shot" loading="lazy" src="img/受講生の声_マーカー/ss16m.webp" alt="受講生さまの声:教室のレッスンも入れると3桁越しました">
         <img class="ss-shot" loading="lazy" src="img/受講生の声_マーカー/ss22m.webp" alt="受講生さまの声:インストラクターコース9名">
         <img class="ss-shot" loading="lazy" src="img/受講生の声_マーカー/ss24m.webp" alt="受講生さまの声:講座の受講生が50名を超えました">
-        <img class="ss-shot" loading="lazy" src="img/受講生の声_マーカー/ss20m.webp" alt="受講生さまの声:70名の生徒さんからお申込み">
+        <img class="ss-shot" loading="lazy" src="img/受講生の声_マーカー/ss20m.webp" alt="受講生さまの声:70名の生徒さまからお申込み">
         <img class="ss-shot" loading="lazy" src="img/受講生の声_マーカー/ss25m.webp" alt="受講生さまの声:ワークショップがほぼ満席に">
         <img class="ss-shot" loading="lazy" src="img/受講生の声_マーカー/ss27m.webp" alt="受講生さまの声:コースレッスンで月商が6倍に">
         <img class="ss-shot" loading="lazy" src="img/受講生の声_マーカー/ss29m.webp" alt="受講生さまの声:200名近く参加、年商も過去最高">
@@ -3083,12 +3097,12 @@
       <li>あなたの現状やお悩みをお聞きした上で、<em class="pp-em">複数のプラン</em>の中からご提案します</li>
       <li>相談会への参加は<em class="pp-free">完全無料<span class="pp-zero">（0円）</span></em>です</li>
     </ul>
-    <p class="price-text" style="margin-top:18px;">まずはお気軽に<br class="br-sp">相談会にご参加ください。</p>
+    <p class="price-text" style="margin-top:16px;">まずはお気軽に相談会にご参加ください。</p>
   </div>
 
   <!-- 特典コーナー（さおりさん生成の特典画像） -->
   <div class="tokuten-image">
-    <img src="img/present.webp" alt="早期お申込み特典：01 コンテンツ・学習サイト即日開放、02 インスタプロフィール添削、03 インスタ攻略動画プレゼント、04 愛され先生のマル秘テクニック、05 卒業後の安心サポート、06 過去人気レッスンを2つ無料で受講（プランにより異なります）" loading="lazy">
+    <img src="img/present.webp" alt="早期お申込み特典：01 コンテンツ・学習サイト即日開放、02 インスタプロフィール添削、03 インスタ攻略動画プレゼント、04 愛され先生のマル秘テクニック、05 卒業後の安心サポート。、06 過去人気レッスンを2つ無料で受講（プランにより異なります）" loading="lazy">
   </div>
 
   <div class="urgency-box">
