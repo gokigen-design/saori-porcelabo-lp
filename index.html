@@ -554,22 +554,17 @@
       letter-spacing: 0.04em; text-shadow: 0 2px 10px rgba(255,255,255,0.9);
     }
     .pain-solve b { color: var(--gold); font-size: 1.74rem; }
-    /* 解決宣言＋散らした作品（背景透過の丸皿） */
+    /* 解決宣言：ティーセットの背景画像の中央に */
     .solve-block {
       position: relative;
-      padding: 48px 0 56px;
-      margin-bottom: 30px;
+      background: url('img/solve-bg.jpg') center / cover no-repeat;
+      margin: 0 -22px 34px;
+      padding: 104px 22px 112px;
     }
     .solve-block .pain-solve { position: relative; z-index: 1; }
-    .solve-deco {
-      position: absolute;
-      z-index: 0;
-      filter: drop-shadow(0 10px 22px rgba(58,66,104,0.22));
-      pointer-events: none;
+    @media (min-width: 760px) {
+      .solve-block { margin: 0 -44px 40px; padding: 140px 44px 150px; }
     }
-    .solve-deco.d1 { width: 118px; top: -20px;  left: 2%;  transform: rotate(-10deg); }
-    .solve-deco.d2 { width: 104px; top: -26px;  right: 2%; transform: rotate(9deg); }
-    .solve-deco.d3 { width: 106px; bottom: -8px; right: 5%; transform: rotate(-6deg); }
     /* 下向き矢印：お悩みの背景そのものが三角で終わって見えるよう、
        セクション下端の左右に次セクションと同色(#FBFAF7)の三角を重ねる */
     .pain-solve-band {
@@ -860,6 +855,26 @@
     .curri-item { }
     /* 月ラベル：白地にブルー枠で軽く見せる */
     /* 月見出し：薄い水色の座布団。「1ヶ月目」は筆記体風で左上・見出しはその下 */
+    .curri-intro {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      max-width: 430px;
+      margin: 0 auto 26px;
+      font-size: 1.32rem;
+      font-weight: bold;
+      color: var(--brown);
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+    .curri-intro::before, .curri-intro::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+    }
+    .curri-intro::before { background: linear-gradient(90deg, rgba(201,168,112,0), rgba(201,168,112,0.75)); }
+    .curri-intro::after { background: linear-gradient(90deg, rgba(201,168,112,0.75), rgba(201,168,112,0)); }
     .curri-head-band {
       position: relative;
       background: linear-gradient(90deg, #E7F0FC 0%, #F2F7FE 100%);
@@ -901,6 +916,14 @@
 
     .curri-content { padding-bottom: 48px; }
     .curri-item:last-child .curri-content { padding-bottom: 0; }
+    .kadai-no {
+      display: inline-block;
+      font-size: 0.62em;
+      color: var(--accent-dark);
+      margin-right: 10px;
+      letter-spacing: 0.08em;
+      transform: translateY(-2px);
+    }
     .curri-head {
       position: relative;
       background: none;
@@ -1670,12 +1693,7 @@
     @media (min-width: 600px) {
       .program-line-sub { font-size: 1.5rem !important; }
     }
-    #assurance {
-      background:
-        linear-gradient(180deg, rgba(240,246,253,0.66) 0%, rgba(236,243,252,0.9) 34%, rgba(233,241,252,0.97) 52%, #E9F1FC 68%),
-        url('img/作品/assurance-bg.jpg') top center / 100% auto no-repeat,
-        linear-gradient(155deg, #BCD4F4 0%, #CFE0F8 60%, #D6C9F0 100%);
-    }
+    #assurance { background: url('img/作品/assurance-photo.jpg') top center / 100% auto no-repeat #EDF3FB; }
     .program-title-block { margin-bottom: 34px; }
     .program-title-block .sec-title {
       display: grid;
@@ -2032,6 +2050,21 @@
         padding-top: 112px !important;
       }
     }
+
+    /* ===== 充実したカリキュラム：上部は写真そのまま＋ラウンドのシートで切り替え ===== */
+    #assurance { padding-top: 200px !important; }
+    .assurance-sheet {
+      position: relative;
+      background: #EDF3FB;
+      border-radius: 46px 46px 0 0;
+      margin: 0 -22px -68px;
+      padding: 48px 22px 68px;
+    }
+    #assurance .deco-word { color: rgba(34,102,196,0.38); }
+    @media (min-width: 760px) {
+      #assurance { padding-top: 280px !important; }
+      .assurance-sheet { border-radius: 64px 64px 0 0; margin: 0 -44px -108px; padding: 60px 44px 108px; }
+    }
 </style>
 </head>
 
@@ -2315,9 +2348,6 @@
   </div>
   <!-- それ、全部解決できます！（矢印の下・作品を散らして） -->
   <div class="solve-block">
-    <img class="solve-deco d1" src="img/作品/deco-shell.png" alt="" aria-hidden="true">
-    <img class="solve-deco d2" src="img/作品/deco-lemon.png" alt="" aria-hidden="true">
-    <img class="solve-deco d3" src="img/作品/deco-coral.png" alt="" aria-hidden="true">
     <p class="pain-solve">それ、<br><b>全部解決</b>できます！</p>
   </div>
 
@@ -2406,7 +2436,7 @@
     <div class="gold-line"></div>
   </div>
 
-  <p style="font-size:1.05rem;color:var(--brown);font-weight:bold;margin-bottom:24px;text-align:center;">カリキュラム内容</p>
+  <p class="curri-intro">カリキュラム内容</p>
 
   <div class="curriculum-list">
 
@@ -2414,7 +2444,7 @@
     <div class="curri-item">
       <div class="curri-content">
         <div class="curri-head-band">
-          <h3 class="curri-head">課題1. リーフボックス</h3>
+          <h3 class="curri-head"><span class="kadai-no">課題1.</span>リーフボックス</h3>
         </div>
         <div class="curri-2col">
           <div class="c-photo">
@@ -2440,7 +2470,7 @@
     <div class="curri-item">
       <div class="curri-content">
         <div class="curri-head-band">
-          <h3 class="curri-head">課題2. シルエットフラワー</h3>
+          <h3 class="curri-head"><span class="kadai-no">課題2.</span>シルエットフラワー</h3>
         </div>
         <div class="curri-2col">
           <div class="c-photo">
@@ -2464,7 +2494,7 @@
     <div class="curri-item">
       <div class="curri-content">
         <div class="curri-head-band">
-          <h3 class="curri-head">課題3. フラワーガール</h3>
+          <h3 class="curri-head"><span class="kadai-no">課題3.</span>フラワーガール</h3>
         </div>
         <div class="curri-2col">
           <div class="c-photo">
@@ -2512,6 +2542,7 @@
      安心感（あなたでも、できる）
 ============================================ -->
 <section id="assurance">
+  <div class="assurance-sheet">
   <div class="title-block program-title-block">
     <span class="deco-word">Program</span>
     <h2 class="sec-title">
@@ -2557,6 +2588,7 @@
         <p>講座中、2回のリアル勉強会があります。<b>実際に手元を見て丁寧に指導</b>させていただきます。</p>
       </div>
     </div>
+  </div>
   </div>
 </section>
 
