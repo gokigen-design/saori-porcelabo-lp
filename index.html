@@ -470,7 +470,7 @@
       position: absolute;
       inset: 0;
       /* 上〜中央は白っぽく（お悩みボックスを読みやすく）、V字はブルーだが底の縁は透明へフェード＝パキッとした境界を出さない */
-      background: linear-gradient(180deg, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.50) 26%, rgba(150,190,235,0.52) 50%, rgba(92,162,220,0.78) 76%, rgba(40,110,198,0.95) 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0.42) 24%, rgba(203,223,243,0.62) 50%, rgba(158,198,231,0.85) 78%, rgba(139,188,224,0.98) 100%);
       pointer-events: none;
     }
     .pain-visual {
@@ -570,10 +570,16 @@
     }
     .pain-solve b { color: var(--gold); font-size: 2.2rem; }
     /* 解決宣言：写真背景の上にそのまま */
+    /* それ全部解決：作品を薄く敷いた背景（上下は白へフェード＝矢印と次セクションに自然につなぐ） */
     .solve-block {
       position: relative;
-      padding: 44px 0 64px;
-      margin-bottom: 10px;
+      margin: 0 calc(-50vw + 50%) 8px;
+      width: 100vw;
+      padding: 56px 22px 70px;
+      background:
+        linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.35) 22%, rgba(255,255,255,0.35) 72%, #fff 100%),
+        url('img/作品/solve-bg.webp') center / cover no-repeat,
+        #fff;
     }
     /* 文字が載る部分に白いぼかしを敷いて読みやすく */
     .solve-block::before {
@@ -581,9 +587,9 @@
       position: absolute;
       left: 50%; top: 50%;
       transform: translate(-50%, -50%);
-      width: min(540px, 98vw);
-      height: 230px;
-      background: radial-gradient(ellipse at center, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.72) 54%, rgba(255,255,255,0) 100%);
+      width: min(540px, 92vw);
+      height: 220px;
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.55) 56%, rgba(255,255,255,0) 100%);
       filter: blur(5px);
       pointer-events: none;
       z-index: 0;
@@ -605,7 +611,7 @@
       width: 100vw;
       height: 190px;
       /* 矢印の続きのブルーが、写真へ自然にグラデして溶ける（パキッとさせない） */
-      background: linear-gradient(180deg, rgba(40,110,198,0.62) 0%, rgba(92,162,220,0.24) 40%, rgba(255,255,255,0) 100%);
+      background: linear-gradient(180deg, rgba(139,188,224,0.85) 0%, rgba(170,205,235,0.32) 44%, rgba(255,255,255,0) 100%);
       pointer-events: none;
       z-index: 1;
     }
@@ -718,13 +724,16 @@
     /* =============================================
        3. 理想の未来
     ============================================= */
+    /* 矢印の水色を受けて、白へ自然につなぐ（作品バンドはそれ全部解決に敷く） */
     #future {
-      background:
-        linear-gradient(rgba(255,255,255,0.58), rgba(255,255,255,0.58)),
-        url('img/作品/sense-works.webp') top center / cover no-repeat,
-        var(--white);
+      background: linear-gradient(180deg,
+        rgba(150,196,232,0.62) 0%,
+        rgba(205,226,246,0.5) 9%,
+        rgba(244,248,253,0.6) 20%,
+        #ffffff 30%,
+        #ffffff 100%);
       margin-top: -76px;
-      padding-top: 100px;
+      padding-top: 84px;
     }
     /* 「絵の具があなたの強みになる」以降だけブルー背景（全部解決エリアは白でコントラスト） */
     .future-blue {
@@ -3025,6 +3034,11 @@
     </div>
   </div>
 
+  <!-- リアル勉強会の集合写真（横幅いっぱい） -->
+  <div class="community-photo">
+    <img src="img/人物/community-photo.webp" alt="リアル勉強会での受講生の皆さまとの集合写真" loading="lazy">
+  </div>
+
   <!-- スクショの壁：特に嬉しかった声を厳選（マーカー入り） -->
   <div class="ss-wall">
     <p class="ss-wall-lead">ほかにも、こんなに<br>たくさんの声が届いています</p>
@@ -3087,9 +3101,6 @@
      受講の流れ（スリム版・申込→学習スタート→修了）
 ============================================ -->
 <section id="flow">
-  <div class="flow-hero">
-    <img src="img/flowhero.webp" alt="絵の具で仕上げた華やかなポーセラーツ作品" loading="lazy">
-  </div>
   <div class="title-block flow-title-block">
     <span class="deco-word">Flow</span>
     <h2 class="sec-title"><span class="flow-main-line">受講の流れ</span></h2>
@@ -3346,10 +3357,6 @@
     </div>
   </details>
 
-  <!-- リアル勉強会の集合写真（横幅いっぱい） -->
-  <div class="community-photo">
-    <img src="img/人物/community-photo.webp" alt="リアル勉強会での受講生の皆さまとの集合写真" loading="lazy">
-  </div>
 
 </section>
 
