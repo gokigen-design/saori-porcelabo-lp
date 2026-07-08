@@ -1056,39 +1056,65 @@
       padding-top: 40px;
     }
     .flow-steps { max-width: 600px; margin: 0 auto; }
+    /* STEP：角丸なし・左に番号丸＋濃ブルーの見出しバー（イメージ準拠） */
     .flow-box {
-      display: flex; gap: 18px; align-items: flex-start;
-      background: #F0F5FB; border-radius: 10px;
-      padding: 24px 20px;
+      background: #fff;
+      box-shadow: 0 8px 22px rgba(58,66,104,0.13);
+      margin-top: 22px;
+      overflow: visible;
     }
-    .flow-ico {
-      flex: none; width: 54px; height: 54px; border-radius: 50%;
-      background: #fff; color: var(--accent-deep);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 12px rgba(58,66,104,0.12);
+    .flow-head {
+      position: relative;
+      display: flex; align-items: center;
+      min-height: 58px;
+      padding: 12px 20px 12px 96px;
+      background: linear-gradient(90deg, #2266C4 0%, #4190D8 100%);
     }
-    .flow-ico svg { width: 26px; height: 26px; }
-    .flow-step {
-      font-family: 'Great Vibes', cursive;
-      font-size: 1.35rem; line-height: 1;
-      color: rgba(9,95,170,0.55);
-      margin-bottom: 7px;
+    .flow-num {
+      position: absolute; left: 12px; top: -14px;
+      width: 66px; height: 66px; border-radius: 50%;
+      background: #fff; border: 3px solid #2266C4;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      line-height: 1; box-shadow: 0 5px 14px rgba(34,102,196,0.28);
     }
-    .flow-body h4 { font-size: 1.12rem; color: var(--brown); font-weight: bold; line-height: 1.5; margin-bottom: 8px; }
-    .flow-body p { font-size: 0.98rem; color: var(--text-mid); line-height: 1.9; }
-    .flow-sep { display: flex; justify-content: center; padding: 12px 0; }
+    .flow-num small { font-family: 'Great Vibes', cursive; font-size: 1rem; color: var(--accent-deep); margin-bottom: 1px; }
+    .flow-num b { font-size: 1.55rem; color: var(--accent-deep); font-weight: bold; }
+    .flow-head h4 { color: #fff; font-size: 1.1rem; font-weight: bold; line-height: 1.45; margin: 0; }
+    .flow-content { padding: 20px 20px 22px; }
+    .flow-content > p { color: var(--text-mid); line-height: 1.9; }
+    .flow-content p b { color: var(--accent-deep); }
+    .flow-content .flow-intro {
+      margin-top: 14px;
+      background: #EAF1FB;
+      padding: 14px 16px;
+      font-size: 0.95rem; color: var(--brown); line-height: 1.85;
+    }
+    .flow-sep { display: flex; justify-content: center; padding: 10px 0; }
     .flow-sep::before {
       content: ""; width: 0; height: 0;
       border-left: 13px solid transparent;
       border-right: 13px solid transparent;
       border-top: 15px solid var(--accent);
     }
-    .flow-intro {
-      margin-top: 12px;
-      background: #DEEAF8;
-      border-radius: 8px;
-      padding: 14px 16px;
-      font-size: 0.9rem; color: var(--brown); line-height: 1.85;
+    /* 受講の流れ手前の華やか写真（ドーム＋白フェードで自然になじませる） */
+    .flow-hero {
+      position: relative;
+      margin: -40px calc(-50vw + 50%) 24px;
+      width: 100vw; height: 190px; overflow: hidden;
+      background: #fff;
+    }
+    .flow-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; display: block; }
+    /* 上下を白へフェードして写真を自然に溶け込ませる */
+    .flow-hero::before {
+      content: ""; position: absolute; left: 0; right: 0; top: 0; height: 60px;
+      background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.5) 55%, rgba(255,255,255,0) 100%);
+    }
+    .flow-hero::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 88px;
+      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 70%, #fff 100%);
+    }
+    @media (min-width: 760px) {
+      .flow-hero { margin-top: -60px; height: 240px; }
     }
 
     /* =============================================
@@ -1170,7 +1196,7 @@
        6. 実績・お客様の声
     ============================================= */
     /* 受講生の声：白背景（あや指示 2026/7/7） */
-    #voices { background: var(--white); }
+    #voices { background: var(--white); box-shadow: 0 -14px 26px rgba(90,120,180,0.15); }
 
     .voice-result-badge {
       display: inline-block;
@@ -1224,10 +1250,10 @@
     @media (max-width: 480px) {
       .profile-head { grid-template-columns: 44% 1fr !important; }
       .p-tagline { font-size: 0.78rem; letter-spacing: -0.01em; }
-      .cred-list { padding: 18px 10px; }
-      .cred-list li { font-size: 0.86rem; letter-spacing: -0.03em; padding-left: 16px; }
-      .cred-list li b { font-size: 1.06em; }
-      .cred-list li::before { left: 0; width: 8px; height: 8px; top: 0.9em; }
+      .cred-list { padding: 20px 16px; }
+      .cred-list li { font-size: 0.98rem; letter-spacing: 0.01em; padding-left: 22px; line-height: 1.9; }
+      .cred-list li b { font-size: 1.14em; }
+      .cred-list li::before { left: 2px; width: 8px; height: 8px; top: 0.82em; }
     }
     /* 実績を数字で見せるグリッド */
     .cred-grid {
@@ -1516,12 +1542,17 @@
     .urgency-box ul li {
       position: relative;
       font-size: 0.88rem;
-      padding: 9px 0;
-      border-bottom: 1px solid rgba(122,157,207,0.22);
+      padding: 7px 0 7px 16px;
       color: var(--text-mid);
       line-height: 1.8;
     }
-    .urgency-box ul li:last-child { border-bottom: none; }
+    .urgency-box ul li::before {
+      content: "・";
+      position: absolute;
+      left: 0; top: 7px;
+      color: var(--accent-deep);
+      font-weight: bold;
+    }
 
     /* =============================================
        8. FAQ（アコーディオン）
@@ -1986,9 +2017,10 @@
     /* =============================================
        私も同じように悩んでいました（ストーリー）
     ============================================= */
+    /* 下端を白ではなく「くすみブルー」で終える→下の受講生セクションの白いラウンドが浮き上がる */
     #story {
       background:
-        linear-gradient(180deg, rgba(50,58,94,0.34) 0%, rgba(90,110,160,0.18) 30%, rgba(240,244,251,0.76) 62%, rgba(255,255,255,0.96) 100%),
+        linear-gradient(180deg, rgba(50,58,94,0.34) 0%, rgba(90,110,160,0.18) 30%, rgba(222,230,244,0.72) 58%, rgba(200,214,236,0.96) 100%),
         url('img/人物/story-bg.webp') center / cover no-repeat;
       padding-top: 56px;
     }
@@ -2063,8 +2095,8 @@
     }
     .story-points li {
       position:relative;
-      padding:12px 4px;
-      font-size:0.99rem; color:var(--brown); line-height:1.7; font-weight:bold;
+      padding:14px 4px;
+      font-size:1.14rem; color:var(--brown); line-height:1.75; font-weight:bold;
       text-align:center;
     }
     .story-points li + li { border-top:1px solid rgba(122,157,207,0.30); }
@@ -2898,7 +2930,7 @@
       </div>
     </div>
     <div class="story-panel">
-      <img class="story-photo is-portrait is-full" loading="lazy" src="img/作品/story-branch1.webp" alt="絵の具で描いた馬のデザインタイル">
+      <img class="story-photo" loading="lazy" src="img/作品/story-branch.webp" alt="絵の具で描いた馬のデザインタイル" style="object-position:center;">
       <div class="story-text">
         <p>「資格があれば教えられる」と思っていたのに、実際は転写紙を貼る技術以上のことが自分にはできない。<span class="story-marker">資格はあるのに自信がない</span>。教える自信もないという状態だったのです。</p>
         <p>必死に手探りで続けていましたが、ある程度作品を作られた生徒様は、次々と教室を離れていってしまいました。</p>
@@ -3027,7 +3059,7 @@
       美大でデザインを学び、メーカーでデザイナーとして働いていましたが、家族の都合で20代のうちに退職。キャリアも夢も見えなくなり、心が折れていました。<br><br>
       そんなときに出会ったのがポーセラーツです。雑誌で見た一枚の作品に衝撃を受け、これに人生をかけようと会社を辞め、講師の道へ進みました。<br><br>
       でも、資格を取っても絵の具は思い通りにならず、指導する自信もありません。だから一から学び直し、デザイナーの経験を理論化することで、自分の作品と指導に自信が持てるようになりました。今では1万人以上を指導し、75名以上のインストラクターを輩出しています。<br><br>
-      <strong>技術もセンスも、「ないんじゃない」。ただ知らなかっただけ。<br>あなたにも必ずできる瞬間がきます。</strong>
+      <strong>技術もセンスも、「ないんじゃない」。<br>ただ知らなかっただけ。<br>あなたにも必ずできる瞬間がきます。</strong>
     </p>
     </div>
   </div>
@@ -3038,6 +3070,9 @@
      受講の流れ（スリム版・申込→学習スタート→修了）
 ============================================ -->
 <section id="flow">
+  <div class="flow-hero">
+    <img src="img/flowhero.webp" alt="絵の具で仕上げた華やかなポーセラーツ作品" loading="lazy">
+  </div>
   <div class="title-block flow-title-block">
     <span class="deco-word">Flow</span>
     <h2 class="sec-title"><span class="flow-main-line">受講の流れ</span></h2>
@@ -3047,10 +3082,11 @@
   <div class="flow-steps">
 
     <div class="flow-box">
-      <span class="flow-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 01-8 8H5l-2 2V12a8 8 0 018-8h2a8 8 0 018 8z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></svg></span>
-      <div class="flow-body">
-        <p class="flow-step">Step 01</p>
+      <div class="flow-head">
+        <span class="flow-num"><small>Step</small><b>1</b></span>
         <h4>まずは無料相談会・お申し込み</h4>
+      </div>
+      <div class="flow-content">
         <p>無料相談会に参加し、納得できたらお申し込み。お手続き後、進め方をご案内します。</p>
         <p class="flow-intro">相談会では、4ヶ月の流れ・進め方・料金プランまで、あなたの状況に合わせて丁寧にご説明します。「自分にできるかな」という不安も、ここで解消できます。</p>
       </div>
@@ -3059,10 +3095,11 @@
     <div class="flow-sep" aria-hidden="true"></div>
 
     <div class="flow-box">
-      <span class="flow-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="M10 9l5 2.5-5 2.5zM8 21h8"/></svg></span>
-      <div class="flow-body">
-        <p class="flow-step">Step 02</p>
+      <div class="flow-head">
+        <span class="flow-num"><small>Step</small><b>2</b></span>
         <h4>学習スタート（即日）</h4>
+      </div>
+      <div class="flow-content">
         <p>特典動画と学習サイトは、<b>お申し込み後すぐに視聴可能</b>。開講を待たずに今日から始められます。そこから4ヶ月のカリキュラムを進めていきます。</p>
       </div>
     </div>
@@ -3070,10 +3107,11 @@
     <div class="flow-sep" aria-hidden="true"></div>
 
     <div class="flow-box">
-      <span class="flow-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M9 13.5L7.5 21l4.5-2.5L16.5 21 15 13.5"/></svg></span>
-      <div class="flow-body">
-        <p class="flow-step">Step 03</p>
+      <div class="flow-head">
+        <span class="flow-num"><small>Step</small><b>3</b></span>
         <h4>修了・指導スタート</h4>
+      </div>
+      <div class="flow-content">
         <p>学びを自分のレッスンに落とし込み、指導をスタート。<b>絵の具があなたの強みになります</b>。</p>
       </div>
     </div>
