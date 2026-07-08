@@ -1052,11 +1052,10 @@
     }
 
     /* 受講の流れ：番号丸＋ボックス＋下向き矢印（背景は白のみ） */
-    /* 受講生の声（白）→受講の流れ（白）で境目が消えないよう、
-       ドーム上部を淡いブルーにして影をつけ、区切りをはっきり見せる */
+    /* ギャラリー/FAQ/クロージングと同じ＝シンプルな白いドーム（影・青グラデなし）。
+       前の#voicesの底を淡いブルーにすることで白ドームが自然に浮く（FAQと同じ仕組み） */
     #flow {
-      background: linear-gradient(180deg, #E4EEFA 0%, #EFF5FC 70px, var(--white) 150px);
-      box-shadow: 0 -14px 30px rgba(90,120,180,0.16);
+      background: var(--white);
       padding-top: 40px;
     }
     .flow-steps { max-width: 600px; margin: 0 auto; }
@@ -1203,8 +1202,9 @@
        6. 実績・お客様の声
     ============================================= */
     /* 受講生の声：白背景（あや指示 2026/7/7） */
-    /* 受講の流れと同じ作り：白から淡いブルーのアーチが出る（前セクションの濃い青に頼らない） */
-    #voices { background: linear-gradient(180deg, #E4EEFA 0%, #EFF5FC 70px, var(--white) 150px); box-shadow: 0 -14px 30px rgba(90,120,180,0.16); }
+    /* ギャラリー/FAQ/クロージングと同じ＝シンプルな白いドーム（影・青グラデなし）。
+       前の#storyの底を淡いブルーにすることで白ドームが自然に浮く（FAQと同じ仕組み） */
+    #voices { background: var(--white); }
 
     .voice-result-badge {
       display: inline-block;
@@ -1223,12 +1223,15 @@
     /* 講師紹介：ブルー背景の上に白いボックス（角丸なし） */
     .instructor-profile {
       background: linear-gradient(135deg, #C7D6EC 0%, #E6EDF7 100%);
-      padding: 28px 18px;
+      padding: 28px 18px 66px;   /* 下端の水色を厚めに＝受講の流れの白ドームがここから自然に出る土台に */
       margin-top: 44px;
+      margin-bottom: 0;
       margin-left: calc(-50vw + 50%);
       margin-right: calc(-50vw + 50%);
       width: 100vw;
     }
+    /* 講師紹介の水色を#voicesの下端まで敷く（白いすき間を作らない→受講の流れのドームが水色から出る） */
+    #voices { padding-bottom: 0 !important; }
     /* PCでは本文の列に収める（背景が画面いっぱいに伸びない） */
     @media (min-width: 760px) {
       .instructor-profile { margin-left: 0; margin-right: 0; width: 100%; }
@@ -1340,7 +1343,7 @@
     }
     .profile-card > p { font-size: 0.9rem; color: var(--text-mid); line-height: 2; }
     @media (max-width: 560px) {
-      .instructor-profile { padding: 22px 12px; }
+      .instructor-profile { padding: 22px 12px 48px; }
       .profile-card { padding: 22px 18px; }
       .profile-head { grid-template-columns: 50% 1fr; gap: 12px; }
       .profile-meta h3 { font-size: 1.28rem; }
@@ -2036,11 +2039,11 @@
     /* =============================================
        私も同じように悩んでいました（ストーリー）
     ============================================= */
-    /* 下端は白へフェード→受講生の声を「受講の流れ」と同じ淡いブルーのアーチで自然に出す */
+    /* 下端を淡いブルー(#E9F1FC)で終える→受講生の声の白いドームがFAQと同じ仕組みで自然に浮く */
     #story {
-      background-color: #ffffff;   /* 下端は白（受講生の声の淡いブルードームが白から出る） */
+      background-color: #E9F1FC;
       background-image:
-        linear-gradient(180deg, rgba(50,58,94,0.34) 0%, rgba(90,110,160,0.18) 30%, rgba(216,226,242,0.70) 52%, rgba(200,216,240,0.90) 72%, rgba(232,240,251,0.92) 88%, #ffffff 100%),
+        linear-gradient(180deg, rgba(50,58,94,0.34) 0%, rgba(90,110,160,0.18) 30%, rgba(216,226,242,0.70) 52%, rgba(210,224,244,0.88) 74%, #E9F1FC 100%),
         url('img/人物/story-bg.webp');
       background-position: center top, center;
       background-size: cover, cover;
