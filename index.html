@@ -1046,9 +1046,7 @@
 
     /* 受講の流れ：番号丸＋ボックス＋下向き矢印（背景は白のみ） */
     #flow {
-      background:
-        linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)),
-        url('img/人物/flow-bg.webp') center / cover no-repeat;
+      background: var(--white);
       padding-top: 40px;
     }
     .flow-steps { max-width: 600px; margin: 0 auto; }
@@ -1096,19 +1094,21 @@
     /* 受講の流れ手前の華やか写真（ドーム＋白フェードで自然になじませる） */
     .flow-hero {
       position: relative;
-      margin: -40px calc(-50vw + 50%) 24px;
-      width: 100vw; height: 190px; overflow: hidden;
+      margin: -30px calc(-50vw + 50%) 20px;
+      width: 100vw; height: 210px; overflow: hidden;
       background: #fff;
+      /* 左右も白へ溶け込ませる（黒いフチが出ない） */
+      box-shadow: inset 54px 0 34px -22px #fff, inset -54px 0 34px -22px #fff;
     }
-    .flow-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; display: block; }
-    /* 上下を白へフェードして写真を自然に溶け込ませる */
+    .flow-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; }
+    /* 上下を白へ強めにフェードして写真を自然に浮かせる */
     .flow-hero::before {
-      content: ""; position: absolute; left: 0; right: 0; top: 0; height: 60px;
-      background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.5) 55%, rgba(255,255,255,0) 100%);
+      content: ""; position: absolute; left: 0; right: 0; top: 0; height: 105px; z-index: 2;
+      background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.78) 42%, rgba(255,255,255,0) 100%);
     }
     .flow-hero::after {
-      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 88px;
-      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.9) 70%, #fff 100%);
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 125px; z-index: 2;
+      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.82) 52%, #fff 100%);
     }
     @media (min-width: 760px) {
       .flow-hero { margin-top: -60px; height: 240px; }
@@ -1361,6 +1361,13 @@
       background:linear-gradient(100deg, #2266C4 0%, #4190D8 100%);
       box-shadow:0 14px 28px rgba(47,120,212,0.14);
     }
+    /* 受講の流れ見出し：他セクションと同等に大きく・しっかり見せる */
+    .flow-main-line {
+      font-size: clamp(1.6rem, 7.4vw, 2.05rem);
+      padding: 15px 50px 17px;
+      letter-spacing: 0.1em;
+    }
+    .flow-title-block { margin-top: 6px; }
     .flow-title-block .gold-line,
     .price-title-block .gold-line { display:none; }
 
