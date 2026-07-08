@@ -2335,6 +2335,20 @@
       }
       #voices, #faq, #why, #closing { padding-top: 100px !important; }
     }
+    /* 受講生の声：ストーリー(青)から白ラウンドをはっきり深いアーチで浮かせる。
+       青の帯に食い込ませて「白ボックス→青帯→白ラウンド」の中途半端さを解消 */
+    #voices {
+      border-radius: 50% 50% 0 0 / 104px 104px 0 0;
+      margin-top: -52px;
+      padding-top: 76px !important;
+    }
+    @media (min-width: 760px) {
+      #voices {
+        border-radius: 50% 50% 0 0 / 118px 118px 0 0;
+        margin-top: -50px;
+        padding-top: 100px !important;
+      }
+    }
 
     /* ===== 充実したカリキュラム：写真そのまま＋大きなドーム型アーチで切り替え（前回LP風） ===== */
     #assurance {
