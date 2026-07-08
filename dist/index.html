@@ -470,7 +470,7 @@
       position: absolute;
       inset: 0;
       /* 上〜中央は白っぽく（お悩みボックスを読みやすく）、V字はブルーだが底の縁は透明へフェード＝パキッとした境界を出さない */
-      background: linear-gradient(180deg, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.52) 30%, rgba(155,193,236,0.50) 56%, rgba(78,148,214,0.66) 80%, rgba(78,148,214,0.10) 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.30) 0%, rgba(255,255,255,0.50) 26%, rgba(150,190,235,0.52) 50%, rgba(92,162,220,0.78) 76%, rgba(40,110,198,0.95) 100%);
       pointer-events: none;
     }
     .pain-visual {
@@ -605,7 +605,7 @@
       width: 100vw;
       height: 190px;
       /* 矢印の続きのブルーが、写真へ自然にグラデして溶ける（パキッとさせない） */
-      background: linear-gradient(180deg, rgba(78,148,214,0.34) 0%, rgba(120,170,225,0.16) 42%, rgba(255,255,255,0) 100%);
+      background: linear-gradient(180deg, rgba(40,110,198,0.62) 0%, rgba(92,162,220,0.24) 40%, rgba(255,255,255,0) 100%);
       pointer-events: none;
       z-index: 1;
     }
@@ -2023,10 +2023,15 @@
     ============================================= */
     /* 下端を白ではなく「くすみブルー」で終える→下の受講生セクションの白いラウンドが浮き上がる */
     #story {
-      background:
-        linear-gradient(180deg, rgba(50,58,94,0.34) 0%, rgba(90,110,160,0.18) 30%, rgba(222,230,244,0.72) 58%, rgba(200,214,236,0.96) 100%),
-        url('img/人物/story-bg.webp') center / cover no-repeat;
+      background-color: #AEC6EA;   /* 下端まで確実にブルーを敷く（受講生の声の白ラウンドを浮かせる） */
+      background-image:
+        linear-gradient(180deg, rgba(50,58,94,0.34) 0%, rgba(90,110,160,0.18) 30%, rgba(216,226,242,0.70) 52%, rgba(178,200,234,0.95) 78%, #AEC6EA 100%),
+        url('img/人物/story-bg.webp');
+      background-position: center top, center;
+      background-size: cover, cover;
+      background-repeat: no-repeat, no-repeat;
       padding-top: 56px;
+      padding-bottom: 34px;
     }
     /* 暗めの入り口では見出しを白に */
     #story .sec-title { color: #fff; text-shadow: 0 2px 14px rgba(30,38,70,0.55); }
@@ -3365,7 +3370,7 @@
   <div class="closing-letter">
     <p class="closing-text">「できない」「ひらめかない」は、才能やセンスのせいではありません。ただ、これまで学ぶ機会がなかっただけです。<br><br>技術に自信を持ち、アイデアを広げる方法を一緒に学んでいきましょう。<br><br>「いつかやろう」「〇〇が落ち着いたら」と、あなたが動き出すのに完璧なタイミングなんてきません。自分のやりたいことを後回しにできるほど、人生は長くありません。<br><br>ならば時間を効率よく使い、確かな成果を出す。あなたに寄り添いながら、ポーセラーツが生きがいになるよう心を込めてサポートさせていただきます。<br><br>あなたも生徒様も、笑顔があふれる教室が叶うヒントが、きっとここにあります。</p>
     <div class="closing-photo">
-      <img src="img/人物/saori-2.webp" alt="講師 尾野さおり">
+      <img src="img/人物/closing-9913.webp" alt="花柄のプレートを手に微笑む尾野さおり">
     </div>
     <div class="cta-wrap">
       <p class="cta-micro">＼ あなたに合う学び方を一緒に整理しましょう ／</p>
