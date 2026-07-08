@@ -1203,7 +1203,8 @@
        6. 実績・お客様の声
     ============================================= */
     /* 受講生の声：白背景（あや指示 2026/7/7） */
-    #voices { background: var(--white); box-shadow: 0 -14px 26px rgba(90,120,180,0.15); }
+    /* 受講の流れと同じ作り：白から淡いブルーのアーチが出る（前セクションの濃い青に頼らない） */
+    #voices { background: linear-gradient(180deg, #E4EEFA 0%, #EFF5FC 70px, var(--white) 150px); box-shadow: 0 -14px 30px rgba(90,120,180,0.16); }
 
     .voice-result-badge {
       display: inline-block;
@@ -2035,11 +2036,11 @@
     /* =============================================
        私も同じように悩んでいました（ストーリー）
     ============================================= */
-    /* 下端を白ではなく「くすみブルー」で終える→下の受講生セクションの白いラウンドが浮き上がる */
+    /* 下端は白へフェード→受講生の声を「受講の流れ」と同じ淡いブルーのアーチで自然に出す */
     #story {
-      background-color: #AEC6EA;   /* 下端まで確実にブルーを敷く（受講生の声の白ラウンドを浮かせる） */
+      background-color: #ffffff;   /* 下端は白（受講生の声の淡いブルードームが白から出る） */
       background-image:
-        linear-gradient(180deg, rgba(50,58,94,0.34) 0%, rgba(90,110,160,0.18) 30%, rgba(216,226,242,0.70) 52%, rgba(178,200,234,0.95) 78%, #AEC6EA 100%),
+        linear-gradient(180deg, rgba(50,58,94,0.34) 0%, rgba(90,110,160,0.18) 30%, rgba(216,226,242,0.70) 52%, rgba(200,216,240,0.90) 72%, rgba(232,240,251,0.92) 88%, #ffffff 100%),
         url('img/人物/story-bg.webp');
       background-position: center top, center;
       background-size: cover, cover;
@@ -2334,20 +2335,6 @@
         padding-top: 136px !important;
       }
       #voices, #faq, #why, #closing { padding-top: 100px !important; }
-    }
-    /* 受講生の声：ストーリー(青)から白ラウンドをはっきり深いアーチで浮かせる。
-       青の帯に食い込ませて「白ボックス→青帯→白ラウンド」の中途半端さを解消 */
-    #voices {
-      border-radius: 50% 50% 0 0 / 104px 104px 0 0;
-      margin-top: -52px;
-      padding-top: 76px !important;
-    }
-    @media (min-width: 760px) {
-      #voices {
-        border-radius: 50% 50% 0 0 / 118px 118px 0 0;
-        margin-top: -50px;
-        padding-top: 100px !important;
-      }
     }
 
     /* ===== 充実したカリキュラム：写真そのまま＋大きなドーム型アーチで切り替え（前回LP風） ===== */
