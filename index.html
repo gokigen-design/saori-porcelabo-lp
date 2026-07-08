@@ -724,16 +724,11 @@
     /* =============================================
        3. 理想の未来
     ============================================= */
-    /* 矢印の水色を受けて、白へ自然につなぐ（作品バンドはそれ全部解決に敷く） */
+    /* 矢印は白へ抜ける（青い四角を出さない）。作品バンドはそれ全部解決に敷く */
     #future {
-      background: linear-gradient(180deg,
-        rgba(150,196,232,0.62) 0%,
-        rgba(205,226,246,0.5) 9%,
-        rgba(244,248,253,0.6) 20%,
-        #ffffff 30%,
-        #ffffff 100%);
+      background: #ffffff;
       margin-top: -76px;
-      padding-top: 84px;
+      padding-top: 78px;
     }
     /* 「絵の具があなたの強みになる」以降だけブルー背景（全部解決エリアは白でコントラスト） */
     .future-blue {
@@ -1401,7 +1396,7 @@
     .price-text { font-size: 0.95rem; color: var(--text-mid); line-height: 2; }
     .price-note { font-size: 0.8rem; color: var(--text-light); margin-top: 8px; }
     /* 受講料について：箇条書きでメリハリ */
-    .price-points { list-style: none; margin: 0 auto; padding: 0; max-width: 520px; text-align: left; }
+    .price-points { list-style: none; margin: 0 auto; padding: 0; max-width: 520px; text-align: center; }
     .price-points li {
       position: relative;
       padding: 11px 0;
@@ -2017,7 +2012,7 @@
     #closing .sec-divider, #closing .deco-word { display: none; }
     /* CTA上のマイクロコピー（FVと同系） */
     .cta-micro {
-      font-size: clamp(0.72rem, 3.2vw, 1.05rem);  /* 長文でも1行で収まるように */
+      font-size: clamp(0.78rem, 3.5vw, 1.08rem);  /* 長文でも1行で収まるように */
       font-weight: bold;
       color: var(--accent-deep);
       letter-spacing: 0.02em;
@@ -2026,6 +2021,8 @@
       white-space: nowrap;
       text-shadow: 0 1px 0 rgba(255,255,255,0.9);
     }
+    /* 6大特典プレゼントは短めなので大きめに見せる */
+    #price .cta-micro { font-size: clamp(0.98rem, 4.6vw, 1.28rem); letter-spacing: 0.04em; }
 
     /* =============================================
        私も同じように悩んでいました（ストーリー）
@@ -3034,11 +3031,6 @@
     </div>
   </div>
 
-  <!-- リアル勉強会の集合写真（横幅いっぱい） -->
-  <div class="community-photo">
-    <img src="img/人物/community-photo.webp" alt="リアル勉強会での受講生の皆さまとの集合写真" loading="lazy">
-  </div>
-
   <!-- スクショの壁：特に嬉しかった声を厳選（マーカー入り） -->
   <div class="ss-wall">
     <p class="ss-wall-lead">ほかにも、こんなに<br>たくさんの声が届いています</p>
@@ -3167,9 +3159,9 @@
   <div class="price-box">
     <h3>受講料について</h3>
     <ul class="price-points">
-      <li>ご受講料は<em class="pp-em">個別相談会</em>にてご案内しています</li>
-      <li>あなたの現状やお悩みをお聞きした上で、<br><em class="pp-em">複数のプラン</em>の中からご提案します</li>
-      <li>相談会への参加は<em class="pp-free">完全無料<span class="pp-zero">（0円）</span></em>です</li>
+      <li>ご受講料は<em class="pp-em">個別相談会</em>にて<br class="br-sp">ご案内しています</li>
+      <li>あなたの現状やお悩みをお聞きした上で、<br class="br-sp"><em class="pp-em">複数のプラン</em>の中からご提案します</li>
+      <li>相談会への参加は<br class="br-sp"><em class="pp-free">完全無料<span class="pp-zero">（0円）</span></em>です</li>
     </ul>
     <p class="price-text" style="margin-top:16px;">まずはお気軽に相談会にご参加ください。</p>
   </div>
@@ -3181,7 +3173,7 @@
 
   <div class="urgency-box">
     <ul>
-      <li>募集人数に限りがあります。定員に達し次第、締め切ります</li>
+      <li>募集人数に限りがあります。<br>定員に達し次第、締め切ります</li>
       <li>次回の募集時期は未定です</li>
       <li>期間限定割引価格でのご案内です。期間終了後は通常価格に戻ります</li>
     </ul>
@@ -3372,6 +3364,11 @@
     <span class="deco-word">Message</span>
     <h2 class="sec-title">ここまで読んでくださった<br>あなたへ</h2>
     <div class="gold-line"></div>
+  </div>
+
+  <!-- リアル勉強会の集合写真（横幅いっぱい） -->
+  <div class="community-photo">
+    <img src="img/人物/community-photo.webp" alt="リアル勉強会での受講生の皆さまとの集合写真" loading="lazy">
   </div>
 
   <div class="closing-letter">
