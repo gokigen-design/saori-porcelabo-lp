@@ -1083,7 +1083,7 @@
     }
     .flow-num small { font-family: 'Zen Maru Gothic','Hiragino Sans',sans-serif; font-size: 0.6rem; font-weight: bold; letter-spacing: 0.08em; color: var(--accent-deep); margin-bottom: 2px; }
     .flow-num b { font-size: 1.5rem; color: var(--accent-deep); font-weight: bold; }
-    .flow-head h4 { color: #fff; font-size: 1.1rem; font-weight: bold; line-height: 1.45; margin: 0; text-shadow: 0 1px 3px rgba(40,70,120,0.32); }
+    .flow-head h4 { color: #fff; font-size: 1.22rem; font-weight: bold; line-height: 1.4; margin: 0; text-shadow: 0 1px 3px rgba(40,70,120,0.32); }
     .flow-content { padding: 20px 20px 22px; }
     .flow-content > p { color: var(--text-mid); line-height: 1.9; }
     .flow-content p b { color: var(--accent-deep); }
@@ -1989,7 +1989,7 @@
     }
 
     /* FAQ下：リアル勉強会の集合写真（横幅いっぱい・下からクロージングのドームが重なる） */
-    .community-photo { position: relative; margin: 52px calc(-50vw + 50%) 0; width: 100vw; max-width: none; }
+    .community-photo { position: relative; margin: 32px calc(-50vw + 50%) 0; width: 100vw; max-width: none; }
     .community-photo img {
       width: 100%;
       display: block;
@@ -2012,11 +2012,11 @@
     @media (min-width: 760px) {
       #closing { margin-top: -60px !important; padding-top: 70px !important; }
     }
-    /* 最後のQがクロージングのドームに食い込まないよう下に余白 */
-    #faq { padding-bottom: 56px !important; }
+    /* 集合写真を挟むので下余白は控えめでOK */
+    #faq { padding-bottom: 24px !important; }
     @media (min-width: 760px) {
-      #faq { padding-bottom: 80px !important; }
-      .community-photo { margin: 64px -40px 0; width: auto; }
+      #faq { padding-bottom: 40px !important; }
+      .community-photo { margin: 40px -40px 0; width: auto; }
     }
     @media (min-width: 1140px) {
       .community-photo { margin: 64px -44px 0; }
@@ -3118,7 +3118,7 @@
     <div class="flow-box">
       <div class="flow-head">
         <span class="flow-num"><small>Step</small><b>1</b></span>
-        <h4>まずは無料相談会・お申し込み</h4>
+        <h4>まずは無料相談会・<br class="br-sp">お申し込み</h4>
       </div>
       <div class="flow-content">
         <p>無料相談会に参加し、納得できたらお申し込み。お手続き後、進め方をご案内します。</p>
@@ -3367,6 +3367,12 @@
 </section>
 
 
+<!-- リアル勉強会の集合写真（横幅いっぱい・下からクロージングの白いラウンドが重なる） -->
+<div class="community-photo">
+  <img src="img/人物/community-photo.webp" alt="リアル勉強会での受講生の皆さまとの集合写真" loading="lazy">
+</div>
+
+
 <!-- ============================================
      9. クロージング＋最終CTA
 ============================================ -->
@@ -3378,11 +3384,6 @@
     <span class="deco-word">Message</span>
     <h2 class="sec-title">ここまで読んでくださった<br>あなたへ</h2>
     <div class="gold-line"></div>
-  </div>
-
-  <!-- リアル勉強会の集合写真（横幅いっぱい） -->
-  <div class="community-photo">
-    <img src="img/人物/community-photo.webp" alt="リアル勉強会での受講生の皆さまとの集合写真" loading="lazy">
   </div>
 
   <div class="closing-letter">
@@ -3415,14 +3416,14 @@
   <!-- タイル状に敷き詰め（3列×4段） -->
   <div class="gallery-grid">
     <img loading="lazy" src="img/作品/gallery4.webp" alt="バタフライレースのプレートとマカロン">
-    <img loading="lazy" src="img/作品/gallery12.webp" alt="水彩タッチのカップ＆ソーサー">
     <img loading="lazy" src="img/作品/gallery11.webp" alt="デイジー柄のレモンタルトのプレート">
-    <img loading="lazy" src="img/作品/gallery15.webp" alt="オリエンタルフラワーのプレート">
+    <img loading="lazy" src="img/作品/gallery12.webp" alt="水彩タッチのカップ＆ソーサー">
     <img loading="lazy" src="img/作品/gallery21.webp" alt="藤の花を描いたカップ＆ソーサー">
-    <img loading="lazy" src="img/作品/gallery8.webp" alt="レモンリースを描いたプレート">
-    <img loading="lazy" src="img/作品/gallery18.webp" alt="シェル柄のカップ＆ソーサー">
     <img loading="lazy" src="img/作品/gallery2.webp" alt="オレンジの花柄を描いたカップ＆ソーサー">
+    <img loading="lazy" src="img/作品/gallery8.webp" alt="レモンリースを描いたプレート">
+    <img loading="lazy" src="img/作品/gallery15.webp" alt="オリエンタルフラワーのプレート">
     <img loading="lazy" src="img/作品/gallery14.webp" alt="イエローのカップ＆ソーサー">
+    <img loading="lazy" src="img/作品/gallery18.webp" alt="シェル柄のカップ＆ソーサー">
   </div>
 </section>
 
