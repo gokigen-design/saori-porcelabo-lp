@@ -692,11 +692,7 @@
       margin:10px 0 0;
     }
     .voice-swipe-note svg { flex:none; opacity:.75; }
-    /* スマホ：1枚ずつ中央でピタッと止まる（切れた状態で止まらない） */
-    @media (max-width: 759px) {
-      .voice-carousel { scroll-snap-type: x mandatory; }
-      .voice-card { scroll-snap-align: center; }
-    }
+    /* スマホ：作品ギャラリーと同じく自動で流れる（スナップ無し） */
     /* PC：本文の列に収める（目次やガターにはみ出さない） */
     @media (min-width: 760px) {
       .voice-card { flex-basis:600px; }
@@ -1066,20 +1062,21 @@
     .flow-head {
       position: relative;
       display: flex; align-items: center;
-      min-height: 58px;
-      padding: 12px 20px 12px 96px;
-      background: linear-gradient(90deg, #2266C4 0%, #4190D8 100%);
+      min-height: 68px;
+      padding: 12px 20px 12px 86px;
+      background: linear-gradient(90deg, #6CA0D6 0%, #98C0E6 100%);
     }
     .flow-num {
-      position: absolute; left: 12px; top: -14px;
-      width: 66px; height: 66px; border-radius: 50%;
-      background: #fff; border: 3px solid #2266C4;
+      position: absolute; left: 12px; top: 50%;
+      transform: translateY(-50%);
+      width: 54px; height: 54px; border-radius: 50%;
+      background: #fff; border: 2px solid #7FAEDD;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      line-height: 1; box-shadow: 0 5px 14px rgba(34,102,196,0.28);
+      line-height: 1; box-shadow: 0 3px 9px rgba(34,102,196,0.22);
     }
-    .flow-num small { font-family: 'Great Vibes', cursive; font-size: 1rem; color: var(--accent-deep); margin-bottom: 1px; }
-    .flow-num b { font-size: 1.55rem; color: var(--accent-deep); font-weight: bold; }
-    .flow-head h4 { color: #fff; font-size: 1.1rem; font-weight: bold; line-height: 1.45; margin: 0; }
+    .flow-num small { font-family: 'Zen Maru Gothic','Hiragino Sans',sans-serif; font-size: 0.6rem; font-weight: bold; letter-spacing: 0.08em; color: var(--accent-deep); margin-bottom: 2px; }
+    .flow-num b { font-size: 1.5rem; color: var(--accent-deep); font-weight: bold; }
+    .flow-head h4 { color: #fff; font-size: 1.1rem; font-weight: bold; line-height: 1.45; margin: 0; text-shadow: 0 1px 3px rgba(40,70,120,0.32); }
     .flow-content { padding: 20px 20px 22px; }
     .flow-content > p { color: var(--text-mid); line-height: 1.9; }
     .flow-content p b { color: var(--accent-deep); }
@@ -2200,6 +2197,15 @@
     .lightbox-prev svg,
     .lightbox-next svg { width:25px; height:25px; stroke:currentColor; stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
     /* FV直下の作品ギャラリー（ワクワク感を伝える） */
+    .fv-gallery-lead {
+      text-align: center;
+      font-size: 1.16rem;
+      color: var(--brown);
+      font-weight: bold;
+      line-height: 1.7;
+      margin: 4px auto 20px;
+      padding: 0 20px;
+    }
     .fv-gallery { background: var(--white); overflow: hidden; padding: 0 0 44px; }
     .fv-gallery-cap {
       text-align: center;
@@ -2366,7 +2372,7 @@
      スティッキーCTAバー（画面下部に固定）
 ============================================ -->
 <div id="sticky-bar">
-  <a href="ここに申込先URLを入力">
+  <a href="https://sub.porce-lab.com/event/YmMcExyXWaom/register">
     無料相談会に参加する
   </a>
 </div>
@@ -2482,9 +2488,8 @@
       }
       var manual = false;
       var isVoices = m.classList.contains('voice-carousel');
-      /* スマホの声カルーセルは自動送りなし（スワイプ＋スナップで1枚ずつ見せる） */
-      if (isVoices && window.matchMedia('(max-width: 759px)').matches) { paused = true; manual = true; }
-      function pause() { paused = true; if (isVoices) manual = true; if (timer) { clearTimeout(timer); timer = null; } }
+      /* 声カルーセルも作品ギャラリーと同様に自動で流す（手動スワイプ後は再開） */
+      function pause() { paused = true; if (timer) { clearTimeout(timer); timer = null; } }
       function resume() { if (reduce || manual) return; if (timer) clearTimeout(timer); timer = setTimeout(function () { paused = false; }, 1500); }
       ['pointerdown', 'touchstart', 'mousedown', 'wheel'].forEach(function (ev) { m.addEventListener(ev, pause, { passive: true }); });
       ['pointerup', 'pointercancel', 'touchend', 'touchcancel', 'mouseleave'].forEach(function (ev) { m.addEventListener(ev, resume, { passive: true }); });
@@ -2500,15 +2505,18 @@
 ============================================ -->
 <section id="fv">
   <!-- FV画像（タイトル・バッジ・ボタンを含む完成版・画像全体がリンク） -->
-  <a href="ここに申込先URLを入力" class="fv-img-link">
+  <a href="https://sub.porce-lab.com/event/YmMcExyXWaom/register" class="fv-img-link">
     <div class="fv-img-wrap">
       <img src="img/fv.webp" alt="絵の具苦手から技術とデザイン力UPで選ばれる先生になる｜ポーセラボ絵の具コース｜8月開講・全期即満席・満足度継続率98%" class="fv-main-img">
     </div>
   </a>
   <div class="fv-cta-area">
     <p class="fv-micro">＼ あなたに合う学び方を一緒に整理しましょう ／</p>
-    <a href="ここに申込先URLを入力" class="cta-btn">無料相談会に参加する</a>
+    <a href="https://sub.porce-lab.com/event/YmMcExyXWaom/register" class="cta-btn">無料相談会に参加する</a>
   </div>
+
+  <!-- 作品ギャラリーの導入コピー -->
+  <p class="fv-gallery-lead">絵の具の技術UPで、<br>こんな作品が作れるようになります</p>
 
   <!-- FV直下の作品ギャラリー（「こんな作品が作れる！」のワクワク感）※画像は仮 -->
   <div class="fv-gallery">
@@ -2821,7 +2829,7 @@
   <p class="assurance-lead">オンラインでも、リアルでも。<br>あなたの学びと教室運営を、<br>しっかり支える環境が整っています。</p>
   <div class="env-list">
     <div class="env-item">
-      <img class="env-photo" loading="lazy" src="img/人物/env-zoom2.webp" alt="Zoomでのオンライン勉強会の様子（大人数の参加者）" style="aspect-ratio:16/9;">
+      <img class="env-photo" loading="lazy" src="img/人物/env-zoom2.webp" alt="Zoomでのオンライン勉強会の様子（大人数の参加者）" style="aspect-ratio:1400/583;">
       <div class="env-body">
         <span class="env-num">01</span>
         <h4><span>オリジナル<br>動画コンテンツ</span></h4>
@@ -3039,11 +3047,10 @@
   <div class="instructor-profile">
     <div class="profile-card">
       <div class="profile-head">
-        <img class="profile-photo" src="img/人物/saori-bust.webp" alt="講師 尾野さおり">
+        <img class="profile-photo" src="img/人物/jiko-intro.webp" alt="講師 尾野さおり" style="object-position:center 22%;">
         <div class="profile-meta">
           <p class="p-label">ポーセラボ主宰 / 講師</p>
           <h3>尾野さおり</h3>
-          <p class="p-tagline">絵付け講師<br>デザイナー<br>クリエイティブディレクター</p>
         </div>
       </div>
       <!-- 経歴：前回LPと同じ箇条書きスタイル -->
@@ -3052,7 +3059,7 @@
         <li>ヴォーグ社ポーセラーツ<br class="br-sp">本部講師経験</li>
         <li>オリジナル講座多数</li>
         <li>リピート率<b>9割</b>超え</li>
-        <li>ポーセラボ設立、<b>1期生即満席</b></li>
+        <li>ポーセリンアートの総合学習ができる<br class="br-sp">ポーセラボ設立、<b>毎期即満席</b></li>
       </ul>
       <p class="cred-foot">豊富な経験を活かし、<br class="br-sp">寄り添った指導で丁寧にお伝えします。</p>
     <p>
@@ -3161,7 +3168,7 @@
 
   <div style="margin-top:32px;" class="cta-wrap">
     <p class="cta-micro">＼ 早期お申込みで6大特典プレゼント ／</p>
-    <a href="ここに申込先URLを入力" class="cta-btn">
+    <a href="https://sub.porce-lab.com/event/YmMcExyXWaom/register" class="cta-btn">
       無料相談会に参加する
     </a>
   </div>
@@ -3357,7 +3364,7 @@
     </div>
     <div class="cta-wrap">
       <p class="cta-micro">＼ あなたに合う学び方を一緒に整理しましょう ／</p>
-      <a href="ここに申込先URLを入力" class="cta-btn">
+      <a href="https://sub.porce-lab.com/event/YmMcExyXWaom/register" class="cta-btn">
         無料相談会に参加する
       </a>
     </div>
